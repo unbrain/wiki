@@ -355,3 +355,47 @@ function bfsLevel(graph, start) {
 | 65 | [有效数字](https://leetcode.cn/problems/valid-number/) | 状态机 / 正则 |
 | 133 | [克隆图](https://leetcode.cn/problems/clone-graph/) | DFS / BFS 拷贝 |
 | 417 | [太平洋大西洋水流问题](https://leetcode.cn/problems/pacific-atlantic-water-flow/) | 反向 DFS |
+```javascript
+/**
+ * @param {number[][]} heights
+ * @return {number[][]}
+ */
+var pacificAtlantic = function (heights) {
+    const row = heights.length
+    const col = heights[0].length
+    const flow1 = Array.from({ length: row }, () => new Array(col).fill(false))
+    const flow2 = Array.from({ length: row }, () => new Array(col).fill(false))
+
+    const dfs = (r, c, flow) => {
+        flow[r][c] = true
+        
+        ;[[r - 1, c], [r + 1, c], [r, c - 1], [r, c + 1]].forEach(([cr, cc]) => {
+            if ((cr >= 0 && cr < row) && (cc >= 0 && cc < col) && !flow[cr][cc] && heights[cr][cc] >= heights[r][c]) {
+                dfs(cr, cc, flow)
+            }
+        })
+    }
+
+    for (let i = 0; i < row; i++) {
+        dfs(i, 0, flow1)
+        dfs(i, col - 1, flow2)
+    }
+
+    for (let i = 0; i < col; i++) {
+        dfs(0, i, flow1)
+        dfs(row - 1, i, flow2)
+    }
+
+    const res = []
+
+    for (let i = 0; i < row; i++) {
+        for (let j = 0; j < col; j++) {
+            if (flow1[i][j] && flow1[i][j] === flow2[i][j]) {
+                res.push([i, j])
+            }
+        }
+    }
+
+    return res
+};
+```
