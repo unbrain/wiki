@@ -399,3 +399,43 @@ var pacificAtlantic = function (heights) {
     return res
 };
 ```
+
+
+```javascript
+/**
+ * // Definition for a _Node.
+ * function _Node(val, neighbors) {
+ *    this.val = val === undefined ? 0 : val;
+ *    this.neighbors = neighbors === undefined ? [] : neighbors;
+ * };
+ */
+
+/**
+ * @param {_Node} node
+ * @return {_Node}
+ */
+var cloneGraph = function(node) {
+    if(!node) return;
+    const map = new Map()
+
+    const dfs = (item) => {
+        const copy = new Node(item.val)
+        map.set(item, copy);
+        item.neighbors.forEach(ne => {
+            if(!map.has(ne)) {
+                dfs(ne)
+            }
+            copy.neighbors.push(map.get(ne))
+        })
+
+    }
+
+    dfs(node)
+    return map.get(node)
+};
+```
+
+
+```javascript
+
+```
