@@ -437,5 +437,34 @@ var cloneGraph = function(node) {
 
 
 ```javascript
+/**
+ * // Definition for a _Node.
+ * function _Node(val, neighbors) {
+ *    this.val = val === undefined ? 0 : val;
+ *    this.neighbors = neighbors === undefined ? [] : neighbors;
+ * };
+ */
 
+/**
+ * @param {_Node} node
+ * @return {_Node}
+ */
+var cloneGraph = function(node) {
+    if(!node) return;
+    const map = new Map()
+    const stack = [node]
+    const copy = new Node(node.val)
+    map.set(node, copy)
+    while(stack.length) {
+        const current = stack.shift();
+        current.neighbors.forEach(item => {
+            if(!map.has(item)) {
+                stack.push(item)
+                map.set(item, new Node(item.val))
+            }
+            map.get(current).neighbors.push(map.get(item))
+        })
+    }
+    return map.get(node)
+};
 ```
