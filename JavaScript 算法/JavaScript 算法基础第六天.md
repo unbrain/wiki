@@ -18,7 +18,7 @@ class MinHeap {
 	}
 	insert(val) {
 		this.heap.push(val)
-		this.shiftUp(this.heap[this.size() - 1])
+		this.shiftUp(this.size() - 1)
 	}
 	parentIndex(index) {
 		return (index-1) >> 1
