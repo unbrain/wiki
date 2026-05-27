@@ -200,7 +200,7 @@ var topKFrequent = function(nums, k) {
             return i * 2 +2
         }
         swap(i, j) {
-            [this.heap[i], this.heap[j]] = [this.heap[i], this.heap[j]]
+            [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]]
         }
         shiftUp(index) {
             let i = index
@@ -238,11 +238,27 @@ var topKFrequent = function(nums, k) {
     })
     const heap = new MinHeap()
     for([key, val] of map) {
-        heap.push([key, val])
+        heap.push({key, val})
         if(heap.size() > k) {
             heap.pop()
         }
     }
-    console.log(heap)
+    return heap.heap.map(item => item.key)
 };
 ```
+
+## 注意点
+
+### 215 题
+- `insert` 中 `this.shiftUp(this.size() - 1)` 传的是数值索引，不要写成 `this.heap[this.size() - 1]`（那会传值本身）
+- 堆的大小限制为 k，堆顶恰好是第 k 大的元素
+
+### 347 题
+- `swap` 需确认左右值不同：`[this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]]`
+- 存储对象时比较字段要统一用 `.val` 或 `.freq`
+- `for...of` 记得加 `const`：`for (const [key, val] of map)`
+
+### 通用
+- `shiftDown` 应先找左右子中较小者再交换，避免两个独立 `if` 导致重复比较
+- 空堆 `pop` 时需 `return null` 保护
+- 单元素堆 `pop` 直接用 `this.heap.pop()`
