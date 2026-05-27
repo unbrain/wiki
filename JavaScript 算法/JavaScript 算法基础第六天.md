@@ -177,5 +177,72 @@ constructor(arr) {
 [347. 前 K 个高频元素](https://leetcode.cn/problems/top-k-frequent-elements/)
 
 ```javascript
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var topKFrequent = function(nums, k) {
+    class MinHeap {
+        constructor() {
+            this.heap = []
+        }
+        size() {
+            return this.heap.length
+        }
+        parentIndex(i) {
+            return (i-1)>>1
+        }
+        leftIndex(i) {
+            return i * 2 +1
+        }
+        rightIndex(i) {
+            return i * 2 +2
+        }
+        swap(i, j) {
+            [this.heap[i], this.heap[j]] = [this.heap[i], this.heap[j]]
+        }
+        shiftUp(index) {
+            let i = index
+            while(i>0) {
+                let pi = this.parentIndex(i)
+                if(this.heap[pi].val > this.heap[i].val) {
+                    this.swap(i, pi)
+                    i = pi
+                } else break
+            }
+        }
+        shiftDown(i) {
+            let li = this.leftIndex(i)
+            let ri = this.rightIndex(i)
 
+            let si = this.heap[li]?.val > this.heap[ri]?.val ? ri: li
+            if(this.heap[si] && this.heap[si].val < this.heap[i].val) {
+                this.swap(si, i)
+                this.shiftDown(si)
+            }
+        }
+        push(item) {
+            this.heap.push(item)
+            this.shiftUp(this.size() - 1)
+        }
+        pop() {
+            this.heap[0] = this.heap.pop()
+            this.shiftDown(0)
+        }
+    }
+
+    const map = new Map() 
+    nums.forEach(item => {
+        map.set(item, map.get(item) ? map.get(item) + 1 : 1)
+    })
+    const heap = new MinHeap()
+    for([key, val] of map) {
+        heap.push([key, val])
+        if(heap.size() > k) {
+            heap.pop()
+        }
+    }
+    console.log(heap)
+};
 ```
