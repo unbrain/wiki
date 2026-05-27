@@ -172,3 +172,10 @@ constructor(arr) {
 ### 3. 类结构可优化
 - 提取为公共工具类，避免在函数内重复定义
 - 支持泛型（传入比较器 comparator）实现最大堆/最小堆通用
+
+
+[347. 前 K 个高频元素](https://leetcode.cn/problems/top-k-frequent-elements/)
+
+```javascript
+
+```
