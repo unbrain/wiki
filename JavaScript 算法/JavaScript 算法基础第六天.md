@@ -1,6 +1,16 @@
-堆
+# 堆
 
-最小堆类
+## 目录
+- [最小堆类](#最小堆类)
+- [题目 215. 数组中的第K个最大元素](#215-数组中的第k个最大元素)
+- [题目 347. 前 K 个高频元素](#347-前-k-个高频元素)
+- [题目 23. 合并 K 个升序链表](#23-合并-k-个升序链表)
+- [复杂度分析](#复杂度分析)
+- [可优化点](#可优化点)
+- [注意点](#注意点)
+- [各版本差异](#各版本差异)
+
+## 最小堆类
 
 ```javascript
 class MinHeap {
@@ -57,8 +67,7 @@ class MinHeap {
 }
 ```
 
-相关题目：
-- [215. 数组中的第K个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array/) — 维护大小为 K 的最小堆求第 K 大
+## 215. 数组中的第K个最大元素
 
 ```javascript
 /**
@@ -131,6 +140,13 @@ class MinHeap {
 };
 ```
 
+### 复杂度分析
+
+| 指标 | 值 | 说明 |
+|------|----|------|
+| 时间 | O(n log k) | 遍历 n 个元素，每次 insert/pop 操作 O(log k) |
+| 空间 | O(k) | 堆中最多保留 k 个元素 |
+
 ## 复杂度分析
 
 | 操作 | 时间复杂度 | 说明 |
@@ -173,8 +189,7 @@ constructor(arr) {
 - 提取为公共工具类，避免在函数内重复定义
 - 支持泛型（传入比较器 comparator）实现最大堆/最小堆通用
 
-
-[347. 前 K 个高频元素](https://leetcode.cn/problems/top-k-frequent-elements/)
+## 347. 前 K 个高频元素
 
 ```javascript
 /**
@@ -247,6 +262,13 @@ var topKFrequent = function(nums, k) {
 };
 ```
 
+### 复杂度分析
+
+| 指标 | 值 | 说明 |
+|------|----|------|
+| 时间 | O(n log k) | 哈希统计 O(n)，n 个元素入堆，堆大小限制 k |
+| 空间 | O(n + k) | 哈希表 O(n) + 堆 O(k) |
+
 ## 注意点
 
 ### 215 题
@@ -262,3 +284,128 @@ var topKFrequent = function(nums, k) {
 - `shiftDown` 应先找左右子中较小者再交换，避免两个独立 `if` 导致重复比较
 - 空堆 `pop` 时需 `return null` 保护
 - 单元素堆 `pop` 直接用 `this.heap.pop()`
+
+### 23 题
+- `shiftUp` 必须加 `else break`，否则当父子值相等时 `while` 死循环
+- `shiftDown` 需先检查 `li >= size()` 提前返回，避免 `?.` 隐式依赖
+
+---
+
+## 各版本差异
+
+文档中有 4 个 MinHeap 实现，核心区别对比如下：
+
+| 实现位置 | 比较方式 | shiftUp | shiftDown | pop 返回值 | 边界保护 |
+|---------|---------|---------|-----------|-----------|---------|
+| 开头基础版 | 直接比较数值 `this.heap[i]` | 递归 + if | 两个独立 if（有缺陷） | 无 | ❌ |
+| 215 题内 | 直接比较数值 `this.heap[i]` | 递归 + if | 找较小子后单次 swap | 无 | `min < size()` |
+| 347 题内 | 对象属性 `.val` | while + else break | `?.` 隐式保护 | 无 | `this.heap[si] &&` |
+| 23 题内 | 对象属性 `.val` | while + else break | 显式 `li >= size()` return | 返回弹出值 | `?.` + 显式 return |
+
+### 关键差异点
+- **基础版/215 版**：存数值，直接比较；**347/23 版**：存对象，比较 `.val`
+- **shiftUp**：递归版没有 `else`，相等时不做交换但函数结束（不会死循环）；while 版必须手动加 `else break`
+- **pop**：仅 23 版 `return` 了弹出的值（其他版本无返回值，仅修改堆结构）
+
+
+## 23. 合并 K 个升序链表
+
+[题目链接](https://leetcode.cn/problems/merge-k-sorted-lists/)
+
+```javascript
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode[]} lists
+ * @return {ListNode}
+ */
+var mergeKLists = function (lists) {
+    class MinHeap {
+        constructor() {
+            this.heap = []
+        }
+        size() {
+            return this.heap.length
+        }
+        swap(i, j) {
+            [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]]
+        }
+        parentIndex(i) {
+            return (i - 1) >> 1
+        }
+        leftIndex(i) {
+            return i * 2 + 1
+        }
+        rightIndex(i) {
+            return i * 2 + 2
+        }
+        shiftUp(index) {
+            let i = index
+            while (i > 0) {
+                const pi = this.parentIndex(i)
+                if (this.heap[pi].val > this.heap[i].val) {
+                    this.swap(pi, i)
+                    i = pi
+                } else break
+            }
+        }
+        shiftDown(i) {
+            let li = this.leftIndex(i)
+            let ri = this.rightIndex(i)
+            if (li >= this.size()) return
+            let si = this.heap[li]?.val > this.heap[ri]?.val ? ri : li
+            if (this.heap[si]?.val < this.heap[i].val) {
+                this.swap(i, si)
+                this.shiftDown(si)
+            }
+        }
+        push(val) {
+            this.heap.push(val)
+            this.shiftUp(this.size() - 1)
+        }
+        pop() {
+            if (this.size() === 1) return this.heap.pop()
+            const temp = this.heap[0]
+            this.heap[0] = this.heap.pop()
+            this.shiftDown(0)
+            return temp
+        }
+    }
+
+    const dummy = new ListNode(0)
+    let p = dummy
+    const heap = new MinHeap()
+    lists.forEach(item => {
+        if (item) heap.push(item)
+    })
+    while (heap.size()) {
+        const item = heap.pop()
+        p.next = item
+        p = p.next
+        if (item.next) heap.push(item.next)
+    }
+    console.log(dummy)
+
+    return dummy.next
+};
+```
+
+### 复杂度分析
+
+| 指标 | 值 | 说明 |
+|------|----|------|
+| 时间 | O(n log k) | 每个节点入堆/出堆一次，k 为链表数量，n 为总节点数 |
+| 空间 | O(k) | 堆中最多同时存放 k 个链表头节点 |
+
+### 其他解法对比
+
+| 方案 | 时间 | 空间 | 说明 |
+|------|------|------|------|
+| 堆（本题） | O(n log k) | O(k) | 最推荐，思路清晰 |
+| 分治归并 | O(n log k) | O(1) / O(log k) | 两两合并，常数更小 |
+| 顺序合并 | O(nk) | O(1) | 逐条链表合并，最慢 |
