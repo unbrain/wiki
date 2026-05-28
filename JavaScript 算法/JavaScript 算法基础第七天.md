@@ -55,5 +55,37 @@ const selectionSort = (arr) => {
 ### 插入排序
 
 ```javascript
+const insertSort = (arr) => {
+    for (let i = 1; i < arr.length; i++) {
+        for(let j = i;j > 0; j--) {
+            if(arr[j]< arr[j-1]) {
+                [arr[j], arr[j-1]] = [arr[j-1], arr[j]]
+            }
+        }
+    }
+    return arr
+}
+```
 
+```javascript
+const insertSort = (arr) => {
+    for (let i = 1; i < arr.length; i++) {
+        const temp = arr[i]
+        let j = i-1
+        while(j>=0 && arr[j]>temp) {
+	        arr[j+1] = arr[j]
+	        j--
+        }
+        arr[j+1] = temp
+    }
+    return arr
+}
+```
+
+### 归并排序
+
+```javascript
+cosnt mergeSort(arr) {
+	
+}
 ```
