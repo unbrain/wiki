@@ -188,3 +188,26 @@ var mergeTwoLists = function(list1, list2) {
     return dummy.next
 };
 ```
+
+
+[374. 猜数字大小](https://leetcode.cn/problems/guess-number-higher-or-lower/)
+
+```javascript
+var guessNumber = function(n) {
+    let low = 1
+    let heigh = n
+
+    while(low <= heigh) {
+        let mid = Math.floor((low + heigh) / 2)
+
+        let res = guess(mid)
+        if(!res) {
+            return mid
+        } else if(res === 1) {
+            low = mid + 1
+        } else {
+            heigh = mid - 1
+        }
+    }
+};
+```
