@@ -137,5 +137,54 @@ const mergeSort = (arr) => {
 
 ### 快速排序
 ```javascript
+const quickSort = (arr) => {
+	if(arr.length <= 1) return arr
+	const mid = Math.floor(arr.length / 2)
+	const pivot = arr[0]
+	const left = []
+	const right = []
+	for(let i = 1; i< arr.length; i++) {
+		arr[i] > pivot ? right.push(arr[i]) : left.push(arr[i])
+	}
+	
+	return [...quickSort(left), pivot, ...quickSort(right)]
+}
+```
 
+[21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
+
+
+```javascript
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} list1
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+var mergeTwoLists = function(list1, list2) {
+    const dummy = new ListNode(0)
+
+    let p = dummy
+    let p1 = list1
+    let p2 = list2
+
+    while(p1 && p2) {
+        if(p1.val < p2.val) {
+            p.next = p1
+            p1 = p1.next
+        } else {
+            p.next = p2
+            p2 = p2.next
+        }
+        p = p.next
+    }
+    p.next = p1 ? p1 : p2
+    return dummy.next
+};
 ```
