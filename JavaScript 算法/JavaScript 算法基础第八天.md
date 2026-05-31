@@ -79,3 +79,17 @@ var isSameTree = function(p, q) {
 };
 ```
 - [101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree/) — 镜像比较两棵子树是否对称
+```javascript
+var isSymmetric = function(root) {
+    if(!root) true
+    const isMirror = (l, r) => {
+        if(!l  && !r) return true
+        if(l && r && l?.val === r?.val && isMirror(l.left, r.right) && isMirror(l.right, r.left)) {
+            return true
+        }
+        return false
+    }
+
+    return isMirror(root.left, root.right)
+};
+```
