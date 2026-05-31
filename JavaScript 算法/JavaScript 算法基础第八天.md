@@ -39,7 +39,24 @@
 ## 题目
 
 - [374. 猜数字大小](https://leetcode.cn/problems/guess-number-higher-or-lower/) — 二分搜索分治，每次排除一半
+```javascript
+var guessNumber = function(n) {
+    const rec = (low, high) => {
+        if(low>high) return;
+        let mid = Math.floor(low+high)
+        const res = guess(mid)
+        if(!res) {
+            return mid
+        } else if(res === 1) {
+            return rec(mid+1, high)
+        } else {
+            return rec(low, mid-1)
+        }
+    }
 
+    return rec(1, n)
+};
+```
 - [226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/) — 翻转左右子树，递归到叶子
 - [100. 相同的树](https://leetcode.cn/problems/same-tree/) — 比较根节点后递归比较左右子树
 - [101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree/) — 镜像比较两棵子树是否对称
