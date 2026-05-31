@@ -58,5 +58,16 @@ var guessNumber = function(n) {
 };
 ```
 - [226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/) — 翻转左右子树，递归到叶子
+```javascript
+var invertTree = function(root) {
+    if(!root) return null
+    return {
+        val: root.val,
+        left: invertTree(root.right),
+        right: invertTree(root.left)
+    }
+};
+```
 - [100. 相同的树](https://leetcode.cn/problems/same-tree/) — 比较根节点后递归比较左右子树
+``
 - [101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree/) — 镜像比较两棵子树是否对称
