@@ -69,5 +69,13 @@ var invertTree = function(root) {
 };
 ```
 - [100. 相同的树](https://leetcode.cn/problems/same-tree/) — 比较根节点后递归比较左右子树
-``
+```javascript
+var isSameTree = function(p, q) {
+    if(!p && !q) return true
+    if(p?.val === q?.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right)) {
+        return true
+    }
+    return false
+};
+```
 - [101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree/) — 镜像比较两棵子树是否对称
