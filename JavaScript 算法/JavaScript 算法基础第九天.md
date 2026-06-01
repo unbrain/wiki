@@ -145,7 +145,35 @@ var rob = function(nums) {
 };
 ```
 - [0-1 背包](https://leetcode.cn/problems/partition-equal-subset-sum/) — 二维 DP，选与不选的经典决策（可用 416. 分割等和子集作为入门）
-
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var canPartition = function(nums) {
+    const count = nums.reduce((a,b)=>a+b)
+    const mid = count / 2
+    if(Math.floor(mid) !== mid) return false
+const dp = new Array(nums.length).fill(false).map(() => new Array(mid + 1).fill(false));
+    if(nums[0] <=  mid) {
+        dp[0][nums[0]] = true
+    }
+    for (let i = 0; i < nums.length; i++) {
+        dp[i][0] = true;
+    }
+    for(let i = 1; i < nums.length; i++) {
+        for(let j = 0; j <=  mid; j++) {
+            dp[i][j] = dp[i-1][j]
+            if(nums[i] < j) {
+                dp[i][j] = dp[i][j] || dp[i-1][j - nums[i]]
+            } else if (nums[i] === j) {
+                dp[i][j] = true
+            }
+        }
+    }
+    return dp[nums.length-1][mid]
+};
+```
 ### 贪心
 
 - [455. 分发饼干](https://leetcode.cn/problems/assign-cookies/) — 贪心入门，小饼干喂小胃口
