@@ -149,4 +149,28 @@ var rob = function(nums) {
 ### 贪心
 
 - [455. 分发饼干](https://leetcode.cn/problems/assign-cookies/) — 贪心入门，小饼干喂小胃口
+```javascript
+var findContentChildren = function(g, s) {
+    g.sort((a, b) => a-b)
+    s.sort((a,b) => a-b)
+    let res=0
+    for(let i=0; i< s.length; i++){
+        if(g[res]<=s[i]) {
+            res++
+        }
+    }
+    return res
+};
+```
 - [122. 买卖股票的最佳时机 II](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/) — 所有正收益都吃
+```javascript
+var maxProfit = function(prices) {
+    let res = 0
+    for(let i=1;i<prices.length;i++) {
+        if(prices[i] > prices[i-1]) {
+            res+=prices[i] - prices[i-1]
+        }
+    }
+    return res
+};
+```
