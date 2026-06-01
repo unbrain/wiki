@@ -118,7 +118,32 @@ var climbStairs = function(n) {
 };
 ```
 
-- [198. 打家劫舍](https://leetcode.cn/problems/house-robber/) — 一维 DP，相邻不能选
+- [198. 打家劫舍](https://leetcode.cn/problems/house-robber/) — 一维 DP，相邻不能选 | 时间 O(n) 空间 O(n) / O(1)（滚动变量优化）
+```javascript
+var rob = function(nums) {
+    if(nums.length === 1) return nums[0]
+    const dp = [nums[0], Math.max(nums[0], nums[1])]
+    for(let i = 2; i < nums.length; i++) {
+        dp[i] = Math.max(dp[i-1], dp[i-2]+nums[i])
+    }
+    return dp[dp.length-1]
+};
+```
+
+**空间优化**：dp[i] 只依赖 dp[i-1] 和 dp[i-2]，可用两个变量滚动替代数组 → O(1)：
+
+```javascript
+var rob = function(nums) {
+    if(nums.length === 1) return nums[0]
+    const dp = [nums[0], Math.max(nums[0], nums[1])]
+    for(let i = 2; i < nums.length; i++) {
+        let temp = Math.max(dp[1], dp[0]+nums[i])
+        dp[0] = dp[1]
+        dp[1] = temp
+    }
+    return dp[dp.length-1]
+};
+```
 - [0-1 背包](https://leetcode.cn/problems/partition-equal-subset-sum/) — 二维 DP，选与不选的经典决策（可用 416. 分割等和子集作为入门）
 
 ### 贪心
