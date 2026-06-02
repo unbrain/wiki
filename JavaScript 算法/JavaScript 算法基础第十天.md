@@ -38,7 +38,64 @@ function backtrack(path: number[], used: boolean[], result: number[][]): void {
 | 22 | [括号生成](https://leetcode.cn/problems/generate-parentheses/) | 🟡 中等 | 左右括号计数 |
 | 131 | [分割回文串](https://leetcode.cn/problems/palindrome-partitioning/) | 🟡 中等 | 切割问题 |
 | 47 | [全排列 II](https://leetcode.cn/problems/permutations-ii/) | 🟡 中等 | 去重 + 排序 |
+### 46. 全排列
 
+- 时间复杂度：**O(n × n!)** — n! 个排列，每个复制 O(n)
+- 空间复杂度：**O(n)** — 递归栈深度 + path 数组（不计输出）
+
+```javascript
+var permute = function (nums) {
+    let res = []
+    let path = []
+    let used = Array.from({ length: nums.length }).fill(false)
+
+    const backtrack = () => {
+        if (path.length === nums.length) {
+            res.push([...path])
+            return
+        }
+        for (let i = 0; i < nums.length; i++) {
+            if (!used[i]) {
+                path.push(nums[i])
+                used[i] = true
+                backtrack()
+                used[i] = false
+                path.pop()
+            }
+        }
+    }
+    backtrack()
+    return res
+};
+```
+
+### 78. 子集
+
+- 时间复杂度：**O(n × 2ⁿ)** — 2ⁿ 个子集，每个复制 O(n)
+- 空间复杂度：**O(n)** — 递归栈深度 + path 数组（不计输出）
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function(nums) {
+    let res = []
+    let path = []
+
+    const backtrack = (start) => {
+        res.push([...path])
+        for(let i = start; i< nums.length; i++) {
+            path.push(nums[i])
+            backtrack(i+1)
+            path.pop()
+        }
+    }
+
+    backtrack(0)
+    return res
+};
+```
 ### 剪枝优化
 
 - **排序去重**：同一层不选相同数字（`i > start && nums[i] === nums[i-1]`）
