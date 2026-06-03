@@ -145,3 +145,57 @@ var dailyTemperatures = function(temperatures) {
     return arr
 };
 ```
+
+
+
+[221. 最大正方形](https://leetcode.cn/problems/maximal-square/)
+
+暴力解法：
+
+```javascript
+/**
+ * @param {character[][]} matrix
+ * @return {number}
+ */
+var maximalSquare = function(matrix) {
+    let y = matrix.length
+    let x = matrix[0].length
+    let maxSize = 0
+    for(let i =0; i < y; i++) {
+        for(let j = 0; j < x; j++) {
+            if(Number(matrix[i][j])) {
+                if(!maxSize) {
+                    maxSize = 1
+                }
+                let len = Math.min(y-i, x-j)
+                let add =1
+                let startx = j+add
+                let starty = i+add
+                while(startx<x && starty <y && add < len) {
+                    if(Number(matrix[starty][startx])) {
+                        let isSquare = true
+                        for(let ci =add; ci>0; ci--) {
+                            if(!Number(matrix[starty][startx-ci]) || !Number(matrix[starty-ci][startx])) {
+                                isSquare = false
+                                break
+                            }
+                        }
+                        if(isSquare) {
+                            maxSize = Math.max(maxSize, (add + 1) * (add + 1));                         add++
+                            startx= j+add
+                            starty = i+add
+                        } else {
+                            break
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return maxSize
+};
+```
+
+
+超限使用动态规划
+
