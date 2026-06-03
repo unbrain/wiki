@@ -130,3 +130,18 @@ var dailyTemperatures = function(temperatures) {
 暴力能解但是海量数据超时 时间复杂度达到 $O(N^2)$
 
 引入单调栈
+
+```javascript
+var dailyTemperatures = function(temperatures) {
+    const arr = new Array(temperatures.length).fill(0)
+    const stack = []
+    for(let i = 0; i < temperatures.length; i++) {
+        while(stack.length && temperatures[i] > temperatures[stack[stack.length-1]]) {
+            const res = stack.pop()
+            arr[res] = i -res
+        }
+        stack.push(i)
+    }
+    return arr
+};
+```
