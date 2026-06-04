@@ -252,3 +252,17 @@ var rob = function(nums) {
 时间复杂度：O(n)，其中 n 是房屋数量。只需遍历数组一次。
 
 空间复杂度：O(n)，使用了大小为 n 的 DP 数组。可优化为 O(1) 使用滚动变量。
+
+```javascript
+var rob = function(nums) {
+    if(nums.length ===1) return nums[0]
+    let last = nums[0]
+    let curr = Math.max(last, nums[1])
+    for(let i =2; i < nums.length; i++){
+        let temp = curr
+        curr = Math.max(last+ nums[i], curr)
+        last = temp
+    }
+    return curr
+};
+```
