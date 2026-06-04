@@ -181,3 +181,74 @@ Trie.prototype.startsWith = function(prefix) {
  */
 ```
 
+复杂度分析
+
+- **insert**：时间复杂度 O(L)，空间复杂度 O(L)，其中 L 为单词长度，每次插入最多创建 L 个新节点
+- **search**：时间复杂度 O(L)，空间复杂度 O(1)
+- **startsWith**：时间复杂度 O(L)，空间复杂度 O(1)
+
+[200. 岛屿数量](https://leetcode.cn/problems/number-of-islands/)
+
+```javascript
+/**
+ * @param {character[][]} grid
+ * @return {number}
+ */
+const dfs =(grid, i, j, x, y) => {
+    if(i<0 || j<0 || i>=y || j>=x || grid[i][j] === '0') {
+        return
+    }
+    grid[i][j] = '0'
+    dfs(grid, i+1, j, x, y)
+    dfs(grid, i-1, j, x, y)
+    dfs(grid, i, j+1, x, y)
+    dfs(grid, i, j-1, x, y)
+}
+var numIslands = function(grid) {
+    const y = grid.length
+    const x = grid[0].length
+    let res = 0
+
+    for(let i = 0; i < y; i++) {
+        for(let j = 0; j < x; j++) {
+            if(grid[i][j] === '1') {
+                res++
+                dfs(grid, i, j, x, y)
+            }
+        }
+    }
+    return res
+};
+
+
+```
+
+复杂度分析
+
+时间复杂度：O(m×n)，其中 m 和 n 分别是网格的行数和列数。每个单元格最多被访问一次。
+
+空间复杂度：O(m×n)，最坏情况下（整个网格都是陆地）递归深度为 m×n。
+
+[198. 打家劫舍](https://leetcode.cn/problems/house-robber/)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var rob = function(nums) {
+    const dp = []
+    dp[0] = nums[0]
+    dp[1] = Math.max(dp[0], nums[1])
+    for(let i =2; i < nums.length; i++){
+        dp[i] = Math.max(dp[i-2]+ nums[i], dp[i-1])
+    }
+    return dp[nums.length-1]
+};
+```
+
+复杂度分析
+
+时间复杂度：O(n)，其中 n 是房屋数量。只需遍历数组一次。
+
+空间复杂度：O(n)，使用了大小为 n 的 DP 数组。可优化为 O(1) 使用滚动变量。
