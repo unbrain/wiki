@@ -114,3 +114,70 @@ var findKthLargest = function(nums, k) {
 时间复杂度：平均 O(n)，最坏 O(n²)。快速选择算法，每次分区将问题规模减半（平均情况），最坏情况发生在每次选择的基准值都是极端值时。
 
 空间复杂度：O(1)，迭代实现，只使用了常数额外空间。
+
+
+[208. 实现 Trie (前缀树)](https://leetcode.cn/problems/implement-trie-prefix-tree/)
+
+```javascript
+
+var Trie = function() {
+    this.ch = {}
+    this.isEnd = false
+};
+
+/** 
+ * @param {string} word
+ * @return {void}
+ */
+Trie.prototype.insert = function(word) {
+    let node = this
+    for(let c of word) {
+        if(!node.ch[c]) {
+            node.ch[c] = new Trie()
+        }
+        node = node.ch[c]
+    }
+    node.isEnd = true
+};
+
+Trie.prototype.seachPrefix = function(word) {
+    let node = this
+
+    for(let c of word) {
+        if(!node.ch[c]) {
+            return null
+        }
+        node = node.ch[c]
+    }
+
+    return node
+};
+
+
+/** 
+ * @param {string} word
+ * @return {boolean}
+ */
+Trie.prototype.search = function(word) {
+    const res = this.seachPrefix(word)
+    return !!res?.isEnd
+};
+
+/** 
+ * @param {string} prefix
+ * @return {boolean}
+ */
+Trie.prototype.startsWith = function(prefix) {
+    const res = this.seachPrefix(prefix)
+    return res !== null
+};
+
+/** 
+ * Your Trie object will be instantiated and called as such:
+ * var obj = new Trie()
+ * obj.insert(word)
+ * var param_2 = obj.search(word)
+ * var param_3 = obj.startsWith(prefix)
+ */
+```
+
