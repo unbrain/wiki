@@ -66,3 +66,51 @@ var canFinish = function(numCourses, prerequisites) {
 你必须设计并实现时间复杂度为 `O(n)` 的算法解决此问题
 
 放弃最小堆
+
+
+```javascript
+var findKthLargest = function(nums, k) {
+    let len = nums.length
+    let left = 0
+    let right = len-1
+    const target = len - k
+    const swap = (i, j) => {
+        [nums[i], nums[j]] = [nums[j], nums[i]]
+    }
+
+    const dfs = (start, end) => {
+        const povint = nums[end]
+        let i = start
+        let j = end - 1
+        while(true) {
+            while(i<=j && nums[i]<povint) i++
+            while(i<=j && nums[j]>povint) j--
+            if(i>=j) break
+            swap(i, j)
+            i++
+            j--
+        }
+        swap(i, end)
+        return i
+    }
+
+
+    while(left <= right) {
+        const povintIndex = dfs(left, right)
+        if(target === povintIndex) {
+            return nums[target]
+        } else if(povintIndex < target) {
+            left = povintIndex +1
+        } else {
+            right = povintIndex-1
+        }
+    }
+    return -1;
+};
+```
+
+复杂度分析
+
+时间复杂度：平均 O(n)，最坏 O(n²)。快速选择算法，每次分区将问题规模减半（平均情况），最坏情况发生在每次选择的基准值都是极端值时。
+
+空间复杂度：O(1)，迭代实现，只使用了常数额外空间。
