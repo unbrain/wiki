@@ -199,3 +199,33 @@ var maximalSquare = function(matrix) {
 
 超限使用动态规划
 
+
+```javascript
+var maximalSquare = function(matrix) {
+    let y = matrix.length
+    let x = matrix[0].length
+    let maxSide = 0
+    let dp = Array.from({length: y+1}, () => Array(x+1).fill(0))
+
+    for(let i = 1; i <= y; i++) {
+        for(let j = 1; j <= x; j++) {
+            if(matrix[i-1][j-1] === '1') {
+                dp[i][j] = Math.min(
+                    dp[i-1][j-1],
+                    dp[i-1][j],
+                    dp[i][j-1]
+                ) +1
+                maxSide = Math.max(maxSide, dp[i][j])
+            }
+        }
+    }
+    return maxSide * maxSide
+};
+```
+
+复杂度分析
+
+时间复杂度：O(m×n)，其中 m 和 n 分别是矩阵的行数和列数。需要遍历每个单元格一次。
+
+空间复杂度：O(m×n)，使用了一个大小为 (m+1)×(n+1) 的二维 DP 数组。
+
