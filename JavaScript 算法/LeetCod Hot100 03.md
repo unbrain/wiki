@@ -119,3 +119,40 @@ var maxProduct = function(nums) {
     return res
 };
 ```
+
+
+[148. 排序链表](https://leetcode.cn/problems/sort-list/)
+
+```javascript
+var sortList = function(head) {
+    if(!head || !head.next) return head
+    let slow = head
+    let fast = head
+    while(fast?.next?.next) {
+        fast = fast.next.next
+        slow = slow.next
+    }
+    let mid = slow.next
+    slow.next = null
+    let left = sortList(head)
+    let right = sortList(mid)
+    return merge(left, right)
+};
+
+const merge = (l, r) => {
+    let dummy = new ListNode(0)
+    let curr = dummy
+    while(l && r) {
+        if(l.val < r.val) {
+            curr.next = l
+            l=l.next
+        }else {
+            curr.next = r
+            r = r.next
+        }
+        curr = curr.next
+    }
+    curr.next = l || r
+    return dummy.next
+}
+```
