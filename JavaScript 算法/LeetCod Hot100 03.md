@@ -94,3 +94,28 @@ MinStack.prototype.getMin = function() {
  * var param_4 = obj.getMin()
  */
 ```
+
+
+[152. 乘积最大子数组](https://leetcode.cn/problems/maximum-product-subarray/)
+
+```javascript
+var maxProduct = function(nums) {
+    const len = nums.length
+    let max = nums[0]
+    let min = nums[0]
+    let res = max
+
+    for(let i = 1; i< len; i++) {
+        let curr = nums[i]
+
+        if(curr < 0) {
+            [max, min] = [min, max]
+        }
+        max = Math.max(curr, max * curr)
+        min = Math.min(curr, min * curr)
+
+        res = Math.max(res, max)
+    }
+    return res
+};
+```
