@@ -71,3 +71,27 @@ var singleNumber = function(nums) {
     return res
 };
 ```
+
+[647. 回文子串](https://leetcode.cn/problems/palindromic-substrings/)
+
+```javascript
+var countSubstrings = function(s) {
+    if(!s.length) return 0
+    let res= 0
+
+    const extend = (l, r) => {
+        while(l>=0 && r < s.length && s[l] == s[r]){
+            l--
+            r++
+            res++
+        }
+    }
+
+    for(let num = 0; num < s.length; num++) {
+        extend(num, num)
+        extend(num, num+1)
+    }
+
+    return res
+};
+```
