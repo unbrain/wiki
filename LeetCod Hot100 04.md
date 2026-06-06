@@ -95,3 +95,25 @@ var countSubstrings = function(s) {
     return res
 };
 ```
+
+[128. 最长连续序列](https://leetcode.cn/problems/longest-consecutive-sequence/)
+
+```javascript
+var longestConsecutive = function(nums) {
+    const set = new Set(nums)
+    let long = 0
+
+    for (let num of set) {
+        if(!set.has(num-1)) {
+            currLong = 1
+            n = 1
+            while(set.has(num+n)) {
+                currLong++
+                n++
+            }
+            long = Math.max(long, currLong)
+        }
+    }
+    return long
+};
+```
