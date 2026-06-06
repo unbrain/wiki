@@ -38,3 +38,36 @@ var hasCycle = function(head) {
     return false
 };
 ```
+
+[139. 单词拆分](https://leetcode.cn/problems/word-break/)
+
+```javascript
+var wordBreak = function(s, wordDict) {
+    const set = new Set(wordDict)
+    const len = s.length
+    const dp = Array.from({length: len + 1}).fill(false)
+    dp[0] = true
+    for(let i= 1; i<= len; i++) {
+        for(let j = 0;j < i;j++) {
+            if(dp[j] && set.has(s.slice(j, i))){
+                dp[i] = true
+                break
+            }
+        }
+    }
+    return dp[len]
+
+};
+```
+
+[136. 只出现一次的数字](https://leetcode.cn/problems/single-number/)
+
+```javascript
+var singleNumber = function(nums) {
+    let res = 0
+    for(let x of nums) {
+        res ^=x
+    }
+    return res
+};
+```
