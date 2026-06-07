@@ -48,3 +48,23 @@ var coinChange = function(coins, amount) {
     return dp[amount] === Infinity ? -1 : dp[amount]
 };
 ```
+
+[448. 找到所有数组中消失的数字](https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/)
+
+```javascript
+var findDisappearedNumbers = function(nums) {
+    const hash = {}
+    for(let i = 0; i< nums.length; i++) {
+        const cur = Math.abs(nums[i])
+        let num = cur -1
+        nums[num] = -1 * Math.abs(nums[num])
+    }
+    const ret = []
+    for(let i = 0; i< nums.length; i++) {
+        if(nums[i]>0) {
+            ret.push(i+1)
+        }
+    }
+    return ret
+};
+```
