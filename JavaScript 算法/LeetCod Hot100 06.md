@@ -17,3 +17,25 @@ var canPartition = function(nums) {
     return dp[target]
 };
 ```
+
+[406. 根据身高重建队列](https://leetcode.cn/problems/queue-reconstruction-by-height/)
+
+```javascript
+var reconstructQueue = function(people) {
+	//从高到矮排序，身高相同 `k` 小的在前
+    people.sort(([h1,k1], [h2, k2]) => {
+        if(h1!==h2) {
+            return h2-h1
+        } else {
+            return k1-k2
+        }
+    })
+    const res = []
+    //根据自己的 `k` 值，强行插队
+    for(let i = 0; i< people.length;i++){
+        const p = people[i]
+        res.splice(p[1], 0, p)
+    }
+    return res
+};
+```
