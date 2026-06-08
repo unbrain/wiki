@@ -39,3 +39,33 @@ var reconstructQueue = function(people) {
     return res
 };
 ```
+
+
+[394. 字符串解码](https://leetcode.cn/problems/decode-string/)
+
+```javascript
+var decodeString = function(s) {
+    const strStack = []
+    const numStack = []
+    let res = ''
+    let multi = 0
+
+    for(let char of s) {
+        if(+char >= 0 && +char <=9) {
+            multi = multi * 10 + (+char)
+        } else if(char === '[') {
+            numStack.push(multi)
+            multi = 0
+            strStack.push(res)
+            res = ''
+        } else if(char === ']') {
+            let currMulti = numStack.pop()
+            let currRes = strStack.pop()
+            res = currRes+ res.repeat(currMulti)
+        } else {
+            res +=char
+        }
+    }
+    return res
+};
+```
