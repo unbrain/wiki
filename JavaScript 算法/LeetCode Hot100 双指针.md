@@ -272,3 +272,39 @@ var removeNthFromEnd = function(head, n) {
     return dummy.next
 };
 ```
+
+
+
+[5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring/)
+
+解题思路 
+
+双指针判断是否为回文  然后判断长度
+
+```javascript
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function(s) {
+    let maxStr = ''
+
+    const expand = (i, j) => {
+        while(i>=0 && j <s.length && s[i] === s[j]) {
+            let len = j-i+1
+            if(len>maxStr.length) {
+                maxStr = s.slice(i, j+1)
+            }
+            i--
+            j++
+        }
+    }
+
+    for(let i = 0; i<s.length;i++){
+        expand(i, i)
+        expand(i, i+1)
+    }
+
+    return maxStr
+};
+```
