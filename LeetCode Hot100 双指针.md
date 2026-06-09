@@ -252,8 +252,23 @@ var maxArea = function(height) {
 [19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
 
 解题思路
-快慢指针  快指针先走 n 步即可
+快慢指针  快指针先走 n 步即可  注意使用虚拟节点 这样真实的头节点就变成了“第二个节点”，任何删除操作都可以统一逻辑
 
 ```javascript
+var removeNthFromEnd = function(head, n) {
+    let dummy = new ListNode(0, head)
+    let slow = dummy
+    let fast = dummy
+    while(n) {
+        fast = fast.next
+        n--
+    }
 
+    while(fast.next) {
+        slow = slow.next
+        fast = fast.next
+    }
+    slow.next = slow.next.next
+    return dummy.next
+};
 ```
