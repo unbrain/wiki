@@ -230,5 +230,30 @@ var moveZeroes = function(nums) {
 每次移动移动保持最大高
 
 ```javascript
+var maxArea = function(height) {
+    let max = 0
+    let left = 0
+    let right = height.length-1
+    while(left <right) {
+        let maxheight = Math.min(height[left], height[right])
+        let area = maxheight * (right-left)
+        max = Math.max(max, area)
+        if(height[left] > height[right]) {
+            right --
+        } else {
+            left++
+        }
+    }
+
+    return max
+};
+```
+
+[19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
+
+解题思路
+快慢指针  快指针先走 n 步即可
+
+```javascript
 
 ```
