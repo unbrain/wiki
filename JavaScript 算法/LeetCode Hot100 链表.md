@@ -104,3 +104,67 @@ var sortList = function(head) {
     return merge(left, right)
 };
 ```
+
+[146. LRU 缓存](https://leetcode.cn/problems/lru-cache/)
+
+```javascript
+var LRUCache = function(capacity) {
+    this.map = new Map()
+    this.capacity = capacity
+};
+
+/** 
+ * @param {number} key
+ * @return {number}
+ */
+LRUCache.prototype.get = function(key) {
+    if(!this.map.has(key)) return -1
+
+    const val = this.map.get(key)
+    this.map.delete(key)
+    this.map.set(key, val)
+    return val
+};
+
+/** 
+ * @param {number} key 
+ * @param {number} value
+ * @return {void}
+ */
+LRUCache.prototype.put = function(key, value) {
+    if(this.map.has(key)) {
+        this.map.delete(key)
+    }
+    this.map.set(key, value)
+
+    if(this.map.size > this.capacity) {
+        const res = this.map.keys().next().value
+        this.map.delete(res)
+    }
+};
+```
+
+141 同下
+[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+```javascript
+var detectCycle = function(head) {
+    if(!head) return head
+
+    let fast = head
+    let slow = head
+
+    while(fast?.next?.next) {
+        fast = fast.next.next
+        slow = slow.next
+        if(fast === slow) {
+            slow = head
+            while(slow !== fast) {
+                fast = fast.next
+                slow = slow.next
+            }
+            return slow
+        }
+    }
+    return null
+};
+```
