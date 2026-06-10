@@ -67,3 +67,40 @@ var reverseList = function(head) {
 };
 ```
 
+[148. 排序链表](https://leetcode.cn/problems/sort-list/)
+
+```javascript
+const merge = (l, r) => {
+    let dummy = new ListNode()
+    let cur = dummy
+    while(l&&r){
+        if(l.val < r.val){
+            cur.next = l
+            l = l.next
+        }else {
+            cur.next = r
+            r=r.next
+        }
+        cur = cur.next
+    }
+    cur.next = l||r
+    return dummy.next
+}
+var sortList = function(head) {
+    if(!head || !head.next) return head
+    let fast = head
+    let slow = head
+
+    while(fast?.next?.next) {
+        slow = slow.next
+        fast = fast.next.next
+    }
+    let mid = slow.next
+    slow.next = null
+
+    let left = sortList(head)
+    let right = sortList(mid)
+
+    return merge(left, right)
+};
+```
