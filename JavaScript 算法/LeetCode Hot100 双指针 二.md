@@ -69,3 +69,24 @@ var nextPermutation = function (nums) {
 
 [75. 颜色分类](https://leetcode.cn/problems/sort-colors/)
 
+双指针 0往左边放 2 往右边放 1 自然在中间
+
+```javascript
+var sortColors = function(nums) {
+    let left = 0
+    let right = nums.length-1
+    let p1 = 0
+    while(left<=right) {
+        if(nums[left] === 0){
+            [nums[left], nums[p1]] = [nums[p1], nums[left]]
+            p1++
+            left++
+        } else if(nums[left]=== 2) {
+            [nums[left], nums[right]] = [nums[right], nums[left]]
+            right--
+        } else {
+            left++
+        }
+    }
+};
+```
