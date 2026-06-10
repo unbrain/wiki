@@ -119,3 +119,49 @@ var findUnsortedSubarray = function(nums) {
     return right > left ? right - left + 1 : 0
 };
 ```
+
+
+[15. 三数之和](https://leetcode.cn/problems/3sum/)
+
+解题思路：
+双指针 先排序 固定一个数寻找另两个数
+
+注意边处理与不重复
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function(nums) {
+    let res = []
+    const len = nums.length
+    if(len < 3) return res
+    nums.sort((a,b) => a - b)
+
+    for(let i = 0 ; i< len -2; i++){
+        if(nums[i]>0) break
+        if(i>0 && nums[i] === nums[i-1]) continue
+
+        let left = i+1
+        let right = len-1
+
+        while(left < right) {
+            let sum = nums[i] + nums[left] + nums[right]
+            if(sum === 0) {
+                res.push([nums[i], nums[left], nums[right]])
+                while(left < right && nums[left] === nums[left+1]) left++
+                while(left < right && nums[right] === nums[right-1]) right --
+                left++
+                right--
+            } else if(sum<0) {
+                left++
+            } else {
+                right--
+            }
+        }
+    }
+
+    return res
+};
+```
