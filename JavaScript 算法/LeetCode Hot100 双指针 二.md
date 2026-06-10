@@ -90,3 +90,32 @@ var sortColors = function(nums) {
     }
 };
 ```
+
+
+[581. 最短无序连续子数组](https://leetcode.cn/problems/shortest-unsorted-continuous-subarray/)
+
+```javascript
+var findUnsortedSubarray = function(nums) {
+    let right = 0
+    let maxRight = nums[right]
+    let left = nums.length-1
+    let minLeft = nums[left]
+
+    for(let i = 1; i < nums.length; i++){
+        if(nums[i] < maxRight) {
+            right = i
+        } else {
+            maxRight = nums[i]
+        }
+
+        let j = nums.length-1-i
+        if(nums[j]> minLeft) {
+            left = j
+        } else{
+            minLeft = nums[j]
+        }
+    }
+
+    return right > left ? right - left + 1 : 0
+};
+```
