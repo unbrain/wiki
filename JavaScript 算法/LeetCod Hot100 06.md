@@ -140,7 +140,3 @@ var topKFrequent = function(nums, k) {
 };
 ```
 
-[42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/)
-
-解题思路：
-双指针
