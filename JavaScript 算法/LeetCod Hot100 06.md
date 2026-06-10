@@ -139,3 +139,8 @@ var topKFrequent = function(nums, k) {
     return heap.heap.map(item => item.key)
 };
 ```
+
+[42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/)
+
+解题思路：
+双指针
