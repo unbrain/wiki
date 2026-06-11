@@ -224,3 +224,23 @@ var addTwoNumbers = function(l1, l2) {
 
 解题思路 快慢指针 快指针跑快 n 个节点即可
 
+[21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
+
+```javascript
+var mergeTwoLists = function(list1, list2) {
+    let dummy = new ListNode()
+    let p = dummy
+    while(list1 && list2) {
+        if(list1.val < list2.val) {
+            p.next = list1
+            list1 = list1.next
+        } else {
+            p.next = list2
+            list2 = list2.next
+        }
+        p = p.next
+    }
+    p.next= list1 || list2
+    return dummy.next
+};
+```
