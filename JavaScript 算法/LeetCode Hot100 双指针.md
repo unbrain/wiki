@@ -1,5 +1,5 @@
 
-[160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)
+[160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)（见[[LeetCode Hot100 链表]]）
 
 解题思路：
 
@@ -20,7 +20,7 @@ var getIntersectionNode = function (headA, headB) {
 ```
 
 
-[234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)
+[234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)（见[[LeetCode Hot100 链表]]）
 
 解题思路
 
@@ -64,7 +64,7 @@ var isPalindrome = function(head) {
 ```
 
 
-[148. 排序链表](https://leetcode.cn/problems/sort-list/)
+[148. 排序链表](https://leetcode.cn/problems/sort-list/)（见[[LeetCode Hot100 链表]]）
 
 解题思路：
 
@@ -110,7 +110,7 @@ var sortList = function(head) {
 ```
 
 
-[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)（见[[LeetCode Hot100 链表]]）
 
 解题思路
 
@@ -175,7 +175,7 @@ var countSubstrings = function(s) {
 
 解题思路：
 注意是 1-n 的数 有唯一一个重复数 所以这个数组当做链表其一定有环
-可以看作环形链表的 II 的变种看待进行解题
+可以看作[[LeetCode Hot100 链表#142. 环形链表 II|环形链表 II]]的变种看待进行解题
 
 使用 快慢指针 同时 a+b = c
 
@@ -249,7 +249,7 @@ var maxArea = function(height) {
 };
 ```
 
-[19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
+[19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)（见[[LeetCode Hot100 链表]]）
 
 解题思路
 快慢指针  快指针先走 n 步即可  注意使用虚拟节点 这样真实的头节点就变成了“第二个节点”，任何删除操作都可以统一逻辑

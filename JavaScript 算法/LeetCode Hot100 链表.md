@@ -144,7 +144,7 @@ LRUCache.prototype.put = function(key, value) {
 };
 ```
 
-141 同下
+141 同下（[[LeetCode Hot100 双指针]]见快慢指针解法）
 [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
 ```javascript
 var detectCycle = function(head) {
@@ -222,7 +222,7 @@ var addTwoNumbers = function(l1, l2) {
 
 [19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
 
-解题思路 快慢指针 快指针跑快 n 个节点即可
+解题思路 快慢指针（[[LeetCode Hot100 双指针]]） 快指针跑快 n 个节点即可
 
 [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
 
@@ -242,5 +242,43 @@ var mergeTwoLists = function(list1, list2) {
     }
     p.next= list1 || list2
     return dummy.next
+};
+```
+
+[23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
+
+解题思路：
+
+之前是用最小堆
+
+本次使用归并 两两合并
+
+
+```javascript
+merge = (l1, l2) => {
+    const dummy = new ListNode()
+    let p = dummy
+    while(l1&&l2){
+        if(l1.val < l2.val) {
+            p.next = l1
+            l1= l1.next
+        }else {
+            p.next = l2
+            l2 = l2.next
+        }
+        p = p.next
+    }
+    p.next = l1 || l2
+    return dummy.next
+}
+var mergeKLists = function (lists) {
+    let len = lists.length
+    if(len === 0) return null
+    for(let interval = 1; interval < len; interval*=2) {
+        for(let i = 0; i < len -interval; i += interval*2) {
+            lists[i] = merge(lists[i], lists[i+interval])
+        }
+    }
+    return lists[0] 
 };
 ```
