@@ -40,7 +40,7 @@ class MinHeap {
 		return index * 2 + 2
 	}
 	shiftUp(index) {
-		if(index === 0) return 
+		if(index === 0) return
 		let pi = this.parentIndex(index)
 		if(this.heap[index]<this.heap[pi]) {
 			this.swap(pi, index)
@@ -50,7 +50,7 @@ class MinHeap {
 	shiftDown(index) {
 		let li = this.leftIndex(index)
 		let ri = this.rightIndex(index)
-		
+
 		if(this.heap[index]>this.heap[li]) {
 			this.swap(index, li)
 			this.shiftDown(li)
@@ -104,7 +104,7 @@ class MinHeap {
 		return index * 2 + 2
 	}
 	shiftUp(index) {
-		if(index === 0) return 
+		if(index === 0) return
 		let pi = this.parentIndex(index)
 		if(this.heap[index]<this.heap[pi]) {
 			this.swap(pi, index)
@@ -116,7 +116,7 @@ class MinHeap {
 		let ri = this.rightIndex(index)
 
         const min = this.heap[li] > this.heap[ri] ? ri : li
-		
+
         if(min < this.size() && this.heap[index] > this.heap[min] ) {
             this.swap(index, min)
 			this.shiftDown(min)
@@ -247,7 +247,7 @@ var topKFrequent = function(nums, k) {
         }
     }
 
-    const map = new Map() 
+    const map = new Map()
     nums.forEach(item => {
         map.set(item, map.get(item) ? map.get(item) + 1 : 1)
     })

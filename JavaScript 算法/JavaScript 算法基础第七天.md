@@ -10,7 +10,7 @@ function bubble(arr) {
 		let i = 0
 		while(i<j) {
 			if(arr[i] > arr[i+1]) {
-				[arr[i], arr[i+1]] = [arr[i+1], arr[i]]	
+				[arr[i], arr[i+1]] = [arr[i+1], arr[i]]
 			}
 			i = i+1
 		}
@@ -101,11 +101,11 @@ const mergeSort = (arr) => {
 				res.push(leftOrder.shift())
 			} else {
 				res.push(rightOrder.shift())
-			} 
+			}
 		}
 		return res
 	}
-	
+
 	return rec(arr)
 }
 ```
@@ -130,7 +130,7 @@ const mergeSort = (arr) => {
 		}
 		return res.concat(leftOrder.slice(l), rightOrder.slice(r))
 	}
-	
+
 	return rec(arr)
 }
 ```
@@ -146,7 +146,7 @@ const quickSort = (arr) => {
 	for(let i = 1; i< arr.length; i++) {
 		arr[i] > pivot ? right.push(arr[i]) : left.push(arr[i])
 	}
-	
+
 	return [...quickSort(left), pivot, ...quickSort(right)]
 }
 ```

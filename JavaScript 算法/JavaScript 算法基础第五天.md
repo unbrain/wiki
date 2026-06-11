@@ -368,7 +368,7 @@ var pacificAtlantic = function (heights) {
 
     const dfs = (r, c, flow) => {
         flow[r][c] = true
-        
+
         ;[[r - 1, c], [r + 1, c], [r, c - 1], [r, c + 1]].forEach(([cr, cc]) => {
             if ((cr >= 0 && cr < row) && (cc >= 0 && cc < col) && !flow[cr][cc] && heights[cr][cc] >= heights[r][c]) {
                 dfs(cr, cc, flow)

@@ -1,4 +1,3 @@
-
 [169. 多数元素](https://leetcode.cn/problems/majority-element/)（见[[LeetCode Hot100 hash表]]）
 
 ```javascript
@@ -60,20 +59,20 @@ var MinStack = function() {
     this.minStack = []
 };
 
-/** 
+/**
  * @param {number} value
  * @return {void}
  */
 MinStack.prototype.push = function(value) {
     this.stack.push(value)
-    
+
     if(this.minStack.length === 0) {
         this.minStack.push(value)
     } else {
         const min = this.getMin()
         this.minStack.push(min<value ? min : value)
     }
-    
+
 };
 
 /**
@@ -98,7 +97,7 @@ MinStack.prototype.getMin = function() {
     return this.minStack[this.minStack.length - 1]
 };
 
-/** 
+/**
  * Your MinStack object will be instantiated and called as such:
  * var obj = new MinStack()
  * obj.push(value)
@@ -195,7 +194,7 @@ var LRUCache = function(capacity) {
     this.capacity = capacity
 };
 
-/** 
+/**
  * @param {number} key
  * @return {number}
  */
@@ -208,8 +207,8 @@ LRUCache.prototype.get = function(key) {
     return res
 };
 
-/** 
- * @param {number} key 
+/**
+ * @param {number} key
  * @param {number} value
  * @return {void}
  */

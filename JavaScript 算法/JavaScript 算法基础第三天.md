@@ -182,7 +182,7 @@ var lengthOfLongestSubstring = function (s) {
     }
 
     return max
-    
+
 };
 ```
 
@@ -193,7 +193,7 @@ var lengthOfLongestSubstring = function (s) {
 
 ```javascript
 var minWindow = function(s, t) {
-    let l = 0 
+    let l = 0
     let r = 0
     let map = new Map()
     let str = ''

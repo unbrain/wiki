@@ -1,4 +1,3 @@
-
 [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)（见[[LeetCode Hot100 链表]]）
 
 解题思路：
@@ -24,7 +23,7 @@ var getIntersectionNode = function (headA, headB) {
 
 解题思路
 
-快慢指针 找到 mid  翻转 fast 
+快慢指针 找到 mid  翻转 fast
 遍历 head fast val 相等则认定为回文链表
 
 ```javascript
@@ -152,7 +151,7 @@ var detectCycle = function(head) {
 
 ```javascript
 var countSubstrings = function(s) {
-    let count = 0 
+    let count = 0
 
     const expand = (i, j) => {
         while(i>=0&&j < s.length && s[i] === s[j]) {
@@ -274,10 +273,9 @@ var removeNthFromEnd = function(head, n) {
 ```
 
 
-
 [5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring/)
 
-解题思路 
+解题思路
 
 双指针判断是否为回文  然后判断长度
 

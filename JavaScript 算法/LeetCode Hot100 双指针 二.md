@@ -1,7 +1,7 @@
 [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/)
 
 解题思路：
-双指针  
+双指针
 两头对齐，向中靠拢
 谁矮算谁，木桶效应
 大则更新，小则灌水
@@ -24,7 +24,6 @@
             right--
         }
     }
-
 
 
     return count

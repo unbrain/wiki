@@ -113,7 +113,7 @@ var LRUCache = function(capacity) {
     this.capacity = capacity
 };
 
-/** 
+/**
  * @param {number} key
  * @return {number}
  */
@@ -126,8 +126,8 @@ LRUCache.prototype.get = function(key) {
     return val
 };
 
-/** 
- * @param {number} key 
+/**
+ * @param {number} key
  * @param {number} value
  * @return {void}
  */
@@ -279,6 +279,6 @@ var mergeKLists = function (lists) {
             lists[i] = merge(lists[i], lists[i+interval])
         }
     }
-    return lists[0] 
+    return lists[0]
 };
 ```

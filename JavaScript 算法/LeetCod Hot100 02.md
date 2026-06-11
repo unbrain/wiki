@@ -31,7 +31,7 @@ var canFinish = function(numCourses, prerequisites) {
 
     for(let [course, prev] of prerequisites) {
         grap[prev].push(course)
-        deep[course]++ 
+        deep[course]++
     }
 
     let finish = []
@@ -125,7 +125,7 @@ var Trie = function() {
     this.isEnd = false
 };
 
-/** 
+/**
  * @param {string} word
  * @return {void}
  */
@@ -154,7 +154,7 @@ Trie.prototype.seachPrefix = function(word) {
 };
 
 
-/** 
+/**
  * @param {string} word
  * @return {boolean}
  */
@@ -163,7 +163,7 @@ Trie.prototype.search = function(word) {
     return !!res?.isEnd
 };
 
-/** 
+/**
  * @param {string} prefix
  * @return {boolean}
  */
@@ -172,7 +172,7 @@ Trie.prototype.startsWith = function(prefix) {
     return res !== null
 };
 
-/** 
+/**
  * Your Trie object will be instantiated and called as such:
  * var obj = new Trie()
  * obj.insert(word)

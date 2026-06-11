@@ -1,4 +1,3 @@
-
 [416. 分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/)
 
 ```javascript
@@ -125,7 +124,7 @@ var topKFrequent = function(nums, k) {
         }
     }
 
-    const map = new Map() 
+    const map = new Map()
     nums.forEach(item => {
         map.set(item, map.get(item) ? map.get(item) + 1 : 1)
     })
