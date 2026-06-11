@@ -193,3 +193,34 @@ var flatten = function(root) {
 };
 ```
 
+[2. 两数相加](https://leetcode.cn/problems/add-two-numbers/)
+
+```javascript
+var addTwoNumbers = function(l1, l2) {
+    const l3 = new ListNode()
+    let p1 = l1
+    let p2 = l2
+    let p3 = l3
+
+    let carry = 0
+    while(p1 || p2) {
+        const v1 = p1?.val ?? 0
+        const v2 = p2?.val ?? 0
+        const v = v1 + v2 + carry
+        carry = Math.floor(v / 10)
+        p1 = p1?.next
+        p2 = p2?.next
+        p3.next = new ListNode(v % 10)
+        p3 = p3.next
+    }
+    if(carry) {p3.next = new ListNode(carry)}
+    return l3.next
+};
+
+```
+
+
+[19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
+
+解题思路 快慢指针 快指针跑快 n 个节点即可
+
