@@ -49,7 +49,7 @@ var coinChange = function(coins, amount) {
 };
 ```
 
-[448. 找到所有数组中消失的数字](https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/)
+[448. 找到所有数组中消失的数字](https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/)（见[[LeetCode Hot100 hash表]]）
 
 ```javascript
 var findDisappearedNumbers = function(nums) {

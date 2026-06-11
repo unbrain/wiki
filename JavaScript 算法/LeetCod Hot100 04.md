@@ -1,4 +1,4 @@
-[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)（见[[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]）
 
 ```javascript
 var detectCycle = function(head) {
@@ -22,7 +22,7 @@ var detectCycle = function(head) {
 };
 ```
 
-[141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
+[141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)（见[[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]、[[JavaScript 算法基础第二天]]）
 
 ```javascript
 var hasCycle = function(head) {
@@ -39,7 +39,7 @@ var hasCycle = function(head) {
 };
 ```
 
-[139. 单词拆分](https://leetcode.cn/problems/word-break/)
+[139. 单词拆分](https://leetcode.cn/problems/word-break/)（见[[LeetCode Hot100 hash表]]）
 
 ```javascript
 var wordBreak = function(s, wordDict) {
@@ -72,7 +72,7 @@ var singleNumber = function(nums) {
 };
 ```
 
-[647. 回文子串](https://leetcode.cn/problems/palindromic-substrings/)
+[647. 回文子串](https://leetcode.cn/problems/palindromic-substrings/)（见[[LeetCode Hot100 双指针]]）
 
 ```javascript
 var countSubstrings = function(s) {
@@ -96,7 +96,7 @@ var countSubstrings = function(s) {
 };
 ```
 
-[128. 最长连续序列](https://leetcode.cn/problems/longest-consecutive-sequence/)
+[128. 最长连续序列](https://leetcode.cn/problems/longest-consecutive-sequence/)（见[[LeetCode Hot100 hash表]]）
 
 ```javascript
 var longestConsecutive = function(nums) {

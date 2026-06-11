@@ -38,7 +38,7 @@
 
 ## 题目
 
-- [374. 猜数字大小](https://leetcode.cn/problems/guess-number-higher-or-lower/) — 二分搜索分治，每次排除一半
+- [374. 猜数字大小](https://leetcode.cn/problems/guess-number-higher-or-lower/) — 二分搜索分治，每次排除一半（见[[JavaScript 算法基础第七天]]）
 ```javascript
 var guessNumber = function(n) {
     const rec = (low, high) => {
@@ -57,7 +57,7 @@ var guessNumber = function(n) {
     return rec(1, n)
 };
 ```
-- [226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/) — 翻转左右子树，递归到叶子
+- [226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/) — 翻转左右子树，递归到叶子（见[[LeetCod Hot100.md]]）
 ```javascript
 var invertTree = function(root) {
     if(!root) return null

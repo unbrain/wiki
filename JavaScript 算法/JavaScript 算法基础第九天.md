@@ -118,7 +118,7 @@ var climbStairs = function(n) {
 };
 ```
 
-- [198. 打家劫舍](https://leetcode.cn/problems/house-robber/) — 一维 DP，相邻不能选 | 时间 O(n) 空间 O(n) / O(1)（滚动变量优化）
+- [198. 打家劫舍](https://leetcode.cn/problems/house-robber/) — 一维 DP，相邻不能选 | 时间 O(n) 空间 O(n) / O(1)（滚动变量优化）（见[[LeetCod Hot100 02.md]]）
 ```javascript
 var rob = function(nums) {
     if(nums.length === 1) return nums[0]

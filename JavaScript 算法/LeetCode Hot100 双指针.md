@@ -140,11 +140,11 @@ var detectCycle = function(head) {
 
 ```
 
-[141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
+[141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)（见[[LeetCode Hot100 链表]]、[[LeetCod Hot100 04.md]]、[[JavaScript 算法基础第二天]]）
 
 可以忽略 此题解法见上一题
 
-[647. 回文子串](https://leetcode.cn/problems/palindromic-substrings/)
+[647. 回文子串](https://leetcode.cn/problems/palindromic-substrings/)（见[[LeetCod Hot100 04.md]]）
 
 解题思路
 

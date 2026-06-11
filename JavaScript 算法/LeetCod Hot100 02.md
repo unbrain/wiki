@@ -1,4 +1,4 @@
-[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
+[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)（见[[LeetCode Hot100 链表]]、[[JavaScript 算法基础第二天]]）
 
 ```javascript
 var reverseList = function(head) {
@@ -229,7 +229,7 @@ var numIslands = function(grid) {
 
 空间复杂度：O(m×n)，最坏情况下（整个网格都是陆地）递归深度为 m×n。
 
-[198. 打家劫舍](https://leetcode.cn/problems/house-robber/)
+[198. 打家劫舍](https://leetcode.cn/problems/house-robber/)（见[[JavaScript 算法基础第九天]]）
 
 ```javascript
 /**

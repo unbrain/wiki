@@ -122,7 +122,7 @@ function reverseList(head) {
 ## 练习题
 
 - [237. 删除链表中的节点](https://leetcode.cn/problems/delete-node-in-a-linked-list)
-- [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list)
+- [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list)（见[[LeetCode Hot100 链表]]、[[LeetCod Hot100 02.md]]）
 
 ```javascript
 var reverseList = function (head) {
@@ -141,7 +141,7 @@ var reverseList = function (head) {
 
 - 时间复杂度：O(n)
 - 空间复杂度：O(1)
-- [2. 两数相加](https://leetcode.cn/problems/add-two-numbers)
+- [2. 两数相加](https://leetcode.cn/problems/add-two-numbers)（见[[LeetCode Hot100 链表]]）
 
 ```javascript
 var addTwoNumbers = function (l1, l2) {
@@ -190,7 +190,7 @@ var deleteDuplicates = function (head) {
 - 时间复杂度：O(n)
 - 空间复杂度：O(1)
 
-- [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle)
+- [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle)（见[[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]、[[LeetCod Hot100 04.md]]）
 
 ```javascript
 var hasCycle = function (head) {

@@ -308,7 +308,7 @@ var topKFrequent = function(nums, k) {
 - **pop**：仅 23 版 `return` 了弹出的值（其他版本无返回值，仅修改堆结构）
 
 
-## 23. 合并 K 个升序链表
+## 23. 合并 K 个升序链表（见[[LeetCode Hot100 链表]]）
 
 [题目链接](https://leetcode.cn/problems/merge-k-sorted-lists/)
 

@@ -1,5 +1,5 @@
 
-[169. 多数元素](https://leetcode.cn/problems/majority-element/)
+[169. 多数元素](https://leetcode.cn/problems/majority-element/)（见[[LeetCode Hot100 hash表]]）
 
 ```javascript
 var majorityElement = function(nums) {
@@ -145,7 +145,7 @@ var maxProduct = function(nums) {
 空间复杂度：O(1)，只使用了常数额外空间（滚动变量替代 DP 数组）。
 
 
-[148. 排序链表](https://leetcode.cn/problems/sort-list/)
+[148. 排序链表](https://leetcode.cn/problems/sort-list/)（见[[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]）
 
 ```javascript
 var sortList = function(head) {
@@ -188,7 +188,7 @@ const merge = (l, r) => {
 空间复杂度：O(log n)，递归调用栈的深度（自顶向下归并）。
 
 
-[146. LRU 缓存](https://leetcode.cn/problems/lru-cache/)
+[146. LRU 缓存](https://leetcode.cn/problems/lru-cache/)（见[[LeetCode Hot100 链表]]）
 ```javascript
 var LRUCache = function(capacity) {
     this.map = new Map()

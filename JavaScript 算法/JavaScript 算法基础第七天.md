@@ -151,7 +151,7 @@ const quickSort = (arr) => {
 }
 ```
 
-[21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
+[21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)（见[[LeetCode Hot100 链表]]）
 
 
 ```javascript
@@ -190,7 +190,7 @@ var mergeTwoLists = function(list1, list2) {
 ```
 
 
-[374. 猜数字大小](https://leetcode.cn/problems/guess-number-higher-or-lower/)
+[374. 猜数字大小](https://leetcode.cn/problems/guess-number-higher-or-lower/)（见[[JavaScript 算法基础第八天]]）
 
 ```javascript
 var guessNumber = function(n) {

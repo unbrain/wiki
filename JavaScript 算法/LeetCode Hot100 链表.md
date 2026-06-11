@@ -14,7 +14,7 @@ var getIntersectionNode = function (headA, headB) {
 ```
 
 
-[234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)
+[234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)（见[[LeetCode Hot100 双指针]]、[[LeetCod Hot100.md]]）
 ```javascript
 var isPalindrome = function(head) {
     let fast = head
@@ -51,7 +51,7 @@ var isPalindrome = function(head) {
 };
 ```
 
-[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
+[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)（见[[LeetCod Hot100 02.md]]、[[JavaScript 算法基础第二天]]）
 
 ```javascript
 var reverseList = function(head) {
@@ -67,7 +67,7 @@ var reverseList = function(head) {
 };
 ```
 
-[148. 排序链表](https://leetcode.cn/problems/sort-list/)
+[148. 排序链表](https://leetcode.cn/problems/sort-list/)（归并+快慢指针，见[[LeetCode Hot100 双指针]]、[[LeetCod Hot100 03.md]]）
 
 ```javascript
 const merge = (l, r) => {
@@ -105,7 +105,7 @@ var sortList = function(head) {
 };
 ```
 
-[146. LRU 缓存](https://leetcode.cn/problems/lru-cache/)
+[146. LRU 缓存](https://leetcode.cn/problems/lru-cache/)（见[[LeetCod Hot100 03.md]]）
 
 ```javascript
 var LRUCache = function(capacity) {
@@ -145,7 +145,7 @@ LRUCache.prototype.put = function(key, value) {
 ```
 
 141 同下（[[LeetCode Hot100 双指针]]见快慢指针解法）
-[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)（见[[LeetCode Hot100 双指针]]、[[LeetCod Hot100 04.md]]、[[JavaScript 算法基础第二天]]）
 ```javascript
 var detectCycle = function(head) {
     if(!head) return head
@@ -193,7 +193,7 @@ var flatten = function(root) {
 };
 ```
 
-[2. 两数相加](https://leetcode.cn/problems/add-two-numbers/)
+[2. 两数相加](https://leetcode.cn/problems/add-two-numbers/)（见[[JavaScript 算法基础第二天]]）
 
 ```javascript
 var addTwoNumbers = function(l1, l2) {
@@ -224,7 +224,7 @@ var addTwoNumbers = function(l1, l2) {
 
 解题思路 快慢指针（[[LeetCode Hot100 双指针]]） 快指针跑快 n 个节点即可
 
-[21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
+[21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)（见[[JavaScript 算法基础第七天]]）
 
 ```javascript
 var mergeTwoLists = function(list1, list2) {
@@ -245,7 +245,7 @@ var mergeTwoLists = function(list1, list2) {
 };
 ```
 
-[23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
+[23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)（见[[JavaScript 算法基础第六天]]）
 
 解题思路：
 

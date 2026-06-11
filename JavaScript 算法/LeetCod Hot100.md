@@ -1,5 +1,5 @@
 
-[160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)
+[160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)（见[[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]、[[LeetCode Hot100 hash表]]）
 
 ```javascript
 var getIntersectionNode = function (headA, headB) {
@@ -46,53 +46,11 @@ var lowestCommonAncestor = function(root, p, q) {
 空间复杂度：O(h)，其中 h 是二叉树的高度。递归调用栈的深度取决于树的高度，最坏情况下 h = n（链状树）。
 
 
-[234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)
+[234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)（见[[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]）
 
 ```javascript
 /**
  * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
- * @return {boolean}
- */
-var isPalindrome = function(head) {
-    let slow = head
-    let fast = head
-
-    while(fast?.next?.next) {
-        slow = slow.next
-        fast = fast.next.next
-    }
-    let prev = null
-    let curr = slow.next
-
-    while(curr !== null) {
-        let temp = curr.next
-        curr.next = prev
-        prev = curr
-        curr = temp
-    }
-
-    let p1 = head
-    let p2 = prev
-    let res = true
-
-    while(p2) {
-        if(p1.val === p2.val) {
-            p1 = p1.next
-            p2 = p2.next
-        } else {
-            res = false
-            break
-        }
-    }
-    return res
-};
 ```
 
 复杂度分析
@@ -102,7 +60,7 @@ var isPalindrome = function(head) {
 空间复杂度：O(1)，只使用了常数额外空间，在原链表上操作。
 
 
-[226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/)
+[226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/)（见[[JavaScript 算法基础第八天]]）
 
 ```javascript
 var invertTree = function(root) {
