@@ -168,3 +168,28 @@ var detectCycle = function(head) {
     return null
 };
 ```
+
+
+[114. 二叉树展开为链表](https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/)
+
+要做到**原地修改**且符合**前序遍历**的顺序，最直观的方法是**倒过来遍历**：即按照 **右 $\to$ 左 $\to$ 根** 的顺序遍历。
+
+这样我们可以用一个指针 `pre` 记录上一次遍历过的节点，每次把当前节点的右指针指向 `pre`，左指针清空，再把 `pre` 更新为当前节点。因为是倒序，所以当我们改动当前节点的指针时，它的左右子树其实已经处理完了，绝对不会迷路！
+
+```javascript
+var flatten = function(root) {
+    let pre = null
+    const dfs =(node) => {
+        if(!node) return
+
+        dfs(node.right)
+        dfs(node.left)
+
+        node.right = pre
+        node.left = null
+        pre = node
+    }
+    dfs(root)
+};
+```
+
