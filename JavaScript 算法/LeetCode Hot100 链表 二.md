@@ -1,5 +1,11 @@
 [438. 找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
 
+解题思路：
+
+使用 26 个字母长度的数字  以及一个滑动窗口 
+
+当遇到 0 left 右移
+
 ```javascript
 var findAnagrams = function(s, p) {
     let count = []
@@ -29,6 +35,8 @@ var findAnagrams = function(s, p) {
 ```
 
 [49. 字母异位词分组](https://leetcode.cn/problems/group-anagrams/)
+
+排序后 进行分组
 
 ```javascript
 var groupAnagrams = function(strs) {
@@ -73,6 +81,8 @@ var groupAnagrams = function(strs) {
 
 [560. 和为 K 的子数组](https://leetcode.cn/problems/subarray-sum-equals-k/)
 
+使用前缀和 
+
 ```javascript
 /**
  * @param {number[]} nums
@@ -93,5 +103,50 @@ var subarraySum = function(nums, k) {
         map.set(preSum, (map.get(preSum) || 0) + 1)
     }
     return count
+};
+```
+
+
+[17. 电话号码的字母组合](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/)
+
+使用回溯 
+
+```javascript
+/**
+ * @param {string} digits
+ * @return {string[]}
+ */
+var letterCombinations = function(digits) {
+    if(!digits.length) return []
+    const phoneMap = {
+        2: 'abc',
+        3: 'def',
+        4: 'ghi',
+        5: 'jkl',
+        6: 'mno',
+        7: 'pqrs',
+        8: 'tuv',
+        9: 'wxyz'
+    }
+
+    const res = []
+
+    const backtrack = (path, index) => {
+        if(path.length === digits.length) {
+            res.push(path.join(''))
+            return
+        }
+        const letters = phoneMap[digits[index]]
+
+        for(let char of letters){
+            path.push(char)
+            backtrack(path, index+1)
+            path.pop()
+        }
+    }
+
+    backtrack([], 0)
+
+    return res
 };
 ```
