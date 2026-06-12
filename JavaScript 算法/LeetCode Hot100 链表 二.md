@@ -27,3 +27,32 @@ var findAnagrams = function(s, p) {
     return count
 };
 ```
+
+[49. 字母异位词分组](https://leetcode.cn/problems/group-anagrams/)
+
+```javascript
+var groupAnagrams = function(strs) {
+    const map = new Map()
+
+    const getStrCode = (str) => {
+        let arr = new Array(26).fill(0)
+        for(let i of str) {
+            arr[i.charCodeAt() - 97]++
+        }
+        return arr.join(',')
+    }
+
+    for(let str of strs) {
+        let key = getStrCode(str)
+        if(map.has(key)) {
+            const val = map.get(key)
+            val.push(str)
+            map.set(key, val)
+        } else {
+            map.set(key, [str])
+        }
+    }
+
+    return [...map.values()]
+};
+```
