@@ -153,6 +153,140 @@ var letterCombinations = function(digits) {
 
 [208. 实现 Trie (前缀树)](https://leetcode.cn/problems/implement-trie-prefix-tree/)
 
+出错点 新建的searchPrefix 写成 () => {} 导致无法找到 this
+
 ```javascript
 
+var Trie = function() {
+    this.children = {}
+    this.isEnd = false
+};
+
+/** 
+ * @param {string} word
+ * @return {void}
+ */
+Trie.prototype.insert = function(word) {
+    let node = this
+    for(let char of word) {
+        if(!node.children[char]) {
+            node.children[char] = new Trie()
+        }
+        node = node.children[char]
+    }
+    node.isEnd = true
+};
+
+Trie.prototype.searchPrefix = function(word) {
+    let node = this
+    for(let char of word) {
+        if(!node.children[char]) {
+            return null
+        }
+        node = node.children[char]
+    }
+    return node
+}
+
+/** 
+ * @param {string} word
+ * @return {boolean}
+ */
+Trie.prototype.search = function(word) {
+    let res = this.searchPrefix(word)
+    return !!res.isEnd
+};
+
+/** 
+ * @param {string} prefix
+ * @return {boolean}
+ */
+Trie.prototype.startsWith = function(prefix) {
+    let res = this.searchPrefix(prefix)
+    return res !== null
+};
+
+/** 
+ * Your Trie object will be instantiated and called as such:
+ * var obj = new Trie()
+ * obj.insert(word)
+ * var param_2 = obj.search(word)
+ * var param_3 = obj.startsWith(prefix)
+ */
 ```
+
+[146. LRU 缓存](https://leetcode.cn/problems/lru-cache/)
+
+使用 map 的 map.keys().next().value
+
+```javascript
+/**
+ * @param {number} capacity
+ */
+var LRUCache = function(capacity) {
+    this.map = new Map()
+    this.capacity = capacity
+};
+
+/** 
+ * @param {number} key
+ * @return {number}
+ */
+LRUCache.prototype.get = function(key) {
+    if(!this.map.has(key)) return -1
+
+    const val = this.map.get(key)
+    this.map.delete(key)
+    this.map.set(key, val)
+    return val
+};
+
+/** 
+ * @param {number} key 
+ * @param {number} value
+ * @return {void}
+ */
+LRUCache.prototype.put = function(key, value) {
+    if(this.map.has(key)) {
+        this.map.delete(key)
+    }
+    this.map.set(key, value)
+
+    if(this.map.size > this.capacity) {
+        const res = this.map.keys().next().value
+        this.map.delete(res)
+    }
+};
+
+/** 
+ * Your LRUCache object will be instantiated and called as such:
+ * var obj = new LRUCache(capacity)
+ * var param_1 = obj.get(key)
+ * obj.put(key,value)
+ */
+```
+
+
+[3. 无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function (s) {
+    let max = 0
+    let left = 0
+    let set = new Set()
+    for (let right = 0; right < s.length; right++) {
+        while (set.has(s[right])) {
+            set.delete(s[left])
+            left++
+        }
+        set.add(s[right])
+        max = Math.max(max, right - left + 1)
+    }
+    return max
+};
+```
+
