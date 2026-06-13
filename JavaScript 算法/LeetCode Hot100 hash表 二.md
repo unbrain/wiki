@@ -290,3 +290,42 @@ var lengthOfLongestSubstring = function (s) {
 };
 ```
 
+[621. 任务调度器](https://leetcode.cn/problems/task-scheduler/)
+
+解题思路
+
+前面的桶的长度是 n+1
+任务种类的个数 -1 * n+1 再加上 最多个数的种类个数
+
+```javascript
+/**
+ * @param {character[]} tasks
+ * @param {number} n
+ * @return {number}
+ */
+var leastInterval = function(tasks, n) {
+    let buketLength = n+1
+    let count = 0 
+    let MaxCount = 0
+    let MaxCountCate = 0
+    let arr = new Array(26).fill(0)
+    for(let char of tasks) {
+        let num = char.charCodeAt() - 65
+        arr[num]++
+    }
+    for(let num of arr) {
+        if(num !== 0) {
+            count++
+        }
+        if(num> MaxCount) {
+            MaxCount = num
+            MaxCountCate = 1
+        } else if(num === MaxCount){
+            MaxCountCate++
+        }
+    }
+
+    return Math.max(tasks.length, buketLength * (MaxCount-1) +MaxCountCate)
+};
+```
+
