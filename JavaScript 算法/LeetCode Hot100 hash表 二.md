@@ -329,3 +329,45 @@ var leastInterval = function(tasks, n) {
 };
 ```
 
+[105. 从前序与中序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {number[]} preorder
+ * @param {number[]} inorder
+ * @return {TreeNode}
+ */
+let indexMap = new Map()
+var buildTree = function (preorder, inorder) {
+
+    for (let i = 0; i < inorder.length; i++) {
+        indexMap.set(inorder[i], i)
+    }
+
+    return buildSubTree(preorder, inorder, 0, preorder.length - 1, 0, inorder.length - 1)
+};
+
+const buildSubTree = (preorder, inorder, preLeft, preRight, inLeft, inRight) => {
+    if (preLeft > preRight) {
+        return null
+    }
+    let rootVal = preorder[preLeft]
+
+    let root = new TreeNode(rootVal)
+    let inOrderIndex = indexMap.get(rootVal)
+    let leftSubTreeLength = inOrderIndex - inLeft
+
+
+    root.left = buildSubTree(preorder, inorder, preLeft + 1, preLeft + leftSubTreeLength, inLeft, inOrderIndex - 1)
+    root.right = buildSubTree(preorder, inorder, preLeft + leftSubTreeLength + 1, preRight, inOrderIndex + 1, inRight)
+    return root
+}
+```
