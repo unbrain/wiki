@@ -72,3 +72,51 @@ var isSymmetric = function(root) {
     return isMirror(root.left, root.right)
 };
 ```
+
+[543. 二叉树的直径](https://leetcode.cn/problems/diameter-of-binary-tree/)
+
+```javascript
+var diameterOfBinaryTree = function(root) {
+    let max = 0
+
+    const findLong = (node) => {
+        if(node === null) {
+            return 0
+        }
+
+        let leftLong = findLong(node.left)
+        let rightLong = findLong(node.right)
+
+        max = Math.max(max, leftLong+rightLong)
+
+        return Math.max(leftLong, rightLong) + 1
+    }
+
+    findLong(root)
+    return max
+};
+```
+
+
+[617. 合并二叉树](https://leetcode.cn/problems/merge-two-binary-trees/)
+
+```javascript
+/**
+ * @param {TreeNode} root1
+ * @param {TreeNode} root2
+ * @return {TreeNode}
+ */
+var mergeTrees = function(root1, root2) {
+    if(root1 === null) {
+        return root2
+    }
+    if(root2 === null) {
+        return root1
+    }
+    root1.val+=root2.val
+    root1.left = mergeTrees(root1.left, root2.left)
+    root1.right = mergeTrees(root1.right, root2.right)
+
+    return root1
+};
+```
