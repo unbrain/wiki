@@ -32,3 +32,43 @@ var invertTree = function(root) {
 
 [94. 二叉树的中序遍历](https://leetcode.cn/problems/binary-tree-inorder-traversal/)
 
+```javascript
+var inorderTraversal = function (root) {
+    if(!root) return []
+    let stack = []
+    let res = []
+    let p = root
+    while(stack.length || p) {
+        while(p){
+            stack.push(p)
+            p = p.left
+        }
+        let item = stack.pop()
+        res.push(item.val)
+        item.right && (p = item.right)
+    }
+    return res
+};
+```
+
+[101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree/)
+
+
+```javascript
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isSymmetric = function(root) {
+    if(!root) return false
+    const isMirror = (left, right) => {
+        if(!left && !right) return true
+        if(left?.val === right?.val && isMirror(left?.left, right?.right) && isMirror(left?.right, right?.left)) {
+            return true
+        }
+        return false
+    }
+
+    return isMirror(root.left, root.right)
+};
+```
