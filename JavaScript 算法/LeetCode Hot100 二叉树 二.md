@@ -115,5 +115,29 @@ var numTrees = function(n) {
 0+1 又可以将 inorder 左边再次分为左右子树
 
 ```javascript
+var buildTree = function (preorder, inorder) {
+    const indexMap = new Map()
 
+    for(let i = 0; i < inorder.length; i++) {
+        indexMap.set(inorder[i], i)
+    }
+
+    const buildSubTree = (preLeft, preRight, inLeft, inRight) => {
+        if(preLeft > preRight) return null
+
+        const rootVal = preorder[preLeft]
+        const root = new TreeNode(rootVal)
+
+        const inorderIndex = indexMap.get(rootVal)
+        const subTreeLeftLength = inorderIndex - inLeft
+
+        root.left = buildSubTree(preLeft + 1, preLeft+subTreeLeftLength, inLeft, inorderIndex-1)
+        root.right = buildSubTree(preLeft+subTreeLeftLength+1, preRight, inorderIndex + 1, inRight)
+
+        return root
+    }
+
+
+    return buildSubTree(0, preorder.length-1, 0, inorder.length-1)
+};
 ```
