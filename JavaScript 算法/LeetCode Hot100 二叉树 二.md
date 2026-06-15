@@ -82,6 +82,38 @@ var lowestCommonAncestor = function(root, p, q) {
 
 [105. 从前序与中序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
 
+解题思路 动态规划
+
+左边是 i-1 个节点 右边是 n-i个节点
+
+左子树 的组合数 与右子树的组合数相乘是当前 以 $i$ 为根节点的 BST 种类数
+
+对于求 `dp[i]`，我们需要遍历所有可能的根节点 $j$（从 $1$ 到 $i$）：
+
+$$dp[i] = \sum_{j=1}^{i} dp[j-1] \times dp[i-j]$$
+
+```javascript
+var numTrees = function(n) {
+    const dp = new Array(n+1).fill(0)
+    dp[0] = 1
+    dp[1] = 1
+    for(let i = 2; i<=n; i++) {
+        for(let j = 1; j<=i; j++) {
+            dp[i] +=dp[j-1]*dp[i-j]
+        }
+    }
+    return dp[n]
+};
+```
+
+[105. 从前序与中序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+
+解题思路
+
+前序遍历 所以 preOrder[0] 是根节点  这样就可以将 inorder 分开成左右子树
+
+0+1 又可以将 inorder 左边再次分为左右子树
+
 ```javascript
 
 ```
