@@ -23,5 +23,20 @@ var isValidBST = function(root) {
 解题思路 使用 队列 先进先出 遍历每一层
 
 ```javascript
-
+var levelOrder = function(root) {
+    if(!root) return []
+    const queue = [root]
+    const res = []
+    while(queue.length) {
+        let len = queue.length
+        res.push([])
+        while(len--){
+            const current = queue.shift()
+            res[res.length-1].push(current.val)
+            current.left && queue.push(current.left)
+            current.right && queue.push(current.right)
+        }
+    }
+    return res
+};
 ```
