@@ -37,3 +37,22 @@ var convertBST = function(root) {
     return root
 };
 ```
+
+[124. 二叉树中的最大路径和](https://leetcode.cn/problems/binary-tree-maximum-path-sum/)
+
+```javascript
+var maxPathSum = function(root) {
+    let res = -Infinity
+    const dfs = (node) => {
+        if(!node) return 0
+
+        let left = Math.max(0, dfs(node.left));
+        let right = Math.max(0, dfs(node.right));
+        res = Math.max(res, node.val + left + right)
+
+        return node.val + Math.max(left , right)
+    }
+    dfs(root)
+    return res
+};
+```
