@@ -56,3 +56,29 @@ var maxPathSum = function(root) {
     return res
 };
 ```
+
+
+[437. 路径总和 III](https://leetcode.cn/problems/path-sum-iii/)
+
+```javascript
+var pathSum = function(root, targetSum) {
+    let map = new Map()
+    map.set(0, 1)
+    let count = 0
+    const dfs = (node, preSum) => {
+        if(!node) return
+
+        preSum = node.val + preSum
+        let target = preSum - targetSum
+        if(map.has(target)) {
+            count += map.get(target)
+        }
+        map.set(preSum, (map.get(preSum) || 0) + 1)
+        dfs(node.left, preSum)
+        dfs(node.right, preSum)
+        map.set(preSum, map.get(preSum) -1)
+    }
+    dfs(root, 0)
+    return count
+};
+```
