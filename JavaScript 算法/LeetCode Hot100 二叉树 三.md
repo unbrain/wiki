@@ -19,3 +19,21 @@ var rob = function(root) {
 };
 ```
 
+
+[538. 把二叉搜索树转换为累加树](https://leetcode.cn/problems/convert-bst-to-greater-tree/)
+
+```javascript
+var convertBST = function(root) {
+    if(!root) return root
+    let pre = 0
+    const dfs = (node) => {
+        if(!node) return node
+        dfs(node.right)
+        pre+=node.val
+        node.val = pre
+        dfs(node.left)
+    }
+    dfs(root)
+    return root
+};
+```
