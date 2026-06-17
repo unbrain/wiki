@@ -75,6 +75,3 @@ const levelOrderNormal = (root) => {
 | **6. 序列重构与指针扁平化**<br><br>  <br><br>_(考察对空间存储结构的理解)_             | [105. 从前序与中序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal?envType=problem-list-v2&envId=2cktkvj) | 中等     | 前序首位确定根节点，在中序中用哈希表定位根节点，切分出左右子树边界，递归构建。                                                     |
 |                                                                 | [114. 二叉树展开为链表](https://leetcode.cn/problems/flatten-binary-tree-to-linked-list?envType=problem-list-v2&envId=2cktkvj)                               | 中等     | 寻找左子树的最右下角节点（前序遍历中的前驱节点），将原右子树接到它后面，然后把整个左子树移到右边。                                           |
 |                                                                 | [297. 二叉树的序列化与反序列化](https://leetcode.cn/problems/serialize-and-deserialize-binary-tree?envType=problem-list-v2&envId=2cktkvj)                        | 困难     | 用带 `null` 标记的前序 DFS（或 BFS）将树压成一维字符串；反序列化时按同样顺序还原。                                           |
-
----
-
