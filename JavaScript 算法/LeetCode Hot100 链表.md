@@ -2,7 +2,7 @@
 
 ```javascript
 var getIntersectionNode = function (headA, headB) {
-        let p1 = headA
+    let p1 = headA
     let p2 = headB
 
     while(p1 !== p2) {
@@ -15,6 +15,7 @@ var getIntersectionNode = function (headA, headB) {
 
 
 [234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)（见[[LeetCode Hot100 双指针]]、[[LeetCod Hot100.md]]）
+
 ```javascript
 var isPalindrome = function(head) {
     let fast = head
