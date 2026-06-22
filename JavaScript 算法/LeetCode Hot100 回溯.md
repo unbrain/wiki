@@ -129,3 +129,26 @@ var letterCombinations = function(digits) {
     return res
 };
 ```
+
+
+[78. 子集](https://leetcode.cn/problems/subsets/)
+
+```javascript
+var subsets = function(nums) {
+    const res = []
+    const path = []
+    const backtrack = (index) => {
+        res.push([...path])
+        for(let i = index; i < nums.length; i++){
+            path.push(nums[i])
+            backtrack(i+1)
+            path.pop()
+        }
+    }
+
+    backtrack(0)
+    return res
+};
+```
+
+
