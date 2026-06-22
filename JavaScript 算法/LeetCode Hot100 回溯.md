@@ -152,3 +152,60 @@ var subsets = function(nums) {
 ```
 
 
+[79. 单词搜索](https://leetcode.cn/problems/word-search/)
+
+```javascript
+/**
+ * @param {character[][]} board
+ * @param {string} word
+ * @return {boolean}
+ */
+var exist = function (board, word) {
+    if (word.length === 0) return true
+    if (board.length === 0 || board[0].length === 0) return false
+
+    const rows = board.length
+    const cols = board[0].length
+
+    const boardCounts = {}
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            boardCounts[board[i][j]] = (boardCounts[board[i][j]] || 0) + 1
+        }
+    }
+
+    const wordCounts = {}
+    for (const char of word) {
+        wordCounts[char] = (wordCounts[char] || 0) + 1
+        if (!boardCounts[char] || wordCounts[char] > boardCounts[char]) {
+            return false
+        }
+    }
+
+    const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+
+    const find = (i, j, k) => {
+        if (i < 0 || i >= rows || j < 0 || j >= cols || board[i][j] !== word[k]) {
+            return false
+        }
+
+        if (k === word.length - 1) return true
+        const cur = board[i][j]
+        board[i][j] = ''
+        for (const [di, dj] of directions) {
+            if (find(i + di, j + dj, k + 1)) {
+                return true
+            }
+        }
+        board[i][j] = cur
+        return false
+    }
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            if (find(i, j, 0)) return true
+        }
+    }
+    return false
+};
+```
