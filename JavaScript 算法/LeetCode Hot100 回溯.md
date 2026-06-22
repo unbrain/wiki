@@ -24,3 +24,24 @@ var generateParenthesis = function(n) {
     return res
 };
 ```
+
+
+[494. 目标和](https://leetcode.cn/problems/target-sum/)
+
+```javascript
+var findTargetSumWays = function(nums, target) {
+    let res = 0
+    const backtrack = (count, index) => {
+        if(index === nums.length ) {
+            if(count === target) {
+                res++
+            }
+        } else {
+            backtrack(count + nums[index], index+1)
+            backtrack(count - nums[index],index+1)
+        } 
+    }
+    backtrack(0, 0)
+    return res
+};
+```
