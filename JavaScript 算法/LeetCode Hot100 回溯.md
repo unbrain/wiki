@@ -74,3 +74,25 @@ var permute = function (nums) {
 ```
 
 
+[39. 组合总和](https://leetcode.cn/problems/combination-sum/)
+
+```javascript
+var combinationSum = function(candidates, target) {
+    const res = []
+    const path = []
+    candidates.sort((a, b) => a - b)
+    const backtrack = (index, remind) => {
+        if(remind === 0) {
+            res.push([...path])
+        }
+        for(let i = index; i<candidates.length;i++) {
+            if(candidates[i]>remind) break
+            path.push(candidates[i])
+            backtrack(i, remind-candidates[i])
+            path.pop()
+        }
+    }
+    backtrack(0, target)
+    return res
+};
+```
