@@ -45,3 +45,32 @@ var findTargetSumWays = function(nums, target) {
     return res
 };
 ```
+
+[46. 全排列](https://leetcode.cn/problems/permutations/)
+
+```javascript
+var permute = function (nums) {
+    let res = []
+    let path = []
+    let used = Array.from({ length: nums.length }).fill(false)
+    const backtrack = () => {
+        if(path.length === nums.length) {
+            res.push([...path])
+            return
+        }
+        for(let i = 0; i< nums.length;i++) {
+            if(!used[i]) {
+                path.push(nums[i])
+                used[i] = true
+                backtrack()
+                path.pop()
+                used[i] = false
+            }
+        }
+    }
+    backtrack()
+    return res
+};
+```
+
+
