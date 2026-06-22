@@ -209,3 +209,54 @@ var exist = function (board, word) {
     return false
 };
 ```
+
+
+[301. 删除无效的括号](https://leetcode.cn/problems/remove-invalid-parentheses/)
+
+```javascript
+var removeInvalidParentheses = function(s) {
+    let remL = 0, remR = 0;
+    for (const char of s) {
+        if (char === '(') remL++;
+        else if (char === ')') {
+            if (remL) remL--;
+            else remR++;
+        }
+    }
+    const res = [];
+
+    const dfs = (idx, remL, remR, count, currentStr) => {
+        if (count < 0) return;
+        if (idx === s.length) {
+            if (remL === 0 && remR === 0 && count === 0) res.push(currentStr);
+            return;
+        }
+
+        const c = s[idx];
+        
+        // 【终极记忆点】：只有当前括号，不等于我们“刚刚放进新串的那个括号”时，才允许删它！
+        // 如果相同，说明刚才留了，现在就不删了，防止重复。
+        const canDelete = (currentStr.length === 0 || c !== currentStr.at(-1));
+
+        if (c === '(') {
+            // 1. 先保留
+            dfs(idx + 1, remL, remR, count + 1, currentStr + c);
+            // 2. 后删除
+            if (remL > 0 && canDelete) dfs(idx + 1, remL - 1, remR, count, currentStr);
+            
+        } else if (c === ')') {
+            // 1. 先保留
+            dfs(idx + 1, remL, remR, count - 1, currentStr + c);
+            // 2. 后删除
+            if (remR > 0 && canDelete) dfs(idx + 1, remL, remR - 1, count, currentStr);
+            
+        } else {
+            // 字母直接留
+            dfs(idx + 1, remL, remR, count, currentStr + c);
+        }
+    };
+
+    dfs(0, remL, remR, 0, '');
+    return res;
+};
+```
