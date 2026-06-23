@@ -100,18 +100,16 @@ var searchRange = function(nums, target) {
     const lowerBound = (val) => {
         let left = 0
         let right = nums.length - 1
-        let ans = nums.length
 
         while(left <= right) {
             let mid = Math.floor((left + right) / 2)
             if(nums[mid] >= val) {
-                ans = mid
                 right = mid -1
             } else {
                 left = mid+1
             }
         }
-        return ans
+        return left
     }
     
     let start = lowerBound(target)
