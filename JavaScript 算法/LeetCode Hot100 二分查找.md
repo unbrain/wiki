@@ -92,3 +92,34 @@ var searchMatrix = function(matrix, target) {
     return false
 };
 ```
+
+[34. 在排序数组中查找元素的第一个和最后一个位置](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/)
+
+```javascript
+var searchRange = function(nums, target) {
+    const lowerBound = (val) => {
+        let left = 0
+        let right = nums.length - 1
+        let ans = nums.length
+
+        while(left <= right) {
+            let mid = Math.floor((left + right) / 2)
+            if(nums[mid] >= val) {
+                ans = mid
+                right = mid -1
+            } else {
+                left = mid+1
+            }
+        }
+        return ans
+    }
+    
+    let start = lowerBound(target)
+
+    if(start === nums.length || nums[start] !== target) {
+        return [-1,-1]
+    }
+    const end = lowerBound(target+1)-1
+    return [start, end]
+};
+```
