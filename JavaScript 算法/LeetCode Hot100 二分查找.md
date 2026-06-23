@@ -72,3 +72,23 @@ var findDuplicate = function(nums) {
 ```
 
 
+[240. 搜索二维矩阵 II](https://leetcode.cn/problems/search-a-2d-matrix-ii/)
+
+```javascript
+var searchMatrix = function(matrix, target) {
+    let row = 0
+    let col = matrix[0].length -1
+
+    while(row < matrix.length && col>=0) {
+        let num = matrix[row][col]
+        if(num === target) {
+            return true
+        } else if(num > target) {
+            col--
+        } else {
+            row++
+        }
+    }
+    return false
+};
+```
