@@ -42,3 +42,29 @@ var merge = function(intervals) {
     return res
 };
 ```
+
+
+[64. 最小路径和](https://leetcode.cn/problems/minimum-path-sum/)
+
+```javascript
+var minPathSum = function(grid) {
+    let col = grid.length
+    let row = grid[0].length
+
+    for(let i = 1; i < col; i++){
+        grid[i][0] += grid[i-1][0]
+    }
+
+    for(let i = 1; i < row; i++){
+        grid[0][i] += grid[0][i-1]
+    }
+
+    for(let i = 1; i< col; i++) {
+        for(let j = 1; j<row; j++) {
+            grid[i][j] += Math.min(grid[i-1][j], grid[i][j-1])
+        }
+    }
+
+    return grid[col - 1][row - 1]
+};
+```
