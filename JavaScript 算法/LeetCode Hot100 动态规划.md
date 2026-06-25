@@ -50,3 +50,48 @@ var maxProfit = function(prices) {
     return Math.max(dp1, dp2)
 };
 ```
+
+
+[72. 编辑距离](https://leetcode.cn/problems/edit-distance/)
+
+解题思路：
+
+初始化一个 dp 二维数组
+
+
+假设我们现在要计算 `dp[i][j]`，我们需要看 `word1` 的第 `i` 个字符（即 `word1[i-1]`）和 `word2` 的第 `j` 个字符（即 `word2[j-1]`）是否相等。
+
+`dp[i][0]`  i -> 0 只能删除 i 个
+`dp[0][j]` 0 到 j 只能插入 j 个
+
+如果 word[i-1] === word[j-1] 那就不用操作了 `dp[i][j] === dp[i-1][j-1]`
+
+不然就是去操作里数最小的
+
+替换  `dp[i-1][j-1] +1`
+删除  `dp[i-1][j] + 1`
+插入  `dp[i][j-1] + 1`
+
+
+```javascript
+var minDistance = function(word1, word2) {
+    let dp = Array.from({length: word1.length+1}, () => new Array(word2.length+1).fill(0))
+
+    for(let i = 0; i<= word1.length;i++) {
+        dp[i][0] = i
+    }
+    for(let j = 0; j <=word2.length;j++) {
+        dp[0][j] = j
+    }
+    for(let i = 1; i <= word1.length; i++) {
+        for(let j=1;j<=word2.length;j++) {
+            if(word1[i-1] === word2[j-1]) {
+                dp[i][j] = dp[i-1][j-1]
+            } else {
+                dp[i][j] = Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])+1
+            }
+        }
+    }
+    return dp[word1.length][word2.length]
+};
+```
