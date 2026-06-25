@@ -66,5 +66,5 @@ var minPathSum = function(grid) {
     }
 
     return grid[col - 1][row - 1]
-};
+};    
 ```
