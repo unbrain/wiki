@@ -28,3 +28,25 @@ var numSquares = function(n) {
 };
 ```
 
+[309. 买卖股票的最佳时机含冷冻期](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
+
+```javascript
+var maxProfit = function(prices) {
+    const n = prices.length
+    if(n===0) return 0
+    let dp0 = -prices[0]
+    let dp1 = 0
+    let dp2 = 0
+
+    for(let i=0; i< n;i++) {
+        let new0 = Math.max(dp0,dp2-prices[i])
+        let new1 = dp0+prices[i]
+        let new2 = Math.max(dp1, dp2)
+        dp0 = new0
+        dp1 = new1
+        dp2 = new2
+    }
+
+    return Math.max(dp1, dp2)
+};
+```
