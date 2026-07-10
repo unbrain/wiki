@@ -1,3 +1,17 @@
+---
+title: 算法基础 - 链表与原型链
+tags:
+  - 链表
+  - 数据结构
+  - 双指针
+  - 反转链表
+  - 原型链
+  - JavaScript
+description: 链表的概念、类型、操作实现，以及JavaScript原型链原理
+aliases:
+  - 链表
+---
+
 # 链表
 
 ## 概念
@@ -395,3 +409,11 @@ child.name  // 'child'，现在是自己身上的属性
 delete child.name    // 删除自己的属性
 child.name  // 'parent'，恢复为原型链上的属性
 ```
+
+---
+
+## 相关笔记
+
+- [[JavaScript 算法基础第一天|复杂度与数据结构]]
+- [[LeetCode Hot100 链表|链表题目]]
+- [[LeetCode Hot100 双指针|双指针题目]]

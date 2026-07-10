@@ -1,3 +1,14 @@
+---
+title: LeetCode Hot100 - 多数元素与除自身以外
+tags:
+  - LeetCode
+  - Hot100
+  - 数组
+  - 哈希
+  - 摩尔投票
+description: 多数元素(169)、除自身以外数组的乘积(238)
+---
+
 [169. 多数元素](https://leetcode.cn/problems/majority-element/)（见[[LeetCode Hot100 hash表]]）
 
 ```javascript
@@ -231,3 +242,9 @@ LRUCache.prototype.put = function(key, value) {
 - **get**：时间复杂度 O(1)
 - **put**：时间复杂度 O(1)
 - 空间复杂度：O(capacity)，其中 capacity 为缓存的容量。
+
+## 相关笔记
+
+- [[LeetCode Hot100 hash表]]
+- [[LeetCode Hot100 链表]]
+- [[LeetCode Hot100 双指针]]

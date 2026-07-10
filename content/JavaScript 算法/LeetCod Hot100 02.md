@@ -1,3 +1,15 @@
+---
+title: LeetCode Hot100 - 反转链表与课程表
+tags:
+  - LeetCode
+  - Hot100
+  - 链表
+  - 反转链表
+  - 图
+  - 拓扑排序
+description: 反转链表(206)、课程表(207)拓扑排序
+---
+
 [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)（见[[LeetCode Hot100 链表]]、[[JavaScript 算法基础第二天]]）
 
 ```javascript
@@ -266,3 +278,10 @@ var rob = function(nums) {
     return curr
 };
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第二天|链表基础]]
+- [[JavaScript 算法基础第五天|图基础]]
+- [[LeetCode Hot100 链表]]
+- [[LeetCode Hot100 双指针 图]]

@@ -1,3 +1,14 @@
+---
+title: LeetCode Hot100 - 位运算与动态规划
+tags:
+  - LeetCode
+  - Hot100
+  - 位运算
+  - 动态规划
+  - 背包问题
+description: 汉明距离(461)、目标和(494)、零钱兑换(322)
+---
+
 [461. 汉明距离](https://leetcode.cn/problems/hamming-distance/)
 
 ```javascript
@@ -67,3 +78,8 @@ var findDisappearedNumbers = function(nums) {
     return ret
 };
 ```
+
+## 相关笔记
+
+- [[LeetCode Hot100 hash表]]
+- [[JavaScript 算法基础第九天|动态规划基础]]

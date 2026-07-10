@@ -1,3 +1,15 @@
+---
+title: LeetCode Hot100 - 双指针与图
+tags:
+  - LeetCode
+  - Hot100
+  - 图
+  - 拓扑排序
+  - BFS
+description: 课程表(207)图相关题目
+aliases:
+  - 双指针与图
+---
 
 [207. 课程表](https://leetcode.cn/problems/course-schedule/)
 
@@ -25,3 +37,8 @@ deep（course）++
 ```javascript
 
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第五天|图基础]]
+- [[LeetCod Hot100 02|课程表]]

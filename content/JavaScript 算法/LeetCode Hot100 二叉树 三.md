@@ -1,4 +1,15 @@
-
+---
+title: LeetCode Hot100 - 二叉树(三)
+tags:
+  - LeetCode
+  - Hot100
+  - 二叉树
+  - 树形DP
+  - BST
+description: 打家劫舍III(337)、BST转累加树(538)等
+aliases:
+  - 二叉树(三)
+---
 
 [337. 打家劫舍 III](https://leetcode.cn/problems/house-robber-iii/)
 
@@ -82,3 +93,11 @@ var pathSum = function(root, targetSum) {
     return count
 };
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第四天|树与二叉树]]
+- [[LeetCode Hot100 二叉树|二叉树(一)]]
+- [[LeetCode Hot100 二叉树 二|二叉树(二)]]
+- [[LeetCode Hot100 二叉树 回顾与总结|二叉树总结]]
+- [[LeetCode Hot100 动态规划|动态规划]]

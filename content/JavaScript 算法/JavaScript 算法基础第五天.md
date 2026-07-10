@@ -1,3 +1,19 @@
+---
+title: 算法基础 - 图
+tags:
+  - 图
+  - 图论
+  - BFS
+  - DFS
+  - 邻接表
+  - 邻接矩阵
+  - 数据结构
+description: 图的概念、表示方法（邻接矩阵/邻接表）、BFS和DFS遍历
+aliases:
+  - 图
+  - 图论
+---
+
 # 图
 
 ## 概念
@@ -468,3 +484,10 @@ var cloneGraph = function(node) {
     return map.get(node)
 };
 ```
+
+---
+
+## 相关笔记
+
+- [[JavaScript 算法基础第一天|复杂度与数据结构]]
+- [[JavaScript 算法基础第四天|树的遍历]]

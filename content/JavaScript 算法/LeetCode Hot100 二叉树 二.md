@@ -1,3 +1,15 @@
+---
+title: LeetCode Hot100 - 二叉树(二)
+tags:
+  - LeetCode
+  - Hot100
+  - 二叉树
+  - BST
+  - BFS
+description: 验证二叉搜索树(98)、层序遍历(102)等
+aliases:
+  - 二叉树(二)
+---
 
 [98. 验证二叉搜索树](https://leetcode.cn/problems/validate-binary-search-tree/)
 
@@ -141,3 +153,10 @@ var buildTree = function (preorder, inorder) {
     return buildSubTree(0, preorder.length-1, 0, inorder.length-1)
 };
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第四天|树与二叉树]]
+- [[LeetCode Hot100 二叉树|二叉树(一)]]
+- [[LeetCode Hot100 二叉树 三|二叉树(三)]]
+- [[LeetCode Hot100 二叉树 回顾与总结|二叉树总结]]

@@ -1,3 +1,14 @@
+---
+title: LeetCode Hot100 - 环形链表
+tags:
+  - LeetCode
+  - Hot100
+  - 链表
+  - 双指针
+  - 快慢指针
+description: 环形链表II(142)、环形链表(141)
+---
+
 [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)（见[[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]）
 
 ```javascript
@@ -117,3 +128,9 @@ var longestConsecutive = function(nums) {
     return long
 };
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第二天|链表基础]]
+- [[LeetCode Hot100 链表]]
+- [[LeetCode Hot100 双指针]]

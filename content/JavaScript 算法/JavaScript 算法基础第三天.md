@@ -1,3 +1,19 @@
+---
+title: 算法基础 - 集合与字典
+tags:
+  - 集合
+  - 字典
+  - Set
+  - Map
+  - 哈希表
+  - 数据结构
+description: Set和Map数据结构的使用，数组去重，哈希表应用
+aliases:
+  - 集合
+  - 字典
+  - 哈希表
+---
+
 # 集合与字典
 
 ## Set（集合）
@@ -146,7 +162,7 @@ var isValid = function(s) {
 - 时间复杂度：O(n)
 - 空间复杂度：O(n)
 
-- [1. 两数之和](https://leetcode.cn/problems/two-sum)
+- [1. 两数之和](https://leetcode.cn/problems/two-sum)（见[[LeetCode Hot100 hash表]]）
 
 ```javascript
 var twoSum = function(nums, target) {
@@ -232,3 +248,10 @@ var minWindow = function(s, t) {
 
 - 时间复杂度：O(m + n)
 - 空间复杂度：O(Σ)，Σ 为字符集大小
+
+---
+
+## 相关笔记
+
+- [[JavaScript 算法基础第一天|复杂度与数据结构]]
+- [[LeetCode Hot100 hash表|哈希表题目]]

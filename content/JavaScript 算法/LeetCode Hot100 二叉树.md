@@ -1,3 +1,16 @@
+---
+title: LeetCode Hot100 - 二叉树
+tags:
+  - LeetCode
+  - Hot100
+  - 二叉树
+  - 递归
+  - DFS
+description: 最近公共祖先(236)、翻转二叉树(226)等二叉树题目
+aliases:
+  - 二叉树
+---
+
 [236. 二叉树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)
 
 ```javascript
@@ -120,3 +133,10 @@ var mergeTrees = function(root1, root2) {
     return root1
 };
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第四天|树与二叉树]]
+- [[LeetCode Hot100 二叉树 二|二叉树(二)]]
+- [[LeetCode Hot100 二叉树 三|二叉树(三)]]
+- [[LeetCode Hot100 二叉树 回顾与总结|二叉树总结]]

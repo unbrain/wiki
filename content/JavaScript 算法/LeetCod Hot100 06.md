@@ -1,3 +1,14 @@
+---
+title: LeetCode Hot100 - 动态规划与贪心
+tags:
+  - LeetCode
+  - Hot100
+  - 动态规划
+  - 贪心
+  - 背包问题
+description: 分割等和子集(416)、队列重建(406)
+---
+
 [416. 分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/)
 
 ```javascript
@@ -138,4 +149,9 @@ var topKFrequent = function(nums, k) {
     return heap.heap.map(item => item.key)
 };
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第九天|动态规划基础]]
+- [[LeetCode Hot100 链表]]
 

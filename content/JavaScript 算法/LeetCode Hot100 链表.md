@@ -1,3 +1,16 @@
+---
+title: LeetCode Hot100 - 链表
+tags:
+  - LeetCode
+  - Hot100
+  - 链表
+  - 双指针
+  - 反转链表
+description: 相交链表(160)、回文链表(234)、环形链表等链表题目
+aliases:
+  - 链表专题
+---
+
 [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)
 
 ```javascript
@@ -283,3 +296,10 @@ var mergeKLists = function (lists) {
     return lists[0]
 };
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第二天|链表基础]]
+- [[LeetCode Hot100 双指针|双指针]]
+- [[JavaScript 算法基础第六天|堆与优先队列]]
+- [[JavaScript 算法基础第七天|链表进阶]]

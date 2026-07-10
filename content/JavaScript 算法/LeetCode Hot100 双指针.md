@@ -1,3 +1,16 @@
+---
+title: LeetCode Hot100 - 双指针
+tags:
+  - LeetCode
+  - Hot100
+  - 双指针
+  - 快慢指针
+  - 链表
+description: 相交链表(160)、回文链表(234)等双指针题目
+aliases:
+  - 双指针
+---
+
 [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)（见[[LeetCode Hot100 链表]]）
 
 解题思路：
@@ -306,3 +319,10 @@ var longestPalindrome = function(s) {
     return maxStr
 };
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第二天|链表基础]]
+- [[LeetCode Hot100 双指针 二|双指针(二)]]
+- [[LeetCode Hot100 链表|链表专题]]
+- [[LeetCode Hot100 二分查找|二分查找]]

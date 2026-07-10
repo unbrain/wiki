@@ -1,3 +1,16 @@
+---
+title: LeetCode Hot100 - 哈希表
+tags:
+  - LeetCode
+  - Hot100
+  - 哈希表
+  - 哈希
+  - 数组
+description: 两数组交集、多数元素、单词拆分等哈希表题目
+aliases:
+  - 哈希表
+---
+
 [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/) 见[[LeetCode Hot100 链表]]
 
 [169. 多数元素](https://leetcode.cn/problems/majority-element/)（见[[LeetCod Hot100 03.md]]）
@@ -98,3 +111,10 @@ var findDisappearedNumbers = function(nums) {
 ```
 
 [438. 找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
+
+## 相关笔记
+
+- [[JavaScript 算法基础第三天|集合与字典]]
+- [[LeetCode Hot100 hash表 二|哈希表(二)]]
+- [[LeetCode Hot100 链表|链表专题]]
+- [[LeetCode Hot100 双指针|双指针]]

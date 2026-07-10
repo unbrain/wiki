@@ -1,3 +1,16 @@
+---
+title: LeetCode Hot100 - 链表与二叉树
+tags:
+  - LeetCode
+  - Hot100
+  - 链表
+  - 二叉树
+  - 双指针
+description: LeetCode Hot100精选题目：相交链表、二叉树最近公共祖先
+aliases:
+  - Hot100
+---
+
 [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)（见[[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]、[[LeetCode Hot100 hash表]]）
 
 ```javascript
@@ -208,4 +221,11 @@ var maximalSquare = function(matrix) {
 时间复杂度：O(m×n)，其中 m 和 n 分别是矩阵的行数和列数。需要遍历每个单元格一次。
 
 空间复杂度：O(m×n)，使用了一个大小为 (m+1)×(n+1) 的二维 DP 数组。
+
+## 相关笔记
+
+- [[JavaScript 算法基础第二天|链表基础]]
+- [[JavaScript 算法基础第四天|二叉树基础]]
+- [[LeetCode Hot100 链表|链表专题]]
+- [[LeetCode Hot100 二叉树|二叉树专题]]
 

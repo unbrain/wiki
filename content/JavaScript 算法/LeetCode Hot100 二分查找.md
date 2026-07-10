@@ -1,3 +1,15 @@
+---
+title: LeetCode Hot100 - 二分查找
+tags:
+  - LeetCode
+  - Hot100
+  - 二分查找
+  - 数组
+description: 最长递增子序列(300)、寻找重复数(287)等二分查找题目
+aliases:
+  - 二分查找
+---
+
 [300. 最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/)
 
 ```javascript
@@ -151,3 +163,8 @@ var search = function(nums, target) {
     return -1
 };
 ```
+
+## 相关笔记
+
+- [[LeetCode Hot100 双指针|双指针]]
+- [[LeetCode Hot100 动态规划|动态规划]]

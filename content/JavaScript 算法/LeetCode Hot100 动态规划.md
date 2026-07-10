@@ -1,3 +1,16 @@
+---
+title: LeetCode Hot100 - 动态规划
+tags:
+  - LeetCode
+  - Hot100
+  - 动态规划
+  - DP
+  - 路径问题
+description: 不同路径(62)、完全平方数(279)等动态规划题目
+aliases:
+  - 动态规划
+---
+
 [62. 不同路径](https://leetcode.cn/problems/unique-paths/)
 
 ```javascript
@@ -95,3 +108,10 @@ var minDistance = function(word1, word2) {
     return dp[word1.length][word2.length]
 };
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第九天|动态规划基础]]
+- [[LeetCod Hot100 05|DP与位运算]]
+- [[LeetCode Hot100 回溯|回溯]]
+- [[LeetCode Hot100 二分查找|二分查找]]

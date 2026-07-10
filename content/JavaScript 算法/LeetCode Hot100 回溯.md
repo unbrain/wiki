@@ -1,3 +1,16 @@
+---
+title: LeetCode Hot100 - 回溯
+tags:
+  - LeetCode
+  - Hot100
+  - 回溯
+  - 递归
+  - 括号
+description: 括号生成(22)、目标和(494)等回溯题目
+aliases:
+  - 回溯
+---
+
 [22. 括号生成](https://leetcode.cn/problems/generate-parentheses/)
 
 ```javascript
@@ -284,4 +297,10 @@ var removeInvalidParentheses = function(s) {
 - **算排列，用 `used`：** 只要是求**全排列**（如 46），每次都要从 `0` 重新遍历，必须用 `used` 数组或哈希表防止重复选同一个位置。
     
 - **传引用，必 `pop`：** 只要你的路径变量 `path` 是一个**数组**，在调用完递归函数后，绝对不要漏掉 `path.pop()` 撤销选择！
+
+## 相关笔记
+
+- [[JavaScript 算法基础第十天|回溯基础]]
+- [[LeetCode Hot100 动态规划|动态规划]]
+- [[LeetCode Hot100 二叉树|二叉树]]
 

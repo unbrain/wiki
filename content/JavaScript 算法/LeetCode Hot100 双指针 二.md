@@ -1,3 +1,16 @@
+---
+title: LeetCode Hot100 - 双指针(二)
+tags:
+  - LeetCode
+  - Hot100
+  - 双指针
+  - 单调栈
+  - 接雨水
+description: 接雨水(42)等双指针高级题目
+aliases:
+  - 双指针(二)
+---
+
 [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/)
 
 解题思路：
@@ -164,3 +177,9 @@ var threeSum = function(nums) {
     return res
 };
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第二天|链表基础]]
+- [[LeetCode Hot100 双指针|双指针(一)]]
+- [[LeetCode Hot100 链表|链表专题]]
