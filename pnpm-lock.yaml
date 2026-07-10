@@ -20,6 +20,7 @@ specifiers:
   esbuild-sass-plugin: ^3.6.0
   github-slugger: ^2.0.0
   globby: ^16.1.0
+  hast-util-from-html: ^2.0.3
   hast-util-to-jsx-runtime: ^2.3.6
   isomorphic-git: ^1.36.3
   lightningcss: ^1.31.1
@@ -59,6 +60,7 @@ dependencies:
   esbuild-sass-plugin: 3.7.0_tr6nurg2e6gtwuawrzmxrw6wpe
   github-slugger: 2.0.0
   globby: 16.2.1
+  hast-util-from-html: 2.0.3
   hast-util-to-jsx-runtime: 2.3.6
   isomorphic-git: 1.38.6
   lightningcss: 1.32.0
