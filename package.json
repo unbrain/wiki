@@ -88,5 +88,5 @@
     "tsx": "^4.21.0",
     "typescript": "^7.0.2"
   },
-  "onlyBuiltDependencies": "[\"esbuild\",\"sharp\",\"@parcel/watcher\"]"
+  "onlyBuiltDependencies": ["esbuild", "sharp", "@parcel/watcher"]
 }
