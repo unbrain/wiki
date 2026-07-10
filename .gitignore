@@ -2,3 +2,7 @@
 .trash/
 *.tmp
 .DS_Store
+node_modules/
+public/
+.cache/
+*.log
