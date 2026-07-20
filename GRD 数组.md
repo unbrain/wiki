@@ -60,5 +60,25 @@ var containsDuplicate = function(nums) {
 [57. 插入区间](https://leetcode.cn/problems/insert-interval/)
 
 ```javascript
+var insert = function (intervals, newInterval) {
+    let res = []
+    let [nl, nr] = newInterval
+    let i = 0
+    while(i<intervals.length && intervals[i][1] < nl) {
+        res.push(intervals[i])
+        i++
+    }
+    while(i < intervals.length && intervals[i][0] <= nr) {
+        nl = Math.min(nl, intervals[i][0])
+        nr = Math.max(nr, intervals[i][1])
+        i++
+    }
 
+    res.push([nl, nr])
+    while(i<intervals.length ) {
+        res.push(intervals[i])
+        i++
+    }
+    return res
+};
 ```
