@@ -139,3 +139,23 @@ var productExceptSelf = function (nums) {
 
 [56. 合并区间](https://leetcode.cn/problems/merge-intervals/)
 
+```javascript
+var merge = function(intervals) {
+    intervals.sort((a, b) => a[0]-b[0])
+
+    const res = [intervals[0]]
+    let last = res[0]
+    for(let i = 1; i< intervals.length; i++) {
+        let [pl, pr] = last
+        let [cl, cr] = intervals[i]
+        if(pr < cl) {
+            res.push([cl, cr])
+            last = res[res.length - 1]
+        } else if(pr < cr) {
+            last[1] = cr
+        }
+    }
+
+    return res
+};
+```
