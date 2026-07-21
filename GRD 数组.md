@@ -118,3 +118,21 @@ var threeSum = function (nums) {
 };
 ```
 
+[238. 除了自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/)
+
+```javascript
+var productExceptSelf = function (nums) {
+    const len = nums.length
+    const res = new Array(len).fill(1)
+    let left = 1
+    let right = 1
+    for (let i = 0; i < len; i++) {
+        res[i] *= left
+        left *= nums[i]
+
+        res[len - 1 - i] *= right
+        right *= nums[len - 1 - i]
+    }
+    return res
+};
+```
