@@ -68,3 +68,28 @@ MyQueue.prototype.empty = function() {
  * var param_4 = obj.empty()
  */
 ```
+
+[150. 逆波兰表达式求值](https://leetcode.cn/problems/evaluate-reverse-polish-notation/)
+
+```javascript
+var evalRPN = function (tokens) {
+    const stack = []
+
+    const oprt = {
+        '+': (a, b) => a + b,
+        '-': (a, b) => a - b,
+        '*': (a, b) => a * b,
+        '/': (a, b) => ~~(a / b),
+    }
+    for(let char of tokens) {
+        if(oprt[char]) {
+            let b = stack.pop()
+            let a = stack.pop()
+            stack.push(oprt[char](a, b))
+        } else {
+            stack.push(+char)
+        }
+    }
+    return stack[0]
+};
+```
