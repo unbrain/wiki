@@ -147,3 +147,31 @@ MinStack.prototype.getMin = function () {
 ```
 
 [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/)
+
+```javascript
+var trap = function (height) {
+    let count =0
+    let left =0, maxL = height[left]
+    let right = height.length - 1, maxR = height[right]
+
+    while(left < right) {
+        if(height[left] < height[right]) {
+            if(height[left] > maxL) {
+                maxL = height[left]
+            } else {
+                count += maxL - height[left]
+            }
+            left++
+        } else {
+            if(height[right]>maxR) {
+                maxR = height[right]
+            } else {
+                count+= maxR - height[right]
+            }
+            right--
+        }
+    }
+
+    return count
+};
+```
