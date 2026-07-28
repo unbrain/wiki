@@ -35,3 +35,26 @@ var hasCycle = function(head) {
 };
 ```
 
+[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
+
+```javascript
+var reverseList = function(head) {
+    let prev = null
+    let curr = head
+
+    while(curr) {
+        let p = curr.next
+        curr.next = prev
+        prev = curr
+        curr = p
+    }
+
+    return prev
+};
+```
+
+[876. 链表的中间结点](https://leetcode.cn/problems/middle-of-the-linked-list/)
+
+```javascript
+
+```
