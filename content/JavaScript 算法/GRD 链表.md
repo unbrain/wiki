@@ -56,5 +56,19 @@ var reverseList = function(head) {
 [876. 链表的中间结点](https://leetcode.cn/problems/middle-of-the-linked-list/)
 
 ```javascript
+var middleNode = function(head) {
+    const dummy = new ListNode(0, head)
+    let fast = dummy, slow = dummy
+    while(fast?.next?.next) {
+        slow = slow.next
+        fast = fast.next.next
+    }
+    return slow.next
+};
+```
+
+[146. LRU 缓存](https://leetcode.cn/problems/lru-cache/)
+
+```javascript
 
 ```
