@@ -19,3 +19,18 @@ var isPalindrome = function(s) {
 };
 ```
 
+[242. 有效的字母异位词](https://leetcode.cn/problems/valid-anagram/)
+
+```javascript
+var isAnagram = function(s, t) {
+    if(s.length !== t.length) return false
+    const arrs = new Array(26).fill(0)
+    const arrt = new Array(26).fill(0)
+
+    for(let i = 0; i < s.length;i++){
+        arrs[s.charCodeAt(i) - 97]++
+        arrt[t.charCodeAt(i) - 97]++
+    }
+    return arrs.join(',') === arrt.join(',')
+};
+```
