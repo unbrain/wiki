@@ -76,4 +76,19 @@ var lengthOfLongestSubstring = function (s) {
 [8. 字符串转换整数 (atoi)](https://leetcode.cn/problems/string-to-integer-atoi/)
 
 ```javascript
+var myAtoi = function(s) {
+    let i = 0, sign = 1, num =0
+    while(s[i] === ' ') i++
+    if(s[i] === '+' || s[i] === '-'){
+        sign = s[i] === '-' ? -1 : 1
+        i++
+    }
+    while(i<s.length && s[i]>='0' && s[i]<='9') {
+        num = num * 10 + (s.charCodeAt(i) - 48)
+        if(num * sign > 2**31-1) return 2**31-1
+        if(num * sign < -(2**31) ) return -(2**31)
+        i++
+    }
+    return sign * num
+};
 ```
