@@ -52,3 +52,28 @@ var longestPalindrome = function(s) {
     return set.size ? len + 1: len
 };
 ```
+
+[3. 无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/)
+
+```javascript
+var lengthOfLongestSubstring = function (s) {
+    let left = 0
+    let max = 0
+    let set = new Set()
+    for(let right = 0; right< s.length; right++) {
+        while(set.has(s[right])) {
+            set.delete(s[left])
+            left++
+        }
+        set.add(s[right])
+        max = Math.max(max, right-left+1)
+    }
+
+    return max
+};
+```
+
+[8. 字符串转换整数 (atoi)](https://leetcode.cn/problems/string-to-integer-atoi/)
+
+```javascript
+```
