@@ -36,3 +36,19 @@ var isAnagram = function(s, t) {
 ```
 
 [409. 最长回文串](https://leetcode.cn/problems/longest-palindrome/)
+
+```javascript
+var longestPalindrome = function(s) {
+    let set = new Set()
+    let len = 0
+    for(const c of s) {
+        if(set.has(c)) {
+            set.delete(c)
+            len+=2
+        } else {
+            set.add(c)
+        }
+    }
+    return set.size ? len + 1: len
+};
+```
