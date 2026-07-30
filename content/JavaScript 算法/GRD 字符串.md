@@ -92,3 +92,32 @@ var myAtoi = function(s) {
     return sign * num
 };
 ```
+
+[5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring/)
+
+```javascript
+var longestPalindrome = function(s) {
+    let maxStr = ''
+    const expand = (i,j) => {
+        while(i>=0 && s[i] === s[j]&& j<=s.length-1) {
+            let cur = j-i+1
+            if(maxStr.length < cur) {
+                maxStr = s.slice(i, j+1)
+            }
+            i--;
+            j++
+        }
+    }
+    for(let i = 0; i < s.length; i++) {
+        expand(i, i)
+        expand(i, i+1)
+    }
+    return maxStr
+};
+```
+
+[438. 找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
+
+```javascript
+
+```

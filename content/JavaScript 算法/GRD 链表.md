@@ -102,9 +102,3 @@ LRUCache.prototype.put = function(key, value) {
     }
 };
 ```
-
-[5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring/)
-
-```javascript
-
-```
