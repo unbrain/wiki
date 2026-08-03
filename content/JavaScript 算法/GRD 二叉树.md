@@ -45,3 +45,18 @@ var diameterOfBinaryTree = function(root) {
     return max
 };
 ```
+
+[104. 二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree/)
+
+```javascript
+var maxDepth = function(root) {
+    if(!root) return 0
+    return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
+};
+```
+
+[102. 二叉树的层序遍历](https://leetcode.cn/problems/binary-tree-level-order-traversal/)
+
+```javascript
+
+```
