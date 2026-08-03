@@ -58,5 +58,21 @@ var maxDepth = function(root) {
 [102. 二叉树的层序遍历](https://leetcode.cn/problems/binary-tree-level-order-traversal/)
 
 ```javascript
+var levelOrder = function(root) {
+   if(!root) return []
+   const res = []
+   const queue = [root]
+   while(queue.length) {
+        let len = queue.length
+        res.push([])
+        while(len--){
+            let curr = queue.shift()
+            res[res.length-1].push(curr.val)
+            curr.left && queue.push(curr.left)
+            curr.right && queue.push(curr.right)
+        }
 
+   }
+   return res
+};
 ```
