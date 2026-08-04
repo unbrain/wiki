@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="300" viewBox="0 0 1200 300"
+     role="img" aria-labelledby="title desc">
+  <title id="title">部署流程</title>
+  <desc id="desc">从 Obsidian 提交笔记到 GitHub 发布：git push 触发 GitHub Actions 执行安装、构建并部署到 GitHub Pages。</desc>
+
+  <rect x="0" y="0" width="1200" height="300" rx="26" fill="#1b1b1e"/>
+  <rect x="0.75" y="0.75" width="1198.5" height="298.5" rx="25.25" fill="none" stroke="#393639" stroke-width="1.5"/>
+
+  <g font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">
+    <g>
+      <rect x="56" y="70" width="232" height="140" rx="14" fill="#232327" stroke="#3d3d42" stroke-width="1.5"/>
+      <text x="84" y="106" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="14" letter-spacing="1.5" fill="#9a9a9e">STEP 01</text>
+      <text x="84" y="144" font-size="26" font-weight="600" fill="#f0f0f1">提交</text>
+      <text x="84" y="174" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" fill="#9a9a9e">git push · main</text>
+    </g>
+    <g>
+      <rect x="341" y="70" width="232" height="140" rx="14" fill="#232327" stroke="#3d3d42" stroke-width="1.5"/>
+      <text x="369" y="106" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="14" letter-spacing="1.5" fill="#9a9a9e">STEP 02</text>
+      <text x="369" y="144" font-size="26" font-weight="600" fill="#f0f0f1">安装依赖</text>
+      <text x="369" y="174" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" fill="#9a9a9e">pnpm install</text>
+    </g>
+    <g>
+      <rect x="626" y="70" width="232" height="140" rx="14" fill="#232327" stroke="#3d3d42" stroke-width="1.5"/>
+      <text x="654" y="106" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="14" letter-spacing="1.5" fill="#9a9a9e">STEP 03</text>
+      <text x="654" y="144" font-size="26" font-weight="600" fill="#f0f0f1">构建站点</text>
+      <text x="654" y="174" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" fill="#9a9a9e">npx quartz build</text>
+    </g>
+    <g>
+      <rect x="911" y="70" width="232" height="140" rx="14" fill="#232327" stroke="#3d3d42" stroke-width="1.5"/>
+      <text x="939" y="106" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="14" letter-spacing="1.5" fill="#9a9a9e">STEP 04</text>
+      <text x="939" y="144" font-size="26" font-weight="600" fill="#f0f0f1">发布上线</text>
+      <text x="939" y="174" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" fill="#9a9a9e">GitHub Pages</text>
+    </g>
+  </g>
+
+  <g stroke="#6e6e73" stroke-width="2">
+    <line x1="288" y1="140" x2="333" y2="140"/>
+    <line x1="573" y1="140" x2="618" y2="140"/>
+    <line x1="858" y1="140" x2="903" y2="140"/>
+  </g>
+  <g fill="#84a59d">
+    <path d="M335 134 l9 6 l-9 6 z"/>
+    <path d="M620 134 l9 6 l-9 6 z"/>
+    <path d="M905 134 l9 6 l-9 6 z"/>
+  </g>
+
+  <text x="600" y="250" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="16" fill="#9a9a9e">推送 main 分支自动触发 · .github/workflows/deploy.yml</text>
+  <text x="600" y="278" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="16" fill="#8ba3b8">https://unbrain.github.io/wiki</text>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="120" viewBox="0 0 1200 120"
+     role="img" aria-labelledby="title desc">
+  <title id="title">本地开发</title>
+  <desc id="desc">在本地安装依赖、构建并预览站点的命令入口。</desc>
+
+  <rect x="0" y="0" width="1200" height="120" rx="24" fill="#1b1b1e"/>
+  <rect x="0.75" y="0.75" width="1198.5" height="118.5" rx="23.25" fill="none" stroke="#393639" stroke-width="1.5"/>
+
+  <rect x="56" y="24" width="72" height="72" rx="16" fill="#26262a" stroke="#3d3d42" stroke-width="1.5"/>
+  <rect x="64" y="66" width="34" height="26" rx="4" fill="none" stroke="#84a59d" stroke-width="2"/>
+  <text x="72" y="85" font-family="ui-monospace, Menlo, monospace" font-size="16" font-weight="600" fill="#84a59d">&gt;_</text>
+  <circle cx="102" cy="84" r="2" fill="#84a59d"/>
+
+  <text x="152" y="73" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif" font-size="40" font-weight="700" fill="#f0f0f1">本地开发</text>
+
+  <text x="1144" y="73" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="18" letter-spacing="2" fill="#9a9a9e">02 · DEVELOPMENT</text>
+</svg>

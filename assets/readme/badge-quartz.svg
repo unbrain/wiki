@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="44" viewBox="0 0 300 44" role="img" aria-labelledby="t d">
+  <title id="t">Quartz v5</title>
+  <desc id="d">静态站点生成：Quartz v5</desc>
+  <rect x="0" y="0" width="150" height="44" rx="12" fill="#84a59d"/>
+  <rect x="150" y="0" width="150" height="44" rx="0" fill="#2a2a2e"/>
+  <rect x="150" y="0" width="150" height="44" rx="12" fill="none" stroke="#3d3d42" stroke-width="1.5"/>
+  <text x="75" y="28" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif" font-size="17" font-weight="700" fill="#1b1b1e">Quartz v5</text>
+  <text x="225" y="28" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif" font-size="17" font-weight="600" fill="#e8e8ea">站点生成</text>
+</svg>
