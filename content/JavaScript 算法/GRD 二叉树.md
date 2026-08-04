@@ -46,6 +46,12 @@ var diameterOfBinaryTree = function(root) {
 };
 ```
 
+## 相关笔记
+
+- [[JavaScript 算法基础第四天|树与二叉树基础]]
+- [[经典 150 二叉树|二叉树题目]]
+- [[LeetCode Hot100 二叉树|二叉树专题]]（翻转、最大深度、层序遍历）
+
 [104. 二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree/)
 
 ```javascript

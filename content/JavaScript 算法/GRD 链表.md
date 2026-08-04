@@ -102,3 +102,9 @@ LRUCache.prototype.put = function(key, value) {
     }
 };
 ```
+
+## 相关笔记
+
+- [[JavaScript 算法基础第二天|链表基础]]
+- [[经典 150 链表|链表题目]]（合并有序链表、LRU）
+- [[LeetCode Hot100 链表|链表专题]]（反转、环形链表）

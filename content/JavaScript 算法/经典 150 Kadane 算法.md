@@ -29,3 +29,8 @@ let total = 0, maxSum = nums[0], minSum = nums[0]
 
     return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum
 ```
+
+## 相关笔记
+
+- [[LeetCode Hot100 动态规划|动态规划题目]]
+- [[JavaScript 算法基础第九天|动态规划与贪心基础]]
