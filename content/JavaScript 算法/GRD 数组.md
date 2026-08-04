@@ -1,3 +1,17 @@
+---
+title: GRD 数组刷题
+tags:
+  - LeetCode
+  - GRD
+  - 数组
+  - 哈希表
+  - 双指针
+  - 区间
+description: 两数之和、三数之和、合并区间、盛最多水的容器等数组高频题
+aliases:
+  - 数组刷题
+---
+
 [1. 两数之和](https://leetcode.cn/problems/two-sum/)
 
 ```javascript

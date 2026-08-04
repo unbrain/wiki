@@ -216,3 +216,10 @@ var maxProfit = function(prices) {
     return res
 };
 ```
+
+## 相关笔记
+
+- [[LeetCode Hot100 动态规划|动态规划题目]]
+- [[经典 150 Kadane 算法|Kadane 算法]]（最大子数组和）
+- [[LeetCod Hot100 06|背包与贪心题目]]（分割等和子集、跳跃游戏）
+- [[JavaScript 算法基础第十天|回溯算法]]（与 DP 对比记忆）

@@ -1,3 +1,15 @@
+---
+title: 经典150题 - Kadane 算法
+tags:
+  - LeetCode
+  - 经典150
+  - 动态规划
+  - Kadane
+description: 最大子数组和、环形子数组的最大和（Kadane 算法）
+aliases:
+  - Kadane 算法
+---
+
 [53. 最大子数组和](https://leetcode.cn/problems/maximum-subarray/)
 
 ```javascript

@@ -422,3 +422,9 @@ var mergeKLists = function (lists) {
 | 堆（本题） | O(n log k) | O(k) | 最推荐，思路清晰 |
 | 分治归并 | O(n log k) | O(1) / O(log k) | 两两合并，常数更小 |
 | 顺序合并 | O(nk) | O(1) | 逐条链表合并，最慢 |
+
+## 相关笔记
+
+- [[JavaScript 算法基础第一天|栈与队列]]（优先队列基础）
+- [[LeetCod Hot100 06|堆相关题目]]（前 K 个高频元素）
+- [[LeetCode Hot100 链表|合并 K 个有序链表]]（分治归并方案）

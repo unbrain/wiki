@@ -81,5 +81,7 @@ var minPathSum = function(grid) {
 
 ## 相关笔记
 
-- [[LeetCode Hot100 动态规划|动态规划]]
+- [[LeetCode Hot100 动态规划|动态规划]]（最小路径和）
 - [[LeetCode Hot100 二分查找|二分查找]]
+- [[经典 150 矩阵|矩阵]]（旋转图像）
+- [[经典 150 区间|区间]]（合并区间）

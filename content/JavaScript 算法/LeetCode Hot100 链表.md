@@ -302,5 +302,5 @@ var mergeKLists = function (lists) {
 - [[JavaScript 算法基础第二天|链表基础]]
 - [[LeetCode Hot100 双指针|双指针]]
 - [[JavaScript 算法基础第六天|堆与优先队列]]
-- [[JavaScript 算法基础第七天|链表进阶]]
+- [[JavaScript 算法基础第七天|归并排序]]
 - [[GRD 链表|GRD 链表刷题]]

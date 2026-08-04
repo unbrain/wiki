@@ -1,3 +1,15 @@
+---
+title: GRD 字符串刷题
+tags:
+  - LeetCode
+  - GRD
+  - 字符串
+  - 滑动窗口
+  - 双指针
+description: 回文串、字母异位词、无重复字符最长子串、最小覆盖子串等字符串高频题
+aliases:
+  - 字符串刷题
+---
 
 [125. 验证回文串](https://leetcode.cn/problems/valid-palindrome/)
 

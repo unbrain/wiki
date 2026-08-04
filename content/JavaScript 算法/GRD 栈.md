@@ -1,3 +1,15 @@
+---
+title: GRD 栈刷题
+tags:
+  - LeetCode
+  - GRD
+  - 栈
+  - 单调栈
+description: 有效括号、最小栈、接雨水、柱状图最大矩形等栈高频题
+aliases:
+  - 栈刷题
+---
+
 [20. 有效的括号](https://leetcode.cn/problems/valid-parentheses/)
 
 ```javascript

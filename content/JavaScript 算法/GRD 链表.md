@@ -1,3 +1,15 @@
+---
+title: GRD 链表刷题
+tags:
+  - LeetCode
+  - GRD
+  - 链表
+  - 快慢指针
+description: 反转链表、环形链表、合并有序链表、LRU 缓存等链表高频题
+aliases:
+  - 链表刷题
+---
+
 [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
 
 ```javascript

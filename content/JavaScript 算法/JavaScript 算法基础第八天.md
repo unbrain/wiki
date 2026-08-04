@@ -104,3 +104,9 @@ var isSymmetric = function(root) {
     return isMirror(root.left, root.right)
 };
 ```
+
+## 相关笔记
+
+- [[LeetCode Hot100 二分查找|二分查找]]（分治应用）
+- [[JavaScript 算法基础第九天|动态规划]]（分治 vs DP 对比）
+- [[JavaScript 算法基础第七天|归并排序]]

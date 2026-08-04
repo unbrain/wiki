@@ -167,4 +167,6 @@ var search = function(nums, target) {
 ## 相关笔记
 
 - [[LeetCode Hot100 双指针|双指针]]
-- [[LeetCode Hot100 动态规划|动态规划]]
+- [[LeetCode Hot100 动态规划|动态规划]]（最长递增子序列）
+- [[JavaScript 算法基础第八天|分治法]]（二分本质是分治）
+- [[经典 150 矩阵|矩阵]]（搜索二维矩阵 II）

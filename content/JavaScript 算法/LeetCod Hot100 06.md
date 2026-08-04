@@ -154,4 +154,6 @@ var topKFrequent = function(nums, k) {
 
 - [[JavaScript 算法基础第九天|动态规划基础]]
 - [[LeetCode Hot100 链表]]
+- [[JavaScript 算法基础第六天|堆与优先队列]]（前 K 个高频元素）
+- [[经典 150 栈|栈]]（字符串解码）
 

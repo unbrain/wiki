@@ -1,3 +1,15 @@
+---
+title: GRD 二叉树刷题
+tags:
+  - LeetCode
+  - GRD
+  - 二叉树
+  - DFS
+  - BFS
+description: 翻转二叉树、平衡二叉树、最大深度、层序遍历等二叉树高频题
+aliases:
+  - 二叉树刷题
+---
 
 [226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/)
 
