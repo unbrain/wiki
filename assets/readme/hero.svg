@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="400" viewBox="0 0 1200 400"
+     role="img" aria-labelledby="title desc">
+  <title id="title">算法 Wiki</title>
+  <desc id="desc">以 JavaScript 为主线的数据结构与算法刷题笔记与前端工程化实践：48 篇笔记，4 大刷题系列，由 Obsidian 写作、Quartz 构建、GitHub Actions 自动部署。</desc>
+
+  <rect x="0" y="0" width="1200" height="400" rx="26" fill="#1b1b1e"/>
+  <rect x="0.75" y="0.75" width="1198.5" height="398.5" rx="25.25" fill="none" stroke="#393639" stroke-width="1.5"/>
+
+  <!-- left: identity -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, 'IBM Plex Mono', monospace" font-size="15" letter-spacing="3" fill="#9a9a9e">
+    <text x="56" y="72">OBSIDIAN · QUARTZ · GITHUB PAGES</text>
+  </g>
+
+  <text x="56" y="148" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif" font-size="64" font-weight="800" fill="#f0f0f1">算法 Wiki</text>
+
+  <text x="56" y="194" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif" font-size="25" font-weight="600" fill="#8ba3b8">数据结构与算法刷题笔记 · 前端工程化实践</text>
+
+  <text x="56" y="230" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif" font-size="19" fill="#b4b4b8">以 JavaScript 为主线：LeetCode Hot 100、经典 150 与高频题逐题解析</text>
+
+  <!-- stat chips -->
+  <g font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif" font-size="18.5">
+    <g>
+      <rect x="56" y="302" width="128" height="44" rx="12" fill="#26262a" stroke="#3d3d42" stroke-width="1.5"/>
+      <circle cx="80" cy="324" r="4" fill="#84a59d"/>
+      <text x="92" y="329" font-weight="600" fill="#e8e8ea">48 篇笔记</text>
+    </g>
+    <g>
+      <rect x="200" y="302" width="140" height="44" rx="12" fill="#26262a" stroke="#3d3d42" stroke-width="1.5"/>
+      <circle cx="224" cy="324" r="4" fill="#8ba3b8"/>
+      <text x="236" y="329" font-weight="600" fill="#e8e8ea">4 大刷题系列</text>
+    </g>
+    <g>
+      <rect x="356" y="302" width="136" height="44" rx="12" fill="#26262a" stroke="#3d3d42" stroke-width="1.5"/>
+      <circle cx="380" cy="324" r="4" fill="#e0b75d"/>
+      <text x="392" y="329" font-weight="600" fill="#e8e8ea">2 篇工程笔记</text>
+    </g>
+  </g>
+
+  <!-- right: repo tree -->
+  <g>
+    <rect x="704" y="48" width="448" height="320" rx="16" fill="#232327" stroke="#3d3d42" stroke-width="1.5"/>
+    <circle cx="728" cy="76" r="5.5" fill="#e05d5d"/>
+    <circle cx="750" cy="76" r="5.5" fill="#e0b75d"/>
+    <circle cx="772" cy="76" r="5.5" fill="#6cc47f"/>
+    <text x="820" y="81" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" fill="#9a9a9e">wiki · 仓库结构</text>
+    <line x1="724" y1="94" x2="1132" y2="94" stroke="#333337" stroke-width="1.5"/>
+
+    <g font-family="ui-monospace, 'SF Mono', Menlo, 'IBM Plex Mono', monospace" font-size="16.5">
+      <text x="724" y="120" fill="#e8e8ea" font-weight="600">content/</text>
+
+      <text x="724" y="146" fill="#6e6e73">├─ </text>
+      <text x="784" y="146" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">JavaScript 算法/</text>
+
+      <text x="784" y="172" fill="#6e6e73">│  ├─ </text>
+      <text x="868" y="172" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">算法基础</text>
+
+      <text x="784" y="198" fill="#6e6e73">│  ├─ </text>
+      <text x="868" y="198" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">LeetCode Hot 100</text>
+
+      <text x="784" y="224" fill="#6e6e73">│  ├─ </text>
+      <text x="868" y="224" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">经典 150 题</text>
+
+      <text x="784" y="250" fill="#6e6e73">│  └─ </text>
+      <text x="868" y="250" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">GRD 刷题</text>
+
+      <text x="724" y="276" fill="#6e6e73">├─ </text>
+      <text x="784" y="276" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">瀑布流项目/</text>
+
+      <text x="724" y="302" fill="#6e6e73">└─ </text>
+      <text x="784" y="302" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">docs/</text>
+
+      <text x="1088" y="146" font-size="15" fill="#9a9a9e" text-anchor="end">46 篇</text>
+      <text x="1088" y="172" font-size="15" fill="#9a9a9e" text-anchor="end">10 篇</text>
+      <text x="1088" y="198" font-size="15" fill="#9a9a9e" text-anchor="end">20 篇</text>
+      <text x="1088" y="224" font-size="15" fill="#9a9a9e" text-anchor="end">11 篇</text>
+      <text x="1088" y="250" font-size="15" fill="#9a9a9e" text-anchor="end">5 篇</text>
+      <text x="1088" y="276" font-size="15" fill="#9a9a9e" text-anchor="end">2 篇</text>
+      <text x="1088" y="302" font-size="15" fill="#9a9a9e" text-anchor="end">文档</text>
+
+      <text x="724" y="340" font-size="15" fill="#6e6e73">git push → GitHub Actions → GitHub Pages</text>
+    </g>
+  </g>
+</svg>
