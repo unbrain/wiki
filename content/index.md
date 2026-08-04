@@ -124,4 +124,4 @@ npx quartz serve # 本地预览 http://localhost:8080
 
 Obsidian · Quartz v5 · TypeScript · GitHub Actions
 
-本站使用 [[docs/index|Quartz]] 构建，在 Obsidian 中写作、经 GitHub Actions 自动部署。笔记内容随 [仓库](https://github.com/unbrain/wiki) 持续更新。
+本站使用 [Quartz](https://quartz.jzhao.xyz) 构建，在 Obsidian 中写作、经 GitHub Actions 自动部署。笔记内容随 [仓库](https://github.com/unbrain/wiki) 持续更新。
