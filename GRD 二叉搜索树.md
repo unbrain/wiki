@@ -35,5 +35,16 @@ var isValidBST = function(root) {
 [230. 二叉搜索树中第 K 小的元素](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/)
 
 ```javascript
-
+var kthSmallest = function(root, k) {
+    const stack = []
+    while(stack.length || root) {
+        while(root) {
+            stack.push(root)
+            root = root.left
+        }
+        root = stack.pop()
+        if(--k === 0) return root.val
+        root = root.right
+    }
+};
 ```
