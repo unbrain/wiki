@@ -17,3 +17,23 @@ var lowestCommonAncestor = function(root, p, q) {
 ```
 
 
+[98. 验证二叉搜索树](https://leetcode.cn/problems/validate-binary-search-tree/)
+
+```javascript
+var isValidBST = function(root) {
+    if(!root) return true
+    const isValid = (node, lower, upper) => {
+        if(!node) return true
+        if(node.val <= lower || node.val >= upper) return false
+        return isValid(node.left, lower, node.val) && isValid(node.right, node.val, upper)
+    }
+
+    return isValid(root, -Infinity, Infinity)
+};
+```
+
+[230. 二叉搜索树中第 K 小的元素](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/)
+
+```javascript
+
+```
