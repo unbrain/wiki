@@ -1,3 +1,16 @@
+---
+title: GRD 二叉搜索树刷题
+tags:
+  - LeetCode
+  - GRD
+  - 二叉树
+  - 二叉搜索树
+  - DFS
+  - 中序遍历
+description: 二叉搜索树的最近公共祖先、验证二叉搜索树、第 K 小元素等 BST 高频题
+aliases:
+  - 二叉搜索树刷题
+---
 
 [235. 二叉搜索树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/)
 
