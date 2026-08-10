@@ -4,7 +4,6 @@ tags:
   - LeetCode
   - Hot100
   - 二叉树
-  - 总结
   - BST
   - 满二叉树
   - 完全二叉树

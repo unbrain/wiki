@@ -1,6 +1,7 @@
 ---
 title: 算法基础 - 分治算法
 tags:
+  - 算法基础
   - 分治
   - 算法
   - 递归
@@ -68,7 +69,7 @@ var guessNumber = function(n) {
     return rec(1, n)
 };
 ```
-- [226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/) — 翻转左右子树，递归到叶子（见[[LeetCod Hot100]]）
+- [226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/) — 翻转左右子树，递归到叶子（见[[LeetCode Hot100]]）
 ```javascript
 var invertTree = function(root) {
     if(!root) return null

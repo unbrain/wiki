@@ -41,4 +41,4 @@ deep（course）++
 ## 相关笔记
 
 - [[JavaScript 算法基础第五天|图基础]]
-- [[LeetCod Hot100 02|课程表]]
+- [[LeetCode Hot100 02|课程表]]

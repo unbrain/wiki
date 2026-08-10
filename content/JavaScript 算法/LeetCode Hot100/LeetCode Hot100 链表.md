@@ -27,7 +27,7 @@ var getIntersectionNode = function (headA, headB) {
 ```
 
 
-[234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)（见[[LeetCode Hot100 双指针]]、[[LeetCod Hot100]]）
+[234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)（见[[LeetCode Hot100 双指针]]、[[LeetCode Hot100]]）
 
 ```javascript
 var isPalindrome = function(head) {
@@ -65,7 +65,7 @@ var isPalindrome = function(head) {
 };
 ```
 
-[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)（见[[LeetCod Hot100 02]]、[[JavaScript 算法基础第二天]]）
+[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)（见[[LeetCode Hot100 02]]、[[JavaScript 算法基础第二天]]）
 
 ```javascript
 var reverseList = function(head) {
@@ -81,7 +81,7 @@ var reverseList = function(head) {
 };
 ```
 
-[148. 排序链表](https://leetcode.cn/problems/sort-list/)（归并+快慢指针，见[[LeetCode Hot100 双指针]]、[[LeetCod Hot100 03]]）
+[148. 排序链表](https://leetcode.cn/problems/sort-list/)（归并+快慢指针，见[[LeetCode Hot100 双指针]]、[[LeetCode Hot100 03]]）
 
 ```javascript
 const merge = (l, r) => {
@@ -119,7 +119,7 @@ var sortList = function(head) {
 };
 ```
 
-[146. LRU 缓存](https://leetcode.cn/problems/lru-cache/)（见[[LeetCod Hot100 03]]）
+[146. LRU 缓存](https://leetcode.cn/problems/lru-cache/)（见[[LeetCode Hot100 03]]）
 
 ```javascript
 var LRUCache = function(capacity) {
@@ -159,7 +159,7 @@ LRUCache.prototype.put = function(key, value) {
 ```
 
 141 同下（[[LeetCode Hot100 双指针]]见快慢指针解法）
-[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)（见[[LeetCode Hot100 双指针]]、[[LeetCod Hot100 04]]、[[JavaScript 算法基础第二天]]）
+[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)（见[[LeetCode Hot100 双指针]]、[[LeetCode Hot100 04]]、[[JavaScript 算法基础第二天]]）
 ```javascript
 var detectCycle = function(head) {
     if(!head) return head

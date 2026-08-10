@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: "Unbrain's Wiki"
+  pageTitle: "Wiki"
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true

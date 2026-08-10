@@ -1,0 +1,17 @@
+{
+  "width": 1200,
+  "fps": 30,
+  "duration": 6.8,
+  "colors": 256,
+  "dither": "none",
+  "clip_to_base_alpha": true,
+  "max_size_mb": 2.5,
+  "layers": [
+    {"id": "struct-root", "enter": {"start": 0.15, "end": 0.95, "from": [0, -24]}, "exit": {"start": 6.05, "end": 6.72, "to": [0, -14]}},
+    {"id": "col-0", "enter": {"start": 1.05, "end": 1.80, "from": [0, -20]}, "exit": {"start": 6.05, "end": 6.72, "to": [0, -14]}},
+    {"id": "col-1", "enter": {"start": 1.90, "end": 2.65, "from": [0, -20]}, "exit": {"start": 6.05, "end": 6.72, "to": [0, -14]}},
+    {"id": "col-2", "enter": {"start": 2.75, "end": 3.50, "from": [0, -20]}, "exit": {"start": 6.05, "end": 6.72, "to": [0, -14]}},
+    {"id": "col-3", "enter": {"start": 3.60, "end": 4.35, "from": [0, -20]}, "exit": {"start": 6.05, "end": 6.72, "to": [0, -14]}},
+    {"id": "col-4", "enter": {"start": 4.45, "end": 5.20, "from": [0, -20]}, "exit": {"start": 6.05, "end": 6.72, "to": [0, -14]}}
+  ]
+}

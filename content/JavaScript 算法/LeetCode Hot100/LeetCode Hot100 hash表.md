@@ -4,7 +4,6 @@ tags:
   - LeetCode
   - Hot100
   - 哈希表
-  - 哈希
   - 数组
 description: 两数组交集、多数元素、单词拆分等哈希表题目
 aliases:
@@ -13,7 +12,7 @@ aliases:
 
 [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/) 见[[LeetCode Hot100 链表]]
 
-[169. 多数元素](https://leetcode.cn/problems/majority-element/)（见[[LeetCod Hot100 03]]）
+[169. 多数元素](https://leetcode.cn/problems/majority-element/)（见[[LeetCode Hot100 03]]）
 
 多数元素是指在数组中出现次数 **大于** `⌊ n/2 ⌋` 的元素。
 
@@ -37,7 +36,7 @@ var majorityElement = function(nums) {
 };
 ```
 
-[139. 单词拆分](https://leetcode.cn/problems/word-break/)（见[[LeetCod Hot100 04]]）
+[139. 单词拆分](https://leetcode.cn/problems/word-break/)（见[[LeetCode Hot100 04]]）
 
 解题思路： 动态规划
 
@@ -64,7 +63,7 @@ var wordBreak = function(s, wordDict) {
 };
 ```
 
-[128. 最长连续序列](https://leetcode.cn/problems/longest-consecutive-sequence/)（见[[LeetCod Hot100 04]]）
+[128. 最长连续序列](https://leetcode.cn/problems/longest-consecutive-sequence/)（见[[LeetCode Hot100 04]]）
 
 解题思路
 
@@ -89,7 +88,7 @@ var longestConsecutive = function(nums) {
 };
 ```
 
-[448. 找到所有数组中消失的数字](https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/)（见[[LeetCod Hot100 05]]）
+[448. 找到所有数组中消失的数字](https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/)（见[[LeetCode Hot100 05]]）
 
 对于能够找的数进行 *-1 这样子少了的数的位置将是大于 0 的数
 

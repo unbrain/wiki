@@ -2,83 +2,88 @@
      width="1200" height="400" viewBox="0 0 1200 400"
      role="img" aria-labelledby="title desc">
   <title id="title">算法 Wiki</title>
-  <desc id="desc">以 JavaScript 为主线的数据结构与算法刷题笔记与前端工程化实践：48 篇笔记，4 大刷题系列，由 Obsidian 写作、Quartz 构建、GitHub Actions 自动部署。</desc>
+  <desc id="desc">以 JavaScript 为主线的数据结构与算法刷题笔记与前端工程化实践：50 篇笔记、4 大刷题系列，Obsidian 写作、Quartz 构建、GitHub Actions 自动部署。右侧展示典型题解笔记卡片。</desc>
 
-  <rect x="0" y="0" width="1200" height="400" rx="26" fill="#1b1b1e"/>
-  <rect x="0.75" y="0.75" width="1198.5" height="398.5" rx="25.25" fill="none" stroke="#393639" stroke-width="1.5"/>
+  <defs>
+    <linearGradient id="hero-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101830"/>
+      <stop offset="1" stop-color="#0c1220"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="400" rx="26" fill="url(#hero-bg)"/>
+  <rect x="0.75" y="0.75" width="1198.5" height="398.5" rx="25.25" fill="none" stroke="#2a3552" stroke-width="1.5"/>
 
   <!-- left: identity -->
-  <g font-family="ui-monospace, 'SF Mono', Menlo, 'IBM Plex Mono', monospace" font-size="15" letter-spacing="3" fill="#9a9a9e">
-    <text x="56" y="72">OBSIDIAN · QUARTZ · GITHUB PAGES</text>
-  </g>
+  <text x="56" y="72" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="3" fill="#8b96b3">OBSIDIAN · QUARTZ · GITHUB ACTIONS</text>
 
-  <text x="56" y="148" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif" font-size="64" font-weight="800" fill="#f0f0f1">算法 Wiki</text>
+  <text x="56" y="148" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif" font-size="68" font-weight="800" fill="#eef1f8">算法 <tspan fill="#ffb84b">Wiki</tspan></text>
 
-  <text x="56" y="194" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif" font-size="25" font-weight="600" fill="#8ba3b8">数据结构与算法刷题笔记 · 前端工程化实践</text>
+  <text x="56" y="192" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif" font-size="24" font-weight="600" fill="#c6cfe3">数据结构与算法刷题笔记 · 前端工程化实践</text>
 
-  <text x="56" y="230" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif" font-size="19" fill="#b4b4b8">以 JavaScript 为主线：Hot 100、经典 150 与高频题逐题解析</text>
+  <text x="56" y="228" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif" font-size="19" fill="#8b96b3">以 JavaScript 为主线：Hot 100 与经典 150 逐题解析</text>
 
   <!-- stat chips -->
-  <g font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif" font-size="18.5">
+  <g font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif" font-size="18.5">
     <g>
-      <rect x="56" y="302" width="128" height="44" rx="12" fill="#26262a" stroke="#3d3d42" stroke-width="1.5"/>
-      <circle cx="80" cy="324" r="4" fill="#84a59d"/>
-      <text x="92" y="329" font-weight="600" fill="#e8e8ea">48 篇笔记</text>
+      <rect x="56" y="302" width="128" height="44" rx="12" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/>
+      <circle cx="80" cy="324" r="4" fill="#5b8cff"/>
+      <text x="92" y="329" font-weight="600" fill="#eef1f8">50 篇笔记</text>
     </g>
     <g>
-      <rect x="200" y="302" width="140" height="44" rx="12" fill="#26262a" stroke="#3d3d42" stroke-width="1.5"/>
-      <circle cx="224" cy="324" r="4" fill="#8ba3b8"/>
-      <text x="236" y="329" font-weight="600" fill="#e8e8ea">4 大刷题系列</text>
+      <rect x="200" y="302" width="150" height="44" rx="12" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/>
+      <circle cx="224" cy="324" r="4" fill="#ffb84b"/>
+      <text x="236" y="329" font-weight="600" fill="#eef1f8">4 大刷题系列</text>
     </g>
     <g>
-      <rect x="356" y="302" width="136" height="44" rx="12" fill="#26262a" stroke="#3d3d42" stroke-width="1.5"/>
-      <circle cx="380" cy="324" r="4" fill="#e0b75d"/>
-      <text x="392" y="329" font-weight="600" fill="#e8e8ea">2 篇工程笔记</text>
+      <rect x="366" y="302" width="146" height="44" rx="12" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/>
+      <circle cx="390" cy="324" r="4" fill="#4fd1a5"/>
+      <text x="402" y="329" font-weight="600" fill="#eef1f8">2 篇工程笔记</text>
     </g>
   </g>
 
-  <!-- right: repo tree -->
+  <!-- right: note card stack -->
+  <g transform="rotate(-2 972 208)">
+    <rect x="672" y="56" width="480" height="304" rx="16" fill="#151c31" stroke="#223052" stroke-width="1.5"/>
+    <rect x="696" y="80" width="120" height="10" rx="5" fill="#232f4e"/>
+    <rect x="696" y="104" width="320" height="9" rx="4.5" fill="#1e2842"/>
+    <rect x="696" y="126" width="290" height="9" rx="4.5" fill="#1e2842"/>
+    <rect x="696" y="148" width="340" height="9" rx="4.5" fill="#1e2842"/>
+    <rect x="696" y="170" width="260" height="9" rx="4.5" fill="#1e2842"/>
+  </g>
+  <g transform="rotate(2 972 208)">
+    <rect x="636" y="42" width="480" height="304" rx="16" fill="#151c31" stroke="#223052" stroke-width="1.5"/>
+    <rect x="660" y="66" width="120" height="10" rx="5" fill="#232f4e"/>
+    <rect x="660" y="90" width="330" height="9" rx="4.5" fill="#1e2842"/>
+    <rect x="660" y="112" width="300" height="9" rx="4.5" fill="#1e2842"/>
+    <rect x="660" y="134" width="350" height="9" rx="4.5" fill="#1e2842"/>
+    <rect x="660" y="156" width="240" height="9" rx="4.5" fill="#1e2842"/>
+  </g>
+
   <g>
-    <rect x="704" y="48" width="448" height="320" rx="16" fill="#232327" stroke="#3d3d42" stroke-width="1.5"/>
-    <circle cx="728" cy="76" r="5.5" fill="#e05d5d"/>
-    <circle cx="750" cy="76" r="5.5" fill="#e0b75d"/>
-    <circle cx="772" cy="76" r="5.5" fill="#6cc47f"/>
-    <text x="820" y="81" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" fill="#9a9a9e">wiki · 仓库结构</text>
-    <line x1="724" y1="94" x2="1132" y2="94" stroke="#333337" stroke-width="1.5"/>
+    <rect x="664" y="48" width="488" height="308" rx="16" fill="#171f33" stroke="#3b4a70" stroke-width="1.5"/>
+    <circle cx="690" cy="76" r="4" fill="#ffb84b"/>
+    <text x="704" y="81" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" fill="#8b96b3">note.md — 1. 两数之和</text>
+    <text x="1128" y="81" text-anchor="end" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif" font-size="15" font-weight="600" fill="#5b8cff">题解 · 哈希表</text>
+    <line x1="688" y1="96" x2="1128" y2="96" stroke="#2a3552" stroke-width="1.5"/>
 
-    <g font-family="ui-monospace, 'SF Mono', Menlo, 'IBM Plex Mono', monospace" font-size="16.5">
-      <text x="724" y="120" fill="#e8e8ea" font-weight="600">content/</text>
+    <g font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="16.5">
+      <text x="688" y="128" fill="#eef1f8">function <tspan fill="#ffb84b">twoSum</tspan><tspan fill="#eef1f8">(nums, target) {</tspan></text>
+      <text x="688" y="154" fill="#eef1f8">  <tspan fill="#ffb84b">const</tspan><tspan fill="#eef1f8"> map = new Map()</tspan></text>
+      <text x="688" y="180" fill="#eef1f8">  <tspan fill="#ffb84b">for</tspan><tspan fill="#eef1f8"> (let i = 0; i &lt; nums.length; i++) {</tspan></text>
+      <text x="688" y="206" fill="#eef1f8">    <tspan fill="#ffb84b">const</tspan><tspan fill="#eef1f8"> d = target - nums[i]</tspan></text>
+      <text x="688" y="232" fill="#eef1f8">    <tspan fill="#ffb84b">if</tspan><tspan fill="#eef1f8"> (map.has(d)) </tspan><tspan fill="#ffb84b">return</tspan><tspan fill="#eef1f8"> [map.get(d), i]</tspan></text>
+      <text x="688" y="258" fill="#eef1f8">    map.set(nums[i], i)</text>
+      <text x="688" y="284" fill="#eef1f8">  }</text>
+    </g>
 
-      <text x="724" y="146" fill="#6e6e73">├─ </text>
-      <text x="784" y="146" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">JavaScript 算法/</text>
-
-      <text x="784" y="172" fill="#6e6e73">│  ├─ </text>
-      <text x="868" y="172" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">算法基础</text>
-
-      <text x="784" y="198" fill="#6e6e73">│  ├─ </text>
-      <text x="868" y="198" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">LeetCode Hot 100</text>
-
-      <text x="784" y="224" fill="#6e6e73">│  ├─ </text>
-      <text x="868" y="224" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">经典 150 题</text>
-
-      <text x="784" y="250" fill="#6e6e73">│  └─ </text>
-      <text x="868" y="250" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">GRD 刷题</text>
-
-      <text x="724" y="276" fill="#6e6e73">├─ </text>
-      <text x="784" y="276" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">瀑布流项目/</text>
-
-      <text x="724" y="302" fill="#6e6e73">└─ </text>
-      <text x="784" y="302" fill="#d8d8da" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', 'Segoe UI', sans-serif">docs/</text>
-
-      <text x="1088" y="146" font-size="15" fill="#9a9a9e" text-anchor="end">46 篇</text>
-      <text x="1088" y="172" font-size="15" fill="#9a9a9e" text-anchor="end">10 篇</text>
-      <text x="1088" y="198" font-size="15" fill="#9a9a9e" text-anchor="end">20 篇</text>
-      <text x="1088" y="224" font-size="15" fill="#9a9a9e" text-anchor="end">11 篇</text>
-      <text x="1088" y="250" font-size="15" fill="#9a9a9e" text-anchor="end">5 篇</text>
-      <text x="1088" y="276" font-size="15" fill="#9a9a9e" text-anchor="end">2 篇</text>
-      <text x="1088" y="302" font-size="15" fill="#9a9a9e" text-anchor="end">文档</text>
-
-      <text x="724" y="340" font-size="15" fill="#6e6e73">git push → GitHub Actions → GitHub Pages</text>
+    <line x1="688" y1="314" x2="1128" y2="314" stroke="#2a3552" stroke-width="1.5"/>
+    <g font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15">
+      <text x="688" y="337" fill="#8b96b3">时间 </text>
+      <text x="724" y="337" fill="#4fd1a5">O(n)</text>
+      <text x="770" y="337" fill="#8b96b3">空间 </text>
+      <text x="806" y="337" fill="#4fd1a5">O(n)</text>
+      <text x="860" y="337" fill="#8b96b3">Map 哈希查找</text>
     </g>
   </g>
 </svg>
