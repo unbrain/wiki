@@ -4,6 +4,7 @@ tags:
   - LeetCode
   - GRD
   - 动态规划
+  - 背包
 description: 爬楼梯、最大子数组和、零钱兑换等动态规划高频题
 aliases:
   - 动态规划刷题
@@ -62,11 +63,48 @@ var coinChange = function (coins, amount) {
 - `dp[i] === Infinity` 则凑不出来，返回 -1
 - 完整思路（遍历方向辨析、倒序变 0-1 背包、换序问题）见 [[322 零钱兑换]]
 
+[416. 分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/)
+
+```javascript
+var canPartition = function(nums) {
+    const sum = nums.reduce((a, b) => a+b, 0)
+    if(sum % 2 !== 0) {
+        return false
+    }
+    const target = sum / 2
+    const dp = new Array(target + 1).fill(false)
+    dp[0] = true
+
+    for(const num of nums){
+        for(let i = target; i >= num; i--) {
+            dp[i] = dp[i] || dp[i-num]
+        }
+    }
+
+    return dp[target]
+};
+```
+
+
+[62. 不同路径](https://leetcode.cn/problems/unique-paths/)
+
+```javascript
+var uniquePaths = function (m, n) {
+    const dp = new Array(n).fill(1)
+    for(let i = 1; i < m; i++) {
+        for(let j = 1; j< n; j++) {
+            dp[j] += dp[j-1]
+        }
+    }
+    return dp[n-1]
+};
+```
 ## 相关笔记
 
 - [[经典 150 Kadane 算法|Kadane 算法题目]]（最大子数组和）
 - [[JavaScript 算法基础第九天|动态规划基础]]（爬楼梯、状态转移）
 - [[LeetCode Hot100 动态规划|动态规划专题]]（不同路径、编辑距离等）
+- [[LeetCode Hot100 06|背包与贪心题目]]（分割等和子集）
 - [[LeetCode Hot100 05]]（零钱兑换）
 - [[322 零钱兑换]]（零钱兑换完整解题思路）
 ```
