@@ -427,5 +427,5 @@ var mergeKLists = function (lists) {
 ## 相关笔记
 
 - [[JavaScript 算法基础第一天|栈与队列]]（优先队列基础）
-- [[LeetCode Hot100 06|堆相关题目]]（前 K 个高频元素）
+- [[LeetCode Hot100 动态规划与贪心|堆相关题目]]（前 K 个高频元素）
 - [[LeetCode Hot100 链表|合并 K 个有序链表]]（分治归并方案）

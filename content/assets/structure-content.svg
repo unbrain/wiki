@@ -2,7 +2,7 @@
      width="1200" height="560" viewBox="0 0 1200 560"
      role="img" aria-labelledby="title desc">
   <title id="title">内容结构</title>
-  <desc id="desc">算法 Wiki 内容结构：算法基础 10 篇、LeetCode Hot 100 20 篇、经典 150 11 篇、GRD 7 篇、瀑布流项目 2 篇，共 50 篇笔记。</desc>
+  <desc id="desc">算法 Wiki 内容结构：算法基础 10 篇、LeetCode Hot 100 20 篇、经典 150 11 篇、GRD 8 篇、解题思路 1 篇、瀑布流项目 2 篇，共 52 篇笔记。</desc>
 
   <rect x="0" y="0" width="1200" height="560" rx="26" fill="#0e1424"/>
   <rect x="0.75" y="0.75" width="1198.5" height="558.5" rx="25.25" fill="none" stroke="#2a3552" stroke-width="1.5"/>
@@ -68,15 +68,16 @@
   <g id="col-3">
     <rect x="722" y="172" width="190" height="40" rx="12" fill="#1d2740" stroke="#3b4a70" stroke-width="1.5"/>
     <text x="736" y="198" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif" font-size="20" font-weight="700" fill="#eef1f8">GRD 刷题</text>
-    <text x="898" y="198" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" fill="#ffb84b">7 篇</text>
+    <text x="898" y="198" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" fill="#ffb84b">8 篇</text>
     <g font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif" font-size="19" fill="#c6cfe3">
-      <g><rect x="723" y="230" width="188" height="30" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="250" text-anchor="middle">数组</text></g>
-      <g><rect x="723" y="272" width="188" height="30" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="292" text-anchor="middle">链表</text></g>
-      <g><rect x="723" y="314" width="188" height="30" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="334" text-anchor="middle">栈</text></g>
-      <g><rect x="723" y="356" width="188" height="30" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="376" text-anchor="middle">字符串</text></g>
-      <g><rect x="723" y="398" width="188" height="30" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="418" text-anchor="middle">二叉树</text></g>
-      <g><rect x="723" y="440" width="188" height="30" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="460" text-anchor="middle">二叉搜索树</text></g>
-      <g><rect x="723" y="482" width="188" height="30" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="502" text-anchor="middle">动态规划</text></g>
+      <g><rect x="723" y="230" width="188" height="28" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="249" text-anchor="middle">数组</text></g>
+      <g><rect x="723" y="268" width="188" height="28" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="287" text-anchor="middle">链表</text></g>
+      <g><rect x="723" y="306" width="188" height="28" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="325" text-anchor="middle">栈</text></g>
+      <g><rect x="723" y="344" width="188" height="28" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="363" text-anchor="middle">字符串</text></g>
+      <g><rect x="723" y="382" width="188" height="28" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="401" text-anchor="middle">二叉树</text></g>
+      <g><rect x="723" y="420" width="188" height="28" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="439" text-anchor="middle">二叉搜索树</text></g>
+      <g><rect x="723" y="458" width="188" height="28" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="477" text-anchor="middle">堆</text></g>
+      <g><rect x="723" y="496" width="188" height="28" rx="9" fill="#171f33" stroke="#2a3552" stroke-width="1.5"/><text x="817" y="515" text-anchor="middle">动态规划</text></g>
     </g>
   </g>
 
@@ -92,6 +93,6 @@
 
   <g font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="16" fill="#8b96b3">
     <circle cx="60" cy="529" r="4" fill="#ffb84b"/>
-    <text x="74" y="534">50 篇笔记 · 建议从「算法基础」系列按序开始学习</text>
+    <text x="74" y="534">52 篇笔记 · 建议从「算法基础」系列按序开始学习</text>
   </g>
 </svg>

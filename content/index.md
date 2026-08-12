@@ -5,13 +5,13 @@ tags:
   - index
 ---
 
-![算法 Wiki：以 JavaScript 为主线的数据结构与算法刷题笔记与前端工程化实践，50 篇笔记、4 大刷题系列](assets/hero.svg)
+![算法 Wiki：以 JavaScript 为主线的数据结构与算法刷题笔记与前端工程化实践，52 篇笔记、4 大刷题系列](assets/hero.svg)
 
 <p align="center">
   <img src="assets/badge-obsidian.svg" width="170" alt="Obsidian 写作">
   <img src="assets/badge-quartz.svg" width="170" alt="Quartz v5 站点生成">
   <img src="assets/badge-actions.svg" width="170" alt="GitHub Actions 自动部署">
-  <img src="assets/badge-notes.svg" width="170" alt="48 篇笔记">
+  <img src="assets/badge-notes.svg" width="170" alt="52 篇笔记">
 </p>
 
 本站以 JavaScript 为主线，记录数据结构与算法刷题笔记与前端工程化实践。笔记在 Obsidian 中写作，Quartz 生成静态站点，GitHub Actions 自动部署到 GitHub Pages。
@@ -28,7 +28,7 @@ tags:
 </p>
 
 <p align="center">
-  <img src="assets/structure-content.gif" width="100%" alt="内容结构：算法基础 10 篇、LeetCode Hot 100 20 篇、经典 150 11 篇、GRD 7 篇、瀑布流项目 2 篇，共 50 篇笔记">
+  <img src="assets/structure-content.gif" width="100%" alt="内容结构：算法基础 10 篇、LeetCode Hot 100 20 篇、经典 150 11 篇、GRD 8 篇、解题思路 1 篇、瀑布流项目 2 篇，共 52 篇笔记">
 </p>
 
 ### JavaScript 算法
@@ -39,16 +39,16 @@ tags:
 
 | 天 | 主题 | 笔记 |
 | --- | --- | --- |
-| 01 | 复杂度分析、栈与队列 | [[JavaScript 算法/算法基础/JavaScript 算法基础第一天\|算法基础 第一天]] |
-| 02 | 链表与原型链 | [[JavaScript 算法/算法基础/JavaScript 算法基础第二天\|算法基础 第二天]] |
-| 03 | 集合与字典（Set / Map / 哈希） | [[JavaScript 算法/算法基础/JavaScript 算法基础第三天\|算法基础 第三天]] |
-| 04 | 树与二叉树遍历（BFS / DFS） | [[JavaScript 算法/算法基础/JavaScript 算法基础第四天\|算法基础 第四天]] |
-| 05 | 图与邻接表 | [[JavaScript 算法/算法基础/JavaScript 算法基础第五天\|算法基础 第五天]] |
-| 06 | 堆与优先队列（Top-K） | [[JavaScript 算法/算法基础/JavaScript 算法基础第六天\|算法基础 第六天]] |
-| 07 | 排序算法 | [[JavaScript 算法/算法基础/JavaScript 算法基础第七天\|算法基础 第七天]] |
-| 08 | 分治算法 | [[JavaScript 算法/算法基础/JavaScript 算法基础第八天\|算法基础 第八天]] |
-| 09 | 动态规划与贪心 | [[JavaScript 算法/算法基础/JavaScript 算法基础第九天\|算法基础 第九天]] |
-| 10 | 回溯算法 | [[JavaScript 算法/算法基础/JavaScript 算法基础第十天\|算法基础 第十天]] |
+| 01 | 复杂度分析、栈与队列 | [[JavaScript 算法/算法基础/JavaScript 算法基础第一天|算法基础 第一天]] |
+| 02 | 链表与原型链 | [[JavaScript 算法/算法基础/JavaScript 算法基础第二天|算法基础 第二天]] |
+| 03 | 集合与字典（Set / Map / 哈希） | [[JavaScript 算法/算法基础/JavaScript 算法基础第三天|算法基础 第三天]] |
+| 04 | 树与二叉树遍历（BFS / DFS） | [[JavaScript 算法/算法基础/JavaScript 算法基础第四天|算法基础 第四天]] |
+| 05 | 图与邻接表 | [[JavaScript 算法/算法基础/JavaScript 算法基础第五天|算法基础 第五天]] |
+| 06 | 堆与优先队列（Top-K） | [[JavaScript 算法/算法基础/JavaScript 算法基础第六天|算法基础 第六天]] |
+| 07 | 排序算法 | [[JavaScript 算法/算法基础/JavaScript 算法基础第七天|算法基础 第七天]] |
+| 08 | 分治算法 | [[JavaScript 算法/算法基础/JavaScript 算法基础第八天|算法基础 第八天]] |
+| 09 | 动态规划与贪心 | [[JavaScript 算法/算法基础/JavaScript 算法基础第九天|算法基础 第九天]] |
+| 10 | 回溯算法 | [[JavaScript 算法/算法基础/JavaScript 算法基础第十天|算法基础 第十天]] |
 
 #### LeetCode Hot 100
 
@@ -61,16 +61,16 @@ tags:
 - [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 hash表|哈希表]]、[[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 hash表 二|哈希表（二）]]
 - [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 动态规划|动态规划]]
 - [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 回溯|回溯]]
-- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 未分类 1|未分类]]
+- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 杂题|杂题]]
 
 **刷题日志**
 
 - [[JavaScript 算法/LeetCode Hot100|第 1 天：链表与二叉树]]
-- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 02|第 2 天：反转链表与课程表]]
-- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 03|第 3 天：多数元素与除自身以外]]
-- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 04|第 4 天：环形链表]]
-- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 05|第 5 天：位运算与动态规划]]
-- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 06|第 6 天：动态规划与贪心]]
+- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 反转链表与课程表|第 2 天：反转链表与课程表]]
+- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 多数元素与除自身以外|第 3 天：多数元素与除自身以外]]
+- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 环形链表|第 4 天：环形链表]]
+- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 位运算与动态规划|第 5 天：位运算与动态规划]]
+- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 动态规划与贪心|第 6 天：动态规划与贪心]]
 
 #### 经典 150 题
 
@@ -90,12 +90,21 @@ tags:
 - [[JavaScript 算法/GRD/GRD 栈|GRD 栈]]：有效括号、最小栈、接雨水、柱状图最大矩形
 - [[JavaScript 算法/GRD/GRD 字符串|GRD 字符串]]：回文串、字母异位词、最小覆盖子串
 - [[JavaScript 算法/GRD/GRD 二叉树|GRD 二叉树]]：翻转二叉树、平衡二叉树、层序遍历
+- [[JavaScript 算法/GRD/GRD 二叉搜索树|GRD 二叉搜索树]]：BST 最近公共祖先、验证 BST、第 K 小元素
+- [[JavaScript 算法/GRD/GRD 堆|GRD 堆]]：奇偶跳、任务调度器、数据流的中位数、合并 K 个升序链表
+- [[JavaScript 算法/GRD/GRD 动态规划|GRD 动态规划]]：爬楼梯、最大子数组和、零钱兑换
+
+#### 解题思路
+
+高频题目的完整思考过程拆解。
+
+- [[JavaScript 算法/解题思路/322 零钱兑换|322 零钱兑换]]：状态定义、完全背包与 0-1 背包遍历方向辨析、换序问题与易错点
 
 #### 瀑布流项目
 
 前端工程化的实践记录。
 
 - [[瀑布流项目/项目骨架搭建|项目骨架搭建]]：Vite vs Webpack、Vite 8 新特性、Tailwind 集成与工程化配置
-- [[瀑布流项目/构建自己的物料解决方案一构建物料库，实现前端设计|物料解决方案]]：移动端与 PC 端差异、组件库设计
+- [[瀑布流项目/物料解决方案|物料解决方案]]：移动端与 PC 端差异、组件库设计
 
 本站由 [Quartz](https://quartz.jzhao.xyz) 构建，构建与部署等仓库信息见 [README](https://github.com/unbrain/wiki/blob/main/README.md)。

@@ -9,3 +9,6 @@ public/
 
 # local plugin symlink (created by config loader)
 .quartz/plugins/graph
+
+# quartz build cache
+quartz/.quartz-cache/

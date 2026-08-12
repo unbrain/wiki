@@ -102,5 +102,5 @@ class Maxheap {
 ## 相关笔记
 
 - [[JavaScript 算法基础第六天|堆与优先队列]]（最小堆实现、Top-K）
-- [[LeetCode Hot100 06]]（前 K 个高频元素）
+- [[LeetCode Hot100 动态规划与贪心]]（前 K 个高频元素）
 - [[LeetCode Hot100 链表]]（合并 K 个升序链表）

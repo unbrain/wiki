@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="assets/readme/hero.svg" width="100%" alt="算法 Wiki：以 JavaScript 为主线的数据结构与算法刷题笔记与前端工程化实践，48 篇笔记、4 大刷题系列">
+  <img src="assets/readme/hero.svg" width="100%" alt="算法 Wiki：以 JavaScript 为主线的数据结构与算法刷题笔记与前端工程化实践，52 篇笔记、4 大刷题系列">
 </p>
 
 <p align="center">
   <img src="assets/readme/badge-obsidian.svg" width="170" alt="Obsidian 写作">
   <img src="assets/readme/badge-quartz.svg" width="170" alt="Quartz v5 站点生成">
   <img src="assets/readme/badge-actions.svg" width="170" alt="GitHub Actions 自动部署">
-  <img src="assets/readme/badge-notes.svg" width="170" alt="48 篇笔记">
+  <img src="assets/readme/badge-notes.svg" width="170" alt="52 篇笔记">
 </p>
 
 # 算法 Wiki
@@ -23,14 +23,15 @@
   <img src="assets/readme/section-content.svg" width="100%" alt="内容导航：JavaScript 算法四大系列与瀑布流项目笔记">
 </p>
 
-### JavaScript 算法（46 篇）
+### JavaScript 算法（50 篇）
 
 | 系列 | 篇数 | 内容 |
 | --- | --- | --- |
 | 算法基础 | 10 | 复杂度、栈与队列、链表、集合与字典、树、图、堆、排序、分治、动态规划、回溯 |
 | LeetCode Hot 100 | 20 | 链表 / 二叉树 / 双指针 / 二分 / 哈希 / 动态规划 / 回溯等专题笔记与刷题日志 |
 | 经典 150 题 | 11 | 数组与字符串、双指针与滑动窗口、链表、栈、哈希表、二叉树、位运算、Kadane |
-| GRD 刷题 | 5 | 数组 / 链表 / 栈 / 字符串 / 二叉树的高频题逐题解析 |
+| GRD 刷题 | 8 | 数组 / 链表 / 栈 / 字符串 / 二叉树 / 二叉搜索树 / 堆 / 动态规划 的高频题逐题解析 |
+| 解题思路 | 1 | 高频题的完整推导过程（零钱兑换） |
 
 ### 瀑布流项目（2 篇）
 

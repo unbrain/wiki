@@ -133,7 +133,7 @@ var climbStairs = function(n) {
 };
 ```
 
-- [198. 打家劫舍](https://leetcode.cn/problems/house-robber/) — 一维 DP，相邻不能选 | 时间 O(n) 空间 O(n) / O(1)（滚动变量优化）（见[[LeetCode Hot100 02]]）
+- [198. 打家劫舍](https://leetcode.cn/problems/house-robber/) — 一维 DP，相邻不能选 | 时间 O(n) 空间 O(n) / O(1)（滚动变量优化）（见[[LeetCode Hot100 反转链表与课程表]]）
 ```javascript
 var rob = function(nums) {
     if(nums.length === 1) return nums[0]
@@ -222,5 +222,5 @@ var maxProfit = function(prices) {
 
 - [[LeetCode Hot100 动态规划|动态规划题目]]
 - [[经典 150 Kadane 算法|Kadane 算法]]（最大子数组和）
-- [[LeetCode Hot100 06|背包与贪心题目]]（分割等和子集、跳跃游戏）
+- [[LeetCode Hot100 动态规划与贪心|背包与贪心题目]]（分割等和子集、跳跃游戏）
 - [[JavaScript 算法基础第十天|回溯算法]]（与 DP 对比记忆）

@@ -1,11 +1,11 @@
 ---
-title: LeetCode Hot100 - 未分类
+title: LeetCode Hot100 - 杂题
 tags:
   - LeetCode
   - Hot100
   - 数组
   - 矩阵
-description: 旋转图像(48)、合并区间(56)等未分类题目
+description: 旋转图像(48)、合并区间(56)等暂未归入专题的题目
 ---
 
 [48. 旋转图像](https://leetcode.cn/problems/rotate-image/)

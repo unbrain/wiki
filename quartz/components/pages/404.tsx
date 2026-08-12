@@ -10,6 +10,13 @@ const NotFound: QuartzComponent = ({ cfg, ctx }: QuartzComponentProps) => {
       <h1>404</h1>
       <p>{i18n(cfg.locale).pages.error.notFound}</p>
       <a href={baseDir}>{i18n(cfg.locale).pages.error.home}</a>
+      <p>
+        <a href={`${baseDir}tags`}>浏览全部标签</a>
+        <span>&nbsp;·&nbsp;</span>
+        <a href={baseDir}>内容导航</a>
+        <span>&nbsp;·&nbsp;</span>
+        <a href={`${baseDir}JavaScript%20算法/`}>JavaScript 算法目录</a>
+      </p>
       <script
         dangerouslySetInnerHTML={{
           __html: `

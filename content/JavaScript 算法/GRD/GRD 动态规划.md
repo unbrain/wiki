@@ -104,8 +104,8 @@ var uniquePaths = function (m, n) {
 - [[经典 150 Kadane 算法|Kadane 算法题目]]（最大子数组和）
 - [[JavaScript 算法基础第九天|动态规划基础]]（爬楼梯、状态转移）
 - [[LeetCode Hot100 动态规划|动态规划专题]]（不同路径、编辑距离等）
-- [[LeetCode Hot100 06|背包与贪心题目]]（分割等和子集）
-- [[LeetCode Hot100 05]]（零钱兑换）
+- [[LeetCode Hot100 动态规划与贪心|背包与贪心题目]]（分割等和子集）
+- [[LeetCode Hot100 位运算与动态规划]]（零钱兑换）
 - [[322 零钱兑换]]（零钱兑换完整解题思路）
 
 
