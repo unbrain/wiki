@@ -96,7 +96,43 @@ class Maxheap {
 [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
 
 ```javascript
-
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode[]} lists
+ * @return {ListNode}
+ */
+merge = (l1, l2) => {
+    const dummy = new ListNode()
+    let p = dummy
+    while(l1&&l2){
+        if(l1.val < l2.val) {
+            p.next = l1
+            l1= l1.next
+        }else {
+            p.next = l2
+            l2 = l2.next
+        }
+        p = p.next
+    }
+    p.next = l1 || l2
+    return dummy.next
+}
+var mergeKLists = function (lists) {
+    let len = lists.length
+    if(len === 0) return null
+    for(let interval = 1; interval < len; interval*=2) {
+        for(let i = 0; i < len -interval; i += interval*2) {
+            lists[i] = merge(lists[i], lists[i+interval])
+        }
+    }
+    return lists[0] 
+};
 ```
 
 ## 相关笔记
