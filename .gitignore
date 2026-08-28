@@ -12,3 +12,8 @@ public/
 
 # quartz build cache
 quartz/.quartz-cache/
+
+# local agent tool config dirs (pi/agents runtime / omp model routing)
+.pi/
+.omp/
+.agents/
