@@ -222,6 +222,7 @@ var isValid = function (s) {
 
 return stack.length === 0
 }
+```
 
 ```javascript
 var isValid = function (s) {

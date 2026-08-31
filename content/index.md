@@ -1,11 +1,12 @@
 ---
 title: 首页
+description: 以 JavaScript 为主线的数据结构与算法刷题笔记 Wiki：算法基础、LeetCode Hot100、经典 150、GRD 与解题思路
 aliases: []
 tags:
   - index
 ---
 
-![算法 Wiki：以 JavaScript 为主线的数据结构与算法刷题笔记与前端工程化实践，52 篇笔记、4 大刷题系列](assets/hero.svg)
+![算法 Wiki：以 JavaScript 为主线的数据结构与算法刷题笔记与前端工程化实践，63 篇笔记、4 大刷题系列](assets/hero.svg)
 
 <p align="center">
   <img src="assets/badge-obsidian.svg" width="170" alt="Obsidian 写作">
@@ -28,7 +29,7 @@ tags:
 </p>
 
 <p align="center">
-  <img src="assets/structure-content.gif" width="100%" alt="内容结构：算法基础 10 篇、LeetCode Hot 100 20 篇、经典 150 11 篇、GRD 8 篇、解题思路 1 篇、瀑布流项目 2 篇，共 52 篇笔记">
+  <img src="assets/structure-content.gif" width="100%" alt="内容结构：算法基础 11 篇、LeetCode Hot 100 20 篇、经典 150 17 篇、GRD 11 篇、解题思路 2 篇、瀑布流项目 2 篇，共 63 篇笔记">
 </p>
 
 ### JavaScript 算法
@@ -49,6 +50,7 @@ tags:
 | 08 | 分治算法 | [[JavaScript 算法/算法基础/JavaScript 算法基础第八天|算法基础 第八天]] |
 | 09 | 动态规划与贪心 | [[JavaScript 算法/算法基础/JavaScript 算法基础第九天|算法基础 第九天]] |
 | 10 | 回溯算法 | [[JavaScript 算法/算法基础/JavaScript 算法基础第十天|算法基础 第十天]] |
+| 11 | 数组转树（手写题） | [[JavaScript 算法/算法基础/JavaScript 算法基础第十一天|算法基础 第十一天]] |
 
 #### LeetCode Hot 100
 
@@ -65,7 +67,7 @@ tags:
 
 **刷题日志**
 
-- [[JavaScript 算法/LeetCode Hot100|第 1 天：链表与二叉树]]
+- [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100|第 1 天：链表与二叉树]]
 - [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 反转链表与课程表|第 2 天：反转链表与课程表]]
 - [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 多数元素与除自身以外|第 3 天：多数元素与除自身以外]]
 - [[JavaScript 算法/LeetCode Hot100/LeetCode Hot100 环形链表|第 4 天：环形链表]]
@@ -76,9 +78,13 @@ tags:
 
 按专题整理的经典 150 题解法。
 
-- **数组与字符串**：[[JavaScript 算法/经典 150/经典 150 数字 字符串|数字与字符串]]、[[JavaScript 算法/经典 150/经典 150 区间|区间]]、[[JavaScript 算法/经典 150/经典 150 矩阵|矩阵]]、[[JavaScript 算法/经典 150/经典 150 Kadane 算法|Kadane 算法（最大子数组和）]]
+- **数组与字符串**：[[JavaScript 算法/经典 150/经典 150 数字 字符串|数字与字符串]]、[[JavaScript 算法/经典 150/经典 150 字符串|字符串]]、[[JavaScript 算法/经典 150/经典 150 区间|区间]]、[[JavaScript 算法/经典 150/经典 150 矩阵|矩阵]]、[[JavaScript 算法/经典 150/经典 150 Kadane 算法|Kadane 算法（最大子数组和）]]
 - **双指针与滑动窗口**：[[JavaScript 算法/经典 150/经典 150 双指针|双指针]]、[[JavaScript 算法/经典 150/经典 150 滑动窗口|滑动窗口]]
-- **数据结构**：[[JavaScript 算法/经典 150/经典 150 链表|链表]]、[[JavaScript 算法/经典 150/经典 150 栈|栈]]、[[JavaScript 算法/经典 150/经典 150 哈希表|哈希表]]、[[JavaScript 算法/经典 150/经典 150 二叉树|二叉树]]
+- **哈希表**：[[JavaScript 算法/经典 150/经典 150 哈希表|哈希表]]
+- **栈与链表**：[[JavaScript 算法/经典 150/经典 150 栈|栈]]、[[JavaScript 算法/经典 150/经典 150 链表|链表]]
+- **二叉树与二叉搜索树**：[[JavaScript 算法/经典 150/经典 150 二叉树|二叉树]]、[[JavaScript 算法/经典 150/经典 150 二叉树 二|二叉树（二）]]、[[JavaScript 算法/经典 150/经典 150 二叉树层序遍历|二叉树层序遍历]]、[[JavaScript 算法/经典 150/经典 150 二叉搜索树|二叉搜索树]]
+- **回溯**：[[JavaScript 算法/经典 150/经典 150 回溯|回溯]]
+- **动态规划**：[[JavaScript 算法/经典 150/经典 150 一维动态规划|一维动态规划]]
 - **位运算**：[[JavaScript 算法/经典 150/经典 150 位运算|位运算]]
 
 #### GRD 刷题记录
@@ -93,12 +99,16 @@ tags:
 - [[JavaScript 算法/GRD/GRD 二叉搜索树|GRD 二叉搜索树]]：BST 最近公共祖先、验证 BST、第 K 小元素
 - [[JavaScript 算法/GRD/GRD 堆|GRD 堆]]：奇偶跳、任务调度器、数据流的中位数、合并 K 个升序链表
 - [[JavaScript 算法/GRD/GRD 动态规划|GRD 动态规划]]：爬楼梯、最大子数组和、零钱兑换
+- [[JavaScript 算法/GRD/GRD 递归|GRD 递归]]：全排列、子集、电话号码的字母组合
+- [[JavaScript 算法/GRD/GRD 矩阵|GRD 矩阵]]：螺旋矩阵
+- [[JavaScript 算法/GRD/GRD 前缀树|GRD 前缀树]]：实现 Trie（insert / search / startsWith）
 
 #### 解题思路
 
 高频题目的完整思考过程拆解。
 
 - [[JavaScript 算法/解题思路/322 零钱兑换|322 零钱兑换]]：状态定义、完全背包与 0-1 背包遍历方向辨析、换序问题与易错点
+- [[JavaScript 算法/解题思路/54 螺旋矩阵|54 螺旋矩阵]]：四边界收缩法、指针逐格遍历、计数终止条件与边界对称收缩辨析
 
 #### 瀑布流项目
 

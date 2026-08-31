@@ -1,3 +1,15 @@
+---
+title: GRD 递归刷题
+tags:
+  - LeetCode
+  - GRD
+  - 递归
+  - 回溯
+description: 全排列(46)、子集(78)、电话号码的字母组合(17)等递归与回溯高频题
+aliases:
+  - 递归刷题
+---
+
 # GRD 递归
 
 [46. 全排列](https://leetcode.cn/problems/permutations/)

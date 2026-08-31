@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg"
      width="300" height="44" viewBox="0 0 300 44" role="img" aria-labelledby="t d">
-  <title id="t">52 篇笔记</title>
-  <desc id="d">笔记规模：52 篇算法与工程笔记</desc>
+  <title id="t">63 篇笔记</title>
+  <desc id="d">笔记规模：63 篇算法与工程笔记</desc>
   <rect x="0" y="0" width="150" height="44" rx="12" fill="#9a8cff"/>
   <rect x="150" y="0" width="150" height="44" rx="0" fill="#171f33"/>
   <rect x="150" y="0" width="150" height="44" rx="12" fill="none" stroke="#2a3552" stroke-width="1.5"/>
-  <text x="75" y="28" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif" font-size="17" font-weight="700" fill="#0e1424">52 篇</text>
+  <text x="75" y="28" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif" font-size="17" font-weight="700" fill="#0e1424">63 篇</text>
   <text x="225" y="28" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif" font-size="17" font-weight="600" fill="#c6cfe3">笔记</text>
 </svg>
