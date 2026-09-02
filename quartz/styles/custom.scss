@@ -1,3 +1,320 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+// ─────────────────────────────────────────────
+// Homepage — only applies when data-slug="index"
+// ─────────────────────────────────────────────
+
+@font-face {
+  font-family: "Fira Code";
+  src: url("/static/FiraCode-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+body[data-slug="index"] {
+  background: #011627 !important;
+
+  // ── Hide wiki chrome ──────────────────────────
+  .left.sidebar,
+  .right.sidebar {
+    display: none !important;
+  }
+
+  // Re-layout: center column goes full width
+  #quartz-body {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    grid-template-areas:
+      "grid-header"
+      "grid-center"
+      "grid-footer" !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .center {
+    grid-area: grid-center !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  // Hide wiki-specific header elements
+  .article-title,
+  .note-properties,
+  .metadata-container,
+  .content-meta,
+  .tag-list,
+  .tags,
+  .page-header,
+  .breadcrumb-container {
+    display: none !important;
+  }
+
+  // Make article full bleed
+  article.popover-hint {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .markdown-preview-view {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  // Footer area
+  footer {
+    background: transparent;
+    border-top: 1px solid #1e2d3d;
+  }
+
+  // ── Hero Section ──────────────────────────────
+  .home-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 clamp(2rem, 8vw, 10rem);
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(77, 91, 206, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(67, 217, 173, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+  }
+
+  .home-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+
+  .home-greeting {
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #607b96;
+    margin-bottom: 0.25rem;
+  }
+
+  .home-name {
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    color: #e5e9f0;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .home-position {
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    color: #4d5bce;
+    margin-bottom: 3rem;
+  }
+
+  .home-code {
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .home-code__comment {
+    color: #607b96;
+  }
+
+  .home-code__line {
+    color: #607b96;
+  }
+
+  .home-code__var {
+    color: #43d9ad;
+  }
+
+  .home-code__string {
+    color: #fea55f;
+  }
+
+  .home-code__highlight {
+    color: #43d9ad;
+  }
+
+  // ── Section shared styles ─────────────────────
+  .home-section {
+    padding: clamp(4rem, 10vh, 7rem) clamp(2rem, 8vw, 10rem);
+    border-top: 1px solid #1e2d3d;
+  }
+
+  .home-section-label {
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: #43d9ad;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    // Override any Quartz heading styles
+    font-weight: 400 !important;
+    border: none !important;
+  }
+
+  .home-section-title {
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: #e5e9f0;
+    margin-bottom: 3rem;
+    // Override Quartz h2/h3 styles
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  // ── Knowledge Cards ───────────────────────────
+  .home-knowledge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .home-card {
+    display: block;
+    text-decoration: none !important;
+    padding: 1.75rem;
+    border: 1px solid #1e2d3d !important;
+    border-radius: 12px;
+    background: #011221;
+    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    color: inherit;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #4d5bce, #43d9ad);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    &:hover {
+      border-color: #4d5bce !important;
+      transform: translateY(-3px);
+      background: #01192f;
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  .home-card__num {
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    color: #4d5bce;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .home-card__title {
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e5e9f0;
+    margin-bottom: 0.6rem;
+  }
+
+  .home-card__desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #607b96;
+    margin-bottom: 1.25rem;
+  }
+
+  .home-card__tag {
+    display: inline-block;
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    color: #43d9ad;
+    border: 1px solid rgba(67, 217, 173, 0.3);
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+  }
+
+  // ── Connect Section ───────────────────────────
+  .home-section--connect {
+    padding-bottom: clamp(5rem, 12vh, 9rem);
+  }
+
+  .home-connect-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .home-connect-link {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    text-decoration: none !important;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #1e2d3d;
+    transition: color 0.15s ease;
+    color: inherit;
+
+    &:hover {
+      .home-connect-link__value {
+        color: #43d9ad;
+      }
+    }
+  }
+
+  .home-connect-link__label {
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+    color: #4d5bce;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    min-width: 5rem;
+  }
+
+  .home-connect-link__value {
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: #e5e9f0;
+    transition: color 0.15s ease;
+  }
+
+  // ── Mobile adjustments ────────────────────────
+  @media #{$mobile} {
+    .home-hero {
+      min-height: auto;
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    .home-section {
+      padding: 3rem 1.5rem;
+    }
+
+    .home-knowledge-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
