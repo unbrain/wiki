@@ -1,21 +1,19 @@
 /**
- * glass-cube.js  v3
- * WebGL2 ray-marching glass cubes — ported from glass-poster project
- * Uses SDF rounded box + real refraction + dispersion + studio env
- * Background texture: particle canvas (ub-particleCanvas)
+ * glass-cube.js  v4 — Physics Inertia + Raymarching Glass Cubes
+ * Ported from glass-poster with SDF rounded box + chromatic dispersion + studioEnv
+ * Includes smooth momentum damping & drag physics.
  */
 (function initGlassCube() {
 
   var hero = document.getElementById('ub-hero');
   if (!hero) return;
 
-  // ── Canvas setup ─────────────────────────────────────────────────
   var canvas = document.createElement('canvas');
   canvas.id = 'ub-cubeCanvas';
   canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;';
   hero.appendChild(canvas);
 
-  var gl = canvas.getContext('webgl2', { antialias: false, alpha: true });
+  var gl = canvas.getContext('webgl2', { antialias: false, alpha: true, premultipliedAlpha: false });
   if (!gl) { canvas.remove(); return; }
 
   // ── Shaders ──────────────────────────────────────────────────────
@@ -31,7 +29,7 @@
 
     'uniform mat3  uRotA;',
     'uniform vec3  uPosA;',
-    'uniform vec4  uSizeA;',   // xyz=halfExtent, w=rounding
+    'uniform vec4  uSizeA;',
     'uniform float uDispA;',
 
     'uniform mat3  uRotB;',
@@ -39,17 +37,15 @@
     'uniform vec4  uSizeB;',
     'uniform float uDispB;',
 
-    'const float CAM_Z  = 4.0;',
+    'const float CAM_Z   = 4.0;',
     'const float PLANE_H = 1.0;',
-    'const float IOR    = 1.48;',
+    'const float IOR     = 1.48;',
 
-    // SDF rounded box
     'float sdRoundedBox(vec3 p, vec3 b, float r){',
     '  vec3 q = abs(p) - b + r;',
     '  return length(max(q,0.0)) + min(max(q.x,max(q.y,q.z)),0.0) - r;',
     '}',
 
-    // scene: two cubes, return (dist, id)  id=0→A, id=1→B
     'vec2 mapScene(vec3 p){',
     '  vec3 la = transpose(uRotA)*(p-uPosA);',
     '  float da = sdRoundedBox(la, uSizeA.xyz, uSizeA.w);',
@@ -66,17 +62,15 @@
     '    mapScene(p+e.yyx).x - mapScene(p-e.yyx).x));',
     '}',
 
-    // sample background texture (particle canvas)
     'vec3 bgSample(vec3 ro, vec3 rd){',
-    '  if(rd.z > -1e-4) return vec3(0.04,0.09,0.15);',  // dark fallback = hero bg color
+    '  if(rd.z > -1e-4) return vec3(0.039);',
     '  float t = -ro.z / rd.z;',
     '  vec3 p = ro + rd*t;',
     '  float hw = PLANE_H * uRes.x/uRes.y;',
     '  vec2 uv = clamp(vec2(p.x/hw*0.5+0.5, p.y*0.5+0.5), vec2(0.002), vec2(0.998));',
-    '  return textureLod(uTex, uv, 0.0).rgb;',
+    '  return texture(uTex, uv).rgb;',
     '}',
 
-    // studio environment for reflections (warm yellow-white tones)
     'vec3 studioEnv(vec3 d){',
     '  float base  = 0.55 + 0.22*d.y;',
     '  float band1 = smoothstep(0.50,0.64,d.y)*smoothstep(0.92,0.74,d.y)*1.0;',
@@ -85,7 +79,6 @@
     '  return vec3((base+band1+band2+side)*0.88);',
     '}',
 
-    // analytical box exit for refraction tracing
     'float boxExit(vec3 roL, vec3 rdL, vec3 b, out vec3 nL){',
     '  vec3 inv = 1.0/rdL;',
     '  vec3 t1 = (-b-roL)*inv;',
@@ -99,7 +92,6 @@
     '  return tF;',
     '}',
 
-    // refract through full cube (entry→exit), return background color
     'vec3 refractThrough(vec3 pos, vec3 rd, vec3 n, float ior, float id){',
     '  bool isA = id<0.5;',
     '  mat3 R  = isA ? uRotA : uRotB;',
@@ -131,8 +123,6 @@
     '  return bgSample(pExit,rdOut);',
     '}',
 
-    'float hash21(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }',
-
     'out vec4 fragColor;',
 
     'void main(){',
@@ -140,7 +130,6 @@
     '  vec3 ro  = vec3(0.0,0.0,CAM_Z);',
     '  vec3 rd  = normalize(vec3(ndc,-CAM_Z));',
 
-    // ray march
     '  float t=0.6; float hitId=-1.0; float closestPx=1e9;',
     '  float pixelWorld = 2.0/uRes.y;',
     '  for(int i=0;i<90;i++){',
@@ -152,13 +141,6 @@
     '    if(t>CAM_Z+1.5) break;',
     '  }',
 
-    // soft shadow under cubes (subtle darkening of bg)
-    '  vec2 da2 = (ndc-uPosA.xy)*vec2(0.85,1.5);',
-    '  vec2 db2 = (ndc-uPosB.xy)*vec2(0.85,1.5);',
-    '  vec3 bgCol = bgSample(ro,rd);',
-    '  bgCol *= clamp(1.0-0.14*exp(-dot(da2,da2)*5.0)-0.11*exp(-dot(db2,db2)*6.0),0.6,1.0);',
-
-    '  vec3 col = bgCol;',
     '  float alpha = 1.0-smoothstep(0.35,1.6,closestPx);',
 
     '  if(hitId >= 0.0){',
@@ -170,7 +152,6 @@
     '    float disp = isA ? uDispA : uDispB;',
     '    float sp = 0.045*disp;',
 
-    // chromatic aberration: R/G/B with slightly different IOR
     '    vec3 cR = refractThrough(pos,rd,n,IOR-sp,hitId);',
     '    vec3 cG = refractThrough(pos,rd,n,IOR,   hitId);',
     '    vec3 cB = refractThrough(pos,rd,n,IOR+sp,hitId);',
@@ -179,20 +160,18 @@
     '    float fres = pow(1.0-clamp(dot(n,-rd),0.0,1.0),4.0);',
     '    vec3 reflCol = studioEnv(reflect(rd,n));',
     '    vec3 glass = mix(refr, reflCol, clamp(0.04+fres*0.55,0.0,1.0));',
-    // subtle yellow-white rim
     '    glass += vec3(0.97,0.98,0.88)*pow(fres,1.6)*0.32;',
 
     '    fragColor = vec4(glass, 1.0);',
     '  } else if(alpha > 0.01){',
     '    vec3 rimCol = studioEnv(reflect(rd, vec3(0.0, 1.0, 0.0)));',
-    '    fragColor = vec4(rimCol, alpha * 0.5);',
+    '    fragColor = vec4(rimCol, alpha * 0.4);',
     '  } else {',
     '    fragColor = vec4(0.0, 0.0, 0.0, 0.0);',
     '  }',
     '}',
   ].join('\n');
 
-  // ── Compile program ──────────────────────────────────────────────
   function compile(type, src) {
     var sh = gl.createShader(type);
     gl.shaderSource(sh, src);
@@ -211,19 +190,16 @@
   gl.attachShader(prog, fs);
   gl.linkProgram(prog);
   if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-    console.error('Link error:', gl.getProgramInfoLog(prog));
     canvas.remove(); return;
   }
   gl.useProgram(prog);
 
-  // ── Fullscreen triangle ──────────────────────────────────────────
   var buf = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buf);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
   gl.enableVertexAttribArray(0);
   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
 
-  // ── Background texture (particle canvas) ─────────────────────────
   var tex = gl.createTexture();
   var particleCanvas = document.getElementById('ub-particleCanvas');
 
@@ -239,13 +215,11 @@
   }
   gl.uniform1i(gl.getUniformLocation(prog, 'uTex'), 0);
 
-  // ── Uniform locations ────────────────────────────────────────────
   var U = {};
   ['uRes','uTime','uRotA','uPosA','uSizeA','uDispA','uRotB','uPosB','uSizeB','uDispB'].forEach(function(n) {
     U[n] = gl.getUniformLocation(prog, n);
   });
 
-  // ── Resize ───────────────────────────────────────────────────────
   var W, H;
   function resize() {
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -260,7 +234,6 @@
   resize();
   window.addEventListener('resize', resize);
 
-  // ── Matrix helpers ───────────────────────────────────────────────
   function mat3Mul(a, b) {
     var o = new Float32Array(9);
     for (var c = 0; c < 3; c++)
@@ -275,37 +248,85 @@
   function rotY(a) { return new Float32Array([Math.cos(a),0,-Math.sin(a), 0,1,0, Math.sin(a),0,Math.cos(a)]); }
   function rotZ(a) { return new Float32Array([Math.cos(a),Math.sin(a),0, -Math.sin(a),Math.cos(a),0, 0,0,1]); }
 
-  // ── Cube configs (NDC world space, CAM_Z=4) ──────────────────────
-  // position: [x, y, z]  x/y in NDC-like world coords (-1..1 ≈ half screen height)
-  // halfExtent: cube half-size in world units (~0.15-0.25 = compact)
   var cubes = [
     {
-      position:    [-0.55,  0.52, 1.2],
-      halfExtent:  0.14,
-      rounding:    0.032,
+      position:    [-0.60,  0.42, 1.25],
+      halfExtent:  0.15,
+      rounding:    0.035,
       baseRotation:[0.42, 0.68, 0.06],
       spinSpeed:   0.14,
       swayAmount:  0.08,
       dispersion:  0.55,
+      rotOffset:   [0, 0],
+      vel:         [0, 0],
     },
     {
-      position:    [ 0.52, -0.42, 1.1],
-      halfExtent:  0.16,
-      rounding:    0.036,
+      position:    [ 0.62, -0.38, 1.15],
+      halfExtent:  0.17,
+      rounding:    0.038,
       baseRotation:[0.5,  2.35,  0.1],
       spinSpeed:  -0.10,
       swayAmount:  0.11,
       dispersion:  0.65,
+      rotOffset:   [0, 0],
+      vel:         [0, 0],
     },
   ];
 
-  // ── Pointer tracking ─────────────────────────────────────────────
+  // ── Physics & Interaction ─────────────────────────────────────────
   var ptr = { tx:0, ty:0, x:0, y:0 };
-  window.addEventListener('pointermove', function(e) {
+  var isDragging = false;
+  var lastX = 0, lastY = 0;
+
+  hero.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+  });
+  window.addEventListener('mouseup', function() { isDragging = false; });
+  window.addEventListener('mousemove', function(e) {
     var r = canvas.getBoundingClientRect();
     ptr.tx = ((e.clientX-r.left)/r.width)*2 - 1;
     ptr.ty = ((e.clientY-r.top)/r.height)*2 - 1;
+
+    if (isDragging) {
+      var dx = e.clientX - lastX;
+      var dy = e.clientY - lastY;
+      lastX = e.clientX;
+      lastY = e.clientY;
+
+      cubes.forEach(function(c) {
+        c.vel[0] = dx * 0.005;
+        c.vel[1] = dy * 0.005;
+        c.rotOffset[0] += c.vel[0];
+        c.rotOffset[1] += c.vel[1];
+      });
+    }
   });
+
+  // Touch
+  hero.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      lastX = e.touches[0].clientX;
+      lastY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+  window.addEventListener('touchend', function() { isDragging = false; });
+  window.addEventListener('touchmove', function(e) {
+    if (isDragging && e.touches.length === 1) {
+      var dx = e.touches[0].clientX - lastX;
+      var dy = e.touches[0].clientY - lastY;
+      lastX = e.touches[0].clientX;
+      lastY = e.touches[0].clientY;
+      cubes.forEach(function(c) {
+        c.vel[0] = dx * 0.005;
+        c.vel[1] = dy * 0.005;
+        c.rotOffset[0] += c.vel[0];
+        c.rotOffset[1] += c.vel[1];
+      });
+    }
+  }, { passive: true });
 
   // ── Render loop ──────────────────────────────────────────────────
   var last = performance.now();
@@ -332,9 +353,16 @@
     gl.bindTexture(gl.TEXTURE_2D, tex);
 
     cubes.forEach(function(c, i) {
+      if (!isDragging) {
+        c.rotOffset[0] += c.vel[0];
+        c.rotOffset[1] += c.vel[1];
+        c.vel[0] *= 0.94;
+        c.vel[1] *= 0.94;
+      }
+
       var sway = Math.sin(time*0.7 + i*2.1) * c.swayAmount;
-      var ry = c.baseRotation[1] + time*c.spinSpeed + ptr.x*0.22;
-      var rx = c.baseRotation[0] + sway           + ptr.y*0.16;
+      var ry = c.baseRotation[1] + time*c.spinSpeed + ptr.x*0.22 + c.rotOffset[0];
+      var rx = c.baseRotation[0] + sway           + ptr.y*0.16 + c.rotOffset[1];
       var rz = c.baseRotation[2] + Math.sin(time*0.4+i)*0.05;
       var R  = mat3Mul(mat3Mul(rotZ(rz), rotX(rx)), rotY(ry));
       var prefix = i === 0 ? 'A' : 'B';
