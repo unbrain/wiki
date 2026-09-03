@@ -18,10 +18,12 @@ tags:
 <span class="ub-nav-status"><span class="ub-status-dot"></span>在线 ONLINE</span>
 </div>
 <div class="ub-nav-links">
+<a href="/关于我" data-no-popover="true">关于我/简历</a>
 <a href="#ub-about" data-router-ignore="true" data-no-popover="true">个人档案</a>
 <a href="#ub-quests" data-router-ignore="true" data-no-popover="true">履历历程</a>
 <a href="#ub-builds" data-router-ignore="true" data-no-popover="true">核心作品</a>
 <a href="#ub-knowledge" data-router-ignore="true" data-no-popover="true">知识卷轴</a>
+<a href="/朝花夕拾/" data-no-popover="true">朝花夕拾</a>
 <a href="#ub-stats" data-router-ignore="true" data-no-popover="true">量化数据</a>
 <a href="#ub-terminal" data-router-ignore="true" data-no-popover="true">交互终端</a>
 </div>
@@ -39,12 +41,14 @@ tags:
 <button class="ub-drawer-close" id="ub-drawer-close" aria-label="关闭导航">✕</button>
 </div>
 <div class="ub-drawer-links">
+<a class="ub-drawer-link" href="/关于我" data-no-popover="true"><span class="ub-drawer-num">00</span> 简历专页 · RESUME</a>
 <a class="ub-drawer-link" href="#ub-about" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">01</span> 个人档案 · PROFILE</a>
 <a class="ub-drawer-link" href="#ub-quests" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">02</span> 履历历程 · QUEST LOG</a>
 <a class="ub-drawer-link" href="#ub-builds" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">03</span> 核心作品 · BUILDS</a>
 <a class="ub-drawer-link" href="#ub-knowledge" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">04</span> 知识卷轴 · KNOWLEDGE</a>
-<a class="ub-drawer-link" href="#ub-stats" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">05</span> 量化数据 · TELEMETRY</a>
-<a class="ub-drawer-link" href="#ub-terminal" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">06</span> 交互终端 · TERMINAL</a>
+<a class="ub-drawer-link" href="/朝花夕拾/" data-no-popover="true"><span class="ub-drawer-num">05</span> 朝花夕拾 · ARCHIVES</a>
+<a class="ub-drawer-link" href="#ub-stats" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">06</span> 量化数据 · TELEMETRY</a>
+<a class="ub-drawer-link" href="#ub-terminal" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">07</span> 交互终端 · TERMINAL</a>
 </div>
 </div>
 
@@ -75,6 +79,7 @@ tags:
 </h1>
 <p class="ub-hero-sub reveal-fade">构筑高并发前端系统 · 研磨算法知识卷轴 · 探索生成式交互代码</p>
 <div class="ub-hero-actions reveal-fade">
+<a class="ub-btn ub-btn--primary" href="/关于我" data-no-popover="true">个人履历 / 简历 · RESUME ↗</a>
 <a class="ub-btn ub-btn--primary" href="#ub-builds" data-router-ignore="true" data-no-popover="true">浏览核心工程 ↗</a>
 <a class="ub-btn ub-btn--outline" href="#ub-knowledge" data-router-ignore="true" data-no-popover="true">查阅知识库 ↓</a>
 <a class="ub-btn ub-btn--ghost" href="#ub-terminal" data-router-ignore="true" data-no-popover="true">打开终端 >_</a>
@@ -152,6 +157,10 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-badge">#算法沉淀</span>
 <span class="ub-badge">#工程化</span>
 <span class="ub-badge">#Node.js</span>
+</div>
+<div class="ub-about-actions ub-scroll-reveal" style="margin-top: 1.5rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+<a href="/关于我" class="ub-btn ub-btn--primary" data-no-popover="true" style="padding: 0.5rem 1.1rem; font-size: 0.85rem;">查看完整求职简历专页 ↗</a>
+<a href="https://rxresu.me/unbrain/cv" target="_blank" class="ub-btn ub-btn--ghost" data-no-popover="true" style="padding: 0.5rem 1.1rem; font-size: 0.85rem;">在线 PDF 简历 ↗</a>
 </div>
 </div>
 </div>
@@ -371,16 +380,25 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-writing-title">前端工程化与网络协议 — 体系规范与架构设计</span>
 <span class="ub-writing-sub">深入 HTTP 强缓存与协商缓存、Retina 1px 像素适配、跨域机制与架构设计</span>
 </div>
-<span class="ub-writing-meta">4 篇</span>
+<span class="ub-writing-meta">2 篇</span>
 <span class="ub-writing-arrow">↗</span>
 </a>
 <a class="ub-writing-item ub-scroll-reveal" data-no-popover="true" href="/JavaScript 算法/解题思路/322 零钱兑换">
 <span class="ub-writing-num">07</span>
 <div class="ub-writing-info">
 <span class="ub-writing-title">解题思维拆解 — 算法重难点深度复盘</span>
-<span class="ub-writing-sub">零钱兑换完全背包状态转移推导、螺旋矩阵四边界收缩全流程复盘</span>
+<span class="ub-writing-sub">股票买卖动态规划全系列状态机推导、零钱兑换完全背包与螺旋矩阵全流程复盘</span>
 </div>
-<span class="ub-writing-meta">2 篇</span>
+<span class="ub-writing-meta">3 篇</span>
+<span class="ub-writing-arrow">↗</span>
+</a>
+<a class="ub-writing-item ub-scroll-reveal" data-no-popover="true" href="/朝花夕拾/">
+<span class="ub-writing-num">08</span>
+<div class="ub-writing-info">
+<span class="ub-writing-title">朝花夕拾 — 早期足迹与技术成长档案</span>
+<span class="ub-writing-sub">记录 2017-2019 年校招求职、进入新浪微博前后所写下的 78 篇早期博文与面试真题</span>
+</div>
+<span class="ub-writing-meta">78 篇</span>
 <span class="ub-writing-arrow">↗</span>
 </a>
 </div>
@@ -394,10 +412,10 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <h2 class="ub-section-title ub-scroll-reveal">用数字沉淀<br/>工程印记。</h2>
 <div class="ub-metrics-grid">
 <div class="ub-metric-card ub-scroll-reveal">
-<div class="ub-metric-num" data-target="80">0</div>
+<div class="ub-metric-num" data-target="160">0</div>
 <div class="ub-metric-plus">+</div>
 <div class="ub-metric-label">知识卷轴篇数</div>
-<div class="ub-metric-sub">已公开发布 80+ 篇系统化深度技术笔记</div>
+<div class="ub-metric-sub">已公开发布 160+ 篇系统化技术与历史笔记</div>
 </div>
 <div class="ub-metric-card ub-scroll-reveal">
 <div class="ub-metric-num" data-target="130">0</div>
@@ -441,6 +459,8 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <div class="ub-term-line ub-term-line--muted">输入 <span class="ub-code-cmd">help</span> 或点击下方快捷指令按钮快速探索：</div>
 <div class="ub-term-quick">
 <button class="ub-term-btn" data-cmd="help">help 帮助</button>
+<button class="ub-term-btn" data-cmd="resume">resume 简历</button>
+<button class="ub-term-btn" data-cmd="archive">archive 归档</button>
 <button class="ub-term-btn" data-cmd="skills">skills 技能</button>
 <button class="ub-term-btn" data-cmd="projects">projects 作品</button>
 <button class="ub-term-btn" data-cmd="contact">contact 联络</button>
@@ -741,6 +761,15 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     '联系': 'contact',
     '联络': 'contact',
     '邮箱': 'contact',
+    'resume': 'resume',
+    'cv': 'resume',
+    '简历': 'resume',
+    'archive': 'archive',
+    '归档': 'archive',
+    '朝花夕拾': 'archive',
+    'snake': 'snake',
+    '游戏': 'snake',
+    'game': 'snake',
     'stats': 'stats',
     '数据': 'stats',
     '指标': 'stats',
@@ -790,7 +819,31 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       return [
         '联络渠道：',
         '  邮箱   : marsorsun@gmail.com',
-        '  GitHub : https://github.com/unbrain'
+        '  GitHub : https://github.com/unbrain',
+        '  微信   : 18349108862'
+      ];
+    },
+    resume: function() {
+      return [
+        '求职档案与个人简历：',
+        '  完整专页 : /关于我',
+        '  在线 PDF : https://rxresu.me/unbrain/cv',
+        '  核心经历 : 7+ 年新浪微博核心 Web 团队主力，主导微博 PC 主站、创作者中心、IM 消息箱'
+      ];
+    },
+    archive: function() {
+      return [
+        '朝花夕拾 · 历史成长档案：',
+        '  收录篇数 : 78 篇早期原创技术笔记与求职面试真题',
+        '  归档专区 : /朝花夕拾/',
+        '  涵盖分类 : JS 核心、网络通信、CSS 响应式、校招求职、工程工具、实战复盘'
+      ];
+    },
+    snake: function() {
+      return [
+        '彩蛋小游戏：',
+        '  404 页面已挂载 HUD 赛博贪吃蛇互动小游戏！',
+        '  可任意访问一个不存在的路径体验，或直接在控制台调起。'
       ];
     },
     stats: function() {

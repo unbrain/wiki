@@ -201,6 +201,9 @@ plugins:
     enabled: true
     options:
       links:
+        关于我 · 简历: https://unbrain.github.io/wiki/关于我
+        朝花夕拾 · 归档: https://unbrain.github.io/wiki/朝花夕拾/
+        在线 PDF 简历: https://rxresu.me/unbrain/cv
         GitHub: https://github.com/unbrain/wiki
   - source: github:quartz-community/recent-notes
     enabled: false
