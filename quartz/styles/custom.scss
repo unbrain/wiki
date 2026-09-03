@@ -30,7 +30,7 @@ body[data-slug="index"] {
   --ub-gray: #607B96;
   --ub-font-main: 'Space Grotesk', 'Noto Sans SC', sans-serif;
   --ub-font-mono: 'Fira Code', 'Space Mono', 'IBM Plex Mono', monospace;
-  --ub-font-hud:  'Orbitron', 'Space Mono', monospace;
+  --ub-font-hud:  'Orbitron', 'Noto Sans SC', 'Space Mono', monospace;
 
   // ── Global Layout Reset on Index ───────────────
   background: var(--ub-black) !important;
@@ -215,9 +215,9 @@ body[data-slug="index"] {
 
     a {
       font-family: var(--ub-font-hud);
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--ub-yellow);
       opacity: 0.5;
@@ -386,8 +386,8 @@ body[data-slug="index"] {
 
   .ub-btn {
     font-family: var(--ub-font-hud);
-    font-size: 10px;
-    letter-spacing: 0.18em;
+    font-size: 11px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     padding: 12px 24px;
     border-radius: 6px;

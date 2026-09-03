@@ -1,6 +1,6 @@
 ---
-title: unbrain · Senior Front-end Developer & Algorithm Scholar
-description: Senior Front-end Developer · WebGL / Vue.js · JavaScript Algorithm Wiki
+title: unbrain · 资深前端工程师 & 算法知识库
+description: 资深前端开发工程师 · WebGL / Vue.js · JavaScript 算法体系与工程沉淀
 aliases: []
 tags:
   - index
@@ -15,17 +15,17 @@ tags:
 <nav class="ub-nav" id="ub-nav">
 <div class="ub-nav-logo">
 <span class="ub-logo-bracket">[</span>UNBRAIN<span class="ub-logo-bracket">]</span>
-<span class="ub-nav-status"><span class="ub-status-dot"></span>ONLINE</span>
+<span class="ub-nav-status"><span class="ub-status-dot"></span>在线 ONLINE</span>
 </div>
 <div class="ub-nav-links">
-<a href="#ub-about">Profile</a>
-<a href="#ub-quests">Quests</a>
-<a href="#ub-builds">Builds</a>
-<a href="#ub-knowledge">Knowledge</a>
-<a href="#ub-stats">Telemetry</a>
-<a href="#ub-terminal">Terminal</a>
+<a href="#ub-about">个人档案</a>
+<a href="#ub-quests">履历历程</a>
+<a href="#ub-builds">核心作品</a>
+<a href="#ub-knowledge">知识卷轴</a>
+<a href="#ub-stats">量化数据</a>
+<a href="#ub-terminal">交互终端</a>
 </div>
-<button class="ub-nav-toggle" id="ub-nav-toggle" aria-label="Toggle Navigation Menu">
+<button class="ub-nav-toggle" id="ub-nav-toggle" aria-label="切换导航菜单">
 <span></span>
 <span></span>
 <span></span>
@@ -35,21 +35,21 @@ tags:
 <!-- MOBILE NAVIGATION DRAWER -->
 <div class="ub-nav-drawer" id="ub-nav-drawer">
 <div class="ub-drawer-header">
-<span class="ub-drawer-title">[ NAVIGATION HUB ]</span>
-<button class="ub-drawer-close" id="ub-drawer-close" aria-label="Close Navigation">✕</button>
+<span class="ub-drawer-title">[ 导航中心 · NAVIGATION HUB ]</span>
+<button class="ub-drawer-close" id="ub-drawer-close" aria-label="关闭导航">✕</button>
 </div>
 <div class="ub-drawer-links">
-<a class="ub-drawer-link" href="#ub-about"><span class="ub-drawer-num">01</span> CHARACTER PROFILE</a>
-<a class="ub-drawer-link" href="#ub-quests"><span class="ub-drawer-num">02</span> QUEST LOG</a>
-<a class="ub-drawer-link" href="#ub-builds"><span class="ub-drawer-num">03</span> PRODUCTION BUILDS</a>
-<a class="ub-drawer-link" href="#ub-knowledge"><span class="ub-drawer-num">04</span> SKILL SCROLLS</a>
-<a class="ub-drawer-link" href="#ub-stats"><span class="ub-drawer-num">05</span> TELEMETRY & STATS</a>
-<a class="ub-drawer-link" href="#ub-terminal"><span class="ub-drawer-num">06</span> CLI TERMINAL</a>
+<a class="ub-drawer-link" href="#ub-about"><span class="ub-drawer-num">01</span> 个人档案 · PROFILE</a>
+<a class="ub-drawer-link" href="#ub-quests"><span class="ub-drawer-num">02</span> 履历历程 · QUEST LOG</a>
+<a class="ub-drawer-link" href="#ub-builds"><span class="ub-drawer-num">03</span> 核心作品 · BUILDS</a>
+<a class="ub-drawer-link" href="#ub-knowledge"><span class="ub-drawer-num">04</span> 知识卷轴 · KNOWLEDGE</a>
+<a class="ub-drawer-link" href="#ub-stats"><span class="ub-drawer-num">05</span> 量化数据 · TELEMETRY</a>
+<a class="ub-drawer-link" href="#ub-terminal"><span class="ub-drawer-num">06</span> 交互终端 · TERMINAL</a>
 </div>
 </div>
 
-<button class="ub-floating-top" id="ub-floating-top" aria-label="Back to Top">
-<span>▲ TOP</span>
+<button class="ub-floating-top" id="ub-floating-top" aria-label="返回顶部">
+<span>▲ 顶部</span>
 </button>
 
 <!-- HERO SECTION -->
@@ -60,27 +60,27 @@ tags:
 
 <div class="ub-hero-content">
 <div class="ub-hero-ticker">
-<span class="ub-ticker-badge">SYS: READY</span>
-<span class="ub-ticker-item">LOC: 39.90° N, 116.40° E</span>
+<span class="ub-ticker-badge">系统: 正常运行</span>
+<span class="ub-ticker-item">坐标: 39.90° N, 116.40° E (北京)</span>
 <span class="ub-ticker-sep">/</span>
-<span class="ub-ticker-item">STACK: VUE 3 · TS · NODE</span>
+<span class="ub-ticker-item">技术栈: VUE 3 · TS · NODE</span>
 <span class="ub-ticker-sep">/</span>
-<span class="ub-ticker-item">EXP: 7+ YRS</span>
+<span class="ub-ticker-item">工程经验: 7+ 年</span>
 </div>
 <div class="ub-hero-tag">
-<span class="ub-tag-bracket">[</span> Senior Front-end Developer · WebGL / Vue.js · Algorithm Scholar <span class="ub-tag-bracket">]</span>
+<span class="ub-tag-bracket">[</span> 资深前端开发工程师 · WebGL / Vue.js · 算法探索者 <span class="ub-tag-bracket">]</span>
 </div>
 <h1 class="ub-hero-name">
 <span class="ub-line-wrap"><span class="ub-reveal-line" id="ub-hero-glitch">unbrain.</span></span>
 </h1>
-<p class="ub-hero-sub reveal-fade">Building high-throughput web systems · Writing algorithm scrolls · Crafting generative code.</p>
+<p class="ub-hero-sub reveal-fade">构筑高并发前端系统 · 研磨算法知识卷轴 · 探索生成式交互代码</p>
 <div class="ub-hero-actions reveal-fade">
-<a class="ub-btn ub-btn--primary" href="#ub-builds">Explore Builds ↗</a>
-<a class="ub-btn ub-btn--outline" href="#ub-knowledge">Knowledge Vault ↓</a>
-<a class="ub-btn ub-btn--ghost" href="#ub-terminal">Open CLI >_</a>
+<a class="ub-btn ub-btn--primary" href="#ub-builds">浏览核心工程 ↗</a>
+<a class="ub-btn ub-btn--outline" href="#ub-knowledge">查阅知识库 ↓</a>
+<a class="ub-btn ub-btn--ghost" href="#ub-terminal">打开终端 >_</a>
 </div>
 <div class="ub-hero-scroll-hint">
-<span>▼ SCROLL TO INITIALIZE ▼</span>
+<span>▼ 向下滚动探索 ▼</span>
 </div>
 </div>
 
@@ -93,42 +93,42 @@ tags:
 <!-- MARQUEE STRIP -->
 <div class="ub-marquee-strip">
 <div class="ub-marquee-inner">
-VUE 3 · TYPESCRIPT · WEBGL · ALGORITHMS · LEETCODE HOT100 · DATA STRUCTURES · NODE.JS · VITE · EGG.JS · REDIS · PERFORMANCE · COMPONENT DESIGN · VUE 3 · TYPESCRIPT · WEBGL · ALGORITHMS · LEETCODE HOT100 · DATA STRUCTURES · NODE.JS · VITE · EGG.JS · REDIS · PERFORMANCE · COMPONENT DESIGN ·&nbsp;
+VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEETCODE HOT100 · 高并发架构 · NODE.JS · VITE · 虚拟滚动 · 性能调优 · 组件库设计 · VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEETCODE HOT100 · 高并发架构 · NODE.JS · VITE · 虚拟滚动 · 性能调优 · 组件库设计 ·&nbsp;
 </div>
 </div>
 
 <!-- 01 CHARACTER PROFILE -->
 <section class="ub-about" id="ub-about">
 <div class="ub-container">
-<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">01</span> CHARACTER PROFILE</div>
+<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">01</span> 个人档案 · CHARACTER PROFILE</div>
 <div class="ub-about-grid">
 <div class="ub-about-left ub-scroll-reveal">
-<h2 class="ub-section-title">Architect of<br/>Scalable<br/>Interfaces.</h2>
+<h2 class="ub-section-title">构建高扩展<br/>前端架构与<br/>交互系统。</h2>
 <div class="ub-char-stats">
 <div class="ub-char-stat-row">
 <div class="ub-stat-head">
-<span class="ub-char-stat-name">VUE.JS — Reactive Core & Architecture</span>
+<span class="ub-char-stat-name">VUE.JS — 响应式内核与工程架构</span>
 <span class="ub-stat-val">95%</span>
 </div>
 <div class="ub-stat-bar"><div class="ub-stat-bar-fill" data-width="95"></div></div>
 </div>
 <div class="ub-char-stat-row">
 <div class="ub-stat-head">
-<span class="ub-char-stat-name">ALGORITHMS — DSA & Problem Solving</span>
+<span class="ub-char-stat-name">ALGORITHMS — 数据结构与算法推演</span>
 <span class="ub-stat-val">85%</span>
 </div>
 <div class="ub-stat-bar"><div class="ub-stat-bar-fill" data-width="85"></div></div>
 </div>
 <div class="ub-char-stat-row">
 <div class="ub-stat-head">
-<span class="ub-char-stat-name">TYPESCRIPT — High-Order Typing & Engineering</span>
+<span class="ub-char-stat-name">TYPESCRIPT — 高级类型体操与工程规范</span>
 <span class="ub-stat-val">88%</span>
 </div>
 <div class="ub-stat-bar"><div class="ub-stat-bar-fill" data-width="88"></div></div>
 </div>
 <div class="ub-char-stat-row">
 <div class="ub-stat-head">
-<span class="ub-char-stat-name">NODE.JS — High-concurrency Web & Redis Cache</span>
+<span class="ub-char-stat-name">NODE.JS — 高并发服务与 Redis 缓存</span>
 <span class="ub-stat-val">86%</span>
 </div>
 <div class="ub-stat-bar"><div class="ub-stat-bar-fill" data-width="86"></div></div>
@@ -137,21 +137,20 @@ VUE 3 · TYPESCRIPT · WEBGL · ALGORITHMS · LEETCODE HOT100 · DATA STRUCTURES
 </div>
 <div class="ub-about-right">
 <p class="ub-about-text ub-scroll-reveal">
-Senior Front-end Developer with over 7 years of production engineering experience.
-Specialized in modern Vue 3 ecosystem, Vite tooling, high-performance rendering pipelines, and scalable component architecture.
+拥有 7 年以上一线生产工程经验的资深前端开发工程师。精通现代 Vue 3 生态、Vite 工具链体系、高性能渲染管线以及高可维护的组件体系架构。
 </p>
 <p class="ub-about-text ub-scroll-reveal">
-Previously played a principal frontend development role at Sina Weibo — architecting and scaling the <strong>PC Main Portal</strong>, <strong>PC Creator Center</strong>, and <strong>High-concurrency DM Message System</strong> serving hundreds of millions of users.
+曾长期担任新浪微博核心业务的前端主力开发——主导并推进了<strong>微博 PC 主站</strong>、<strong>PC 创作者中心</strong>以及<strong>高并发私信消息箱</strong>的前端架构设计与演进，稳定承载数亿级用户的高并发访问。
 </p>
 <p class="ub-about-text ub-scroll-reveal">
-Dedicated to continuous learning in algorithms, computer graphics, and generative WebGL experiences. This site acts as an open digital garden and algorithmic vault.
+持续深耕算法推演、计算机图形学与生成式 WebGL 交互实验。本站作为开放的数字花园与算法知识库，系统性沉淀技术探索与解题智慧。
 </p>
 <div class="ub-about-badges ub-scroll-reveal">
 <span class="ub-badge">#Vue3</span>
 <span class="ub-badge">#TypeScript</span>
 <span class="ub-badge">#WebGL</span>
-<span class="ub-badge">#LeetCode</span>
-<span class="ub-badge">#Vite</span>
+<span class="ub-badge">#算法沉淀</span>
+<span class="ub-badge">#工程化</span>
 <span class="ub-badge">#Node.js</span>
 </div>
 </div>
@@ -162,19 +161,19 @@ Dedicated to continuous learning in algorithms, computer graphics, and generativ
 <!-- 02 QUEST LOG (CAREER JOURNEY) -->
 <section class="ub-quests" id="ub-quests">
 <div class="ub-container">
-<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">02</span> QUEST LOG</div>
-<h2 class="ub-section-title ub-scroll-reveal">The Path of<br/>The Builder.</h2>
+<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">02</span> 履历历程 · QUEST LOG</div>
+<h2 class="ub-section-title ub-scroll-reveal">工程进阶与<br/>技术足迹。</h2>
 <div class="ub-timeline">
 <div class="ub-timeline-item ub-scroll-reveal">
 <div class="ub-timeline-node"><span class="ub-node-icon">✓</span></div>
 <div class="ub-timeline-content">
 <div class="ub-timeline-meta">
 <span class="ub-timeline-year">2019</span>
-<span class="ub-timeline-tag">QUEST_START</span>
+<span class="ub-timeline-tag">启程 · QUEST_START</span>
 </div>
-<h3 class="ub-timeline-title">Genesis · Entering Sina Weibo</h3>
+<h3 class="ub-timeline-title">启程 · 加入新浪微博核心前端团队</h3>
 <p class="ub-timeline-desc">
-Graduated with a focus in computer science. Joined Sina Weibo's core frontend team to develop Web architectures, mastering modern JavaScript toolchains and high-traffic Web engineering.
+计算机专业毕业，加入新浪微博核心 Web 团队，投身超大流量平台的现代前端架构开发，深耕 JavaScript 编译工具链与超大型 Web 工程治理。
 </p>
 </div>
 </div>
@@ -183,11 +182,11 @@ Graduated with a focus in computer science. Joined Sina Weibo's core frontend te
 <div class="ub-timeline-content">
 <div class="ub-timeline-meta">
 <span class="ub-timeline-year">2021</span>
-<span class="ub-timeline-tag">SCALE_EXPANSION</span>
+<span class="ub-timeline-tag">规模拓展 · SCALE_EXPANSION</span>
 </div>
-<h3 class="ub-timeline-title">Scale · Weibo PC Creator Center & Editor</h3>
+<h3 class="ub-timeline-title">规模化 · 微博 PC 创作者中心与核心富媒体发布器</h3>
 <p class="ub-timeline-desc">
-Led the frontend development of the Weibo PC Creator Center and core rich-media publisher (video/audio pipelines, scheduled posts, raffle center, analytics dashboard). Handled peak traffic bursts reliably.
+主导微博 PC 创作者平台及全站核心富文本发布器开发（涵盖音视频流管线、定时发布调度、抽奖运营矩阵、数据分析看板），在热点脉冲级峰值流量下保障系统高可用。
 </p>
 </div>
 </div>
@@ -196,11 +195,11 @@ Led the frontend development of the Weibo PC Creator Center and core rich-media 
 <div class="ub-timeline-content">
 <div class="ub-timeline-meta">
 <span class="ub-timeline-year">2023</span>
-<span class="ub-timeline-tag">CONCURRENCY_IM</span>
+<span class="ub-timeline-tag">高并发通讯 · CONCURRENCY_IM</span>
 </div>
-<h3 class="ub-timeline-title">Architecture · High-Concurrency IM & Mobile Isomorphism</h3>
+<h3 class="ub-timeline-title">架构演进 · 高并发私信系统与跨端同构体系</h3>
 <p class="ub-timeline-desc">
-Re-engineered the Weibo DM Inbox (WebChat), implementing virtual scrolling, granular component decoupling, and mobile isomorphic cross-platform architectures.
+重构微博 PC 私信消息箱（WebChat），攻克海量数据虚拟滚动渲染、高频推送解耦与移动端同构跨平台架构，大幅降低内存占用并消减长列表白屏率。
 </p>
 </div>
 </div>
@@ -208,12 +207,12 @@ Re-engineered the Weibo DM Inbox (WebChat), implementing virtual scrolling, gran
 <div class="ub-timeline-node"><span class="ub-node-icon">★</span></div>
 <div class="ub-timeline-content">
 <div class="ub-timeline-meta">
-<span class="ub-timeline-year">2025 - Present</span>
-<span class="ub-timeline-tag">SENIOR_ARCHITECT</span>
+<span class="ub-timeline-year">2025 - 至今</span>
+<span class="ub-timeline-tag">资深进阶 · SENIOR_ARCHITECT</span>
 </div>
-<h3 class="ub-timeline-title">Senior Front-end Engineer & Full-Stack Evolution</h3>
+<h3 class="ub-timeline-title">资深沉淀 · 全栈进阶与算法知识图谱</h3>
 <p class="ub-timeline-desc">
-Stepped into senior engineering leadership, advancing full-stack capabilities with Node.js, WebGL shader experiments, algorithmic mastery, and digital gardening.
+作为资深前端开发，持续推进 Node.js 服务端、WebGL Shader 创意实验与前沿图形渲染，建立系统化算法解题体系，打造长效数字花园与知识底座。
 </p>
 </div>
 </div>
@@ -224,90 +223,90 @@ Stepped into senior engineering leadership, advancing full-stack capabilities wi
 <!-- 03 BUILDS & FEATS -->
 <section class="ub-builds" id="ub-builds">
 <div class="ub-container">
-<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">03</span> PRODUCTION BUILDS</div>
-<h2 class="ub-section-title ub-scroll-reveal">Featured<br/>Engineering Feats.</h2>
+<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">03</span> 核心作品 · PRODUCTION BUILDS</div>
+<h2 class="ub-section-title ub-scroll-reveal">代表性工程<br/>与实战成果。</h2>
 <div class="ub-projects-grid">
 <div class="ub-project-card ub-scroll-reveal" data-tilt>
 <div class="ub-project-img-wrap">
 <img src="/static/projects/weibo.png" alt="PC 微博主站" class="ub-project-img" />
-<div class="ub-project-badge">Core Portal</div>
+<div class="ub-project-badge">核心门户 · Core Portal</div>
 </div>
 <div class="ub-project-body">
 <div class="ub-project-header">
 <h3 class="ub-project-name">PC 微博主站</h3>
-<a href="https://weibo.com" target="_blank" class="ub-project-ext">↗</a>
+<a href="https://weibo.com" target="_blank" class="ub-project-ext" aria-label="访问 PC 微博主站">↗</a>
 </div>
 <p class="ub-project-desc">
-Sina Weibo PC flagship web portal. Designed and engineered the core rich-media publisher, audio/video upload pipeline, message drawers, dynamic feed card matrix, and scheduled publishing workflow.
+新浪微博 PC 旗舰级门户。负责核心富媒体发布器、音视频直传管线、全局抽屉消息、动态 Feed 卡片矩阵以及定时内容调度流的系统级工程实现。
 </p>
 <div class="ub-project-tags">
 <span>Vue.js</span>
 <span>Vite</span>
-<span>Media Pipeline</span>
-<span>High Throughput</span>
+<span>音视频管线</span>
+<span>高并发架构</span>
 </div>
 </div>
 </div>
 <div class="ub-project-card ub-scroll-reveal" data-tilt>
 <div class="ub-project-img-wrap">
 <img src="/static/projects/me.jpg" alt="PC 微博创作者中心" class="ub-project-img" />
-<div class="ub-project-badge">Creator Platform</div>
+<div class="ub-project-badge">创作者中台 · Creator Hub</div>
 </div>
 <div class="ub-project-body">
 <div class="ub-project-header">
 <h3 class="ub-project-name">PC 微博创作者中心</h3>
-<a href="https://me.weibo.com/" target="_blank" class="ub-project-ext">↗</a>
+<a href="https://me.weibo.com/" target="_blank" class="ub-project-ext" aria-label="访问 PC 微博创作者中心">↗</a>
 </div>
 <p class="ub-project-desc">
-One-stop creator operations hub. Implemented the lottery giveaway center, video asset management, crowd-testing module, revenue analytics, and scheduled content dispatching.
+一站式创作者运营中台。主导落地抽奖中心、视频资源托管分发、粉丝众测模块、多维商业化收益看板及定时内容调度中心等核心业务链路。
 </p>
 <div class="ub-project-tags">
 <span>Vue 3</span>
 <span>TypeScript</span>
-<span>Analytics</span>
-<span>Operations</span>
+<span>数据看板</span>
+<span>运营矩阵</span>
 </div>
 </div>
 </div>
 <div class="ub-project-card ub-scroll-reveal" data-tilt>
 <div class="ub-project-img-wrap">
 <img src="/static/projects/webchat.jpg" alt="微博 PC 消息箱" class="ub-project-img" />
-<div class="ub-project-badge">Instant Messaging</div>
+<div class="ub-project-badge">实时即时通讯 · IM</div>
 </div>
 <div class="ub-project-body">
 <div class="ub-project-header">
 <h3 class="ub-project-name">微博 PC 消息箱 & WebChat</h3>
-<a href="https://m.weibo.cn/c/wbox?id=qgb2672tlf" target="_blank" class="ub-project-ext">↗</a>
+<a href="https://m.weibo.cn/c/wbox?id=qgb2672tlf" target="_blank" class="ub-project-ext" aria-label="访问微博消息箱">↗</a>
 </div>
 <p class="ub-project-desc">
-Large-scale real-time communication platform. Comprehensive architectural refactoring, virtualized list acceleration, session decoupling, and low-latency message streaming.
+亿级规模实时通讯平台。完成系统架构全面重构，攻克长列表虚拟滚动、会话状态机解耦与低延迟消息推送流，带来丝滑流畅的交互体验。
 </p>
 <div class="ub-project-tags">
 <span>WebSocket</span>
-<span>Virtual List</span>
-<span>IM Architecture</span>
-<span>Isomorphic</span>
+<span>虚拟列表</span>
+<span>IM 架构</span>
+<span>端同构设计</span>
 </div>
 </div>
 </div>
 <div class="ub-project-card ub-scroll-reveal" data-tilt>
 <div class="ub-project-img-wrap">
 <img src="/static/projects/creator.jpg" alt="移动端组件与瀑布流体系" class="ub-project-img" />
-<div class="ub-project-badge">Material Solution</div>
+<div class="ub-project-badge">物料体系 · Material Solution</div>
 </div>
 <div class="ub-project-body">
 <div class="ub-project-header">
 <h3 class="ub-project-name">移动端工程化与瀑布流物料体系</h3>
-<a href="/瀑布流项目/项目骨架搭建" class="ub-project-ext">↗</a>
+<a href="/瀑布流项目/项目骨架搭建" class="ub-project-ext" aria-label="查看项目文档">↗</a>
 </div>
 <p class="ub-project-desc">
-High-performance waterfall layout and component library solution. Tailored for dual-mode Mobile/PC rendering, sub-resource integrity, Vite 8 builder integration, and Tailwind CSS.
+高性能自适应瀑布流与现代化移动端组件库解决方案。专为移动端/PC 双端自适应渲染量身设计，集成 Vite 构建加速与 Tailwind CSS 样式引擎。
 </p>
 <div class="ub-project-tags">
-<span>Vite 8</span>
-<span>Tailwind</span>
-<span>Component Library</span>
-<span>Engineering</span>
+<span>Vite</span>
+<span>Tailwind CSS</span>
+<span>通用组件库</span>
+<span>工程化规范</span>
 </div>
 </div>
 </div>
@@ -318,14 +317,14 @@ High-performance waterfall layout and component library solution. Tailored for d
 <!-- 04 SKILL SCROLLS & KNOWLEDGE VAULT -->
 <section class="ub-knowledge" id="ub-knowledge">
 <div class="ub-container">
-<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">04</span> SKILL SCROLLS</div>
-<h2 class="ub-section-title ub-scroll-reveal">Algorithmic &<br/>Source Code Vault.</h2>
+<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">04</span> 知识卷轴 · SKILL SCROLLS</div>
+<h2 class="ub-section-title ub-scroll-reveal">算法推演与<br/>源码知识库。</h2>
 <div class="ub-writing-list">
 <a class="ub-writing-item ub-scroll-reveal" href="/JavaScript 算法/算法基础/JavaScript 算法基础第一天">
 <span class="ub-writing-num">01</span>
 <div class="ub-writing-info">
-<span class="ub-writing-title">算法基础 — DSA Fundamentals</span>
-<span class="ub-writing-sub">从复杂度分析、链表、树、图到堆与动态规划，11 天建立体系化认知</span>
+<span class="ub-writing-title">算法基础 — 数据结构与算法体系核心</span>
+<span class="ub-writing-sub">从复杂度分析、链表、树、图到堆与动态规划，11 天建立完整算法思维骨架</span>
 </div>
 <span class="ub-writing-meta">11 篇</span>
 <span class="ub-writing-arrow">↗</span>
@@ -333,8 +332,8 @@ High-performance waterfall layout and component library solution. Tailored for d
 <a class="ub-writing-item ub-scroll-reveal" href="/JavaScript 算法/LeetCode Hot100/LeetCode Hot100">
 <span class="ub-writing-num">02</span>
 <div class="ub-writing-info">
-<span class="ub-writing-title">LeetCode Hot 100 — High-Frequency Interview Problems</span>
-<span class="ub-writing-sub">按高频面试专题系统化归类，逐题推导最优解与 JavaScript 核心实现</span>
+<span class="ub-writing-title">LeetCode Hot 100 — 经典高频面试真题</span>
+<span class="ub-writing-sub">按高频面试专题系统化归类，逐题推导最优解法与 JavaScript 核心实现</span>
 </div>
 <span class="ub-writing-meta">20 篇</span>
 <span class="ub-writing-arrow">↗</span>
@@ -342,8 +341,8 @@ High-performance waterfall layout and component library solution. Tailored for d
 <a class="ub-writing-item ub-scroll-reveal" href="/JavaScript 算法/经典 150/经典 150 数字 字符串">
 <span class="ub-writing-num">03</span>
 <div class="ub-writing-info">
-<span class="ub-writing-title">经典 150 题 — LeetCode Classic 150</span>
-<span class="ub-writing-sub">涵盖双指针、滑动窗口、Kadane 算法、矩阵与区间等核心技巧</span>
+<span class="ub-writing-title">经典 150 题 — LeetCode 经典题库精讲</span>
+<span class="ub-writing-sub">全面涵盖双指针、滑动窗口、Kadane 算法、矩阵与区间合并等核心技巧</span>
 </div>
 <span class="ub-writing-meta">17 篇</span>
 <span class="ub-writing-arrow">↗</span>
@@ -351,8 +350,8 @@ High-performance waterfall layout and component library solution. Tailored for d
 <a class="ub-writing-item ub-scroll-reveal" href="/JavaScript 算法/GRD/GRD 数组">
 <span class="ub-writing-num">04</span>
 <div class="ub-writing-info">
-<span class="ub-writing-title">GRD 刷题 — Gold Representative Drills</span>
-<span class="ub-writing-sub">高代表性黄金题目深度拆解，包含完整时空分析与边界易错点</span>
+<span class="ub-writing-title">GRD 刷题 — 黄金代表性题目实战解析</span>
+<span class="ub-writing-sub">精选高代表性考题深度拆解，包含完整时空复杂度推导与边界易错点防御</span>
 </div>
 <span class="ub-writing-meta">11 篇</span>
 <span class="ub-writing-arrow">↗</span>
@@ -360,8 +359,8 @@ High-performance waterfall layout and component library solution. Tailored for d
 <a class="ub-writing-item ub-scroll-reveal" href="/Vue 源码/Reactive 与 Effect 原理实现">
 <span class="ub-writing-num">05</span>
 <div class="ub-writing-info">
-<span class="ub-writing-title">Vue 3 源码解析 — Vue 3 Core Mechanics</span>
-<span class="ub-writing-sub">手写 Reactive 响应式系统、Readonly 体系、双端对比 Diff (LIS) 与编译器 FSM</span>
+<span class="ub-writing-title">Vue 3 源码解析 — 核心底层运作机制剖析</span>
+<span class="ub-writing-sub">深度手写 Reactive 响应式系统、Readonly 体系、双端对比 Diff (LIS) 与编译器状态机</span>
 </div>
 <span class="ub-writing-meta">4 篇</span>
 <span class="ub-writing-arrow">↗</span>
@@ -369,8 +368,8 @@ High-performance waterfall layout and component library solution. Tailored for d
 <a class="ub-writing-item ub-scroll-reveal" href="/前端工程/强缓存与协商缓存">
 <span class="ub-writing-num">06</span>
 <div class="ub-writing-info">
-<span class="ub-writing-title">前端工程与网络协议 — Engineering & Protocols</span>
-<span class="ub-writing-sub">深入 HTTP 缓存分层、Retina 1px 像素适配、跨域机制与架构设计</span>
+<span class="ub-writing-title">前端工程化与网络协议 — 体系规范与架构设计</span>
+<span class="ub-writing-sub">深入 HTTP 强缓存与协商缓存、Retina 1px 像素适配、跨域机制与架构设计</span>
 </div>
 <span class="ub-writing-meta">4 篇</span>
 <span class="ub-writing-arrow">↗</span>
@@ -378,8 +377,8 @@ High-performance waterfall layout and component library solution. Tailored for d
 <a class="ub-writing-item ub-scroll-reveal" href="/JavaScript 算法/解题思路/322 零钱兑换">
 <span class="ub-writing-num">07</span>
 <div class="ub-writing-info">
-<span class="ub-writing-title">解题思维拆解 — Deep-Dive Problem Breakdowns</span>
-<span class="ub-writing-sub">零钱兑换背包状态推演、螺旋矩阵四边界收缩全流程深度复盘</span>
+<span class="ub-writing-title">解题思维拆解 — 算法重难点深度复盘</span>
+<span class="ub-writing-sub">零钱兑换完全背包状态转移推导、螺旋矩阵四边界收缩全流程复盘</span>
 </div>
 <span class="ub-writing-meta">2 篇</span>
 <span class="ub-writing-arrow">↗</span>
@@ -391,32 +390,32 @@ High-performance waterfall layout and component library solution. Tailored for d
 <!-- 05 TELEMETRY & STATS -->
 <section class="ub-stats" id="ub-stats">
 <div class="ub-container">
-<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">05</span> TELEMETRY & METRICS</div>
-<h2 class="ub-section-title ub-scroll-reveal">Engineered in<br/>Numbers.</h2>
+<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">05</span> 量化数据 · TELEMETRY & METRICS</div>
+<h2 class="ub-section-title ub-scroll-reveal">用数字沉淀<br/>工程印记。</h2>
 <div class="ub-metrics-grid">
 <div class="ub-metric-card ub-scroll-reveal">
 <div class="ub-metric-num" data-target="80">0</div>
 <div class="ub-metric-plus">+</div>
-<div class="ub-metric-label">Knowledge Scrolls</div>
-<div class="ub-metric-sub">80+ Systemic technical notes published</div>
+<div class="ub-metric-label">知识卷轴篇数</div>
+<div class="ub-metric-sub">已公开发布 80+ 篇系统化深度技术笔记</div>
 </div>
 <div class="ub-metric-card ub-scroll-reveal">
 <div class="ub-metric-num" data-target="130">0</div>
 <div class="ub-metric-plus">+</div>
-<div class="ub-metric-label">Algorithm Drills</div>
-<div class="ub-metric-sub">130+ LeetCode problems documented</div>
+<div class="ub-metric-label">算法题解收录</div>
+<div class="ub-metric-sub">系统解析 130+ 道精选 LeetCode 经典题解</div>
 </div>
 <div class="ub-metric-card ub-scroll-reveal">
 <div class="ub-metric-num" data-target="7">0</div>
 <div class="ub-metric-plus">+</div>
-<div class="ub-metric-label">Years Production Exp</div>
-<div class="ub-metric-sub">Architecting high-concurrency Web apps</div>
+<div class="ub-metric-label">一线工程经验</div>
+<div class="ub-metric-sub">深耕超高并发亿级访问 Web 架构演进</div>
 </div>
 <div class="ub-metric-card ub-scroll-reveal">
 <div class="ub-metric-num" data-target="100">0</div>
 <div class="ub-metric-plus">M+</div>
-<div class="ub-metric-label">Users Impacted</div>
-<div class="ub-metric-sub">Peak concurrent traffic handled reliably</div>
+<div class="ub-metric-label">触达服务用户</div>
+<div class="ub-metric-sub">稳定护航生产环境峰值并发流量</div>
 </div>
 </div>
 </div>
@@ -425,8 +424,8 @@ High-performance waterfall layout and component library solution. Tailored for d
 <!-- 06 PARTY UP & INTERACTIVE CLI TERMINAL -->
 <section class="ub-terminal-section" id="ub-terminal">
 <div class="ub-container">
-<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">06</span> PARTY UP & CLI TERMINAL</div>
-<h2 class="ub-section-title ub-scroll-reveal">Let's Connect<br/>& Build Together.</h2>
+<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">06</span> 联络与终端 · PARTY UP & CLI</div>
+<h2 class="ub-section-title ub-scroll-reveal">携手合作<br/>共筑卓越工程。</h2>
 <div class="ub-terminal-wrap ub-scroll-reveal">
 <div class="ub-term-header">
 <div class="ub-term-dots">
@@ -435,32 +434,32 @@ High-performance waterfall layout and component library solution. Tailored for d
 <span class="ub-term-dot ub-term-dot--green"></span>
 </div>
 <div class="ub-term-title">unbrain@node-worker: ~ (zsh)</div>
-<div class="ub-term-status">SESSION: ACTIVE</div>
+<div class="ub-term-status">会话状态: ACTIVE 在线</div>
 </div>
 <div class="ub-term-body" id="ub-term-output">
-<div class="ub-term-line ub-term-line--muted">Welcome to UNBRAIN Interactive Terminal [v5.0.0-game-ui]</div>
-<div class="ub-term-line ub-term-line--muted">Type <span class="ub-code-cmd">help</span> or click suggestions below for quick actions:</div>
+<div class="ub-term-line ub-term-line--muted">欢迎访问 UNBRAIN 交互式终端 [v5.0.0-game-ui]</div>
+<div class="ub-term-line ub-term-line--muted">输入 <span class="ub-code-cmd">help</span> 或点击下方快捷指令按钮快速探索：</div>
 <div class="ub-term-quick">
-<button class="ub-term-btn" data-cmd="help">help</button>
-<button class="ub-term-btn" data-cmd="skills">skills</button>
-<button class="ub-term-btn" data-cmd="projects">projects</button>
-<button class="ub-term-btn" data-cmd="contact">contact</button>
-<button class="ub-term-btn" data-cmd="stats">stats</button>
-<button class="ub-term-btn" data-cmd="clear">clear</button>
+<button class="ub-term-btn" data-cmd="help">help 帮助</button>
+<button class="ub-term-btn" data-cmd="skills">skills 技能</button>
+<button class="ub-term-btn" data-cmd="projects">projects 作品</button>
+<button class="ub-term-btn" data-cmd="contact">contact 联络</button>
+<button class="ub-term-btn" data-cmd="stats">stats 数据</button>
+<button class="ub-term-btn" data-cmd="clear">clear 清屏</button>
 </div>
 </div>
 <div class="ub-term-input-row">
 <span class="ub-term-prompt">unbrain&gt;</span>
-<input type="text" id="ub-term-input" class="ub-term-input" placeholder="Type a command (e.g. contact, skills, about)..." autocomplete="off" />
+<input type="text" id="ub-term-input" class="ub-term-input" placeholder="输入指令 (例如 about, skills, projects, contact, stats)..." autocomplete="off" />
 </div>
 </div>
 <div class="ub-social-links ub-scroll-reveal">
-<a class="ub-social-link" href="https://github.com/unbrain" target="_blank">
-<span class="ub-social-platform">GitHub</span>
+<a class="ub-social-link" href="https://github.com/unbrain" target="_blank" aria-label="访问 GitHub 主页">
+<span class="ub-social-platform">开源主页 · GITHUB</span>
 <span class="ub-social-handle">@unbrain ↗</span>
 </a>
-<a class="ub-social-link" href="mailto:marsorsun@gmail.com">
-<span class="ub-social-platform">Email</span>
+<a class="ub-social-link" href="mailto:marsorsun@gmail.com" aria-label="发送邮件给作者">
+<span class="ub-social-platform">电子邮箱 · EMAIL</span>
 <span class="ub-social-handle">marsorsun@gmail.com ↗</span>
 </a>
 </div>
@@ -672,56 +671,82 @@ High-performance waterfall layout and component library solution. Tailored for d
   var termOutput = document.getElementById('ub-term-output');
   var termInput  = document.getElementById('ub-term-input');
   
+  var cmdAliases = {
+    'help': 'help',
+    '帮助': 'help',
+    'about': 'about',
+    '关于': 'about',
+    '档案': 'about',
+    '简介': 'about',
+    'skills': 'skills',
+    '技能': 'skills',
+    '技术栈': 'skills',
+    'projects': 'projects',
+    '工程': 'projects',
+    '项目': 'projects',
+    '作品': 'projects',
+    'contact': 'contact',
+    '联系': 'contact',
+    '联络': 'contact',
+    '邮箱': 'contact',
+    'stats': 'stats',
+    '数据': 'stats',
+    '指标': 'stats',
+    'clear': 'clear',
+    '清屏': 'clear',
+    'cls': 'clear'
+  };
+
   var cmdRegistry = {
     help: function() {
       return [
-        'Available system commands:',
-        '  about     - Developer profile & background',
-        '  skills    - Core competencies and tech stack',
-        '  projects  - Featured production feats',
-        '  contact   - Reach out via email or GitHub',
-        '  stats     - Engineering numbers & metrics',
-        '  clear     - Clean the terminal output buffer'
+        '系统可用指令：',
+        '  about     - 开发者角色档案与背景简介',
+        '  skills    - 核心技术栈与专业技能',
+        '  projects  - 代表性生产工程成果',
+        '  contact   - 联络邮箱与开源主页',
+        '  stats     - 工程量化数据与遥测指标',
+        '  clear     - 清空终端输出缓冲区'
       ];
     },
     about: function() {
       return [
-        'NAME: unbrain (刘朝阳)',
-        'ROLE: Senior Front-end Developer',
-        'EXPERIENCE: 7+ Years (ex-Weibo Core Frontend, High-throughput Web)',
-        'FOCUS: Vue 3 · TypeScript · WebGL · Architecture · Algorithms'
+        '姓名: unbrain (刘朝阳)',
+        '职位: 资深前端开发工程师 / 前端架构',
+        '经验: 7+ 年 (前新浪微博核心 Web 团队主力开发)',
+        '专注: Vue 3 · TypeScript · WebGL · 前端架构 · 算法体系'
       ];
     },
     skills: function() {
       return [
-        'CORE STACK:',
-        '  Frontend : Vue 3, Vite, TypeScript, Tailwind CSS, WebGL/Canvas',
-        '  Backend  : Node.js, Egg.js, Redis, WebSocket',
-        '  Knowledge: 130+ LeetCode DSA Drills, Vue 3 Source Mechanics'
+        '核心技能矩阵：',
+        '  前端工程 : Vue 3, Vite, TypeScript, Tailwind CSS, WebGL/Canvas',
+        '  服务端   : Node.js, Egg.js, Redis, WebSocket',
+        '  算法沉淀 : 130+ LeetCode DSA 题解推导, Vue 3 核心底层机制'
       ];
     },
     projects: function() {
       return [
-        'FEATURED BUILDS:',
-        '  [1] PC 微博主站 - Core Publisher & Media Pipeline',
-        '  [2] PC 微博创作者中心 - Operations, Raffles & Video Analytics',
-        '  [3] 微博 PC/移动消息箱 - High-concurrency WebChat IM',
-        '  [4] 瀑布流物料体系 - Vite 8 Dual-device Component Library'
+        '代表性工程成果：',
+        '  [1] PC 微博主站 - 核心富媒体发布器与直传流管线',
+        '  [2] PC 微博创作者中心 - 运营中台、抽奖体系与数据看板',
+        '  [3] 微博 PC/移动消息箱 - 高并发实时通讯 WebChat 架构',
+        '  [4] 瀑布流物料体系 - Vite 8 双端自适应通用物料库'
       ];
     },
     contact: function() {
       return [
-        'COMMUNICATION CHANNELS:',
-        '  Email  : marsorsun@gmail.com',
+        '联络渠道：',
+        '  邮箱   : marsorsun@gmail.com',
         '  GitHub : https://github.com/unbrain'
       ];
     },
     stats: function() {
       return [
-        'TELEMETRY DATA:',
-        '  Scrolls  : 80+ Systemic technical notes',
-        '  Problems : 130+ Algorithm solutions documented',
-        '  Traffic  : 100M+ Users served in peak production'
+        '工程遥测数据：',
+        '  知识卷轴 : 80+ 篇系统化技术与架构笔记',
+        '  算法题解 : 130+ 道精选算法深度剖析与推导',
+        '  用户规模 : 1 亿+ 生产环境峰值并发流量护航'
       ];
     },
     clear: function() {
@@ -739,8 +764,10 @@ High-performance waterfall layout and component library solution. Tailored for d
     echo.innerHTML = '<span class="ub-term-prompt">unbrain&gt;</span> ' + escapeHtml(cmd);
     termOutput.appendChild(echo);
 
-    if (cmdRegistry[cmd]) {
-      var lines = cmdRegistry[cmd]();
+    var resolvedCmd = cmdAliases[cmd] || cmd;
+
+    if (cmdRegistry[resolvedCmd]) {
+      var lines = cmdRegistry[resolvedCmd]();
       lines.forEach(function(l) {
         var out = document.createElement('div');
         out.className = 'ub-term-line';
@@ -750,7 +777,7 @@ High-performance waterfall layout and component library solution. Tailored for d
     } else {
       var err = document.createElement('div');
       err.className = 'ub-term-line ub-term-line--err';
-      err.textContent = 'zsh: command not found: ' + cmd + ' (type "help" for available commands)';
+      err.textContent = 'zsh: 未找到指令: ' + cmd + ' (可输入 "help" 查看所有支持的指令)';
       termOutput.appendChild(err);
     }
     termOutput.scrollTop = termOutput.scrollHeight;
