@@ -1,18 +1,23 @@
 /**
- * Retro Cyberpunk Particle Snake Game
- * Extracted & refactored from cv project for Quartz 404 / Playground Easter Egg
+ * Retro Cyberpunk Particle Snake Game Engine v2.0
+ * Extracted & upgraded from cv project (SnakeContainer.vue / Snake.vue)
+ * Supports both standalone 404 mode & inlined Index arcade mode with focus gating
  */
 (function() {
-  function initCyberSnake(containerId) {
+  function createCyberSnake(containerId, options) {
     var container = document.getElementById(containerId);
-    if (!container) return;
+    if (!container) return null;
 
-    // Build UI if not present
+    options = options || {};
+    var isIndexMode = options.isIndexMode || false;
+
     var canvas = container.querySelector('canvas');
     var scoreDom = container.querySelector('.snake-score-val');
     var maxScoreDom = container.querySelector('.snake-maxscore-val');
     var replayBtn = container.querySelector('.snake-replay-btn');
     var statusText = container.querySelector('.snake-status-text');
+    var overlay = container.querySelector('.ub-snake-overlay');
+    var chassis = container.closest('.ub-snake-chassis') || container;
 
     if (!canvas) {
       canvas = document.createElement('canvas');
@@ -23,16 +28,19 @@
     var W = (canvas.width = 240);
     var H = (canvas.height = 320);
 
-    var snake, food, currentHue;
+    var snake, food;
     var cells = 20;
     var cellSize = W / cells;
     var isGameOver = false;
+    var isRunning = false;
+    var isFocused = !isIndexMode; // 404 auto-focuses; index requires click to focus
     var score = 0;
     var maxScore = parseInt(localStorage.getItem('cyberSnakeMax') || '0', 10);
     if (maxScoreDom) maxScoreDom.textContent = maxScore.toString().padStart(2, '0');
     var particles = [];
     var splashingParticleCount = 18;
     var animFrame = null;
+    var isVisible = true;
 
     var Vec = function(x, y) {
       this.x = x;
@@ -58,7 +66,22 @@
       }
     };
 
+    function setFocus(active) {
+      isFocused = active;
+      if (chassis) {
+        if (active) chassis.classList.add('is-active');
+        else chassis.classList.remove('is-active');
+      }
+      if (overlay) {
+        if (active) overlay.classList.add('is-hidden');
+        else overlay.classList.remove('is-hidden');
+      }
+    }
+
     function setDirection(dir) {
+      if (!isFocused && isIndexMode) {
+        setFocus(true);
+      }
       if (isGameOver) {
         resetGame();
         return;
@@ -80,13 +103,30 @@
 
     function onKeyDown(e) {
       if (!document.getElementById(containerId)) {
-        window.removeEventListener('keydown', onKeyDown);
-        if (animFrame) cancelAnimationFrame(animFrame);
+        destroy();
         return;
       }
-      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].indexOf(e.key) !== -1) {
+
+      // If Escape, drop focus and allow scroll
+      if (e.key === 'Escape' && isIndexMode) {
+        setFocus(false);
+        return;
+      }
+
+      // If not focused in Index mode, let normal browser scrolling happen!
+      if (isIndexMode && !isFocused) {
+        if (e.key === 'Enter') {
+          setFocus(true);
+          e.preventDefault();
+        }
+        return;
+      }
+
+      var handledKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' ', 'w', 'W', 's', 'S', 'a', 'A', 'd', 'D'];
+      if (handledKeys.indexOf(e.key) !== -1) {
         e.preventDefault();
       }
+
       if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') setDirection('up');
       if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') setDirection('down');
       if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') setDirection('left');
@@ -96,22 +136,37 @@
 
     window.addEventListener('keydown', onKeyDown);
 
-    if (typeof window.addCleanup === 'function') {
-      window.addCleanup(function() {
-        if (animFrame) cancelAnimationFrame(animFrame);
-        window.removeEventListener('keydown', onKeyDown);
-      });
+    // Click on container gives focus in Index mode
+    function onContainerClick(e) {
+      if (isIndexMode && !isFocused) {
+        setFocus(true);
+      }
     }
+    container.addEventListener('click', onContainerClick);
+
+    // Click outside drops focus in Index mode
+    function onDocClick(e) {
+      if (isIndexMode && isFocused) {
+        if (!container.contains(e.target) && !chassis.contains(e.target)) {
+          setFocus(false);
+        }
+      }
+    }
+    document.addEventListener('click', onDocClick);
 
     // Bind touch / D-Pad buttons
     container.querySelectorAll('[data-dir]').forEach(function(btn) {
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
         setDirection(this.getAttribute('data-dir'));
       });
     });
 
     if (replayBtn) {
-      replayBtn.addEventListener('click', resetGame);
+      replayBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        resetGame();
+      });
     }
 
     function Snake() {
@@ -177,7 +232,7 @@
             food.spawn();
             this.total++;
             if (this.total % 5 === 0 && this.delay > 3) {
-              this.delay--; // speed up
+              this.delay--;
             }
           }
 
@@ -274,6 +329,8 @@
     }
 
     function loop() {
+      if (!isRunning || !isVisible) return;
+
       CTX.fillStyle = '#011221';
       CTX.fillRect(0, 0, W, H);
       drawGrid();
@@ -289,15 +346,16 @@
           }
         }
 
-        if (statusText && snake.dir.x === 0 && snake.dir.y === 0) {
-          statusText.textContent = '按方向键开始行动';
-        } else if (statusText) {
-          statusText.textContent = '信号追踪中...';
+        if (statusText) {
+          if (snake.dir.x === 0 && snake.dir.y === 0) {
+            statusText.textContent = isFocused ? '按方向键行动' : '待命模式';
+          } else {
+            statusText.textContent = '信号追踪中...';
+          }
         }
 
         animFrame = requestAnimationFrame(loop);
       } else {
-        // Game Over screen
         CTX.fillStyle = 'rgba(1, 18, 33, 0.85)';
         CTX.fillRect(0, 0, W, H);
         CTX.fillStyle = '#ff6b6b';
@@ -320,21 +378,76 @@
       particles = [];
       snake = new Snake();
       food = new Food();
+      isRunning = true;
       loop();
     }
 
+    // IntersectionObserver for battery/GPU pause
+    var observer = null;
+    if (typeof IntersectionObserver !== 'undefined') {
+      observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          isVisible = entry.isIntersecting;
+          if (isVisible && isRunning && !animFrame) {
+            loop();
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(container);
+    }
+
+    function destroy() {
+      isRunning = false;
+      if (animFrame) cancelAnimationFrame(animFrame);
+      window.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('click', onDocClick);
+      if (observer) observer.disconnect();
+    }
+
+    if (typeof window.addCleanup === 'function') {
+      window.addCleanup(destroy);
+    }
+
     resetGame();
+
+    return {
+      focus: function() { setFocus(true); },
+      blur: function() { setFocus(false); },
+      reset: resetGame,
+      destroy: destroy
+    };
   }
 
-  window.initCyberSnake = initCyberSnake;
-  document.addEventListener('nav', function() {
-    if (document.getElementById('cyber-snake-container')) {
-      initCyberSnake('cyber-snake-container');
+  // Global mount points
+  var indexInstance = null;
+  var notFoundInstance = null;
+
+  function initArcade() {
+    if (document.getElementById('index-snake-container')) {
+      if (indexInstance) indexInstance.destroy();
+      indexInstance = createCyberSnake('index-snake-container', { isIndexMode: true });
     }
-  });
-  document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('cyber-snake-container')) {
-      initCyberSnake('cyber-snake-container');
+      if (notFoundInstance) notFoundInstance.destroy();
+      notFoundInstance = createCyberSnake('cyber-snake-container', { isIndexMode: false });
     }
-  });
+  }
+
+  window.activateIndexSnake = function() {
+    if (indexInstance) {
+      indexInstance.focus();
+    }
+  };
+
+  window.initCyberSnake = function(id) {
+    if (id === 'cyber-snake-container') {
+      if (notFoundInstance) notFoundInstance.destroy();
+      notFoundInstance = createCyberSnake(id, { isIndexMode: false });
+    } else {
+      initArcade();
+    }
+  };
+
+  document.addEventListener('nav', initArcade);
+  document.addEventListener('DOMContentLoaded', initArcade);
 })();

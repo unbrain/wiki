@@ -26,6 +26,7 @@ tags:
 <a href="/朝花夕拾/" data-no-popover="true">朝花夕拾</a>
 <a href="#ub-stats" data-router-ignore="true" data-no-popover="true">量化数据</a>
 <a href="#ub-terminal" data-router-ignore="true" data-no-popover="true">交互终端</a>
+<a href="#ub-arcade" data-router-ignore="true" data-no-popover="true">赛博游戏</a>
 </div>
 <button class="ub-nav-toggle" id="ub-nav-toggle" aria-label="切换导航菜单">
 <span></span>
@@ -49,6 +50,7 @@ tags:
 <a class="ub-drawer-link" href="/朝花夕拾/" data-no-popover="true"><span class="ub-drawer-num">05</span> 朝花夕拾 · ARCHIVES</a>
 <a class="ub-drawer-link" href="#ub-stats" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">06</span> 量化数据 · TELEMETRY</a>
 <a class="ub-drawer-link" href="#ub-terminal" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">07</span> 交互终端 · TERMINAL</a>
+<a class="ub-drawer-link" href="#ub-arcade" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">08</span> 赛博游戏 · ARCADE</a>
 </div>
 </div>
 
@@ -459,6 +461,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <div class="ub-term-line ub-term-line--muted">输入 <span class="ub-code-cmd">help</span> 或点击下方快捷指令按钮快速探索：</div>
 <div class="ub-term-quick">
 <button class="ub-term-btn" data-cmd="help">help 帮助</button>
+<button class="ub-term-btn" data-cmd="snake">snake 游戏</button>
 <button class="ub-term-btn" data-cmd="resume">resume 简历</button>
 <button class="ub-term-btn" data-cmd="archive">archive 归档</button>
 <button class="ub-term-btn" data-cmd="skills">skills 技能</button>
@@ -482,6 +485,57 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-social-platform">电子邮箱 · EMAIL</span>
 <span class="ub-social-handle">marsorsun@gmail.com ↗</span>
 </a>
+</div>
+</div>
+</section>
+
+<!-- 07 CYBER ARCADE (RETRO SNAKE) -->
+<section class="ub-arcade-section ub-scroll-reveal" id="ub-arcade">
+<div class="ub-container ub-arcade-container">
+<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">07</span> 赛博游戏舱 · CYBER ARCADE</div>
+<h2 class="ub-section-title ub-scroll-reveal">复古终端<br/>极客贪吃蛇。</h2>
+<div class="ub-snake-chassis" id="index-snake-container">
+<div class="ub-snake-warp1"></div>
+<div class="ub-snake-warp2"></div>
+<div class="ub-snake-bolt bolt-tl"></div>
+<div class="ub-snake-bolt bolt-tr"></div>
+<div class="ub-snake-bolt bolt-bl"></div>
+<div class="ub-snake-bolt bolt-br"></div>
+<div class="ub-snake-grid">
+<div class="ub-snake-screen-wrap">
+<canvas width="240" height="320" class="snake-canvas"></canvas>
+<div class="ub-snake-overlay">
+<div class="overlay-title">[ 点击或回车激活控制 ]</div>
+<div class="overlay-sub">// 方向键 / WASD 捕获粒子</div>
+<div class="overlay-sub" style="margin-top: 4px; color: #fea55f;">// 按 Esc 键随时退出控制</div>
+</div>
+</div>
+<div class="ub-snake-console">
+<div class="ub-snake-info">
+<span class="info-code">// GAME_CONSOLE.LOG</span>
+<div>使用键盘方向键或下方按键操控，在网格中捕获能量光点，激发粒子光爆。</div>
+</div>
+<div class="ub-snake-stats">
+<div>
+<span class="stat-label">SCORE: </span>
+<span class="stat-val snake-score-val">00</span>
+</div>
+<div>
+<span class="stat-label">BEST: </span>
+<span class="stat-val snake-maxscore-val">00</span>
+</div>
+</div>
+<div class="ub-snake-controls">
+<button type="button" class="snake-dir-btn" data-dir="up">▲</button>
+<div class="dpad-row">
+<button type="button" class="snake-dir-btn" data-dir="left">◀</button>
+<button type="button" class="snake-dir-btn" data-dir="down">▼</button>
+<button type="button" class="snake-dir-btn" data-dir="right">▶</button>
+</div>
+</div>
+<button type="button" class="ub-snake-replay snake-replay-btn">重置游戏 ↺</button>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -719,7 +773,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
   });
 
   // ── SECTION WIPE LINES ──
-  document.querySelectorAll('.ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section').forEach(function(sec) {
+  document.querySelectorAll('.ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section, .ub-arcade-section').forEach(function(sec) {
     var line = document.createElement('div');
     line.style.cssText = 'position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg, #43D9AD, #FEFAE0, transparent);transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(0.16,1,0.3,1);z-index:1;';
     sec.style.position = 'relative';
@@ -785,6 +839,9 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
         '  about     - 开发者角色档案与背景简介',
         '  skills    - 核心技术栈与专业技能',
         '  projects  - 代表性生产工程成果',
+        '  snake     - 调起赛博贪吃蛇游戏舱并激活控制',
+        '  resume    - 查看求职简历与在线 PDF 链接',
+        '  archive   - 浏览朝花夕拾 78 篇历史成长归档',
         '  contact   - 联络邮箱与开源主页',
         '  stats     - 工程量化数据与遥测指标',
         '  clear     - 清空终端输出缓冲区'
@@ -840,10 +897,20 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       ];
     },
     snake: function() {
+      setTimeout(function() {
+        var arcade = document.getElementById('ub-arcade');
+        if (arcade) {
+          arcade.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (termInput) termInput.blur();
+          if (typeof window.activateIndexSnake === 'function') {
+            window.activateIndexSnake();
+          }
+        }
+      }, 120);
       return [
-        '彩蛋小游戏：',
-        '  404 页面已挂载 HUD 赛博贪吃蛇互动小游戏！',
-        '  可任意访问一个不存在的路径体验，或直接在控制台调起。'
+        '>>> [ARCADE] 正在校准赛博游戏舱空间坐标...',
+        '>>> 目标信标: Section #ub-arcade (已平滑导航直达)',
+        '>>> 提示: 点击机舱或按 Enter 激活按键接管，按 Esc 解除控制！'
       ];
     },
     stats: function() {
@@ -1530,6 +1597,463 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 })();
 
 
+
+  // ── INLINED 07 CYBER ARCADE RETRO SNAKE ──
+/**
+ * Retro Cyberpunk Particle Snake Game Engine v2.0
+ * Extracted & upgraded from cv project (SnakeContainer.vue / Snake.vue)
+ * Supports both standalone 404 mode & inlined Index arcade mode with focus gating
+ */
+(function() {
+  function createCyberSnake(containerId, options) {
+    var container = document.getElementById(containerId);
+    if (!container) return null;
+
+    options = options || {};
+    var isIndexMode = options.isIndexMode || false;
+
+    var canvas = container.querySelector('canvas');
+    var scoreDom = container.querySelector('.snake-score-val');
+    var maxScoreDom = container.querySelector('.snake-maxscore-val');
+    var replayBtn = container.querySelector('.snake-replay-btn');
+    var statusText = container.querySelector('.snake-status-text');
+    var overlay = container.querySelector('.ub-snake-overlay');
+    var chassis = container.closest('.ub-snake-chassis') || container;
+
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      container.appendChild(canvas);
+    }
+
+    var CTX = canvas.getContext('2d');
+    var W = (canvas.width = 240);
+    var H = (canvas.height = 320);
+
+    var snake, food;
+    var cells = 20;
+    var cellSize = W / cells;
+    var isGameOver = false;
+    var isRunning = false;
+    var isFocused = !isIndexMode; // 404 auto-focuses; index requires click to focus
+    var score = 0;
+    var maxScore = parseInt(localStorage.getItem('cyberSnakeMax') || '0', 10);
+    if (maxScoreDom) maxScoreDom.textContent = maxScore.toString().padStart(2, '0');
+    var particles = [];
+    var splashingParticleCount = 18;
+    var animFrame = null;
+    var isVisible = true;
+
+    var Vec = function(x, y) {
+      this.x = x;
+      this.y = y;
+    };
+    Vec.prototype.add = function(v) {
+      this.x += v.x;
+      this.y += v.y;
+      return this;
+    };
+
+    function isCollision(v1, v2) {
+      return Math.abs(v1.x - v2.x) < 0.1 && Math.abs(v1.y - v2.y) < 0.1;
+    }
+
+    var KEY = {
+      ArrowUp: false,
+      ArrowRight: false,
+      ArrowDown: false,
+      ArrowLeft: false,
+      reset: function() {
+        this.ArrowUp = this.ArrowRight = this.ArrowDown = this.ArrowLeft = false;
+      }
+    };
+
+    function setFocus(active) {
+      isFocused = active;
+      if (chassis) {
+        if (active) chassis.classList.add('is-active');
+        else chassis.classList.remove('is-active');
+      }
+      if (overlay) {
+        if (active) overlay.classList.add('is-hidden');
+        else overlay.classList.remove('is-hidden');
+      }
+    }
+
+    function setDirection(dir) {
+      if (!isFocused && isIndexMode) {
+        setFocus(true);
+      }
+      if (isGameOver) {
+        resetGame();
+        return;
+      }
+      if (dir === 'up' && !KEY.ArrowDown && snake.dir.y === 0) {
+        KEY.reset();
+        KEY.ArrowUp = true;
+      } else if (dir === 'down' && !KEY.ArrowUp && snake.dir.y === 0) {
+        KEY.reset();
+        KEY.ArrowDown = true;
+      } else if (dir === 'left' && !KEY.ArrowRight && snake.dir.x === 0) {
+        KEY.reset();
+        KEY.ArrowLeft = true;
+      } else if (dir === 'right' && !KEY.ArrowLeft && snake.dir.x === 0) {
+        KEY.reset();
+        KEY.ArrowRight = true;
+      }
+    }
+
+    function onKeyDown(e) {
+      if (!document.getElementById(containerId)) {
+        destroy();
+        return;
+      }
+
+      // If Escape, drop focus and allow scroll
+      if (e.key === 'Escape' && isIndexMode) {
+        setFocus(false);
+        return;
+      }
+
+      // If not focused in Index mode, let normal browser scrolling happen!
+      if (isIndexMode && !isFocused) {
+        if (e.key === 'Enter') {
+          setFocus(true);
+          e.preventDefault();
+        }
+        return;
+      }
+
+      var handledKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' ', 'w', 'W', 's', 'S', 'a', 'A', 'd', 'D'];
+      if (handledKeys.indexOf(e.key) !== -1) {
+        e.preventDefault();
+      }
+
+      if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') setDirection('up');
+      if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') setDirection('down');
+      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') setDirection('left');
+      if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') setDirection('right');
+      if (e.key === ' ' && isGameOver) resetGame();
+    }
+
+    window.addEventListener('keydown', onKeyDown);
+
+    // Click on container gives focus in Index mode
+    function onContainerClick(e) {
+      if (isIndexMode && !isFocused) {
+        setFocus(true);
+      }
+    }
+    container.addEventListener('click', onContainerClick);
+
+    // Click outside drops focus in Index mode
+    function onDocClick(e) {
+      if (isIndexMode && isFocused) {
+        if (!container.contains(e.target) && !chassis.contains(e.target)) {
+          setFocus(false);
+        }
+      }
+    }
+    document.addEventListener('click', onDocClick);
+
+    // Bind touch / D-Pad buttons
+    container.querySelectorAll('[data-dir]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        setDirection(this.getAttribute('data-dir'));
+      });
+    });
+
+    if (replayBtn) {
+      replayBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        resetGame();
+      });
+    }
+
+    function Snake() {
+      this.pos = new Vec(Math.floor(cells / 2) * cellSize, Math.floor(H / cellSize / 2) * cellSize);
+      this.dir = new Vec(0, 0);
+      this.delay = 6;
+      this.stepCountdown = this.delay;
+      this.size = cellSize;
+      this.color = '#43D9AD';
+      this.history = [];
+      this.total = 2;
+    }
+
+    Snake.prototype.draw = function() {
+      CTX.fillStyle = '#43D9AD';
+      CTX.shadowBlur = 10;
+      CTX.shadowColor = 'rgba(67, 217, 173, 0.7)';
+      CTX.fillRect(this.pos.x + 1, this.pos.y + 1, this.size - 2, this.size - 2);
+      CTX.shadowBlur = 0;
+
+      CTX.fillStyle = 'rgba(67, 217, 173, 0.75)';
+      for (var i = 0; i < this.history.length; i++) {
+        var p = this.history[i];
+        CTX.fillRect(p.x + 1, p.y + 1, this.size - 2, this.size - 2);
+      }
+    };
+
+    Snake.prototype.walls = function() {
+      if (this.pos.x >= W) this.pos.x = 0;
+      if (this.pos.y >= H) this.pos.y = 0;
+      if (this.pos.x < 0) this.pos.x = W - cellSize;
+      if (this.pos.y < 0) this.pos.y = H - cellSize;
+    };
+
+    Snake.prototype.controls = function() {
+      var d = this.size;
+      if (KEY.ArrowUp) this.dir = new Vec(0, -d);
+      if (KEY.ArrowDown) this.dir = new Vec(0, d);
+      if (KEY.ArrowLeft) this.dir = new Vec(-d, 0);
+      if (KEY.ArrowRight) this.dir = new Vec(d, 0);
+    };
+
+    Snake.prototype.selfCollision = function() {
+      for (var i = 0; i < this.history.length; i++) {
+        if (isCollision(this.pos, this.history[i])) {
+          isGameOver = true;
+        }
+      }
+    };
+
+    Snake.prototype.update = function() {
+      this.controls();
+      this.walls();
+      this.draw();
+
+      if (--this.stepCountdown <= 0) {
+        this.stepCountdown = this.delay;
+
+        if (this.dir.x !== 0 || this.dir.y !== 0) {
+          if (isCollision(this.pos, food.pos)) {
+            incrementScore();
+            particleSplash();
+            food.spawn();
+            this.total++;
+            if (this.total % 5 === 0 && this.delay > 3) {
+              this.delay--;
+            }
+          }
+
+          this.history.push(new Vec(this.pos.x, this.pos.y));
+          while (this.history.length > this.total) {
+            this.history.shift();
+          }
+
+          this.pos.add(this.dir);
+          if (this.total > 2) {
+            this.selfCollision();
+          }
+        }
+      }
+    };
+
+    function Food() {
+      this.size = cellSize;
+      this.pos = new Vec(0, 0);
+      this.spawn();
+    }
+
+    Food.prototype.spawn = function() {
+      var cols = Math.floor(W / cellSize);
+      var rows = Math.floor(H / cellSize);
+      var randX = Math.floor(Math.random() * cols) * cellSize;
+      var randY = Math.floor(Math.random() * rows) * cellSize;
+
+      if (snake) {
+        for (var i = 0; i < snake.history.length; i++) {
+          if (snake.history[i].x === randX && snake.history[i].y === randY) {
+            return this.spawn();
+          }
+        }
+      }
+      this.pos = new Vec(randX, randY);
+    };
+
+    Food.prototype.draw = function() {
+      CTX.shadowBlur = 12;
+      CTX.shadowColor = '#fea55f';
+      CTX.fillStyle = '#fea55f';
+      CTX.fillRect(this.pos.x + 2, this.pos.y + 2, this.size - 4, this.size - 4);
+      CTX.shadowBlur = 0;
+    };
+
+    function Particle(pos, vel) {
+      this.pos = new Vec(pos.x, pos.y);
+      this.vel = vel;
+      this.size = 4;
+      this.ttl = 25;
+    }
+
+    Particle.prototype.update = function() {
+      this.pos.add(this.vel);
+      this.size = Math.max(0, this.size - 0.15);
+      this.ttl--;
+      CTX.fillStyle = 'rgba(67, 217, 173, ' + (this.ttl / 25) + ')';
+      CTX.fillRect(this.pos.x, this.pos.y, this.size, this.size);
+    };
+
+    function incrementScore() {
+      score++;
+      if (scoreDom) scoreDom.textContent = score.toString().padStart(2, '0');
+      if (score > maxScore) {
+        maxScore = score;
+        localStorage.setItem('cyberSnakeMax', maxScore);
+        if (maxScoreDom) maxScoreDom.textContent = maxScore.toString().padStart(2, '0');
+      }
+    }
+
+    function particleSplash() {
+      for (var i = 0; i < splashingParticleCount; i++) {
+        var vel = new Vec((Math.random() - 0.5) * 5, (Math.random() - 0.5) * 5);
+        particles.push(new Particle(food.pos, vel));
+      }
+    }
+
+    function drawGrid() {
+      CTX.lineWidth = 0.5;
+      CTX.strokeStyle = 'rgba(30, 45, 61, 0.4)';
+      for (var x = 0; x < W; x += cellSize) {
+        CTX.beginPath();
+        CTX.moveTo(x, 0);
+        CTX.lineTo(x, H);
+        CTX.stroke();
+      }
+      for (var y = 0; y < H; y += cellSize) {
+        CTX.beginPath();
+        CTX.moveTo(0, y);
+        CTX.lineTo(W, y);
+        CTX.stroke();
+      }
+    }
+
+    function loop() {
+      if (!isRunning || !isVisible) return;
+
+      CTX.fillStyle = '#011221';
+      CTX.fillRect(0, 0, W, H);
+      drawGrid();
+
+      if (!isGameOver) {
+        snake.update();
+        food.draw();
+
+        for (var i = particles.length - 1; i >= 0; i--) {
+          particles[i].update();
+          if (particles[i].ttl <= 0 || particles[i].size <= 0) {
+            particles.splice(i, 1);
+          }
+        }
+
+        if (statusText) {
+          if (snake.dir.x === 0 && snake.dir.y === 0) {
+            statusText.textContent = isFocused ? '按方向键行动' : '待命模式';
+          } else {
+            statusText.textContent = '信号追踪中...';
+          }
+        }
+
+        animFrame = requestAnimationFrame(loop);
+      } else {
+        CTX.fillStyle = 'rgba(1, 18, 33, 0.85)';
+        CTX.fillRect(0, 0, W, H);
+        CTX.fillStyle = '#ff6b6b';
+        CTX.font = '16px "IBM Plex Mono", monospace';
+        CTX.textAlign = 'center';
+        CTX.fillText('CRASH DETECTED', W / 2, H / 2 - 15);
+        CTX.fillStyle = '#e5e9f0';
+        CTX.font = '12px "IBM Plex Mono", monospace';
+        CTX.fillText('按空格或点击重试', W / 2, H / 2 + 15);
+        if (statusText) statusText.textContent = '连接中断 · GAME OVER';
+      }
+    }
+
+    function resetGame() {
+      if (animFrame) cancelAnimationFrame(animFrame);
+      isGameOver = false;
+      score = 0;
+      if (scoreDom) scoreDom.textContent = '00';
+      KEY.reset();
+      particles = [];
+      snake = new Snake();
+      food = new Food();
+      isRunning = true;
+      loop();
+    }
+
+    // IntersectionObserver for battery/GPU pause
+    var observer = null;
+    if (typeof IntersectionObserver !== 'undefined') {
+      observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          isVisible = entry.isIntersecting;
+          if (isVisible && isRunning && !animFrame) {
+            loop();
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(container);
+    }
+
+    function destroy() {
+      isRunning = false;
+      if (animFrame) cancelAnimationFrame(animFrame);
+      window.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('click', onDocClick);
+      if (observer) observer.disconnect();
+    }
+
+    if (typeof window.addCleanup === 'function') {
+      window.addCleanup(destroy);
+    }
+
+    resetGame();
+
+    return {
+      focus: function() { setFocus(true); },
+      blur: function() { setFocus(false); },
+      reset: resetGame,
+      destroy: destroy
+    };
+  }
+
+  // Global mount points
+  var indexInstance = null;
+  var notFoundInstance = null;
+
+  function initArcade() {
+    if (document.getElementById('index-snake-container')) {
+      if (indexInstance) indexInstance.destroy();
+      indexInstance = createCyberSnake('index-snake-container', { isIndexMode: true });
+    }
+    if (document.getElementById('cyber-snake-container')) {
+      if (notFoundInstance) notFoundInstance.destroy();
+      notFoundInstance = createCyberSnake('cyber-snake-container', { isIndexMode: false });
+    }
+  }
+
+  window.activateIndexSnake = function() {
+    if (indexInstance) {
+      indexInstance.focus();
+    }
+  };
+
+  window.initCyberSnake = function(id) {
+    if (id === 'cyber-snake-container') {
+      if (notFoundInstance) notFoundInstance.destroy();
+      notFoundInstance = createCyberSnake(id, { isIndexMode: false });
+    } else {
+      initArcade();
+    }
+  };
+
+  document.addEventListener('nav', initArcade);
+  document.addEventListener('DOMContentLoaded', initArcade);
+})();
+
+
   // ── MOBILE DRAWER & FLOATING TOP ──
   var navToggle   = document.getElementById('ub-nav-toggle');
   var navDrawer   = document.getElementById('ub-nav-drawer');
@@ -1555,3 +2079,4 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 
 })();
 </script>
+

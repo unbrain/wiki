@@ -1414,7 +1414,7 @@ body[data-slug="index"] {
     .ub-nav-links { display: none; }
     .ub-nav-toggle { display: flex; }
     .ub-hero { padding: 0 24px; }
-    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
+    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section, .ub-arcade-section {
       padding: 90px 24px;
     }
     .ub-about-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -1468,10 +1468,263 @@ body[data-slug="index"] {
     .ub-metric-card { padding: 24px 12px; }
     .ub-metric-num { font-size: 36px; }
     .ub-metric-plus { font-size: 20px; }
-    .ub-terminal-section { padding-bottom: 120px; }
+    .ub-terminal-section { padding-bottom: 80px; }
     .ub-term-body { padding: 16px; font-size: 12px; max-height: 240px; }
     .ub-term-quick { gap: 6px; }
     .ub-term-btn { padding: 6px 12px; font-size: 12px; }
     .ub-term-input-row { padding: 12px 16px; }
+
+    /* ── 07 ARCADE MOBILE ADAPTATION ── */
+    .ub-arcade-section { padding: 60px 20px 120px !important; }
+    .ub-snake-grid { flex-direction: column; align-items: center; gap: 24px; }
+    .ub-snake-chassis { padding: 28px 16px; width: 100%; max-width: 360px; }
+    .ub-snake-screen-wrap canvas { width: 100% !important; max-width: 240px; height: auto !important; }
+    .ub-snake-console { width: 100%; max-width: 260px; }
+  }
+
+  /* ══════════════════════════════════════════════════════════
+     07 CYBER ARCADE RETRO SNAKE
+     ══════════════════════════════════════════════════════════ */
+  .ub-arcade-section {
+    position: relative;
+    padding: 120px 48px 140px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ub-arcade-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ub-arcade-header {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .ub-snake-chassis {
+    position: relative;
+    padding: 40px 36px;
+    box-sizing: border-box;
+    background: linear-gradient(150.26deg, rgba(23, 85, 83, 0.72) 1.7%, rgba(67, 217, 173, 0.09) 81.82%);
+    border: 1px solid rgba(67, 217, 173, 0.25);
+    box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.25), 0 20px 50px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(28px);
+    border-radius: 12px;
+    max-width: 680px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &.is-active {
+      border-color: #43d9ad;
+      box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.35), 0 0 35px rgba(67, 217, 173, 0.3), 0 25px 60px rgba(0, 0, 0, 0.65);
+    }
+  }
+
+  .ub-snake-warp1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -50px;
+    top: -112px;
+    background: #43D9AD;
+    opacity: 0.35;
+    filter: blur(87px);
+    transform: rotate(-94.3deg);
+    pointer-events: none;
+  }
+
+  .ub-snake-warp2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 173px;
+    top: 30px;
+    background: #4D5BCE;
+    opacity: 0.35;
+    filter: blur(87px);
+    transform: rotate(13.51deg);
+    pointer-events: none;
+  }
+
+  .ub-snake-bolt {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background: radial-gradient(73.08% 73.08% at 50% 26.92%, #196c6a 15.1%, #114b4a 100%);
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px #0d4341, inset 0px 1px 2px #1a8277;
+    z-index: 3;
+
+    &.bolt-tl { left: 14px; top: 14px; }
+    &.bolt-tr { right: 14px; top: 14px; }
+    &.bolt-bl { left: 14px; bottom: 14px; }
+    &.bolt-br { right: 14px; bottom: 14px; }
+  }
+
+  .ub-snake-grid {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .ub-snake-screen-wrap {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #010c17;
+    border: 1px solid rgba(30, 45, 61, 0.8);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+    line-height: 0;
+    cursor: pointer;
+
+    canvas {
+      display: block;
+    }
+  }
+
+  .ub-snake-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(1, 12, 23, 0.78);
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    cursor: pointer;
+    transition: opacity 0.25s ease;
+    z-index: 10;
+
+    &.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .overlay-title {
+      font-family: var(--codeFont);
+      color: #43d9ad;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .overlay-sub {
+      font-family: var(--codeFont);
+      color: #607b96;
+      font-size: 11px;
+    }
+  }
+
+  .ub-snake-console {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 220px;
+    flex-shrink: 0;
+  }
+
+  .ub-snake-info {
+    background: rgba(1, 20, 35, 0.35);
+    border: 1px solid rgba(30, 45, 61, 0.8);
+    border-radius: 8px;
+    padding: 16px 14px;
+    font-family: var(--codeFont);
+    font-size: 12px;
+    line-height: 1.6;
+    color: #607b96;
+    margin-bottom: 16px;
+
+    .info-code {
+      color: #43d9ad;
+      margin-bottom: 8px;
+      display: block;
+    }
+  }
+
+  .ub-snake-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(1, 12, 21, 0.5);
+    border: 1px solid rgba(30, 45, 61, 0.6);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    font-family: var(--codeFont);
+    font-size: 12px;
+
+    .stat-label { color: #607b96; }
+    .stat-val { color: #43d9ad; font-weight: bold; font-size: 14px; }
+  }
+
+  .ub-snake-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    .dpad-row {
+      display: flex;
+      gap: 4px;
+    }
+
+    .snake-dir-btn {
+      width: 52px;
+      height: 36px;
+      background: #010c15;
+      border: 1px solid #1e2d3d;
+      border-radius: 6px;
+      color: #607b96;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      touch-action: manipulation;
+      transition: all 0.15s ease;
+
+      &:hover {
+        background: #1c2b3a;
+        color: #43d9ad;
+        border-color: #43d9ad;
+      }
+
+      &:active {
+        transform: scale(0.94);
+        background: #25394e;
+      }
+    }
+  }
+
+  .ub-snake-replay {
+    margin-top: 14px;
+    width: 100%;
+    background: #1c2b3a;
+    border: 1px solid #314457;
+    color: #fea55f;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: var(--codeFont);
+    font-size: 11px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #25394e;
+      border-color: #fea55f;
+    }
   }
 }
