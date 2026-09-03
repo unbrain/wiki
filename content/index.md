@@ -297,7 +297,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <div class="ub-project-body">
 <div class="ub-project-header">
 <h3 class="ub-project-name">移动端工程化与瀑布流物料体系</h3>
-<a href="/瀑布流项目/项目骨架搭建" class="ub-project-ext" aria-label="查看项目文档">↗</a>
+<a href="/瀑布流项目/项目骨架搭建" class="ub-project-ext" data-no-popover="true" aria-label="查看项目文档">↗</a>
 </div>
 <p class="ub-project-desc">
 高性能自适应瀑布流与现代化移动端组件库解决方案。专为移动端/PC 双端自适应渲染量身设计，集成 Vite 构建加速与 Tailwind CSS 样式引擎。
@@ -320,7 +320,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">04</span> 知识卷轴 · SKILL SCROLLS</div>
 <h2 class="ub-section-title ub-scroll-reveal">算法推演与<br/>源码知识库。</h2>
 <div class="ub-writing-list">
-<a class="ub-writing-item ub-scroll-reveal" href="/JavaScript 算法/算法基础/JavaScript 算法基础第一天">
+<a class="ub-writing-item ub-scroll-reveal" data-no-popover="true" href="/JavaScript 算法/算法基础/JavaScript 算法基础第一天">
 <span class="ub-writing-num">01</span>
 <div class="ub-writing-info">
 <span class="ub-writing-title">算法基础 — 数据结构与算法体系核心</span>
@@ -329,7 +329,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-writing-meta">11 篇</span>
 <span class="ub-writing-arrow">↗</span>
 </a>
-<a class="ub-writing-item ub-scroll-reveal" href="/JavaScript 算法/LeetCode Hot100/LeetCode Hot100">
+<a class="ub-writing-item ub-scroll-reveal" data-no-popover="true" href="/JavaScript 算法/LeetCode Hot100/LeetCode Hot100">
 <span class="ub-writing-num">02</span>
 <div class="ub-writing-info">
 <span class="ub-writing-title">LeetCode Hot 100 — 经典高频面试真题</span>
@@ -338,7 +338,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-writing-meta">20 篇</span>
 <span class="ub-writing-arrow">↗</span>
 </a>
-<a class="ub-writing-item ub-scroll-reveal" href="/JavaScript 算法/经典 150/经典 150 数字 字符串">
+<a class="ub-writing-item ub-scroll-reveal" data-no-popover="true" href="/JavaScript 算法/经典 150/经典 150 数字 字符串">
 <span class="ub-writing-num">03</span>
 <div class="ub-writing-info">
 <span class="ub-writing-title">经典 150 题 — LeetCode 经典题库精讲</span>
@@ -347,7 +347,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-writing-meta">17 篇</span>
 <span class="ub-writing-arrow">↗</span>
 </a>
-<a class="ub-writing-item ub-scroll-reveal" href="/JavaScript 算法/GRD/GRD 数组">
+<a class="ub-writing-item ub-scroll-reveal" data-no-popover="true" href="/JavaScript 算法/GRD/GRD 数组">
 <span class="ub-writing-num">04</span>
 <div class="ub-writing-info">
 <span class="ub-writing-title">GRD 刷题 — 黄金代表性题目实战解析</span>
@@ -356,7 +356,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-writing-meta">11 篇</span>
 <span class="ub-writing-arrow">↗</span>
 </a>
-<a class="ub-writing-item ub-scroll-reveal" href="/Vue 源码/Reactive 与 Effect 原理实现">
+<a class="ub-writing-item ub-scroll-reveal" data-no-popover="true" href="/Vue 源码/Reactive 与 Effect 原理实现">
 <span class="ub-writing-num">05</span>
 <div class="ub-writing-info">
 <span class="ub-writing-title">Vue 3 源码解析 — 核心底层运作机制剖析</span>
@@ -365,7 +365,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-writing-meta">4 篇</span>
 <span class="ub-writing-arrow">↗</span>
 </a>
-<a class="ub-writing-item ub-scroll-reveal" href="/前端工程/强缓存与协商缓存">
+<a class="ub-writing-item ub-scroll-reveal" data-no-popover="true" href="/前端工程/强缓存与协商缓存">
 <span class="ub-writing-num">06</span>
 <div class="ub-writing-info">
 <span class="ub-writing-title">前端工程化与网络协议 — 体系规范与架构设计</span>
@@ -374,7 +374,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-writing-meta">4 篇</span>
 <span class="ub-writing-arrow">↗</span>
 </a>
-<a class="ub-writing-item ub-scroll-reveal" href="/JavaScript 算法/解题思路/322 零钱兑换">
+<a class="ub-writing-item ub-scroll-reveal" data-no-popover="true" href="/JavaScript 算法/解题思路/322 零钱兑换">
 <span class="ub-writing-num">07</span>
 <div class="ub-writing-info">
 <span class="ub-writing-title">解题思维拆解 — 算法重难点深度复盘</span>
@@ -469,6 +469,23 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <!-- SCRIPTS -->
 <script>
 (function() {
+  // ── CLEANUP ANCHORS & DISABLE POPOVERS ON INDEX ──
+  function purgeAnchorsAndPopovers() {
+    document.querySelectorAll('a[role="anchor"]').forEach(function(el) {
+      el.remove();
+    });
+    document.querySelectorAll('a').forEach(function(el) {
+      el.setAttribute('data-no-popover', 'true');
+      el.dataset.noPopover = 'true';
+    });
+    document.querySelectorAll('.popover').forEach(function(el) {
+      el.remove();
+    });
+  }
+  purgeAnchorsAndPopovers();
+  document.addEventListener('nav', purgeAnchorsAndPopovers);
+  document.addEventListener('render', purgeAnchorsAndPopovers);
+
   // ── CUSTOM CURSOR ──
   var cursor = document.getElementById('ub-cursor');
   var follower = document.getElementById('ub-cursorFollower');

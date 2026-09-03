@@ -90,6 +90,33 @@ body[data-slug="index"] {
     display: none !important;
   }
 
+  // ── 彻底隐藏首页所有标题自动注入的锚点链接，解决高度异常与破坏排版 ──
+  a[role="anchor"],
+  a[role="anchor"] svg {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    visibility: hidden !important;
+  }
+
+  // ── 禁用首页所有 Popover 浮动预览弹窗 ──
+  .popover,
+  .popover-hint,
+  .popover-inner {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
   article.popover-hint,
   .markdown-preview-view {
     max-width: 100vw !important;
