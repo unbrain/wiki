@@ -792,11 +792,10 @@ High-performance waterfall layout and component library solution. Tailored for d
       '  return texture(uTex, uv).rgb;',
       '}',
       'vec3 studioEnv(vec3 d){',
-      '  float base  = 0.55 + 0.22*d.y;',
-      '  float band1 = smoothstep(0.50,0.64,d.y)*smoothstep(0.92,0.74,d.y)*1.0;',
-      '  float band2 = smoothstep(-0.12,0.02,d.y)*smoothstep(0.28,0.08,d.y)*0.45;',
-      '  float side  = smoothstep(0.55,0.95,abs(d.x))*0.12;',
-      '  return vec3((base+band1+band2+side)*0.88);',
+      '  vec3 light1 = vec3(0.99, 0.98, 0.88) * pow(max(dot(d, normalize(vec3(0.6, 0.8, 0.5))), 0.0), 16.0) * 1.6;',
+      '  vec3 light2 = vec3(0.26, 0.85, 0.68) * pow(max(dot(d, normalize(vec3(-0.8, -0.2, 0.4))), 0.0), 8.0) * 0.95;',
+      '  vec3 ambient = vec3(0.12, 0.16, 0.24) + vec3(0.08, 0.12, 0.18) * d.y;',
+      '  return ambient + light1 + light2;',
       '}',
       'float boxExit(vec3 roL, vec3 rdL, vec3 b, out vec3 nL){',
       '  vec3 inv = 1.0/rdL;',
@@ -852,7 +851,7 @@ High-performance waterfall layout and component library solution. Tailored for d
       '    t+=h.x*0.95;',
       '    if(t>CAM_Z+1.5) break;',
       '  }',
-      '  float alpha = 1.0-smoothstep(0.35,1.6,closestPx);',
+      '  float edgeAlpha = 1.0-smoothstep(0.0,1.6,closestPx);',
       '  if(hitId >= 0.0){',
       '    vec3 pos = ro+rd*t;',
       '    vec3 n   = sceneNormal(pos);',
@@ -863,17 +862,20 @@ High-performance waterfall layout and component library solution. Tailored for d
       '    vec3 cR = refractThrough(pos,rd,n,IOR-sp,hitId);',
       '    vec3 cG = refractThrough(pos,rd,n,IOR,   hitId);',
       '    vec3 cB = refractThrough(pos,rd,n,IOR+sp,hitId);',
-      '    vec3 refr = clamp((vec3(cR.r,cG.g,cB.b)-0.5)*1.15+0.5,0.0,1.0);',
-      '    float fres = pow(1.0-clamp(dot(n,-rd),0.0,1.0),4.0);',
+      '    vec3 refr = vec3(cR.r,cG.g,cB.b);',
+      '    float fres = pow(1.0-clamp(dot(n,-rd),0.0,1.0),3.0);',
       '    vec3 reflCol = studioEnv(reflect(rd,n));',
-      '    vec3 glass = mix(refr, reflCol, clamp(0.04+fres*0.55,0.0,1.0));',
-      '    glass += vec3(0.97,0.98,0.88)*pow(fres,1.6)*0.32;',
-      '    fragColor = vec4(glass, 1.0);',
-      '  } else if(alpha > 0.01){',
-      '    vec3 rimCol = studioEnv(reflect(rd, vec3(0.0, 1.0, 0.0)));',
-      '    fragColor = vec4(rimCol, alpha * 0.4);',
+      '    vec3 glassTint = vec3(0.06, 0.12, 0.16);',
+      '    vec3 edgeGlow  = vec3(0.26, 0.85, 0.68) * pow(fres, 1.5) * 0.75;',
+      '    vec3 specular  = vec3(0.99, 0.98, 0.88) * pow(fres, 2.5) * 0.60;',
+      '    vec3 glass = mix(refr * 1.4 + glassTint, reflCol, clamp(0.18 + fres * 0.65, 0.0, 1.0));',
+      '    glass += edgeGlow + specular;',
+      '    fragColor = vec4(glass, clamp(0.72 + fres * 0.28, 0.0, 1.0));',
+      '  } else if(edgeAlpha > 0.01){',
+      '    vec3 rimCol = vec3(0.26, 0.85, 0.68) * 0.8 + vec3(0.99, 0.98, 0.88) * 0.3;',
+      '    fragColor = vec4(rimCol, edgeAlpha * 0.55);',
       '  } else {',
-      '    fragColor = vec4(0.0, 0.0, 0.0, 0.0);',
+      '    fragColor = vec4(0.0);',
       '  }',
       '}',
     ].join('\n');
@@ -905,14 +907,16 @@ High-performance waterfall layout and component library solution. Tailored for d
     var particleCanvas = document.getElementById('ub-particleCanvas');
 
     function updateTex() {
-      if (!particleCanvas) return;
-      gl.bindTexture(gl.TEXTURE_2D, tex);
-      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, particleCanvas);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      if (!particleCanvas || particleCanvas.width < 2 || particleCanvas.height < 2) return;
+      try {
+        gl.bindTexture(gl.TEXTURE_2D, tex);
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, particleCanvas);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      } catch(e) {}
     }
     gl.uniform1i(gl.getUniformLocation(prog, 'uTex'), 0);
 
@@ -926,6 +930,7 @@ High-performance waterfall layout and component library solution. Tailored for d
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       var w = Math.round(canvas.clientWidth  * dpr);
       var h = Math.round(canvas.clientHeight * dpr);
+      if (w < 2 || h < 2) return;
       if (canvas.width !== w || canvas.height !== h) {
         canvas.width = w; canvas.height = h;
         gl.viewport(0, 0, w, h);
@@ -951,9 +956,9 @@ High-performance waterfall layout and component library solution. Tailored for d
 
     var cubes = [
       {
-        position:    [-0.60,  0.42, 1.25],
-        halfExtent:  0.15,
-        rounding:    0.035,
+        position:    [-0.55,  0.40, 1.25],
+        halfExtent:  0.18,
+        rounding:    0.040,
         baseRotation:[0.42, 0.68, 0.06],
         spinSpeed:   0.14,
         swayAmount:  0.08,
@@ -962,9 +967,9 @@ High-performance waterfall layout and component library solution. Tailored for d
         vel:         [0, 0],
       },
       {
-        position:    [ 0.62, -0.38, 1.15],
-        halfExtent:  0.17,
-        rounding:    0.038,
+        position:    [ 0.58, -0.35, 1.15],
+        halfExtent:  0.20,
+        rounding:    0.044,
         baseRotation:[0.5,  2.35,  0.1],
         spinSpeed:  -0.10,
         swayAmount:  0.11,
