@@ -32,12 +32,16 @@ body[data-slug="index"] {
   --ub-font-mono: 'Fira Code', 'Space Mono', 'IBM Plex Mono', monospace;
   --ub-font-hud:  'Orbitron', 'Space Mono', monospace;
 
-  // ── Global Reset on Index ──────────────────────
+  // ── Global Layout Reset on Index ───────────────
   background: var(--ub-black) !important;
   color: var(--ub-yellow) !important;
   font-family: var(--ub-font-main) !important;
   cursor: none;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
 
   // Hide Quartz wiki chrome on the landing page
   .left.sidebar,
@@ -45,23 +49,34 @@ body[data-slug="index"] {
     display: none !important;
   }
 
+  .page,
+  #quartz-root {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
   #quartz-body {
     display: grid !important;
     grid-template-columns: 1fr !important;
     grid-template-rows: auto auto auto !important;
     grid-template-areas: "grid-header" "grid-center" "grid-footer" !important;
-    max-width: 100% !important;
-    width: 100% !important;
+    max-width: 100vw !important;
+    width: 100vw !important;
     padding: 0 !important;
     margin: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .center {
     grid-area: grid-center !important;
-    max-width: 100% !important;
-    width: 100% !important;
+    max-width: 100vw !important;
+    width: 100vw !important;
     margin: 0 !important;
     padding: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .article-title,
@@ -77,9 +92,11 @@ body[data-slug="index"] {
 
   article.popover-hint,
   .markdown-preview-view {
-    max-width: 100% !important;
+    max-width: 100vw !important;
+    width: 100vw !important;
     padding: 0 !important;
     margin: 0 !important;
+    box-sizing: border-box !important;
   }
 
   // ── Noise & Progress Bar ──────────────────────
@@ -141,12 +158,13 @@ body[data-slug="index"] {
     padding: 24px 48px;
     transition: padding 0.3s ease, background 0.3s ease, border-color 0.3s ease;
     background: transparent;
+    box-sizing: border-box;
 
     &.scrolled {
       padding: 14px 48px;
-      background: rgba(10, 10, 10, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(10, 10, 10, 0.90);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--ub-border);
     }
   }
@@ -233,6 +251,8 @@ body[data-slug="index"] {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    padding: 0 48px;
+    box-sizing: border-box;
     background:
       radial-gradient(ellipse at 50% 40%, rgba(77, 91, 206, 0.08) 0%, transparent 70%),
       radial-gradient(ellipse at 80% 80%, rgba(67, 217, 173, 0.05) 0%, transparent 60%),
@@ -273,7 +293,10 @@ body[data-slug="index"] {
     z-index: 2;
     text-align: center;
     max-width: 900px;
-    padding: 0 24px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 !important;
+    box-sizing: border-box;
   }
 
   .ub-hero-ticker {
@@ -448,7 +471,20 @@ body[data-slug="index"] {
   .ub-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 48px;
+    width: 100%;
+    padding: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .ub-about,
+  .ub-quests,
+  .ub-builds,
+  .ub-knowledge,
+  .ub-stats,
+  .ub-terminal-section {
+    padding: 140px 48px;
+    box-sizing: border-box;
+    width: 100%;
   }
 
   .ub-section-label {
@@ -488,10 +524,6 @@ body[data-slug="index"] {
   }
 
   // ── 01 CHARACTER PROFILE ─────────────────────
-  .ub-about {
-    padding: 140px 0;
-  }
-
   .ub-about-grid {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
@@ -578,10 +610,6 @@ body[data-slug="index"] {
   }
 
   // ── 02 QUEST LOG (TIMELINE) ──────────────────
-  .ub-quests {
-    padding: 140px 0;
-  }
-
   .ub-timeline {
     position: relative;
     padding-left: 36px;
@@ -671,10 +699,6 @@ body[data-slug="index"] {
   }
 
   // ── 03 BUILDS & FEATS ────────────────────────
-  .ub-builds {
-    padding: 140px 0;
-  }
-
   .ub-projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -798,10 +822,6 @@ body[data-slug="index"] {
   }
 
   // ── 04 SKILL SCROLLS ─────────────────────────
-  .ub-knowledge {
-    padding: 140px 0;
-  }
-
   .ub-writing-list {
     display: flex;
     flex-direction: column;
@@ -885,10 +905,6 @@ body[data-slug="index"] {
   }
 
   // ── 05 TELEMETRY & STATS ─────────────────────
-  .ub-stats {
-    padding: 140px 0;
-  }
-
   .ub-metrics-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -956,10 +972,6 @@ body[data-slug="index"] {
   }
 
   // ── 06 TERMINAL SECTION ──────────────────────
-  .ub-terminal-section {
-    padding: 140px 0 180px 0;
-  }
-
   .ub-terminal-wrap {
     background: #0D0F14;
     border: 1px solid var(--ub-border);
@@ -1368,14 +1380,14 @@ body[data-slug="index"] {
     .ub-nav { padding: 18px 24px; }
     .ub-nav-links { display: none; }
     .ub-nav-toggle { display: flex; }
-    .ub-container { padding: 0 24px; }
+    .ub-hero { padding: 0 24px; }
+    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
+      padding: 90px 24px;
+    }
     .ub-about-grid { grid-template-columns: 1fr; gap: 48px; }
     .ub-projects-grid { grid-template-columns: 1fr; }
     .ub-metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .ub-hud-corner { display: none; }
-    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
-      padding: 90px 0;
-    }
     .ub-hero-ticker {
       font-size: 10px;
       padding: 6px 14px;
@@ -1389,17 +1401,16 @@ body[data-slug="index"] {
   }
 
   @media (max-width: 600px) {
-    .ub-nav { padding: 14px 18px; }
-    .ub-container { padding: 0 16px; }
-    .ub-hero { min-height: 640px; }
+    .ub-nav { padding: 14px 20px; }
+    .ub-hero { padding: 0 20px; min-height: 640px; }
+    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
+      padding: 70px 20px;
+    }
     .ub-hero-name { font-size: clamp(38px, 12vw, 56px); }
     .ub-hero-sub { font-size: 14px; margin-bottom: 24px; }
     .ub-hero-actions { flex-direction: column; width: 100%; gap: 10px; }
     .ub-btn { width: 100%; justify-content: center; padding: 14px 20px; font-size: 11px; }
     .ub-section-title { font-size: clamp(30px, 8vw, 44px); margin-bottom: 36px !important; }
-    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
-      padding: 70px 0;
-    }
     .ub-timeline {
       padding-left: 28px;
       &::before { left: 9px; }
