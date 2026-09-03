@@ -1191,10 +1191,183 @@ body[data-slug="index"] {
     &:nth-child(6) { transition-delay: 0.40s; }
   }
 
-  // ── RESPONSIVE BREAKPOINTS ───────────────────
+  // ── RESPONSIVE BREAKPOINTS & MOBILE ENHANCEMENTS ───────────
+  .ub-nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--ub-border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--ub-yellow);
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+
+    &:hover {
+      border-color: var(--ub-cyan);
+      span { background: var(--ub-cyan); }
+    }
+  }
+
+  // Mobile Drawer
+  .ub-nav-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10005;
+    background: rgba(10, 10, 10, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    padding: 32px 28px;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+
+    &.active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  .ub-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--ub-border);
+    margin-bottom: 24px;
+  }
+
+  .ub-drawer-title {
+    font-family: var(--ub-font-hud);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--ub-cyan);
+  }
+
+  .ub-drawer-close {
+    background: transparent;
+    border: 1px solid var(--ub-border);
+    color: var(--ub-yellow);
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--ub-cyan);
+      color: var(--ub-cyan);
+    }
+  }
+
+  .ub-drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ub-drawer-link {
+    font-family: var(--ub-font-hud);
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    color: var(--ub-yellow);
+    padding: 16px 12px;
+    border-radius: 8px;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: background 0.2s ease, color 0.2s ease;
+    border-bottom: 1px solid rgba(254, 250, 224, 0.04);
+
+    &:hover,
+    &:active {
+      background: rgba(67, 217, 173, 0.1);
+      color: var(--ub-cyan);
+
+      .ub-drawer-num {
+        color: var(--ub-cyan);
+      }
+    }
+  }
+
+  .ub-drawer-num {
+    font-family: var(--ub-font-mono);
+    font-size: 11px;
+    color: var(--ub-amber);
+    opacity: 0.8;
+  }
+
+  // Floating Back to Top button
+  .ub-floating-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    background: rgba(18, 19, 24, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--ub-border);
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-family: var(--ub-font-hud);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--ub-cyan);
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    &:hover {
+      background: var(--ub-cyan);
+      color: var(--ub-black);
+      border-color: var(--ub-cyan);
+    }
+  }
+
+  // Touch device resets
+  @media (hover: none) and (pointer: coarse) {
+    cursor: auto !important;
+    * { cursor: auto !important; }
+    #ub-cursor,
+    #ub-cursorFollower {
+      display: none !important;
+    }
+  }
+
   @media (max-width: 960px) {
     .ub-nav { padding: 18px 24px; }
     .ub-nav-links { display: none; }
+    .ub-nav-toggle { display: flex; }
     .ub-container { padding: 0 24px; }
     .ub-about-grid { grid-template-columns: 1fr; gap: 48px; }
     .ub-projects-grid { grid-template-columns: 1fr; }
@@ -1203,17 +1376,58 @@ body[data-slug="index"] {
     .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
       padding: 90px 0;
     }
-    .ub-hero-ticker { font-size: 10px; padding: 4px 12px; }
+    .ub-hero-ticker {
+      font-size: 10px;
+      padding: 6px 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+    .ub-term-input {
+      font-size: 16px !important; // Prevents iOS Safari auto-zoom
+    }
   }
 
   @media (max-width: 600px) {
-    .ub-hero-name { font-size: 46px; }
-    .ub-hero-actions { flex-direction: column; width: 100%; }
-    .ub-btn { width: 100%; justify-content: center; }
-    .ub-writing-item { gap: 16px; padding: 20px 0; }
+    .ub-nav { padding: 14px 18px; }
+    .ub-container { padding: 0 16px; }
+    .ub-hero { min-height: 640px; }
+    .ub-hero-name { font-size: clamp(38px, 12vw, 56px); }
+    .ub-hero-sub { font-size: 14px; margin-bottom: 24px; }
+    .ub-hero-actions { flex-direction: column; width: 100%; gap: 10px; }
+    .ub-btn { width: 100%; justify-content: center; padding: 14px 20px; font-size: 11px; }
+    .ub-section-title { font-size: clamp(30px, 8vw, 44px); margin-bottom: 36px !important; }
+    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
+      padding: 70px 0;
+    }
+    .ub-timeline {
+      padding-left: 28px;
+      &::before { left: 9px; }
+    }
+    .ub-timeline-node {
+      left: -28px;
+      width: 20px;
+      height: 20px;
+    }
+    .ub-node-icon { font-size: 9px; }
+    .ub-timeline-title { font-size: 17px; }
+    .ub-timeline-desc { font-size: 14px; }
+    .ub-project-img-wrap { height: 180px; }
+    .ub-project-body { padding: 20px 16px; }
+    .ub-project-name { font-size: 18px; }
+    .ub-writing-item { gap: 14px; padding: 20px 0; }
     .ub-writing-meta { display: none; }
     .ub-writing-sub { font-size: 12px; }
+    .ub-social-platform { min-width: 90px; }
     .ub-social-handle { font-size: 16px; }
-    .ub-metrics-grid { grid-template-columns: 1fr; }
+    .ub-metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .ub-metric-card { padding: 24px 12px; }
+    .ub-metric-num { font-size: 36px; }
+    .ub-metric-plus { font-size: 20px; }
+    .ub-terminal-section { padding-bottom: 120px; }
+    .ub-term-body { padding: 16px; font-size: 12px; max-height: 240px; }
+    .ub-term-quick { gap: 6px; }
+    .ub-term-btn { padding: 6px 12px; font-size: 12px; }
+    .ub-term-input-row { padding: 12px 16px; }
   }
 }

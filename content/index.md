@@ -24,7 +24,31 @@ tags:
 <a href="#ub-stats">Telemetry</a>
 <a href="#ub-terminal">Terminal</a>
 </div>
+<button class="ub-nav-toggle" id="ub-nav-toggle" aria-label="Toggle Navigation Menu">
+<span></span>
+<span></span>
+<span></span>
+</button>
 </nav>
+
+<div class="ub-nav-drawer" id="ub-nav-drawer">
+<div class="ub-drawer-header">
+<span class="ub-drawer-title">[ NAVIGATION HUB ]</span>
+<button class="ub-drawer-close" id="ub-drawer-close" aria-label="Close Navigation">✕</button>
+</div>
+<div class="ub-drawer-links">
+<a class="ub-drawer-link" href="#ub-about"><span class="ub-drawer-num">01</span> CHARACTER PROFILE</a>
+<a class="ub-drawer-link" href="#ub-quests"><span class="ub-drawer-num">02</span> QUEST LOG</a>
+<a class="ub-drawer-link" href="#ub-builds"><span class="ub-drawer-num">03</span> PRODUCTION BUILDS</a>
+<a class="ub-drawer-link" href="#ub-knowledge"><span class="ub-drawer-num">04</span> SKILL SCROLLS</a>
+<a class="ub-drawer-link" href="#ub-stats"><span class="ub-drawer-num">05</span> TELEMETRY & STATS</a>
+<a class="ub-drawer-link" href="#ub-terminal"><span class="ub-drawer-num">06</span> CLI TERMINAL</a>
+</div>
+</div>
+
+<button class="ub-floating-top" id="ub-floating-top" aria-label="Back to Top">
+<span>▲ TOP</span>
+</button>
 
 <section class="ub-hero" id="ub-hero">
 <canvas id="ub-particleCanvas"></canvas>
@@ -927,7 +951,8 @@ High-performance waterfall layout and component library solution. Tailored for d
 
     var W, H;
     function resize() {
-      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var isMobile = window.innerWidth < 768;
+      var dpr = isMobile ? 1.25 : Math.min(window.devicePixelRatio || 1, 2);
       var w = Math.round(canvas.clientWidth  * dpr);
       var h = Math.round(canvas.clientHeight * dpr);
       if (w < 2 || h < 2) return;
@@ -936,6 +961,20 @@ High-performance waterfall layout and component library solution. Tailored for d
         gl.viewport(0, 0, w, h);
       }
       W = canvas.width; H = canvas.height;
+
+      // Adapt position and size for mobile portrait vs desktop landscape
+      var isPortrait = H > W;
+      if (isPortrait) {
+        cubes[0].position = [-0.32,  0.46, 1.30];
+        cubes[0].halfExtent = 0.13;
+        cubes[1].position = [ 0.34, -0.44, 1.25];
+        cubes[1].halfExtent = 0.15;
+      } else {
+        cubes[0].position = [-0.55,  0.40, 1.25];
+        cubes[0].halfExtent = 0.18;
+        cubes[1].position = [ 0.58, -0.35, 1.15];
+        cubes[1].halfExtent = 0.20;
+      }
     }
     resize();
     window.addEventListener('resize', resize);
@@ -1034,16 +1073,22 @@ High-performance waterfall layout and component library solution. Tailored for d
     var last = performance.now();
     var time = 0;
     var running = true;
+    var heroVisible = true;
 
     document.addEventListener('visibilitychange', function() {
       running = document.visibilityState === 'visible';
     });
 
+    var heroObs = new IntersectionObserver(function(entries) {
+      heroVisible = entries[0].isIntersecting;
+    }, { threshold: 0.05 });
+    heroObs.observe(hero);
+
     function frame(now) {
       requestAnimationFrame(frame);
       var dt = Math.min((now - last) / 1000, 0.05);
       last = now;
-      if (!running) return;
+      if (!running || !heroVisible) return;
       time += dt;
 
       resize();
@@ -1081,6 +1126,29 @@ High-performance waterfall layout and component library solution. Tailored for d
 
     requestAnimationFrame(frame);
   })();
+
+  // ── MOBILE DRAWER & FLOATING TOP ──
+  var navToggle   = document.getElementById('ub-nav-toggle');
+  var navDrawer   = document.getElementById('ub-nav-drawer');
+  var drawerClose = document.getElementById('ub-drawer-close');
+  function toggleDrawer(open) {
+    if (navDrawer) navDrawer.classList.toggle('active', open);
+  }
+  if (navToggle)   navToggle.addEventListener('click', function() { toggleDrawer(true); });
+  if (drawerClose) drawerClose.addEventListener('click', function() { toggleDrawer(false); });
+  document.querySelectorAll('.ub-drawer-link').forEach(function(l) {
+    l.addEventListener('click', function() { toggleDrawer(false); });
+  });
+
+  var floatingTop = document.getElementById('ub-floating-top');
+  if (floatingTop) {
+    window.addEventListener('scroll', function() {
+      floatingTop.classList.toggle('visible', window.scrollY > 400);
+    });
+    floatingTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
 })();
 </script>
