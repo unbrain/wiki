@@ -1,15 +1,15 @@
 /**
  * glass-cube-universal.js
- * Master-Grade Optical Glass Raymarching Shader (WebGL 1.0 & 2.0 Universal)
+ * Master-Grade Optical Glass Raymarching Shader (Universal GLSL 1.00 & WebGL 1/2)
  * 100% Compatible with iOS Safari, Android, WeChat, Chrome, Firefox, Safari Desktop
  * 
  * Features:
  * - True Double-Surface Optical Refraction (Entry -> Interior -> Exit -> Background)
  * - Tri-Band Chromatic Dispersion (Prismatic RGB spectral split)
  * - SDF Rounded Box Geometry with Beveled Curvature Specular Highlights
- * - Studio Environment 3-Point Lighting & Luminescent Cyan Crystal Body
+ * - Studio Environment 3-Point Lighting & Luminescent Cyan/Amber Crystal Body
  * - Physics Drag Momentum & Inertia Damping
- * - Viewport Portrait/Landscape Auto-Framing
+ * - Dynamic Viewport Portrait/Landscape Auto-Framing (Guaranteed in-bounds on any screen)
  * - Zero-Cost Battery Pause via IntersectionObserver
  */
 (function initUniversalGlassCubes() {
@@ -25,28 +25,30 @@
     canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;';
     hero.appendChild(canvas);
 
-    var gl = canvas.getContext('webgl2', { antialias: false, alpha: true }) ||
-             canvas.getContext('webgl',  { antialias: false, alpha: true }) ||
-             canvas.getContext('experimental-webgl', { antialias: false, alpha: true });
+    var gl = canvas.getContext('webgl2', { antialias: false, alpha: true, premultipliedAlpha: false }) ||
+             canvas.getContext('webgl',  { antialias: false, alpha: true, premultipliedAlpha: false }) ||
+             canvas.getContext('experimental-webgl', { antialias: false, alpha: true, premultipliedAlpha: false });
 
     if (!gl) {
       console.warn('WebGL context not available');
       return;
     }
 
-    // ── Shaders in Universal GLSL 1.00 ─────────────────────────────
+    // ── Shaders in Universal GLSL 1.00 (ES 2.0 & ES 3.0 Compatible) ─
     var VERT = [
       'attribute vec2 aPos;',
       'varying vec2 vUV;',
       'void main(){',
-      '  vUV = aPos * 0.5 + 0.5;',
+      '  vUV = aPos * 0.5 + vec2(0.5, 0.5);',
       '  gl_Position = vec4(aPos, 0.0, 1.0);',
       '}'
     ].join('\n');
 
     var FRAG = [
-      '#ifdef GL_ES',
+      '#ifdef GL_FRAGMENT_PRECISION_HIGH',
       'precision highp float;',
+      '#else',
+      'precision mediump float;',
       '#endif',
 
       'uniform vec2  uRes;',
@@ -69,15 +71,15 @@
 
       'mat3 transposeMat(mat3 m){',
       '  return mat3(',
-      '    m[0][0], m[1][0], m[2][0],',
-      '    m[0][1], m[1][1], m[2][1],',
-      '    m[0][2], m[1][2], m[2][2]',
+      '    vec3(m[0].x, m[1].x, m[2].x),',
+      '    vec3(m[0].y, m[1].y, m[2].y),',
+      '    vec3(m[0].z, m[1].z, m[2].z)',
       '  );',
       '}',
 
       'float sdRoundedBox(vec3 p, vec3 b, float r){',
-      '  vec3 q = abs(p) - b + r;',
-      '  return length(max(q, 0.0)) + min(max(q.x, max(q.y, q.z)), 0.0) - r;',
+      '  vec3 q = abs(p) - b + vec3(r, r, r);',
+      '  return length(max(q, vec3(0.0, 0.0, 0.0))) + min(max(q.x, max(q.y, q.z)), 0.0) - r;',
       '}',
 
       'vec2 mapScene(vec3 p){',
@@ -102,7 +104,7 @@
       '  float t = -ro.z / rd.z;',
       '  vec3 p = ro + rd * t;',
       '  float hw = PLANE_H * uRes.x / uRes.y;',
-      '  vec2 uv = clamp(vec2(p.x / hw * 0.5 + 0.5, p.y * 0.5 + 0.5), vec2(0.002), vec2(0.998));',
+      '  vec2 uv = clamp(vec2(p.x / hw * 0.5 + 0.5, p.y * 0.5 + 0.5), vec2(0.002, 0.002), vec2(0.998, 0.998));',
       '  return texture2D(uTex, uv).rgb;',
       '}',
 
@@ -115,11 +117,12 @@
       '}',
 
       'float boxExit(vec3 roL, vec3 rdL, vec3 b, out vec3 nL){',
-      '  vec3 inv = 1.0 / rdL;',
+      '  vec3 safeRdL = rdL + vec3(0.00001, 0.00001, 0.00001);',
+      '  vec3 inv = vec3(1.0, 1.0, 1.0) / safeRdL;',
       '  vec3 t1 = (-b - roL) * inv;',
       '  vec3 t2 = ( b - roL) * inv;',
       '  vec3 tmax3 = max(t1, t2);',
-      '  nL = vec3(0.0);',
+      '  nL = vec3(0.0, 0.0, 0.0);',
       '  float tF = min(min(tmax3.x, tmax3.y), tmax3.z);',
       '  if(tF == tmax3.x) nL.x = sign(rdL.x);',
       '  else if(tF == tmax3.y) nL.y = sign(rdL.y);',
@@ -163,7 +166,7 @@
       '  vec3 ro  = vec3(0.0, 0.0, CAM_Z);',
       '  vec3 rd  = normalize(vec3(ndc, -CAM_Z));',
 
-      // Ray Marching Core
+      // Ray Marching
       '  float t = 0.6;',
       '  float hitId = -1.0;',
       '  float closestPx = 1e9;',
@@ -213,7 +216,7 @@
       '    vec3 rimCol = vec3(0.26, 0.85, 0.68) * 0.9 + vec3(0.99, 0.98, 0.88) * 0.4;',
       '    gl_FragColor = vec4(rimCol, edgeAlpha * 0.60);',
       '  } else {',
-      '    gl_FragColor = vec4(0.0);',
+      '    gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);',
       '  }',
       '}'
     ].join('\n');
@@ -277,54 +280,6 @@
       U[n] = gl.getUniformLocation(prog, n);
     });
 
-    // ── Viewport & DPR Resize ──────────────────────────────────────
-    var W, H;
-    function resize() {
-      var isMobile = window.innerWidth < 768;
-      var dpr = isMobile ? 1.25 : Math.min(window.devicePixelRatio || 1, 2);
-      var w = Math.round(canvas.clientWidth * dpr);
-      var h = Math.round(canvas.clientHeight * dpr);
-      if (w < 2 || h < 2) return;
-      if (canvas.width !== w || canvas.height !== h) {
-        canvas.width = w;
-        canvas.height = h;
-        gl.viewport(0, 0, w, h);
-      }
-      W = canvas.width;
-      H = canvas.height;
-
-      // Adjust cube positions for portrait mobile vs desktop landscape
-      var isPortrait = H > W;
-      if (isPortrait) {
-        cubes[0].position = [-0.34,  0.48, 1.30];
-        cubes[0].halfExtent = 0.14;
-        cubes[1].position = [ 0.36, -0.46, 1.25];
-        cubes[1].halfExtent = 0.16;
-      } else {
-        cubes[0].position = [-0.58,  0.42, 1.25];
-        cubes[0].halfExtent = 0.19;
-        cubes[1].position = [ 0.60, -0.36, 1.15];
-        cubes[1].halfExtent = 0.21;
-      }
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    // ── Matrix Math Helpers ────────────────────────────────────────
-    function mat3Mul(a, b) {
-      var o = new Float32Array(9);
-      for (var c = 0; c < 3; c++)
-        for (var r = 0; r < 3; r++) {
-          var s = 0;
-          for (var k = 0; k < 3; k++) s += a[k * 3 + r] * b[c * 3 + k];
-          o[c * 3 + r] = s;
-        }
-      return o;
-    }
-    function rotX(a) { return new Float32Array([1, 0, 0, 0, Math.cos(a), Math.sin(a), 0, -Math.sin(a), Math.cos(a)]); }
-    function rotY(a) { return new Float32Array([Math.cos(a), 0, -Math.sin(a), 0, 1, 0, Math.sin(a), 0, Math.cos(a)]); }
-    function rotZ(a) { return new Float32Array([Math.cos(a), Math.sin(a), 0, -Math.sin(a), Math.cos(a), 0, 0, 0, 1]); }
-
     // ── Cube State & Configurations ────────────────────────────────
     var cubes = [
       {
@@ -350,6 +305,74 @@
         vel:          [0, 0]
       }
     ];
+
+    // ── Viewport & DPR Dynamic Framing ─────────────────────────────
+    var W, H;
+    function resize() {
+      var isMobile = window.innerWidth < 768;
+      var dpr = isMobile ? 1.25 : Math.min(window.devicePixelRatio || 1, 2);
+      var w = Math.round(canvas.clientWidth * dpr);
+      var h = Math.round(canvas.clientHeight * dpr);
+      if (w < 2 || h < 2) return;
+      if (canvas.width !== w || canvas.height !== h) {
+        canvas.width = w;
+        canvas.height = h;
+        gl.viewport(0, 0, w, h);
+      }
+      W = canvas.width;
+      H = canvas.height;
+
+      // Mathematically guaranteed in-bounds positions based on screen aspect ratio
+      var aspect = W / H;
+      var isPortrait = H > W;
+
+      var scaleA = (CAM_Z - cubes[0].position[2]) / CAM_Z; // 0.6875
+      var scaleB = (CAM_Z - cubes[1].position[2]) / CAM_Z; // 0.7125
+
+      var maxVisXA = aspect * scaleA;
+      var maxVisXB = aspect * scaleB;
+
+      if (isPortrait) {
+        // Mobile portrait: position clearly in visible bounds framing hero text
+        cubes[0].position[0] = -maxVisXA * 0.58;
+        cubes[0].position[1] = 0.44;
+        cubes[0].halfExtent  = 0.12;
+        cubes[0].rounding    = 0.030;
+
+        cubes[1].position[0] =  maxVisXB * 0.60;
+        cubes[1].position[1] = -0.44;
+        cubes[1].halfExtent  = 0.14;
+        cubes[1].rounding    = 0.035;
+      } else {
+        // Desktop landscape: flanking hero content
+        cubes[0].position[0] = -Math.min(maxVisXA * 0.72, 0.60);
+        cubes[0].position[1] = 0.38;
+        cubes[0].halfExtent  = 0.19;
+        cubes[0].rounding    = 0.045;
+
+        cubes[1].position[0] =  Math.min(maxVisXB * 0.75, 0.62);
+        cubes[1].position[1] = -0.34;
+        cubes[1].halfExtent  = 0.21;
+        cubes[1].rounding    = 0.048;
+      }
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // ── Matrix Math Helpers ────────────────────────────────────────
+    function mat3Mul(a, b) {
+      var o = new Float32Array(9);
+      for (var c = 0; c < 3; c++)
+        for (var r = 0; r < 3; r++) {
+          var s = 0;
+          for (var k = 0; k < 3; k++) s += a[k * 3 + r] * b[c * 3 + k];
+          o[c * 3 + r] = s;
+        }
+      return o;
+    }
+    function rotX(a) { return new Float32Array([1, 0, 0, 0, Math.cos(a), Math.sin(a), 0, -Math.sin(a), Math.cos(a)]); }
+    function rotY(a) { return new Float32Array([Math.cos(a), 0, -Math.sin(a), 0, 1, 0, Math.sin(a), 0, Math.cos(a)]); }
+    function rotZ(a) { return new Float32Array([Math.cos(a), Math.sin(a), 0, -Math.sin(a), Math.cos(a), 0, 0, 0, 1]); }
 
     // ── Physics Drag & Touch Interaction ───────────────────────────
     var ptr = { tx: 0, ty: 0, x: 0, y: 0 };

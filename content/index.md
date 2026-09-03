@@ -772,10 +772,24 @@ High-performance waterfall layout and component library solution. Tailored for d
 
   // ── LOAD UNIVERSAL OPTICAL RAYMARCHING GLASS CUBES ──
   (function loadGlassCubes() {
+    function tryLoad(srcs) {
+      if (!srcs.length) return;
+      var src = srcs.shift();
+      var s = document.createElement('script');
+      s.src = src;
+      s.onerror = function() { tryLoad(srcs); };
+      document.head.appendChild(s);
+    }
     var base = document.body.dataset.basepath || '';
-    var s = document.createElement('script');
-    s.src = (base ? base : '') + '/static/glass-cube-universal.js';
-    document.head.appendChild(s);
+    var candidates = [
+      (base ? base : '') + '/static/glass-cube-universal.js',
+      './static/glass-cube-universal.js',
+      '/wiki/static/glass-cube-universal.js',
+      '/static/glass-cube-universal.js'
+    ];
+    var unique = [];
+    candidates.forEach(function(c) { if (unique.indexOf(c) === -1) unique.push(c); });
+    tryLoad(unique);
   })();
 
   // ── MOBILE DRAWER & FLOATING TOP ──
