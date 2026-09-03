@@ -108,9 +108,7 @@ body[data-slug="index"] {
   }
 
   // ── 禁用首页所有 Popover 浮动预览弹窗 ──
-  .popover,
-  .popover-hint,
-  .popover-inner {
+  div.popover {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;

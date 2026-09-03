@@ -18,12 +18,12 @@ tags:
 <span class="ub-nav-status"><span class="ub-status-dot"></span>在线 ONLINE</span>
 </div>
 <div class="ub-nav-links">
-<a href="#ub-about">个人档案</a>
-<a href="#ub-quests">履历历程</a>
-<a href="#ub-builds">核心作品</a>
-<a href="#ub-knowledge">知识卷轴</a>
-<a href="#ub-stats">量化数据</a>
-<a href="#ub-terminal">交互终端</a>
+<a href="#ub-about" data-router-ignore="true" data-no-popover="true">个人档案</a>
+<a href="#ub-quests" data-router-ignore="true" data-no-popover="true">履历历程</a>
+<a href="#ub-builds" data-router-ignore="true" data-no-popover="true">核心作品</a>
+<a href="#ub-knowledge" data-router-ignore="true" data-no-popover="true">知识卷轴</a>
+<a href="#ub-stats" data-router-ignore="true" data-no-popover="true">量化数据</a>
+<a href="#ub-terminal" data-router-ignore="true" data-no-popover="true">交互终端</a>
 </div>
 <button class="ub-nav-toggle" id="ub-nav-toggle" aria-label="切换导航菜单">
 <span></span>
@@ -39,12 +39,12 @@ tags:
 <button class="ub-drawer-close" id="ub-drawer-close" aria-label="关闭导航">✕</button>
 </div>
 <div class="ub-drawer-links">
-<a class="ub-drawer-link" href="#ub-about"><span class="ub-drawer-num">01</span> 个人档案 · PROFILE</a>
-<a class="ub-drawer-link" href="#ub-quests"><span class="ub-drawer-num">02</span> 履历历程 · QUEST LOG</a>
-<a class="ub-drawer-link" href="#ub-builds"><span class="ub-drawer-num">03</span> 核心作品 · BUILDS</a>
-<a class="ub-drawer-link" href="#ub-knowledge"><span class="ub-drawer-num">04</span> 知识卷轴 · KNOWLEDGE</a>
-<a class="ub-drawer-link" href="#ub-stats"><span class="ub-drawer-num">05</span> 量化数据 · TELEMETRY</a>
-<a class="ub-drawer-link" href="#ub-terminal"><span class="ub-drawer-num">06</span> 交互终端 · TERMINAL</a>
+<a class="ub-drawer-link" href="#ub-about" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">01</span> 个人档案 · PROFILE</a>
+<a class="ub-drawer-link" href="#ub-quests" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">02</span> 履历历程 · QUEST LOG</a>
+<a class="ub-drawer-link" href="#ub-builds" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">03</span> 核心作品 · BUILDS</a>
+<a class="ub-drawer-link" href="#ub-knowledge" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">04</span> 知识卷轴 · KNOWLEDGE</a>
+<a class="ub-drawer-link" href="#ub-stats" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">05</span> 量化数据 · TELEMETRY</a>
+<a class="ub-drawer-link" href="#ub-terminal" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">06</span> 交互终端 · TERMINAL</a>
 </div>
 </div>
 
@@ -75,9 +75,9 @@ tags:
 </h1>
 <p class="ub-hero-sub reveal-fade">构筑高并发前端系统 · 研磨算法知识卷轴 · 探索生成式交互代码</p>
 <div class="ub-hero-actions reveal-fade">
-<a class="ub-btn ub-btn--primary" href="#ub-builds">浏览核心工程 ↗</a>
-<a class="ub-btn ub-btn--outline" href="#ub-knowledge">查阅知识库 ↓</a>
-<a class="ub-btn ub-btn--ghost" href="#ub-terminal">打开终端 >_</a>
+<a class="ub-btn ub-btn--primary" href="#ub-builds" data-router-ignore="true" data-no-popover="true">浏览核心工程 ↗</a>
+<a class="ub-btn ub-btn--outline" href="#ub-knowledge" data-router-ignore="true" data-no-popover="true">查阅知识库 ↓</a>
+<a class="ub-btn ub-btn--ghost" href="#ub-terminal" data-router-ignore="true" data-no-popover="true">打开终端 >_</a>
 </div>
 <div class="ub-hero-scroll-hint">
 <span>▼ 向下滚动探索 ▼</span>
@@ -598,22 +598,57 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 
     var current = '';
     sections.forEach(function(sec) {
-      var top = sec.offsetTop - 120;
+      var top = sec.offsetTop - 140;
       if (window.scrollY >= top) current = sec.getAttribute('id');
     });
     navLinks.forEach(function(link) {
       link.classList.toggle('active', link.getAttribute('href') === '#' + current);
     });
+  }, { passive: true });
+
+  // 内部锚点平滑滚动（阻止路由冲突与抖动，保证精准平滑直达）
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.setAttribute('data-router-ignore', 'true');
+    link.dataset.routerIgnore = 'true';
+    link.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      var targetEl = document.getElementById(href.slice(1));
+      if (targetEl) {
+        e.preventDefault();
+        var top = targetEl.getBoundingClientRect().top + window.pageYOffset - 72;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
   });
 
-  // ── SCROLL REVEAL ──
+  // ── SCROLL REVEAL (双重保障：Observer + 滚动/定时兜底) ──
   var reveals = document.querySelectorAll('.ub-scroll-reveal');
-  var revObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
+  if ('IntersectionObserver' in window) {
+    var revObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.05 });
+    reveals.forEach(function(el) { revObs.observe(el); });
+  }
+
+  function checkReveals() {
+    var winHeight = window.innerHeight || document.documentElement.clientHeight;
+    reveals.forEach(function(el) {
+      if (!el.classList.contains('visible')) {
+        var rect = el.getBoundingClientRect();
+        if (rect.top <= winHeight * 0.95 && rect.bottom >= 0) {
+          el.classList.add('visible');
+        }
+      }
     });
-  }, { threshold: 0.08 });
-  reveals.forEach(function(el) { revObs.observe(el); });
+  }
+  window.addEventListener('scroll', checkReveals, { passive: true });
+  window.addEventListener('resize', checkReveals, { passive: true });
+  setTimeout(checkReveals, 200);
+  setTimeout(checkReveals, 600);
+  setTimeout(checkReveals, 1200);
 
   // ── STAT BARS ──
   var statBars = document.querySelectorAll('.ub-stat-bar-fill');
