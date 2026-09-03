@@ -791,6 +791,20 @@ High-performance waterfall layout and component library solution. Tailored for d
  * - Dynamic Viewport Portrait/Landscape Auto-Framing (Guaranteed in-bounds on any screen)
  * - Zero-Cost Battery Pause via IntersectionObserver
  */
+/**
+ * glass-cube-universal.js  v5 — Interactive Holographic Crystal Engine
+ * Master-Grade Optical Glass Raymarching Shader (Universal GLSL 1.00 & WebGL 1/2)
+ * 100% Compatible with iOS Safari, Android, WeChat, Chrome, Firefox, Safari Desktop
+ * 
+ * Features:
+ * - True Double-Surface Optical Refraction (Entry -> Interior -> Exit -> Background)
+ * - Tri-Band Chromatic Dispersion (Prismatic RGB spectral split with click impulse surge)
+ * - 4 Color Themes Cycle on Click/Tap: Cyber Mint, Synth Violet, Deep Azure, Solar Gold
+ * - Gyroscope / DeviceOrientation Mobile Gravity Tilt Parallax
+ * - Physics Drag Momentum & Angular Velocity Impulse
+ * - Dynamic Viewport Portrait/Landscape Auto-Framing
+ * - Zero-Cost Battery Pause via IntersectionObserver
+ */
 (function initUniversalGlassCubes() {
   function start() {
   var hero = document.getElementById('ub-hero');
@@ -838,11 +852,15 @@ High-performance waterfall layout and component library solution. Tailored for d
     'uniform vec3  uPosA;',
     'uniform vec4  uSizeA;',
     'uniform float uDispA;',
+    'uniform vec3  uTintA;',
+    'uniform vec3  uNeonA;',
 
     'uniform mat3  uRotB;',
     'uniform vec3  uPosB;',
     'uniform vec4  uSizeB;',
     'uniform float uDispB;',
+    'uniform vec3  uTintB;',
+    'uniform vec3  uNeonB;',
 
     'const float CAM_Z   = 4.0;',
     'const float PLANE_H = 1.0;',
@@ -981,9 +999,9 @@ High-performance waterfall layout and component library solution. Tailored for d
     '    float fres = pow(1.0 - clamp(dot(n, -rd), 0.0, 1.0), 3.2);',
     '    vec3 reflCol = studioEnv(reflect(rd, n));',
 
-    // Glass Crystal Body Tints
-    '    vec3 crystalTint = isA ? vec3(0.08, 0.20, 0.24) : vec3(0.22, 0.16, 0.08);',
-    '    vec3 edgeNeon    = isA ? vec3(0.26, 0.85, 0.68) : vec3(0.99, 0.65, 0.38);',
+    // Dynamic Animated Crystal Colors
+    '    vec3 crystalTint = isA ? uTintA : uTintB;',
+    '    vec3 edgeNeon    = isA ? uNeonA : uNeonB;',
     '    vec3 specular    = vec3(0.99, 0.98, 0.88) * pow(fres, 2.2) * 0.75;',
 
     // Composite Shaded Glass
@@ -992,7 +1010,8 @@ High-performance waterfall layout and component library solution. Tailored for d
 
     '    gl_FragColor = vec4(glass, clamp(0.78 + fres * 0.22, 0.0, 1.0));',
     '  } else if(edgeAlpha > 0.01){',
-    '    vec3 rimCol = vec3(0.26, 0.85, 0.68) * 0.9 + vec3(0.99, 0.98, 0.88) * 0.4;',
+    '    vec3 activeNeon = uNeonA;',
+    '    vec3 rimCol = activeNeon * 0.9 + vec3(0.99, 0.98, 0.88) * 0.4;',
     '    gl_FragColor = vec4(rimCol, edgeAlpha * 0.60);',
     '  } else {',
     '    gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);',
@@ -1055,9 +1074,50 @@ High-performance waterfall layout and component library solution. Tailored for d
 
   // ── Uniform Locations ──────────────────────────────────────────
   var U = {};
-  ['uRes', 'uTime', 'uRotA', 'uPosA', 'uSizeA', 'uDispA', 'uRotB', 'uPosB', 'uSizeB', 'uDispB'].forEach(function(n) {
+  [
+    'uRes', 'uTime',
+    'uRotA', 'uPosA', 'uSizeA', 'uDispA', 'uTintA', 'uNeonA',
+    'uRotB', 'uPosB', 'uSizeB', 'uDispB', 'uTintB', 'uNeonB'
+  ].forEach(function(n) {
     U[n] = gl.getUniformLocation(prog, n);
   });
+
+  // ── Interactive Themes & Color Shifting Palette ────────────────
+  var THEMES = [
+    {
+      name: 'CYBER_MINT',
+      tintA: [0.08, 0.20, 0.24], neonA: [0.26, 0.85, 0.68],
+      tintB: [0.22, 0.16, 0.08], neonB: [0.99, 0.65, 0.38]
+    },
+    {
+      name: 'SYNTH_VIOLET',
+      tintA: [0.20, 0.10, 0.30], neonA: [0.70, 0.40, 0.95],
+      tintB: [0.30, 0.08, 0.18], neonB: [0.98, 0.35, 0.65]
+    },
+    {
+      name: 'DEEP_AZURE',
+      tintA: [0.06, 0.14, 0.32], neonA: [0.18, 0.65, 0.98],
+      tintB: [0.04, 0.24, 0.28], neonB: [0.20, 0.95, 0.85]
+    },
+    {
+      name: 'SOLAR_GOLD',
+      tintA: [0.28, 0.15, 0.04], neonA: [0.99, 0.55, 0.15],
+      tintB: [0.25, 0.22, 0.06], neonB: [0.99, 0.88, 0.25]
+    }
+  ];
+
+  var curThemeIdx = 0;
+  var curColors = {
+    tintA: [0.08, 0.20, 0.24], neonA: [0.26, 0.85, 0.68],
+    tintB: [0.22, 0.16, 0.08], neonB: [0.99, 0.65, 0.38]
+  };
+  var dispersionSurge = 0.0;
+
+  function lerpColor(c, target, rate) {
+    c[0] += (target[0] - c[0]) * rate;
+    c[1] += (target[1] - c[1]) * rate;
+    c[2] += (target[2] - c[2]) * rate;
+  }
 
   // ── Cube State & Configurations ────────────────────────────────
   var CAM_Z = 4.0;
@@ -1102,18 +1162,16 @@ High-performance waterfall layout and component library solution. Tailored for d
     W = canvas.width;
     H = canvas.height;
 
-    // Mathematically guaranteed in-bounds positions based on screen aspect ratio
     var aspect = W / H;
     var isPortrait = H > W;
 
-    var scaleA = (CAM_Z - cubes[0].position[2]) / CAM_Z; // 0.6875
-    var scaleB = (CAM_Z - cubes[1].position[2]) / CAM_Z; // 0.7125
+    var scaleA = (CAM_Z - cubes[0].position[2]) / CAM_Z;
+    var scaleB = (CAM_Z - cubes[1].position[2]) / CAM_Z;
 
     var maxVisXA = aspect * scaleA;
     var maxVisXB = aspect * scaleB;
 
     if (isPortrait) {
-      // Mobile portrait: position cleanly in the corner framing without overlapping text
       cubes[0].position[0] = -maxVisXA * 0.70;
       cubes[0].position[1] = 0.58;
       cubes[0].halfExtent  = 0.095;
@@ -1124,7 +1182,6 @@ High-performance waterfall layout and component library solution. Tailored for d
       cubes[1].halfExtent  = 0.115;
       cubes[1].rounding    = 0.028;
     } else {
-      // Desktop landscape: flanking hero content
       cubes[0].position[0] = -Math.min(maxVisXA * 0.72, 0.60);
       cubes[0].position[1] = 0.38;
       cubes[0].halfExtent  = 0.19;
@@ -1154,32 +1211,47 @@ High-performance waterfall layout and component library solution. Tailored for d
   function rotY(a) { return new Float32Array([Math.cos(a), 0, -Math.sin(a), 0, 1, 0, Math.sin(a), 0, Math.cos(a)]); }
   function rotZ(a) { return new Float32Array([Math.cos(a), Math.sin(a), 0, -Math.sin(a), Math.cos(a), 0, 0, 0, 1]); }
 
-  // ── Physics Drag & Touch Interaction ───────────────────────────
+  // ── Physics Drag, Tap to Cycle Themes & Gyroscope ──────────────
   var ptr = { tx: 0, ty: 0, x: 0, y: 0 };
   var isDragging = false;
+  var startPointer = { x: 0, y: 0, time: 0 };
   var lastX = 0, lastY = 0;
+
+  function triggerThemeCycle() {
+    curThemeIdx = (curThemeIdx + 1) % THEMES.length;
+    // Energy spin impulse
+    cubes[0].vel[0] += 0.07;
+    cubes[0].vel[1] += 0.04;
+    cubes[1].vel[0] -= 0.06;
+    cubes[1].vel[1] -= 0.04;
+    // Dispersion shockwave
+    dispersionSurge = 1.2;
+  }
 
   function onPointerDown(e) {
     isDragging = true;
-    var clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    var clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    lastX = clientX;
-    lastY = clientY;
+    var cx = e.touches ? e.touches[0].clientX : e.clientX;
+    var cy = e.touches ? e.touches[0].clientY : e.clientY;
+    startPointer.x = cx;
+    startPointer.y = cy;
+    startPointer.time = performance.now();
+    lastX = cx;
+    lastY = cy;
   }
 
   function onPointerMove(e) {
-    var clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    var cx = e.touches ? e.touches[0].clientX : e.clientX;
+    var cy = e.touches ? e.touches[0].clientY : e.clientY;
 
     var r = canvas.getBoundingClientRect();
-    ptr.tx = ((clientX - r.left) / r.width) * 2 - 1;
-    ptr.ty = ((clientY - r.top) / r.height) * 2 - 1;
+    ptr.tx = ((cx - r.left) / r.width) * 2 - 1;
+    ptr.ty = ((cy - r.top) / r.height) * 2 - 1;
 
     if (isDragging) {
-      var dx = clientX - lastX;
-      var dy = clientY - lastY;
-      lastX = clientX;
-      lastY = clientY;
+      var dx = cx - lastX;
+      var dy = cy - lastY;
+      lastX = cx;
+      lastY = cy;
 
       cubes.forEach(function(c) {
         c.vel[0] = dx * 0.006;
@@ -1190,8 +1262,18 @@ High-performance waterfall layout and component library solution. Tailored for d
     }
   }
 
-  function onPointerUp() {
-    isDragging = false;
+  function onPointerUp(e) {
+    if (isDragging) {
+      isDragging = false;
+      var cx = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+      var cy = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+      var dist = Math.hypot(cx - startPointer.x, cy - startPointer.y);
+      var dur  = performance.now() - startPointer.time;
+      // Clean tap/click detection (< 12px drag, < 320ms duration)
+      if (dist < 12 && dur < 320) {
+        triggerThemeCycle();
+      }
+    }
   }
 
   hero.addEventListener('mousedown', onPointerDown);
@@ -1201,6 +1283,34 @@ High-performance waterfall layout and component library solution. Tailored for d
   hero.addEventListener('touchstart', onPointerDown, { passive: true });
   window.addEventListener('touchmove', onPointerMove, { passive: true });
   window.addEventListener('touchend', onPointerUp, { passive: true });
+
+  // ── Mobile Gyroscope / DeviceOrientation Parallax ─────────────
+  function handleOrientation(e) {
+    if (e.gamma === null || e.beta === null) return;
+    var gX = Math.max(-1, Math.min(1, e.gamma / 30.0));
+    var gY = Math.max(-1, Math.min(1, (e.beta - 45.0) / 30.0));
+    if (!isDragging) {
+      ptr.tx = gX * 0.55;
+      ptr.ty = gY * 0.55;
+    }
+  }
+
+  if (window.DeviceOrientationEvent) {
+    window.addEventListener('deviceorientation', handleOrientation, { passive: true });
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+      var reqGyro = function() {
+        DeviceOrientationEvent.requestPermission().then(function(res) {
+          if (res === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation, { passive: true });
+          }
+        }).catch(function() {});
+        window.removeEventListener('click', reqGyro);
+        window.removeEventListener('touchend', reqGyro);
+      };
+      window.addEventListener('click', reqGyro, { once: true });
+      window.addEventListener('touchend', reqGyro, { once: true });
+    }
+  }
 
   // ── Visibility & Battery Optimization ──────────────────────────
   var isHeroVisible = true;
@@ -1236,6 +1346,15 @@ High-performance waterfall layout and component library solution. Tailored for d
     ptr.x += (ptr.tx - ptr.x) * Math.min(dt * 5, 1);
     ptr.y += (ptr.ty - ptr.y) * Math.min(dt * 5, 1);
 
+    // Smooth color theme interpolation
+    var targetTheme = THEMES[curThemeIdx];
+    lerpColor(curColors.tintA, targetTheme.tintA, 0.08);
+    lerpColor(curColors.neonA, targetTheme.neonA, 0.08);
+    lerpColor(curColors.tintB, targetTheme.tintB, 0.08);
+    lerpColor(curColors.neonB, targetTheme.neonB, 0.08);
+
+    dispersionSurge *= 0.94;
+
     updateTex();
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, tex);
@@ -1258,8 +1377,14 @@ High-performance waterfall layout and component library solution. Tailored for d
       gl.uniformMatrix3fv(U['uRot' + prefix], false, R);
       gl.uniform3f(U['uPos' + prefix], c.position[0], c.position[1], c.position[2]);
       gl.uniform4f(U['uSize' + prefix], c.halfExtent, c.halfExtent, c.halfExtent, c.rounding);
-      gl.uniform1f(U['uDisp' + prefix], c.dispersion);
+      gl.uniform1f(U['uDisp' + prefix], c.dispersion + dispersionSurge * 0.8);
     });
+
+    // Pass animated theme colors
+    gl.uniform3fv(U.uTintA, curColors.tintA);
+    gl.uniform3fv(U.uNeonA, curColors.neonA);
+    gl.uniform3fv(U.uTintB, curColors.tintB);
+    gl.uniform3fv(U.uNeonB, curColors.neonB);
 
     gl.uniform2f(U.uRes, canvas.width, canvas.height);
     gl.uniform1f(U.uTime, time);
