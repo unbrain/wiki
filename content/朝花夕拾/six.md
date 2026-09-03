@@ -8,7 +8,7 @@ tags:
 description: "第六周随笔 - 早期技术探索与总结沉淀"
 ---
 
-> [!note] 朝花夕拾 · 早期足迹
+> [!note] [[朝花夕拾/index|朝花夕拾 · 历史成长档案]] · 早期足迹
 > 本文记录于 2017-2019 年早期前端探索时期，保留当时的真实成长轨迹与思考，归档作技术演进参考。
 
 # 第六周随笔
@@ -128,7 +128,7 @@ this.$refs.canvasFir.getBoundingClientRect().toJSON() is not a function
 > **Warning:** non-standard behavior (doesn't work in 
 [Firefox < 62](https://bugzilla.mozilla.org/show_bug.cgi?id=1186265), including ESR 60 and possibly other browsers other than Chrome)
 
-```
+```javascript
 JSON.stringify(this.$refs.canvasFir.getBoundingClientRect()) //{}
 ```
 

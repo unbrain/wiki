@@ -8,7 +8,7 @@ tags:
 description: "DOM 操作 - 早期技术探索与总结沉淀"
 ---
 
-> [!note] 朝花夕拾 · 早期足迹
+> [!note] [[朝花夕拾/index|朝花夕拾 · 历史成长档案]] · 早期足迹
 > 本文记录于 2017-2019 年早期前端探索时期，保留当时的真实成长轨迹与思考，归档作技术演进参考。
 
 # DOM 操作
@@ -118,7 +118,7 @@ document.createDocumentFragment()	//但是现在几乎不用这个  低级浏览
 
 tBodies、tHead、tFoot、rows、cells
 
-```
+```css
 // alert(aTb.getElementsByTagName('tbody')[0].getElementsByTagName('tr')[0].getElementsByTagName('td')[1].innerHTML);
 alert(aTb.tBodies[0].rows[0].cells[1].innerHTML);
 ```
@@ -143,7 +143,7 @@ alert(aTb.tBodies[0].rows[0].cells[1].innerHTML);
 
 高亮显示、筛选	background / display
 
-```
+```javascript
 window.onload =function(){
 	var oTb = document.getElementById('table1');
 	var oT1 = document.getElementById('text1');

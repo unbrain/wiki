@@ -8,7 +8,7 @@ tags:
 description: "linux 下 python 版本管理 - 早期技术探索与总结沉淀"
 ---
 
-> [!note] 朝花夕拾 · 早期足迹
+> [!note] [[朝花夕拾/index|朝花夕拾 · 历史成长档案]] · 早期足迹
 > 本文记录于 2017-2019 年早期前端探索时期，保留当时的真实成长轨迹与思考，归档作技术演进参考。
 
 # linux 下 python 版本管理
@@ -21,7 +21,7 @@ description: "linux 下 python 版本管理 - 早期技术探索与总结沉淀"
 
 - 最好看官网的教程
 
-```
+```bash
 curl https://pyenv.run | zsh
 
 pyenv update
@@ -36,19 +36,19 @@ exec "$SHELL"
 
 安装
 
-```
+```javascript
 pyenv install x.x.x
 ```
 
 查看
 
-```
+```javascript
 pyenv versions
 ```
 
 切换
 
-```
+```bash
 pyenv global x.x.x
 ```
 
@@ -56,7 +56,7 @@ pyenv global x.x.x
 
 - [ImportError: No module named ‘_ctypes’ when using Value from module multiprocessing](https://stackoverflow.com/questions/27022373/python3-importerror-no-module-named-ctypes-when-using-value-from-module-mul)
 
-  ```
+```bash
   sudo apt-get install libffi-dev
   ```
 
@@ -64,7 +64,7 @@ pyenv global x.x.x
 
 - [Common build problems](https://github.com/pyenv/pyenv/wiki/Common-build-problems)
 
-  ```
+```bash
   sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
   libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
   xz-utils tk-dev libffi-dev liblzma-dev python-openssl

@@ -16,7 +16,7 @@ aliases:
 
 分治法（Divide and Conquer）的核心思想：**分而治之**。
 
-```
+```javascript
         原问题
         /    \
    子问题1  子问题2  ← 分解（Divide）

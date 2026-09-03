@@ -9,7 +9,7 @@ tags:
 description: "Git简单操作 - 早期技术探索与总结沉淀"
 ---
 
-> [!note] 朝花夕拾 · 早期足迹
+> [!note] [[朝花夕拾/index|朝花夕拾 · 历史成长档案]] · 早期足迹
 > 本文记录于 2017-2019 年早期前端探索时期，保留当时的真实成长轨迹与思考，归档作技术演进参考。
 
 # Git简单操作
@@ -18,7 +18,7 @@ description: "Git简单操作 - 早期技术探索与总结沉淀"
 
 ## 创建
 
-```
+```bash
 git init命令把这个目录变成Git可以管理的仓库
 
 git add <file>告诉Git，把文件添加到仓库
@@ -29,7 +29,7 @@ git commit -m <file>告诉Git，把文件提交到仓库
 
 ## 回溯
 
-```
+```bash
 git status 命令可以让我们时刻掌握仓库当前的状态,修改后是否commit等
 
 git diff 可以查看修改的不同地方
@@ -51,7 +51,7 @@ rm <file>命令删除
 
 ## 远程操作
 
-```
+```bash
 git push origin master  push到服务器
 
 git clone git@github.com:michaelliao/gitskills.git 克隆还可以用
@@ -63,7 +63,7 @@ https://github.com/michaelliao/gitskills.git这样的地址
 
 ## 分支操作
 
-```
+```bash
 git checkout -b dev	创建一个dev分支
 
 git branch	查看当前分支 会列出所有分支，当前分支前面会标一个*号

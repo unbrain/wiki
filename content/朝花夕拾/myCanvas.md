@@ -10,7 +10,7 @@ tags:
 description: "在线画板的制作 - 早期技术探索与总结沉淀"
 ---
 
-> [!note] 朝花夕拾 · 早期足迹
+> [!note] [[朝花夕拾/index|朝花夕拾 · 历史成长档案]] · 早期足迹
 > 本文记录于 2017-2019 年早期前端探索时期，保留当时的真实成长轨迹与思考，归档作技术演进参考。
 
 # 在线画板的制作
@@ -74,7 +74,7 @@ function drawLine(x1, y1, x2, y2, color, radius) {
 
 - 画圆
 
-```
+```javascript
 function drawCircle(x, y, r, color) {
     ctx.beginPath()
     ctx.fillStyle = color

@@ -21,7 +21,7 @@ aliases:
 
 动态规划（Dynamic Programming, DP）的核心思想：**记住过去，避免重复计算**。
 
-```
+```javascript
           fib(5)
          /      \
     fib(4)     fib(3)
@@ -50,7 +50,7 @@ aliases:
 
 ### 解题模板
 
-```
+```javascript
 1. 定义状态（dp[i] 的含义）
 2. 找出状态转移方程
 3. 确定初始条件 / base case
@@ -76,7 +76,7 @@ aliases:
 
 贪心算法（Greedy）的核心思想：**局部最优 → 全局最优**。
 
-```
+```javascript
 每一步都选当前最优的决策，
 期望最终结果就是全局最优。
 ```

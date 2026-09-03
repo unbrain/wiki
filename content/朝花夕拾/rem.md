@@ -8,7 +8,7 @@ tags:
 description: "第二周知识记录 - 早期技术探索与总结沉淀"
 ---
 
-> [!note] 朝花夕拾 · 早期足迹
+> [!note] [[朝花夕拾/index|朝花夕拾 · 历史成长档案]] · 早期足迹
 > 本文记录于 2017-2019 年早期前端探索时期，保留当时的真实成长轨迹与思考，归档作技术演进参考。
 
 # 第二周知识记录
@@ -30,7 +30,7 @@ frmat js --> vscode-typescript
 
 这几天使用 vscode 感觉写代码及其难受，每次打完一行代码回车本来缩进是对的但是就一小会儿它自动就跳到了行头，毫无体验感。然后没办法一个插件一个插件得看发现罪魁祸首是 `EditorConfig for VS Code` 
 
-```
+```javascript
 indent_style
 indent_size
 tab_width
@@ -179,13 +179,13 @@ export default {
 
 `pageYOffset` 属性是 `scrollY` 属性的别名：
 
-```
+```javascript
 window.pageYOffset == window.scrollY; // 总是返回 true
 ```
 
 为了跨浏览器兼容，请使用 `window.pageYOffset` 代替 `window.scrollY`。另外，旧版本IE（<9）两个属性都不支持，必须使用其他的非标准属性。完整的兼容性代码如下：
 
-```
+```javascript
 var supportPageOffset = window.pageXOffset !== undefined;
 var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
 
@@ -195,7 +195,7 @@ var y = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documen
 
 ### 团队代码样式规范
 
-```
+```javascript
 display//展现类
 position//定位类
 top right bottom left

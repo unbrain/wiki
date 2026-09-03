@@ -8,7 +8,7 @@ tags:
 description: "初探 JavaScript 魅力 - 早期技术探索与总结沉淀"
 ---
 
-> [!note] 朝花夕拾 · 早期足迹
+> [!note] [[朝花夕拾/index|朝花夕拾 · 历史成长档案]] · 早期足迹
 > 本文记录于 2017-2019 年早期前端探索时期，保留当时的真实成长轨迹与思考，归档作技术演进参考。
 
 #  初探 JavaScript 魅力
@@ -41,7 +41,7 @@ alert(num);//提示123
 ### 3.  初识函数与变量
 
 变量就好似尚方宝剑代表着皇帝
-```
+```javascript
 //函数
 function function_name(argument){
     //body…

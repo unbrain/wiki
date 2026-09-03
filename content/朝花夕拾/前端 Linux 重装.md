@@ -8,7 +8,7 @@ tags:
 description: "前端 Linux 重装 - 早期技术探索与总结沉淀"
 ---
 
-> [!note] 朝花夕拾 · 早期足迹
+> [!note] [[朝花夕拾/index|朝花夕拾 · 历史成长档案]] · 早期足迹
 > 本文记录于 2017-2019 年早期前端探索时期，保留当时的真实成长轨迹与思考，归档作技术演进参考。
 
 #  前端 Linux 重装
@@ -65,7 +65,7 @@ sudo rm -rf proxychains-ng
 
 创建 proxychains-ng 的配置文件，如果你不知道创建在哪，就创建在 ~/.proxychains.conf（用 `touch ~/.proxychains.conf` 即可创建文件），内容如下
 
-```
+```javascript
  strict_chain
  quiet_mode
  proxy_dns 

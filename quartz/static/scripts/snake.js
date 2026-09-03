@@ -1,9 +1,88 @@
 /**
- * Retro Cyberpunk Particle Snake Game Engine v2.0
+ * Retro Cyberpunk Particle Snake Game Engine v3.0 (with 8-Bit Web Audio Synthesizer)
  * Extracted & upgraded from cv project (SnakeContainer.vue / Snake.vue)
- * Supports both standalone 404 mode & inlined Index arcade mode with focus gating
+ * Zero external audio dependencies - 100% native Web Audio API square/sawtooth synthesis
  */
 (function() {
+  // ── 8-BIT RETRO AUDIO SYNTHESIZER ──
+  var AudioSynth = (function() {
+    var ctx = null;
+    var soundEnabled = localStorage.getItem('cyberSnakeSound') !== 'false';
+
+    function getContext() {
+      if (!ctx && (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined')) {
+        var AudioCtx = window.AudioContext || window.webkitAudioContext;
+        ctx = new AudioCtx();
+      }
+      if (ctx && ctx.state === 'suspended') {
+        ctx.resume();
+      }
+      return ctx;
+    }
+
+    function playTone(freq, type, duration, gainVal, slideToFreq) {
+      if (!soundEnabled) return;
+      var c = getContext();
+      if (!c) return;
+
+      try {
+        var osc = c.createOscillator();
+        var gain = c.createGain();
+        osc.type = type || 'square';
+        osc.frequency.setValueAtTime(freq, c.currentTime);
+        if (slideToFreq) {
+          osc.frequency.exponentialRampToValueAtTime(Math.max(20, slideToFreq), c.currentTime + duration);
+        }
+
+        gain.gain.setValueAtTime(gainVal || 0.05, c.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + duration);
+
+        osc.connect(gain);
+        gain.connect(c.destination);
+
+        osc.start();
+        osc.stop(c.currentTime + duration);
+      } catch (e) {}
+    }
+
+    return {
+      turn: function() {
+        playTone(180, 'square', 0.04, 0.03, 240);
+      },
+      eat: function() {
+        playTone(440, 'square', 0.06, 0.06, 660);
+        setTimeout(function() {
+          playTone(660, 'square', 0.08, 0.07, 880);
+        }, 50);
+      },
+      crash: function() {
+        playTone(220, 'sawtooth', 0.35, 0.08, 40);
+      },
+      record: function() {
+        playTone(523, 'square', 0.08, 0.06);
+        setTimeout(function() { playTone(659, 'square', 0.08, 0.06); }, 70);
+        setTimeout(function() { playTone(784, 'square', 0.14, 0.07); }, 140);
+      },
+      isEnabled: function() {
+        return soundEnabled;
+      },
+      toggle: function() {
+        soundEnabled = !soundEnabled;
+        localStorage.setItem('cyberSnakeSound', soundEnabled);
+        getContext();
+        return soundEnabled;
+      },
+      set: function(val) {
+        soundEnabled = !!val;
+        localStorage.setItem('cyberSnakeSound', soundEnabled);
+        getContext();
+        return soundEnabled;
+      }
+    };
+  })();
+
+  window.CyberSnakeAudio = AudioSynth;
+
   function createCyberSnake(containerId, options) {
     var container = document.getElementById(containerId);
     if (!container) return null;
@@ -15,6 +94,7 @@
     var scoreDom = container.querySelector('.snake-score-val');
     var maxScoreDom = container.querySelector('.snake-maxscore-val');
     var replayBtn = container.querySelector('.snake-replay-btn');
+    var soundBtn = container.querySelector('.snake-sound-btn');
     var statusText = container.querySelector('.snake-status-text');
     var overlay = container.querySelector('.ub-snake-overlay');
     var chassis = container.closest('.ub-snake-chassis') || container;
@@ -33,7 +113,7 @@
     var cellSize = W / cells;
     var isGameOver = false;
     var isRunning = false;
-    var isFocused = !isIndexMode; // 404 auto-focuses; index requires click to focus
+    var isFocused = !isIndexMode;
     var score = 0;
     var maxScore = parseInt(localStorage.getItem('cyberSnakeMax') || '0', 10);
     if (maxScoreDom) maxScoreDom.textContent = maxScore.toString().padStart(2, '0');
@@ -41,6 +121,22 @@
     var splashingParticleCount = 18;
     var animFrame = null;
     var isVisible = true;
+
+    function updateSoundBtnUI() {
+      if (soundBtn) {
+        soundBtn.textContent = AudioSynth.isEnabled() ? 'SOUND: ON [AUDIO]🔊' : 'SOUND: OFF [MUTED]🔇';
+        soundBtn.style.color = AudioSynth.isEnabled() ? '#43d9ad' : '#607b96';
+      }
+    }
+    updateSoundBtnUI();
+
+    if (soundBtn) {
+      soundBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        AudioSynth.toggle();
+        updateSoundBtnUI();
+      });
+    }
 
     var Vec = function(x, y) {
       this.x = x;
@@ -86,18 +182,26 @@
         resetGame();
         return;
       }
+      var turned = false;
       if (dir === 'up' && !KEY.ArrowDown && snake.dir.y === 0) {
         KEY.reset();
         KEY.ArrowUp = true;
+        turned = true;
       } else if (dir === 'down' && !KEY.ArrowUp && snake.dir.y === 0) {
         KEY.reset();
         KEY.ArrowDown = true;
+        turned = true;
       } else if (dir === 'left' && !KEY.ArrowRight && snake.dir.x === 0) {
         KEY.reset();
         KEY.ArrowLeft = true;
+        turned = true;
       } else if (dir === 'right' && !KEY.ArrowLeft && snake.dir.x === 0) {
         KEY.reset();
         KEY.ArrowRight = true;
+        turned = true;
+      }
+      if (turned) {
+        AudioSynth.turn();
       }
     }
 
@@ -107,13 +211,11 @@
         return;
       }
 
-      // If Escape, drop focus and allow scroll
       if (e.key === 'Escape' && isIndexMode) {
         setFocus(false);
         return;
       }
 
-      // If not focused in Index mode, let normal browser scrolling happen!
       if (isIndexMode && !isFocused) {
         if (e.key === 'Enter') {
           setFocus(true);
@@ -136,15 +238,13 @@
 
     window.addEventListener('keydown', onKeyDown);
 
-    // Click on container gives focus in Index mode
-    function onContainerClick(e) {
+    function onContainerClick() {
       if (isIndexMode && !isFocused) {
         setFocus(true);
       }
     }
     container.addEventListener('click', onContainerClick);
 
-    // Click outside drops focus in Index mode
     function onDocClick(e) {
       if (isIndexMode && isFocused) {
         if (!container.contains(e.target) && !chassis.contains(e.target)) {
@@ -154,7 +254,6 @@
     }
     document.addEventListener('click', onDocClick);
 
-    // Bind touch / D-Pad buttons
     container.querySelectorAll('[data-dir]').forEach(function(btn) {
       btn.addEventListener('click', function(e) {
         e.stopPropagation();
@@ -213,6 +312,7 @@
       for (var i = 0; i < this.history.length; i++) {
         if (isCollision(this.pos, this.history[i])) {
           isGameOver = true;
+          AudioSynth.crash();
         }
       }
     };
@@ -229,6 +329,7 @@
           if (isCollision(this.pos, food.pos)) {
             incrementScore();
             particleSplash();
+            AudioSynth.eat();
             food.spawn();
             this.total++;
             if (this.total % 5 === 0 && this.delay > 3) {
@@ -298,9 +399,13 @@
       score++;
       if (scoreDom) scoreDom.textContent = score.toString().padStart(2, '0');
       if (score > maxScore) {
+        var isNewRecord = (maxScore > 0 && score === maxScore + 1);
         maxScore = score;
         localStorage.setItem('cyberSnakeMax', maxScore);
         if (maxScoreDom) maxScoreDom.textContent = maxScore.toString().padStart(2, '0');
+        if (isNewRecord) {
+          AudioSynth.record();
+        }
       }
     }
 
@@ -382,7 +487,6 @@
       loop();
     }
 
-    // IntersectionObserver for battery/GPU pause
     var observer = null;
     if (typeof IntersectionObserver !== 'undefined') {
       observer = new IntersectionObserver(function(entries) {
@@ -418,7 +522,6 @@
     };
   }
 
-  // Global mount points
   var indexInstance = null;
   var notFoundInstance = null;
 

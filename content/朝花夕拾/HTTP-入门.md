@@ -8,7 +8,7 @@ tags:
 description: "HTTP 入门 - 早期技术探索与总结沉淀"
 ---
 
-> [!note] 朝花夕拾 · 早期足迹
+> [!note] [[朝花夕拾/index|朝花夕拾 · 历史成长档案]] · 早期足迹
 > 本文记录于 2017-2019 年早期前端探索时期，保留当时的真实成长轨迹与思考，归档作技术演进参考。
 
 #  HTTP 入门
@@ -37,7 +37,7 @@ Lee 在[欧洲核子研究组织](https://zh.wikipedia.org/wiki/%E6%AD%90%E6%B4%
 5. 端口号。（以数字方式表示，若为HTTP的默认值“:80”可省略）
 6. 路径。（以“/”字符区别路径中的每一个目录名称）
 7. 查询。（GET模式的窗体参数，以“?”字符为起点，每个参数以“&”隔开，再以“=”分开参数名称与数据，通常以UTF8的URL编码，避开字符冲突的问题）
-8. 片段。以“#”字符为起点[[2\]](https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6#cite_note-2)
+8. 片段。以“#”字符为起点<sup>[2]</sup>(https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6#cite_note-2)
 
 以*http://zh.wikipedia.org:80/w/index.php?title=Special:%E9%9A%8F%E6%9C%BA%E9%A1%B5%E9%9D%A2* 为例, 其中：
 
@@ -102,7 +102,7 @@ $ curl -v baidu.com
 
 ##### 一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）
 
-```
+```css
     注：这题胜在区分度高，知识点覆盖广，再不懂的人，也能答出几句，
     而高手可以根据自己擅长的领域自由发挥，从URL规范、HTTP协议、DNS、CDN、数据库查询、
     到浏览器流式解析、CSS规则构建、layout、paint、onload/domready、JS执行、JS API绑定等等；
@@ -128,7 +128,7 @@ $ curl -v baidu.com
 
 ##### http状态码有那些？分别代表是什么意思？
 
-```
+```javascript
   	简单版
   	[
   		100  Continue	继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息

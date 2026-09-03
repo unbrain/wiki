@@ -462,6 +462,8 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <div class="ub-term-quick">
 <button class="ub-term-btn" data-cmd="help">help 帮助</button>
 <button class="ub-term-btn" data-cmd="snake">snake 游戏</button>
+<button class="ub-term-btn" data-cmd="matrix">matrix 矩阵</button>
+<button class="ub-term-btn" data-cmd="whoami">whoami 探测</button>
 <button class="ub-term-btn" data-cmd="resume">resume 简历</button>
 <button class="ub-term-btn" data-cmd="archive">archive 归档</button>
 <button class="ub-term-btn" data-cmd="skills">skills 技能</button>
@@ -534,6 +536,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 </div>
 </div>
 <button type="button" class="ub-snake-replay snake-replay-btn">重置游戏 ↺</button>
+<button type="button" class="snake-sound-btn">SOUND: ON [AUDIO]🔊</button>
 </div>
 </div>
 </div>
@@ -828,6 +831,14 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     '数据': 'stats',
     '指标': 'stats',
     'clear': 'clear',
+    'matrix': 'matrix',
+    '黑客帝国': 'matrix',
+    'whoami': 'whoami',
+    '我是谁': 'whoami',
+    'audio': 'audio',
+    'sound': 'audio',
+    '音效': 'audio',
+    'cat': 'cat',
     '清屏': 'clear',
     'cls': 'clear'
   };
@@ -840,6 +851,10 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
         '  skills    - 核心技术栈与专业技能',
         '  projects  - 代表性生产工程成果',
         '  snake     - 调起赛博贪吃蛇游戏舱并激活控制',
+        '  matrix    - 启动黑客帝国字符雨流光矩阵',
+        '  whoami    - 探测访客客户端运行环境指标',
+        '  cat <f>   - 读取虚拟系统文件 (如 resume, secret)',
+        '  audio     - 切换贪吃蛇 8-bit 复古街机音效开关',
         '  resume    - 查看求职简历与在线 PDF 链接',
         '  archive   - 浏览朝花夕拾 78 篇历史成长归档',
         '  contact   - 联络邮箱与开源主页',
@@ -913,6 +928,125 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
         '>>> 提示: 点击机舱或按 Enter 激活按键接管，按 Esc 解除控制！'
       ];
     },
+    matrix: function() {
+      setTimeout(function() {
+        var termOut = document.getElementById('ub-term-output');
+        if (!termOut) return;
+        var mCanvas = document.createElement('canvas');
+        mCanvas.width = termOut.clientWidth - 32;
+        mCanvas.height = 180;
+        mCanvas.style.cssText = 'display:block;margin:10px auto;border:1px solid #1e2d3d;border-radius:6px;background:#000;box-shadow:0 0 15px rgba(67,217,173,0.3);';
+        termOut.appendChild(mCanvas);
+        termOut.scrollTop = termOut.scrollHeight;
+
+        var mCtx = mCanvas.getContext('2d');
+        var chars = '01UNBRAINVUE3WEBGLTYPESCRIPTALGORITHMKATEX'.split('');
+        var fontSize = 12;
+        var cols = Math.floor(mCanvas.width / fontSize);
+        var drops = [];
+        for (var i = 0; i < cols; i++) drops[i] = 1;
+
+        var mTimer = setInterval(function() {
+          mCtx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+          mCtx.fillRect(0, 0, mCanvas.width, mCanvas.height);
+          mCtx.fillStyle = '#43D9AD';
+          mCtx.font = fontSize + 'px "IBM Plex Mono", monospace';
+          for (var i = 0; i < drops.length; i++) {
+            var textChar = chars[Math.floor(Math.random() * chars.length)];
+            mCtx.fillText(textChar, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > mCanvas.height && Math.random() > 0.975) {
+              drops[i] = 0;
+            }
+            drops[i]++;
+          }
+        }, 33);
+
+        setTimeout(function() {
+          clearInterval(mTimer);
+          var doneLine = document.createElement('div');
+          doneLine.className = 'ub-term-line ub-term-line--muted';
+          doneLine.textContent = '>>> [MATRIX] 神经流矩阵推演完毕，神经元连接已释放。';
+          termOut.appendChild(doneLine);
+          termOut.scrollTop = termOut.scrollHeight;
+        }, 5500);
+      }, 50);
+
+      return [
+        '>>> [MATRIX] 正在注入黑客帝国字符雨流光矩阵...',
+        '>>> 协议: Cyberpunk 01 Stream Engine (运行 5.5 秒)'
+      ];
+    },
+    whoami: function() {
+      var ua = navigator.userAgent;
+      var os = 'Unknown OS';
+      if (ua.indexOf('Mac') !== -1) os = 'macOS (Darwin)';
+      else if (ua.indexOf('Win') !== -1) os = 'Windows NT';
+      else if (ua.indexOf('Linux') !== -1) os = 'Linux Kernel';
+      else if (ua.indexOf('Android') !== -1) os = 'Android OS';
+      else if (ua.indexOf('iPhone') !== -1) os = 'iOS Mobile';
+
+      var browser = 'Modern Web Browser';
+      if (ua.indexOf('Chrome') !== -1) browser = 'Chromium Blink Engine';
+      else if (ua.indexOf('Safari') !== -1) browser = 'WebKit Safari';
+      else if (ua.indexOf('Firefox') !== -1) browser = 'Gecko Firefox';
+
+      var cores = navigator.hardwareConcurrency ? navigator.hardwareConcurrency + ' Threads' : 'Standard Core';
+      var res = screen.width + 'x' + screen.height;
+      var lang = navigator.language || 'zh-CN';
+
+      return [
+        '>>> [CLIENT TELEMETRY] 访客运行环境遥测报告：',
+        '  操作系统   : ' + os,
+        '  渲染引擎   : ' + browser,
+        '  并发算力   : ' + cores,
+        '  屏幕分辨率 : ' + res,
+        '  系统语言   : ' + lang,
+        '  网络协议   : ' + window.location.protocol.replace(':', '').toUpperCase() + ' / HTTP-2.0',
+        '  访客身份   : GUEST_EXPLORER (欢迎来到数字花园与知识卷轴)'
+      ];
+    },
+    audio: function() {
+      if (window.CyberSnakeAudio) {
+        var nowEnabled = window.CyberSnakeAudio.toggle();
+        var soundBtn = document.querySelector('.snake-sound-btn');
+        if (soundBtn) {
+          soundBtn.textContent = nowEnabled ? 'SOUND: ON [AUDIO]🔊' : 'SOUND: OFF [MUTED]🔇';
+          soundBtn.style.color = nowEnabled ? '#43d9ad' : '#607b96';
+        }
+        return [
+          '>>> [AUDIO] 8-Bit 复古街机音频合成器状态：' + (nowEnabled ? 'ENABLED [已开启 音效]' : 'MUTED [已静音]')
+        ];
+      }
+      return ['>>> [AUDIO] 音频合成器未挂载'];
+    },
+    cat: function(arg) {
+      arg = (arg || '').trim().toLowerCase();
+      if (arg === 'resume' || arg === 'cv') {
+        return [
+          '# 个人简历简报 · UNBRAIN',
+          '姓名: 刘朝阳 | 经验: 7+ 年资深前端开发',
+          '主导: 新浪微博 PC 旗舰门户、创作者中心、高并发 IM 消息箱',
+          '在线完整版: /关于我'
+        ];
+      } else if (arg === 'secret') {
+        return [
+          '>>> [CLASSIFIED SECRET] 42',
+          '"The Answer to the Ultimate Question of Life, the Universe, and Everything."'
+        ];
+      } else if (arg === 'manifesto') {
+        return [
+          '>>> [ENGINEERING MANIFESTO]',
+          '追求每一行代码的可验证性与工业级健壮性。',
+          '没有证据就不说完成。'
+        ];
+      }
+      return [
+        'cat: 未指定有效文件或文件不存在。可输入:',
+        '  cat resume    - 查看简历简报',
+        '  cat secret    - 解锁终端彩蛋',
+        '  cat manifesto - 查看工程信条'
+      ];
+    },
     stats: function() {
       return [
         '工程遥测数据：',
@@ -936,10 +1070,13 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     echo.innerHTML = '<span class="ub-term-prompt">unbrain&gt;</span> ' + escapeHtml(cmd);
     termOutput.appendChild(echo);
 
-    var resolvedCmd = cmdAliases[cmd] || cmd;
+    var parts = cmd.split(/\s+/);
+    var mainCmd = parts[0];
+    var cmdArg = parts.slice(1).join(' ');
+    var resolvedCmd = cmdAliases[mainCmd] || mainCmd;
 
     if (cmdRegistry[resolvedCmd]) {
-      var lines = cmdRegistry[resolvedCmd]();
+      var lines = cmdRegistry[resolvedCmd](cmdArg);
       lines.forEach(function(l) {
         var out = document.createElement('div');
         out.className = 'ub-term-line';
@@ -1600,11 +1737,90 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 
   // ── INLINED 07 CYBER ARCADE RETRO SNAKE ──
 /**
- * Retro Cyberpunk Particle Snake Game Engine v2.0
+ * Retro Cyberpunk Particle Snake Game Engine v3.0 (with 8-Bit Web Audio Synthesizer)
  * Extracted & upgraded from cv project (SnakeContainer.vue / Snake.vue)
- * Supports both standalone 404 mode & inlined Index arcade mode with focus gating
+ * Zero external audio dependencies - 100% native Web Audio API square/sawtooth synthesis
  */
 (function() {
+  // ── 8-BIT RETRO AUDIO SYNTHESIZER ──
+  var AudioSynth = (function() {
+    var ctx = null;
+    var soundEnabled = localStorage.getItem('cyberSnakeSound') !== 'false';
+
+    function getContext() {
+      if (!ctx && (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined')) {
+        var AudioCtx = window.AudioContext || window.webkitAudioContext;
+        ctx = new AudioCtx();
+      }
+      if (ctx && ctx.state === 'suspended') {
+        ctx.resume();
+      }
+      return ctx;
+    }
+
+    function playTone(freq, type, duration, gainVal, slideToFreq) {
+      if (!soundEnabled) return;
+      var c = getContext();
+      if (!c) return;
+
+      try {
+        var osc = c.createOscillator();
+        var gain = c.createGain();
+        osc.type = type || 'square';
+        osc.frequency.setValueAtTime(freq, c.currentTime);
+        if (slideToFreq) {
+          osc.frequency.exponentialRampToValueAtTime(Math.max(20, slideToFreq), c.currentTime + duration);
+        }
+
+        gain.gain.setValueAtTime(gainVal || 0.05, c.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + duration);
+
+        osc.connect(gain);
+        gain.connect(c.destination);
+
+        osc.start();
+        osc.stop(c.currentTime + duration);
+      } catch (e) {}
+    }
+
+    return {
+      turn: function() {
+        playTone(180, 'square', 0.04, 0.03, 240);
+      },
+      eat: function() {
+        playTone(440, 'square', 0.06, 0.06, 660);
+        setTimeout(function() {
+          playTone(660, 'square', 0.08, 0.07, 880);
+        }, 50);
+      },
+      crash: function() {
+        playTone(220, 'sawtooth', 0.35, 0.08, 40);
+      },
+      record: function() {
+        playTone(523, 'square', 0.08, 0.06);
+        setTimeout(function() { playTone(659, 'square', 0.08, 0.06); }, 70);
+        setTimeout(function() { playTone(784, 'square', 0.14, 0.07); }, 140);
+      },
+      isEnabled: function() {
+        return soundEnabled;
+      },
+      toggle: function() {
+        soundEnabled = !soundEnabled;
+        localStorage.setItem('cyberSnakeSound', soundEnabled);
+        getContext();
+        return soundEnabled;
+      },
+      set: function(val) {
+        soundEnabled = !!val;
+        localStorage.setItem('cyberSnakeSound', soundEnabled);
+        getContext();
+        return soundEnabled;
+      }
+    };
+  })();
+
+  window.CyberSnakeAudio = AudioSynth;
+
   function createCyberSnake(containerId, options) {
     var container = document.getElementById(containerId);
     if (!container) return null;
@@ -1616,6 +1832,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     var scoreDom = container.querySelector('.snake-score-val');
     var maxScoreDom = container.querySelector('.snake-maxscore-val');
     var replayBtn = container.querySelector('.snake-replay-btn');
+    var soundBtn = container.querySelector('.snake-sound-btn');
     var statusText = container.querySelector('.snake-status-text');
     var overlay = container.querySelector('.ub-snake-overlay');
     var chassis = container.closest('.ub-snake-chassis') || container;
@@ -1634,7 +1851,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     var cellSize = W / cells;
     var isGameOver = false;
     var isRunning = false;
-    var isFocused = !isIndexMode; // 404 auto-focuses; index requires click to focus
+    var isFocused = !isIndexMode;
     var score = 0;
     var maxScore = parseInt(localStorage.getItem('cyberSnakeMax') || '0', 10);
     if (maxScoreDom) maxScoreDom.textContent = maxScore.toString().padStart(2, '0');
@@ -1642,6 +1859,22 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     var splashingParticleCount = 18;
     var animFrame = null;
     var isVisible = true;
+
+    function updateSoundBtnUI() {
+      if (soundBtn) {
+        soundBtn.textContent = AudioSynth.isEnabled() ? 'SOUND: ON [AUDIO]🔊' : 'SOUND: OFF [MUTED]🔇';
+        soundBtn.style.color = AudioSynth.isEnabled() ? '#43d9ad' : '#607b96';
+      }
+    }
+    updateSoundBtnUI();
+
+    if (soundBtn) {
+      soundBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        AudioSynth.toggle();
+        updateSoundBtnUI();
+      });
+    }
 
     var Vec = function(x, y) {
       this.x = x;
@@ -1687,18 +1920,26 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
         resetGame();
         return;
       }
+      var turned = false;
       if (dir === 'up' && !KEY.ArrowDown && snake.dir.y === 0) {
         KEY.reset();
         KEY.ArrowUp = true;
+        turned = true;
       } else if (dir === 'down' && !KEY.ArrowUp && snake.dir.y === 0) {
         KEY.reset();
         KEY.ArrowDown = true;
+        turned = true;
       } else if (dir === 'left' && !KEY.ArrowRight && snake.dir.x === 0) {
         KEY.reset();
         KEY.ArrowLeft = true;
+        turned = true;
       } else if (dir === 'right' && !KEY.ArrowLeft && snake.dir.x === 0) {
         KEY.reset();
         KEY.ArrowRight = true;
+        turned = true;
+      }
+      if (turned) {
+        AudioSynth.turn();
       }
     }
 
@@ -1708,13 +1949,11 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
         return;
       }
 
-      // If Escape, drop focus and allow scroll
       if (e.key === 'Escape' && isIndexMode) {
         setFocus(false);
         return;
       }
 
-      // If not focused in Index mode, let normal browser scrolling happen!
       if (isIndexMode && !isFocused) {
         if (e.key === 'Enter') {
           setFocus(true);
@@ -1737,15 +1976,13 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 
     window.addEventListener('keydown', onKeyDown);
 
-    // Click on container gives focus in Index mode
-    function onContainerClick(e) {
+    function onContainerClick() {
       if (isIndexMode && !isFocused) {
         setFocus(true);
       }
     }
     container.addEventListener('click', onContainerClick);
 
-    // Click outside drops focus in Index mode
     function onDocClick(e) {
       if (isIndexMode && isFocused) {
         if (!container.contains(e.target) && !chassis.contains(e.target)) {
@@ -1755,7 +1992,6 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     }
     document.addEventListener('click', onDocClick);
 
-    // Bind touch / D-Pad buttons
     container.querySelectorAll('[data-dir]').forEach(function(btn) {
       btn.addEventListener('click', function(e) {
         e.stopPropagation();
@@ -1814,6 +2050,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       for (var i = 0; i < this.history.length; i++) {
         if (isCollision(this.pos, this.history[i])) {
           isGameOver = true;
+          AudioSynth.crash();
         }
       }
     };
@@ -1830,6 +2067,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
           if (isCollision(this.pos, food.pos)) {
             incrementScore();
             particleSplash();
+            AudioSynth.eat();
             food.spawn();
             this.total++;
             if (this.total % 5 === 0 && this.delay > 3) {
@@ -1899,9 +2137,13 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       score++;
       if (scoreDom) scoreDom.textContent = score.toString().padStart(2, '0');
       if (score > maxScore) {
+        var isNewRecord = (maxScore > 0 && score === maxScore + 1);
         maxScore = score;
         localStorage.setItem('cyberSnakeMax', maxScore);
         if (maxScoreDom) maxScoreDom.textContent = maxScore.toString().padStart(2, '0');
+        if (isNewRecord) {
+          AudioSynth.record();
+        }
       }
     }
 
@@ -1983,7 +2225,6 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       loop();
     }
 
-    // IntersectionObserver for battery/GPU pause
     var observer = null;
     if (typeof IntersectionObserver !== 'undefined') {
       observer = new IntersectionObserver(function(entries) {
@@ -2019,7 +2260,6 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     };
   }
 
-  // Global mount points
   var indexInstance = null;
   var notFoundInstance = null;
 

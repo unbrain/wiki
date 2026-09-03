@@ -233,7 +233,7 @@ var hasCycle = function (head) {
 
 ### 结构
 
-```
+```css
 对象 --__proto__--> 原型对象 --__proto__--> 上一层原型 --> ... --> null
 ```
 
@@ -255,7 +255,7 @@ arr.__proto__ === Array.prototype  // true
 
 ### 完整原型链
 
-```
+```javascript
 obj
   ↓ __proto__
 Object.prototype
@@ -343,7 +343,7 @@ c instanceof Object // true
 
 原理：
 
-```
+```javascript
 c.__proto__ = Child.prototype
          ↓
 Child.prototype.__proto__ = Parent.prototype (通过 Child.prototype = new Parent())
@@ -391,7 +391,7 @@ child.toString  // 沿原型链找到 Object.prototype.toString
 
 查找过程：
 
-```
+```javascript
 child.name
   → child 自身 → 没有
   → child.__proto__ (parent) → 找到 'parent'，返回

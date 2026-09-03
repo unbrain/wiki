@@ -8,7 +8,7 @@ tags:
 description: "第七周随笔 - 早期技术探索与总结沉淀"
 ---
 
-> [!note] 朝花夕拾 · 早期足迹
+> [!note] [[朝花夕拾/index|朝花夕拾 · 历史成长档案]] · 早期足迹
 > 本文记录于 2017-2019 年早期前端探索时期，保留当时的真实成长轨迹与思考，归档作技术演进参考。
 
 #  第七周随笔
@@ -40,7 +40,7 @@ description: "第七周随笔 - 早期技术探索与总结沉淀"
 
 #### mac
 
-```
+```javascript
 //chrome 浏览器 open -a "Google Chrome" --args --disable-web-security  --user-data-dir
 ```
 
@@ -48,7 +48,7 @@ description: "第七周随笔 - 早期技术探索与总结沉淀"
 
 快捷方式属性目标后添加成这样就好
 
-```
+```javascript
 "C:\Users\UserName\AppData\Local\Google\Chrome\Application\chrome.exe" --args --disable-web-security --user-data-dir
 ```
 
