@@ -8,7 +8,8 @@
 
 @font-face {
   font-family: "Fira Code";
-  src: url("/static/FiraCode-Light.woff") format("woff");
+  src: url("./static/FiraCode-Light.woff") format("woff"),
+       url("/wiki/static/FiraCode-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
 }
