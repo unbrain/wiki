@@ -474,7 +474,13 @@ High-performance waterfall layout and component library solution. Tailored for d
   var cursor = document.getElementById('ub-cursor');
   var follower = document.getElementById('ub-cursorFollower');
   var mx = 0, my = 0, fx = 0, fy = 0;
+  var cursorVisible = false;
   document.addEventListener('mousemove', function(e) {
+    if (!cursorVisible) {
+      cursorVisible = true;
+      if (cursor) cursor.style.opacity = '1';
+      if (follower) follower.style.opacity = '1';
+    }
     mx = e.clientX; my = e.clientY;
     if (cursor) { cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; }
   });

@@ -281,6 +281,7 @@
     });
 
     // ── Cube State & Configurations ────────────────────────────────
+    var CAM_Z = 4.0;
     var cubes = [
       {
         position:     [-0.58,  0.42, 1.25],
@@ -333,16 +334,16 @@
       var maxVisXB = aspect * scaleB;
 
       if (isPortrait) {
-        // Mobile portrait: position clearly in visible bounds framing hero text
-        cubes[0].position[0] = -maxVisXA * 0.58;
-        cubes[0].position[1] = 0.44;
-        cubes[0].halfExtent  = 0.12;
-        cubes[0].rounding    = 0.030;
+        // Mobile portrait: position cleanly in the corner framing without overlapping text
+        cubes[0].position[0] = -maxVisXA * 0.70;
+        cubes[0].position[1] = 0.58;
+        cubes[0].halfExtent  = 0.095;
+        cubes[0].rounding    = 0.024;
 
-        cubes[1].position[0] =  maxVisXB * 0.60;
-        cubes[1].position[1] = -0.44;
-        cubes[1].halfExtent  = 0.14;
-        cubes[1].rounding    = 0.035;
+        cubes[1].position[0] =  maxVisXB * 0.72;
+        cubes[1].position[1] = -0.52;
+        cubes[1].halfExtent  = 0.115;
+        cubes[1].rounding    = 0.028;
       } else {
         // Desktop landscape: flanking hero content
         cubes[0].position[0] = -Math.min(maxVisXA * 0.72, 0.60);
