@@ -770,31 +770,12 @@ High-performance waterfall layout and component library solution. Tailored for d
     });
   });
 
-  // ── LOAD UNIVERSAL 3D GLASS CRYSTAL CUBES (Three.js) ──
-  (function loadThreeCubes() {
-    function loadScript(src, cb) {
-      var s = document.createElement('script');
-      s.src = src;
-      s.onload = cb;
-      s.onerror = function() {
-        var cdn = src.indexOf('three') !== -1 ? 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js' : src;
-        if (cdn !== src) {
-          var s2 = document.createElement('script');
-          s2.src = cdn;
-          s2.onload = cb;
-          document.head.appendChild(s2);
-        }
-      };
-      document.head.appendChild(s);
-    }
-
+  // ── LOAD UNIVERSAL OPTICAL RAYMARCHING GLASS CUBES ──
+  (function loadGlassCubes() {
     var base = document.body.dataset.basepath || '';
-    var threePath = (base ? base : '') + '/static/three.min.js';
-    var cubePath  = (base ? base : '') + '/static/glass-cube-three.js';
-
-    loadScript(threePath, function() {
-      loadScript(cubePath, function() {});
-    });
+    var s = document.createElement('script');
+    s.src = (base ? base : '') + '/static/glass-cube-universal.js';
+    document.head.appendChild(s);
   })();
 
   // ── MOBILE DRAWER & FLOATING TOP ──
