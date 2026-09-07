@@ -10,7 +10,7 @@ aliases:
   - 前缀树
 ---
 
-[208. 实现 Trie (前缀树)](https://leetcode.cn/problems/implement-trie-prefix-tree/)
+## [208. 实现 Trie (前缀树)](https://leetcode.cn/problems/implement-trie-prefix-tree/)
 
 ```javascript
 var Trie = function() {
@@ -52,7 +52,7 @@ Trie.prototype.startsWith = function(prefix) {
 };
 ```
 
-## 复杂度
+**复杂度**
 
 | 操作 | 时间复杂度 | 空间复杂度 |
 |------|-----------|-----------|
@@ -61,7 +61,7 @@ Trie.prototype.startsWith = function(prefix) {
 
 L 为单词长度；建树总空间 O(26 · 总字符数)，前缀共享。
 
-## 关键套路
+**关键套路**
 
 **节点不存字符，靠父节点 `ch` 的 key 标识自己**；`insert` 路径断了就 `new Trie()`，查询返回 `null` 代表路径断；`isEnd` 区分"完整单词"和"仅是前缀"。挂 `prototype` 的方法要访问 `this`，**别用箭头函数**。
 

@@ -57,7 +57,7 @@ var coinChange = function (coins, amount) {
 };
 ```
 
-### 详解
+**详解**：
 
 - `dp[i]`：凑出金额 `i` 的最少硬币数；外层硬币、内层金额、i 正向（完全背包，硬币可无限复用）
 - `dp[i] === Infinity` 则凑不出来，返回 -1
