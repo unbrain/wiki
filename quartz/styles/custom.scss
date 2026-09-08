@@ -22,6 +22,10 @@ html:has(body[data-slug="index"]) {
 
 body[data-slug="index"] {
 
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+  }
+
   // ── Palette & Theme Tokens ────────────────────
   --ub-yellow: #FEFAE0;
   --ub-yellow-dim: #DCD8BE;
@@ -417,15 +421,18 @@ body[data-slug="index"] {
   }
 
   .ub-btn {
+    box-sizing: border-box !important;
     font-family: var(--ub-font-hud);
     font-size: 11px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 12px 24px;
     border-radius: 6px;
     text-decoration: none !important;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 8px;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: none;
@@ -1832,19 +1839,36 @@ body[data-slug="index"] {
       padding: 0 6px;
     }
     .ub-hero-actions {
-      display: grid;
-      grid-template-columns: 1fr;
-      width: 100%;
-      max-width: 360px;
-      gap: 10px;
-      margin: 0 auto;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      max-width: 320px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      gap: 12px !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
     }
     .ub-btn {
-      width: 100%;
-      justify-content: center;
-      padding: 13px 18px;
-      font-size: 11px;
-      border-radius: 6px;
+      display: flex !important;
+      width: 100% !important;
+      max-width: 320px !important;
+      box-sizing: border-box !important;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+      padding: 13px 20px !important;
+      font-size: 11.5px !important;
+      border-radius: 6px !important;
+      margin: 0 auto !important;
+
+      &--ghost {
+        padding: 10px 16px !important;
+        font-size: 11px !important;
+        opacity: 0.85;
+      }
     }
     .ub-hero-scroll-hint {
       margin-top: 24px;
@@ -2157,6 +2181,14 @@ body[data-slug="index"] {
       }
     }
     .ub-hero { padding-left: 12px; padding-right: 12px; }
+    .ub-hero-actions {
+      max-width: 290px !important;
+    }
+    .ub-btn {
+      max-width: 290px !important;
+      padding: 12px 16px !important;
+      font-size: 11px !important;
+    }
     .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
       padding-left: 12px;
       padding-right: 12px;

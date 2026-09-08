@@ -81,7 +81,7 @@ tags:
 </h1>
 <p class="ub-hero-sub reveal-fade">构筑高并发前端系统 · 研磨算法知识卷轴 · 探索生成式交互代码</p>
 <div class="ub-hero-actions reveal-fade">
-<a class="ub-btn ub-btn--primary" href="/关于我" data-no-popover="true">个人履历 / 简历 · RESUME ↗</a>
+<a class="ub-btn ub-btn--primary" href="/关于我" data-no-popover="true">个人简历 · RESUME ↗</a>
 <a class="ub-btn ub-btn--primary" href="#ub-builds" data-router-ignore="true" data-no-popover="true">浏览核心工程 ↗</a>
 <a class="ub-btn ub-btn--outline" href="#ub-knowledge" data-router-ignore="true" data-no-popover="true">查阅知识库 ↓</a>
 <a class="ub-btn ub-btn--ghost" href="#ub-terminal" data-router-ignore="true" data-no-popover="true">打开终端 >_</a>
