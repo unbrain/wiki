@@ -3,6 +3,38 @@
 // put your custom CSS here!
 
 // ─────────────────────────────────────────────
+// Global Background — Shared Cyber Dark & Noise
+// ─────────────────────────────────────────────
+
+:root {
+  --light: #0A0A0A;
+}
+
+body {
+  background-color: #0A0A0A !important;
+  background-image: radial-gradient(circle at 50% 0%, rgba(77, 91, 206, 0.08) 0%, rgba(10, 10, 10, 0) 70%) !important;
+  background-attachment: fixed !important;
+
+  // 全局胶片噪点层（针对全站文章与知识库页面）
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.038;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+  }
+}
+
+// 首页已内嵌专属 <div class="noise">，禁用 body::before 避免双重叠加
+body[data-slug="index"]::before {
+  display: none !important;
+}
+
+// ─────────────────────────────────────────────
 // Homepage — strictly scoped to body[data-slug="index"]
 // ─────────────────────────────────────────────
 
