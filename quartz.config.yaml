@@ -5,7 +5,7 @@ configuration:
   enableSPA: true
   enablePopovers: true
   locale: zh-CN
-  baseUrl: unbrain.github.io/wiki
+  baseUrl: blog.callmejesus.com
   ignorePatterns:
     - private
     - templates
@@ -119,7 +119,7 @@ plugins:
       height: 630
       excludeRoot: false
   - source: github:quartz-community/cname
-    enabled: false
+    enabled: true
   - source: github:quartz-community/canvas-page
     enabled: true
   - source: github:quartz-community/content-page
