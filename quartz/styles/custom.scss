@@ -6,6 +6,12 @@
 // Homepage — strictly scoped to body[data-slug="index"]
 // ─────────────────────────────────────────────
 
+html:has(body[data-slug="index"]) {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: "Fira Code";
   src: url("./static/FiraCode-Light.woff") format("woff"),
@@ -38,10 +44,11 @@ body[data-slug="index"] {
   font-family: var(--ub-font-main) !important;
   cursor: none;
   overflow-x: hidden !important;
-  width: 100vw !important;
-  max-width: 100vw !important;
+  width: 100% !important;
+  max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
+  box-sizing: border-box !important;
 
   // Hide Quartz wiki chrome on the landing page
   .left.sidebar,
@@ -51,8 +58,8 @@ body[data-slug="index"] {
 
   .page,
   #quartz-root {
-    max-width: 100vw !important;
-    width: 100vw !important;
+    max-width: 100% !important;
+    width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     box-sizing: border-box !important;
@@ -63,8 +70,8 @@ body[data-slug="index"] {
     grid-template-columns: 1fr !important;
     grid-template-rows: auto auto auto !important;
     grid-template-areas: "grid-header" "grid-center" "grid-footer" !important;
-    max-width: 100vw !important;
-    width: 100vw !important;
+    max-width: 100% !important;
+    width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
@@ -72,8 +79,8 @@ body[data-slug="index"] {
 
   .center {
     grid-area: grid-center !important;
-    max-width: 100vw !important;
-    width: 100vw !important;
+    max-width: 100% !important;
+    width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     box-sizing: border-box !important;
@@ -117,8 +124,8 @@ body[data-slug="index"] {
 
   article.popover-hint,
   .markdown-preview-view {
-    max-width: 100vw !important;
-    width: 100vw !important;
+    max-width: 100% !important;
+    width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
@@ -492,6 +499,10 @@ body[data-slug="index"] {
     color: var(--ub-yellow);
     opacity: 0.3;
     animation: ub-marquee 32s linear infinite;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   // ── CONTAINER & SECTION COMMON ───────────────
@@ -508,7 +519,8 @@ body[data-slug="index"] {
   .ub-builds,
   .ub-knowledge,
   .ub-stats,
-  .ub-terminal-section {
+  .ub-terminal-section,
+  .ub-arcade-section {
     padding: 140px 48px;
     box-sizing: border-box;
     width: 100%;
@@ -624,6 +636,18 @@ body[data-slug="index"] {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 28px;
+  }
+
+  .ub-about-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+
+    .ub-btn {
+      padding: 0.5rem 1.1rem;
+      font-size: 0.85rem;
+    }
   }
 
   .ub-badge {
@@ -1230,266 +1254,16 @@ body[data-slug="index"] {
     &:nth-child(6) { transition-delay: 0.40s; }
   }
 
-  // ── RESPONSIVE BREAKPOINTS & MOBILE ENHANCEMENTS ───────────
-  .ub-nav-toggle {
-    display: none;
-    background: transparent;
-    border: 1px solid var(--ub-border);
-    border-radius: 6px;
-    padding: 8px 10px;
-    flex-direction: column;
-    gap: 4px;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-
-    span {
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: var(--ub-yellow);
-      border-radius: 2px;
-      transition: all 0.25s ease;
-    }
-
-    &:hover {
-      border-color: var(--ub-cyan);
-      span { background: var(--ub-cyan); }
-    }
-  }
-
-  // Mobile Drawer
-  .ub-nav-drawer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10005;
-    background: rgba(10, 10, 10, 0.96);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    display: flex;
-    flex-direction: column;
-    padding: 32px 28px;
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
-
-    &.active {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-  }
-
-  .ub-drawer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--ub-border);
-    margin-bottom: 24px;
-  }
-
-  .ub-drawer-title {
-    font-family: var(--ub-font-hud);
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--ub-cyan);
-  }
-
-  .ub-drawer-close {
-    background: transparent;
-    border: 1px solid var(--ub-border);
-    color: var(--ub-yellow);
-    font-size: 16px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
-    &:hover {
-      border-color: var(--ub-cyan);
-      color: var(--ub-cyan);
-    }
-  }
-
-  .ub-drawer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .ub-drawer-link {
-    font-family: var(--ub-font-hud);
-    font-size: 14px;
-    letter-spacing: 0.15em;
-    color: var(--ub-yellow);
-    padding: 16px 12px;
-    border-radius: 8px;
-    text-decoration: none !important;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    transition: background 0.2s ease, color 0.2s ease;
-    border-bottom: 1px solid rgba(254, 250, 224, 0.04);
-
-    &:hover,
-    &:active {
-      background: rgba(67, 217, 173, 0.1);
-      color: var(--ub-cyan);
-
-      .ub-drawer-num {
-        color: var(--ub-cyan);
-      }
-    }
-  }
-
-  .ub-drawer-num {
-    font-family: var(--ub-font-mono);
-    font-size: 11px;
-    color: var(--ub-amber);
-    opacity: 0.8;
-  }
-
-  // Floating Back to Top button
-  .ub-floating-top {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 1000;
-    background: rgba(18, 19, 24, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--ub-border);
-    border-radius: 24px;
-    padding: 8px 16px;
-    font-family: var(--ub-font-hud);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--ub-cyan);
-    cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-
-    &.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    &:hover {
-      background: var(--ub-cyan);
-      color: var(--ub-black);
-      border-color: var(--ub-cyan);
-    }
-  }
-
-  // Touch device resets
-  @media (hover: none) and (pointer: coarse) {
-    cursor: auto !important;
-    * { cursor: auto !important; }
-    #ub-cursor,
-    #ub-cursorFollower {
-      display: none !important;
-    }
-  }
-
-  @media (max-width: 960px) {
-    cursor: auto !important;
-    * { cursor: auto !important; }
-    #ub-cursor,
-    #ub-cursorFollower {
-      display: none !important;
-    }
-    .ub-nav { padding: 18px 24px; }
-    .ub-nav-links { display: none; }
-    .ub-nav-toggle { display: flex; }
-    .ub-hero { padding: 0 24px; }
-    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section, .ub-arcade-section {
-      padding: 90px 24px;
-    }
-    .ub-about-grid { grid-template-columns: 1fr; gap: 48px; }
-    .ub-projects-grid { grid-template-columns: 1fr; }
-    .ub-metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .ub-hud-corner { display: none; }
-    .ub-hero-ticker {
-      font-size: 10px;
-      padding: 6px 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-    }
-    .ub-term-input {
-      font-size: 16px !important; // Prevents iOS Safari auto-zoom
-    }
-  }
-
-  @media (max-width: 600px) {
-    .ub-nav { padding: 14px 20px; }
-    .ub-hero { padding: 0 20px; min-height: 640px; }
-    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
-      padding: 70px 20px;
-    }
-    .ub-hero-name { font-size: clamp(38px, 12vw, 56px); }
-    .ub-hero-sub { font-size: 14px; margin-bottom: 24px; }
-    .ub-hero-actions { flex-direction: column; width: 100%; gap: 10px; }
-    .ub-btn { width: 100%; justify-content: center; padding: 14px 20px; font-size: 11px; }
-    .ub-section-title { font-size: clamp(30px, 8vw, 44px); margin-bottom: 36px !important; }
-    .ub-timeline {
-      padding-left: 28px;
-      &::before { left: 9px; }
-    }
-    .ub-timeline-node {
-      left: -28px;
-      width: 20px;
-      height: 20px;
-    }
-    .ub-node-icon { font-size: 9px; }
-    .ub-timeline-title { font-size: 17px; }
-    .ub-timeline-desc { font-size: 14px; }
-    .ub-project-img-wrap { height: 180px; }
-    .ub-project-body { padding: 20px 16px; }
-    .ub-project-name { font-size: 18px; }
-    .ub-writing-item { gap: 14px; padding: 20px 0; }
-    .ub-writing-meta { display: none; }
-    .ub-writing-sub { font-size: 12px; }
-    .ub-social-platform { min-width: 90px; }
-    .ub-social-handle { font-size: 16px; }
-    .ub-metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .ub-metric-card { padding: 24px 12px; }
-    .ub-metric-num { font-size: 36px; }
-    .ub-metric-plus { font-size: 20px; }
-    .ub-terminal-section { padding-bottom: 80px; }
-    .ub-term-body { padding: 16px; font-size: 12px; max-height: 240px; }
-    .ub-term-quick { gap: 6px; }
-    .ub-term-btn { padding: 6px 12px; font-size: 12px; }
-    .ub-term-input-row { padding: 12px 16px; }
-
-    /* ── 07 ARCADE MOBILE ADAPTATION ── */
-    .ub-arcade-section { padding: 60px 20px 120px !important; }
-    .ub-snake-grid { flex-direction: column; align-items: center; gap: 24px; }
-    .ub-snake-chassis { padding: 28px 16px; width: 100%; max-width: 360px; }
-    .ub-snake-screen-wrap canvas { width: 100% !important; max-width: 240px; height: auto !important; }
-    .ub-snake-console { width: 100%; max-width: 260px; }
-  }
-
   /* ══════════════════════════════════════════════════════════
-     07 CYBER ARCADE RETRO SNAKE
+     07 CYBER ARCADE RETRO SNAKE (BASE STYLES)
      ══════════════════════════════════════════════════════════ */
   .ub-arcade-section {
     position: relative;
     padding: 120px 48px 140px;
     max-width: 1200px;
     margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
   }
 
   .ub-arcade-container {
@@ -1497,6 +1271,7 @@ body[data-slug="index"] {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .ub-arcade-header {
@@ -1512,6 +1287,7 @@ body[data-slug="index"] {
     border: 1px solid rgba(67, 217, 173, 0.25);
     box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.25), 0 20px 50px rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
     border-radius: 12px;
     max-width: 680px;
     width: 100%;
@@ -1573,6 +1349,7 @@ body[data-slug="index"] {
     align-items: flex-start;
     justify-content: center;
     gap: 32px;
+    width: 100%;
   }
 
   .ub-snake-screen-wrap {
@@ -1595,6 +1372,7 @@ body[data-slug="index"] {
     inset: 0;
     background: rgba(1, 12, 23, 0.78);
     backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1681,7 +1459,7 @@ body[data-slug="index"] {
 
     .snake-dir-btn {
       width: 52px;
-      height: 36px;
+      height: 38px;
       background: #010c15;
       border: 1px solid #1e2d3d;
       border-radius: 6px;
@@ -1692,6 +1470,8 @@ body[data-slug="index"] {
       justify-content: center;
       cursor: pointer;
       user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
       touch-action: manipulation;
       transition: all 0.15s ease;
 
@@ -1721,6 +1501,10 @@ body[data-slug="index"] {
     cursor: pointer;
     text-align: center;
     transition: background 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
 
     &:hover {
       background: #25394e;
@@ -1741,10 +1525,655 @@ body[data-slug="index"] {
     cursor: pointer;
     text-align: center;
     transition: all 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
 
     &:hover {
       background: #1c2b3a;
       border-color: #43d9ad;
+    }
+  }
+
+  // ── HUD UTILITIES: TOGGLE, DRAWER, FLOATING TOP ──────────
+  .ub-nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--ub-border);
+    border-radius: 6px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+
+    span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--ub-yellow);
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+
+    &:hover {
+      border-color: var(--ub-cyan);
+      span { background: var(--ub-cyan); }
+    }
+  }
+
+  // Mobile Drawer
+  .ub-nav-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10005;
+    background: rgba(10, 10, 10, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    padding: max(24px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom));
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    box-sizing: border-box;
+
+    &.active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  .ub-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--ub-border);
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+
+  .ub-drawer-title {
+    font-family: var(--ub-font-hud);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--ub-cyan);
+  }
+
+  .ub-drawer-close {
+    background: transparent;
+    border: 1px solid var(--ub-border);
+    color: var(--ub-yellow);
+    font-size: 16px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      border-color: var(--ub-cyan);
+      color: var(--ub-cyan);
+    }
+  }
+
+  .ub-drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+    flex: 1;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 24px;
+  }
+
+  .ub-drawer-link {
+    font-family: var(--ub-font-hud);
+    font-size: 13.5px;
+    letter-spacing: 0.12em;
+    color: var(--ub-yellow);
+    padding: 14px 12px;
+    min-height: 44px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: background 0.2s ease, color 0.2s ease;
+    border-bottom: 1px solid rgba(254, 250, 224, 0.04);
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover,
+    &:active {
+      background: rgba(67, 217, 173, 0.1);
+      color: var(--ub-cyan);
+
+      .ub-drawer-num {
+        color: var(--ub-cyan);
+      }
+    }
+  }
+
+  .ub-drawer-num {
+    font-family: var(--ub-font-mono);
+    font-size: 11px;
+    color: var(--ub-amber);
+    opacity: 0.8;
+  }
+
+  // Floating Back to Top button
+  .ub-floating-top {
+    position: fixed;
+    bottom: max(24px, calc(16px + env(safe-area-inset-bottom)));
+    right: max(20px, env(safe-area-inset-right));
+    z-index: 1000;
+    background: rgba(18, 19, 24, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--ub-border);
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-family: var(--ub-font-hud);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--ub-cyan);
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-tap-highlight-color: transparent;
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    &:hover {
+      background: var(--ub-cyan);
+      color: var(--ub-black);
+      border-color: var(--ub-cyan);
+    }
+  }
+
+  // ── RESPONSIVE MEDIA QUERIES ─────────────────────────────
+
+  // Touch device resets
+  @media (hover: none) and (pointer: coarse) {
+    cursor: auto !important;
+    * { cursor: auto !important; }
+    #ub-cursor,
+    #ub-cursorFollower {
+      display: none !important;
+    }
+    [data-tilt] {
+      transform: none !important;
+    }
+  }
+
+  // Tablet & Medium Screens (≤ 960px)
+  @media (max-width: 960px) {
+    cursor: auto !important;
+    * { cursor: auto !important; }
+    #ub-cursor,
+    #ub-cursorFollower {
+      display: none !important;
+    }
+    .ub-nav {
+      padding: max(14px, env(safe-area-inset-top)) 24px 14px;
+      &.scrolled {
+        padding: max(12px, env(safe-area-inset-top)) 24px 12px;
+      }
+    }
+    .ub-nav-links { display: none; }
+    .ub-nav-toggle { display: flex; }
+    .ub-hero { padding: 0 24px; }
+    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section, .ub-arcade-section {
+      padding: 90px 24px;
+    }
+    .ub-about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .ub-projects-grid { grid-template-columns: 1fr; }
+    .ub-metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .ub-hud-corner { display: none; }
+    .ub-hero-ticker {
+      font-size: 10px;
+      padding: 6px 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+    .ub-term-input {
+      font-size: 16px !important; // Prevents iOS Safari auto-zoom
+    }
+  }
+
+  // Mobile Phones (≤ 600px)
+  @media (max-width: 600px) {
+    // 1. Navigation & Drawer
+    .ub-nav {
+      padding: max(12px, env(safe-area-inset-top)) 16px 12px;
+      &.scrolled {
+        padding: max(10px, env(safe-area-inset-top)) 16px 10px;
+      }
+    }
+    .ub-nav-logo {
+      font-size: 13px;
+    }
+    .ub-nav-status {
+      font-size: 9.5px;
+      padding: 2px 8px;
+    }
+    .ub-nav-drawer {
+      padding: max(20px, env(safe-area-inset-top)) 18px max(24px, env(safe-area-inset-bottom));
+    }
+    .ub-drawer-header {
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+    .ub-drawer-link {
+      padding: 13px 10px;
+      font-size: 13px;
+    }
+
+    // 2. Hero Section
+    .ub-hero {
+      padding: 0 16px;
+      min-height: calc(100vh - 60px);
+      min-height: calc(100dvh - 60px);
+      padding-top: max(72px, calc(56px + env(safe-area-inset-top)));
+      padding-bottom: 36px;
+    }
+    .ub-hero-ticker {
+      font-size: 9.5px;
+      padding: 6px 10px;
+      gap: 6px 10px;
+      max-width: 100%;
+      .ub-ticker-sep {
+        display: none; // 避免单斜杠换行孤立
+      }
+    }
+    .ub-hero-tag {
+      font-size: 11px;
+      line-height: 1.5;
+      text-align: center;
+      padding: 0 4px;
+      margin-bottom: 16px;
+    }
+    .ub-hero-name {
+      font-size: clamp(34px, 11vw, 52px);
+      letter-spacing: -0.02em;
+    }
+    .ub-hero-sub {
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      padding: 0 6px;
+    }
+    .ub-hero-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: 100%;
+      max-width: 360px;
+      gap: 10px;
+      margin: 0 auto;
+    }
+    .ub-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 13px 18px;
+      font-size: 11px;
+      border-radius: 6px;
+    }
+    .ub-hero-scroll-hint {
+      margin-top: 24px;
+      font-size: 10px;
+    }
+
+    // 3. Common Section Layout
+    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
+      padding: 64px 16px;
+    }
+    .ub-section-label {
+      font-size: 10px;
+      margin-bottom: 12px;
+    }
+    .ub-section-title {
+      font-size: clamp(28px, 8vw, 40px);
+      line-height: 1.18;
+      margin-bottom: 32px !important;
+    }
+
+    // 4. 01 About & Profile
+    .ub-stat-head {
+      align-items: baseline;
+      gap: 8px;
+    }
+    .ub-char-stat-name {
+      font-size: 10px;
+      line-height: 1.4;
+      flex: 1;
+    }
+    .ub-stat-val {
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .ub-about-text {
+      font-size: 13.5px;
+      line-height: 1.7;
+    }
+    .ub-about-badges {
+      gap: 6px;
+      .ub-badge {
+        font-size: 10px;
+        padding: 4px 10px;
+      }
+    }
+    .ub-about-actions {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+      margin-top: 1.5rem;
+      .ub-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    // 5. 02 Quest Log & Timeline
+    .ub-timeline {
+      padding-left: 30px;
+      &::before {
+        left: 10px;
+        width: 2px;
+      }
+    }
+    .ub-timeline-node {
+      left: -30px;
+      width: 22px;
+      height: 22px;
+    }
+    .ub-node-icon { font-size: 10px; }
+    .ub-timeline-meta {
+      flex-wrap: wrap;
+      gap: 6px 12px;
+    }
+    .ub-timeline-title { font-size: 16px; line-height: 1.4; }
+    .ub-timeline-desc { font-size: 13px; line-height: 1.6; }
+
+    // 6. 03 Builds & Projects
+    .ub-project-card {
+      border-radius: 10px;
+      &:active {
+        border-color: var(--ub-cyan);
+      }
+    }
+    .ub-project-img-wrap {
+      height: 190px;
+      border-radius: 8px 8px 0 0;
+    }
+    .ub-project-body { padding: 20px 16px; }
+    .ub-project-name { font-size: 17px; }
+    .ub-project-desc { font-size: 12.5px; line-height: 1.6; }
+    .ub-project-tags {
+      gap: 6px;
+      span { font-size: 10px; padding: 3px 8px; }
+    }
+
+    // 7. 04 Knowledge Scrolls (移动端篇数徽章恢复 & 触控反馈)
+    .ub-writing-item {
+      gap: 12px;
+      padding: 18px 0;
+      align-items: center;
+      &:active {
+        background: rgba(67, 217, 173, 0.05);
+        padding-left: 6px;
+      }
+    }
+    .ub-writing-num {
+      font-size: 12px;
+      width: 24px;
+    }
+    .ub-writing-title {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .ub-writing-sub {
+      font-size: 11.5px;
+      line-height: 1.5;
+    }
+    .ub-writing-meta {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ub-font-mono);
+      font-size: 10px;
+      color: var(--ub-cyan);
+      background: rgba(67, 217, 173, 0.1);
+      border: 1px solid rgba(67, 217, 173, 0.25);
+      border-radius: 12px;
+      padding: 3px 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ub-writing-arrow {
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    // 8. 05 Stats & Metrics
+    .ub-metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .ub-metric-card {
+      padding: 20px 10px;
+      border-radius: 8px;
+    }
+    .ub-metric-num {
+      font-size: clamp(28px, 7.5vw, 36px);
+      white-space: nowrap;
+    }
+    .ub-metric-plus {
+      font-size: clamp(16px, 4vw, 20px);
+      white-space: nowrap;
+    }
+    .ub-metric-label {
+      font-size: 10.5px;
+      margin-top: 6px;
+    }
+    .ub-metric-sub {
+      font-size: 10.5px;
+      line-height: 1.4;
+    }
+
+    // 9. 06 Terminal (横向滑动快捷栏 + 滚动隔离)
+    .ub-terminal-section { padding-bottom: 72px; }
+    .ub-terminal-wrap {
+      border-radius: 8px;
+    }
+    .ub-term-header {
+      padding: 10px 14px;
+    }
+    .ub-term-title {
+      font-size: 11px;
+    }
+    .ub-term-status {
+      display: none;
+    }
+    .ub-term-body {
+      padding: 14px;
+      font-size: 12px;
+      max-height: 250px;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+    .ub-term-quick {
+      display: flex;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+      padding: 8px 0 10px;
+      gap: 8px;
+      scrollbar-width: none;
+      &::-webkit-scrollbar { display: none; }
+    }
+    .ub-term-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+      padding: 6px 12px;
+      font-size: 11.5px;
+      border-radius: 4px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .ub-term-input-row {
+      padding: 12px 14px;
+    }
+    .ub-term-prompt {
+      font-size: 12px;
+      margin-right: 8px;
+    }
+    .ub-term-input {
+      font-size: 16px !important; // 防止 iOS Safari 唤起软键盘时缩放视口
+    }
+    .ub-social-links {
+      margin-top: 36px;
+    }
+    .ub-social-link {
+      padding: 20px 0;
+      &:active {
+        padding-left: 8px;
+      }
+    }
+    .ub-social-platform {
+      min-width: 80px;
+      font-size: 10px;
+    }
+    .ub-social-handle {
+      font-size: 15px;
+    }
+
+    // 10. 07 Cyber Arcade Mobile Adaptation (防溢出 + 44px 触控手柄)
+    .ub-arcade-section {
+      padding: 60px 14px 110px !important;
+    }
+    .ub-snake-grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+    }
+    .ub-snake-chassis {
+      padding: 24px 12px;
+      width: 100%;
+      max-width: 350px;
+      border-radius: 10px;
+    }
+    .ub-snake-screen-wrap {
+      width: 100%;
+      max-width: 240px;
+      canvas {
+        width: 100% !important;
+        max-width: 240px;
+        height: auto !important;
+      }
+    }
+    .ub-snake-console {
+      width: 100%;
+      max-width: 260px;
+    }
+    .ub-snake-info {
+      padding: 12px 10px;
+      font-size: 11px;
+      margin-bottom: 12px;
+    }
+    .ub-snake-stats {
+      padding: 8px 10px;
+      margin-bottom: 12px;
+    }
+    .ub-snake-controls {
+      gap: 6px;
+      .dpad-row {
+        gap: 6px;
+      }
+      .snake-dir-btn {
+        width: 58px;
+        height: 44px; // 满足移动端 44px 最小触控热区
+        font-size: 14px;
+        -webkit-tap-highlight-color: transparent;
+      }
+    }
+    .ub-snake-replay {
+      padding: 10px 12px;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+    .snake-sound-btn {
+      padding: 8px 12px;
+      font-size: 11px;
+    }
+
+    // 11. Floating Back to Top Button
+    .ub-floating-top {
+      bottom: max(16px, calc(10px + env(safe-area-inset-bottom)));
+      right: max(16px, env(safe-area-inset-right));
+      padding: 8px 14px;
+      font-size: 9.5px;
+      border-radius: 20px;
+    }
+  }
+
+  // Ultra Narrow Screens (≤ 380px，如 iPhone SE, 折叠屏外屏 360px)
+  @media (max-width: 380px) {
+    .ub-nav {
+      padding-left: 12px;
+      padding-right: 12px;
+      &.scrolled {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    }
+    .ub-hero { padding-left: 12px; padding-right: 12px; }
+    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    .ub-metrics-grid {
+      gap: 8px;
+    }
+    .ub-metric-card {
+      padding: 16px 8px;
+    }
+    .ub-metric-num { font-size: 26px; }
+    .ub-snake-chassis {
+      padding: 20px 8px;
+    }
+    .ub-snake-controls .snake-dir-btn {
+      width: 52px;
+      height: 44px;
     }
   }
 }

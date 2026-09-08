@@ -160,9 +160,9 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-badge">#工程化</span>
 <span class="ub-badge">#Node.js</span>
 </div>
-<div class="ub-about-actions ub-scroll-reveal" style="margin-top: 1.5rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
-<a href="/关于我" class="ub-btn ub-btn--primary" data-no-popover="true" style="padding: 0.5rem 1.1rem; font-size: 0.85rem;">查看完整求职简历专页 ↗</a>
-<a href="https://rxresu.me/unbrain/cv" target="_blank" class="ub-btn ub-btn--ghost" data-no-popover="true" style="padding: 0.5rem 1.1rem; font-size: 0.85rem;">在线 PDF 简历 ↗</a>
+<div class="ub-about-actions ub-scroll-reveal">
+<a href="/关于我" class="ub-btn ub-btn--primary" data-no-popover="true">查看完整求职简历专页 ↗</a>
+<a href="https://rxresu.me/unbrain/cv" target="_blank" class="ub-btn ub-btn--ghost" data-no-popover="true">在线 PDF 简历 ↗</a>
 </div>
 </div>
 </div>
@@ -536,7 +536,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 </div>
 </div>
 <button type="button" class="ub-snake-replay snake-replay-btn">重置游戏 ↺</button>
-<button type="button" class="snake-sound-btn">SOUND: ON [AUDIO]🔊</button>
+<button type="button" class="snake-sound-btn">SOUND: ON [AUDIO]</button>
 </div>
 </div>
 </div>
@@ -548,6 +548,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 (function() {
   // ── CLEANUP ANCHORS & DISABLE POPOVERS ON INDEX ──
   function purgeAnchorsAndPopovers() {
+    if (document.body.getAttribute('data-slug') !== 'index') return;
     document.querySelectorAll('a[role="anchor"]').forEach(function(el) {
       el.remove();
     });
@@ -564,43 +565,47 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
   document.addEventListener('render', purgeAnchorsAndPopovers);
 
   // ── CUSTOM CURSOR ──
+  var isTouchUser = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
   var cursor = document.getElementById('ub-cursor');
   var follower = document.getElementById('ub-cursorFollower');
   var mx = 0, my = 0, fx = 0, fy = 0;
   var cursorVisible = false;
-  document.addEventListener('mousemove', function(e) {
-    if (!cursorVisible) {
-      cursorVisible = true;
-      if (cursor) cursor.style.opacity = '1';
-      if (follower) follower.style.opacity = '1';
-    }
-    mx = e.clientX; my = e.clientY;
-    if (cursor) { cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; }
-  });
-  function followLoop() {
-    fx += (mx - fx) * 0.14;
-    fy += (my - fy) * 0.14;
-    if (follower) { follower.style.left = fx + 'px'; follower.style.top = fy + 'px'; }
-    requestAnimationFrame(followLoop);
-  }
-  followLoop();
 
-  document.querySelectorAll('a, button, .ub-project-card, .ub-writing-item').forEach(function(el) {
-    el.addEventListener('mouseenter', function() {
-      if (cursor && follower) {
-        cursor.style.width = '14px'; cursor.style.height = '14px';
-        follower.style.width = '52px'; follower.style.height = '52px';
-        follower.style.borderColor = '#43D9AD';
+  if (!isTouchUser) {
+    document.addEventListener('mousemove', function(e) {
+      if (!cursorVisible) {
+        cursorVisible = true;
+        if (cursor) cursor.style.opacity = '1';
+        if (follower) follower.style.opacity = '1';
       }
+      mx = e.clientX; my = e.clientY;
+      if (cursor) { cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; }
     });
-    el.addEventListener('mouseleave', function() {
-      if (cursor && follower) {
-        cursor.style.width = '8px'; cursor.style.height = '8px';
-        follower.style.width = '36px'; follower.style.height = '36px';
-        follower.style.borderColor = '#FEFAE0';
-      }
+    function followLoop() {
+      fx += (mx - fx) * 0.14;
+      fy += (my - fy) * 0.14;
+      if (follower) { follower.style.left = fx + 'px'; follower.style.top = fy + 'px'; }
+      requestAnimationFrame(followLoop);
+    }
+    followLoop();
+
+    document.querySelectorAll('a, button, .ub-project-card, .ub-writing-item').forEach(function(el) {
+      el.addEventListener('mouseenter', function() {
+        if (cursor && follower) {
+          cursor.style.width = '14px'; cursor.style.height = '14px';
+          follower.style.width = '52px'; follower.style.height = '52px';
+          follower.style.borderColor = '#43D9AD';
+        }
+      });
+      el.addEventListener('mouseleave', function() {
+        if (cursor && follower) {
+          cursor.style.width = '8px'; cursor.style.height = '8px';
+          follower.style.width = '36px'; follower.style.height = '36px';
+          follower.style.borderColor = '#FEFAE0';
+        }
+      });
     });
-  });
+  }
 
   // ── PARTICLES NETWORK ──
   var canvas = document.getElementById('ub-particleCanvas');
@@ -626,7 +631,23 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
         r: Math.random() * 1.6 + 0.6
       });
     }
+    var isParticleRunning = true;
+    var heroEl = document.getElementById('ub-hero');
+    if ('IntersectionObserver' in window && heroEl) {
+      var pObs = new IntersectionObserver(function(entries) {
+        var visible = entries[0].isIntersecting;
+        if (visible && !isParticleRunning) {
+          isParticleRunning = true;
+          requestAnimationFrame(drawP);
+        } else if (!visible) {
+          isParticleRunning = false;
+        }
+      }, { threshold: 0.05 });
+      pObs.observe(heroEl);
+    }
+
     function drawP() {
+      if (!isParticleRunning) return;
       ctx.clearRect(0, 0, W, H);
       particles.forEach(function(p) {
         p.x += p.vx; p.y += p.vy;
@@ -661,7 +682,9 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
           ctx.stroke();
         }
       }
-      requestAnimationFrame(drawP);
+      if (isParticleRunning) {
+        requestAnimationFrame(drawP);
+      }
     }
     drawP();
   }
@@ -762,18 +785,20 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
   }, { threshold: 0.3 });
   counters.forEach(function(c) { countObs.observe(c); });
 
-  // ── 3D TILT EFFECT ON CARDS ──
-  document.querySelectorAll('[data-tilt]').forEach(function(card) {
-    card.addEventListener('mousemove', function(e) {
-      var r = card.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - 0.5;
-      var y = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform = 'perspective(900px) rotateY(' + (x * 8) + 'deg) rotateX(' + (-y * 8) + 'deg) translateY(-4px)';
+  // ── 3D TILT EFFECT ON CARDS (仅鼠标精确指针设备启用，移动触屏禁用以防变形跳动) ──
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('[data-tilt]').forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'perspective(900px) rotateY(' + (x * 8) + 'deg) rotateX(' + (-y * 8) + 'deg) translateY(-4px)';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg) translateY(0)';
+      });
     });
-    card.addEventListener('mouseleave', function() {
-      card.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg) translateY(0)';
-    });
-  });
+  }
 
   // ── SECTION WIPE LINES ──
   document.querySelectorAll('.ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section, .ub-arcade-section').forEach(function(sec) {
@@ -1010,7 +1035,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
         var nowEnabled = window.CyberSnakeAudio.toggle();
         var soundBtn = document.querySelector('.snake-sound-btn');
         if (soundBtn) {
-          soundBtn.textContent = nowEnabled ? 'SOUND: ON [AUDIO]🔊' : 'SOUND: OFF [MUTED]🔇';
+          soundBtn.textContent = nowEnabled ? 'SOUND: ON [AUDIO]' : 'SOUND: OFF [MUTED]';
           soundBtn.style.color = nowEnabled ? '#43d9ad' : '#607b96';
         }
         return [
@@ -1583,7 +1608,8 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     ptr.tx = ((cx - r.left) / r.width) * 2 - 1;
     ptr.ty = ((cy - r.top) / r.height) * 2 - 1;
 
-    if (isDragging) {
+    // 触控设备不响应 touch 拖拽立方体，让立方体保持自旋与陀螺仪视差，避免与页面纵向滑动冲突
+    if (isDragging && !e.touches) {
       var dx = cx - lastX;
       var dy = cy - lastY;
       lastX = cx;
@@ -1862,7 +1888,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 
     function updateSoundBtnUI() {
       if (soundBtn) {
-        soundBtn.textContent = AudioSynth.isEnabled() ? 'SOUND: ON [AUDIO]🔊' : 'SOUND: OFF [MUTED]🔇';
+        soundBtn.textContent = AudioSynth.isEnabled() ? 'SOUND: ON [AUDIO]' : 'SOUND: OFF [MUTED]';
         soundBtn.style.color = AudioSynth.isEnabled() ? '#43d9ad' : '#607b96';
       }
     }
@@ -1993,11 +2019,24 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     document.addEventListener('click', onDocClick);
 
     container.querySelectorAll('[data-dir]').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
+      function handleDir(e) {
+        if (e.type === 'touchstart') e.preventDefault();
         e.stopPropagation();
-        setDirection(this.getAttribute('data-dir'));
-      });
+        if (isIndexMode && !isFocused) {
+          setFocus(true);
+        }
+        setDirection(btn.getAttribute('data-dir'));
+      }
+      btn.addEventListener('touchstart', handleDir, { passive: false });
+      btn.addEventListener('click', handleDir);
     });
+
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+      var overTitle = container.querySelector('.overlay-title');
+      var overSub = container.querySelector('.overlay-sub');
+      if (overTitle) overTitle.textContent = '[ 点击激活触控手柄 ]';
+      if (overSub) overSub.textContent = '// 点击下方十字方向键操控';
+    }
 
     if (replayBtn) {
       replayBtn.addEventListener('click', function(e) {
@@ -2299,10 +2338,23 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
   var navDrawer   = document.getElementById('ub-nav-drawer');
   var drawerClose = document.getElementById('ub-drawer-close');
   function toggleDrawer(open) {
-    if (navDrawer) navDrawer.classList.toggle('active', open);
+    if (navDrawer) {
+      navDrawer.classList.toggle('active', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
   }
   if (navToggle)   navToggle.addEventListener('click', function() { toggleDrawer(true); });
   if (drawerClose) drawerClose.addEventListener('click', function() { toggleDrawer(false); });
+  if (navDrawer) {
+    navDrawer.addEventListener('click', function(e) {
+      if (e.target === navDrawer) toggleDrawer(false);
+    });
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && navDrawer && navDrawer.classList.contains('active')) {
+      toggleDrawer(false);
+    }
+  });
   document.querySelectorAll('.ub-drawer-link').forEach(function(l) {
     l.addEventListener('click', function() { toggleDrawer(false); });
   });
