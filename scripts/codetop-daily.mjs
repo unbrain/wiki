@@ -66,7 +66,7 @@ async function fetchCodetop() {
 function scanVault() {
   const done = new Set()
   const pool = [] // [{ id, title, file }]
-  const linkRe = /\[(\d+)\.\s*([^\]]+)\]\(https:\/\/leetcode\.cn\/problems\//g
+  const linkRe = /\[(\d+)\.\s*([^\]]+)\]\((https:\/\/leetcode\.cn\/problems\/[^)]+)\)/g
   for (const dir of SERIES) {
     if (!fs.existsSync(dir)) continue
     for (const f of fs.readdirSync(dir)) {
@@ -76,7 +76,7 @@ function scanVault() {
       for (const m of text.matchAll(linkRe)) {
         const id = m[1]
         if (!done.has(id)) done.add(id)
-        pool.push({ id, title: m[2].trim(), file: path.basename(f, '.md') })
+        pool.push({ id, title: m[2].trim(), url: m[3], file: path.basename(f, '.md') })
       }
     }
   }
@@ -120,7 +120,7 @@ if (lastToday) {
   const missing = [...done].filter((id) => !pool.some((p) => p.id === id))
   for (const id of missing) {
     const q = byId.get(id)
-    if (q) pool.push({ id, title: q.leetcode.title, file: '（vault 笔记待补）' })
+    if (q) pool.push({ id, title: q.leetcode.title, url: `https://leetcode.cn/problems/${q.leetcode.slug_title}/`, file: '（vault 笔记待补）' })
   }
   reviewQuestions = []
   for (let i = 0; i < Math.min(REVIEW_COUNT, pool.length); i++) {
@@ -140,8 +140,7 @@ const fmtReview = (r) => {
   const q = byId.get(r.id)
   const lv = q ? levelName(q.leetcode.level) : '—'
   const freq = q ? q.value : '—'
-  const title = q ? `[${r.title}](https://leetcode.cn/problems/${q.leetcode.slug_title}/)` : r.title
-  return `| ${title} | ${lv} | ${freq} | 复盘 · 出处：[[${r.file}]] |`
+  return `| [${r.title}](${r.url}) | ${lv} | ${freq} | 复盘 · 出处：[[${r.file}]] |`
 }
 
 const note = `---
@@ -178,9 +177,6 @@ ${reviewQuestions.map(fmtReview).join('\n')}
 - [ ] 新题 2
 - [ ] 复盘 1
 - [ ] 复盘 2
-
----
-数据源：[codetop.cc](https://codetop.cc/home)（job=4 前端岗，frequency 降序）· 由 \`scripts/codetop-daily.mjs\` 生成
 `
 
 // --- 输出 ---
