@@ -29,6 +29,7 @@ var lowestCommonAncestor = function(root, p, q) {
 };
 ```
 
+> 🔁 二刷 2026-09-09：一次通过。变化点：这次用 `root.val === p.val` 值比较，旧版是 `root === p` 引用比较——节点值唯一时两者等价，但树有重复值时值比较会在错误节点上提前命中，**引用比较更稳**。另外这是通用树 O(n) 模板；面试时主动补一句 BST 专用 O(h) 解（都比 root 小往左、都大往右、分岐即答案）是加分项。
 
 [98. 验证二叉搜索树](https://leetcode.cn/problems/validate-binary-search-tree/)
 
@@ -44,6 +45,8 @@ var isValidBST = function(root) {
     return isValid(root, -Infinity, Infinity)
 };
 ```
+
+> 🔁 二刷 2026-09-09：一次通过，上下界递归与旧版一致。边界用 `<=` / `>=` 正确处理了重复值判 false（实测 [2,2,2] → false）；另一种解法是中序遍历严格递增，面试可对比。
 
 [230. 二叉搜索树中第 K 小的元素](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/)
 
