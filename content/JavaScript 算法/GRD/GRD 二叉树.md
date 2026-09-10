@@ -16,13 +16,15 @@ aliases:
 ```javascript
 var invertTree = function(root) {
     if(!root) return root
-    return {
-        val: root.val,
-        left: invertTree(root.right),
-        right: invertTree(root.left)
-    }
+    const left = invertTree(root.left)
+    const right = invertTree(root.right)
+    root.left = right
+    root.right = left
+    return root
 };
 ```
+
+> 🔄 二刷 2026-09-10：一次通过。纠偏重点：旧版返回 `{ val, left, right }` 对象字面量会丢失 `TreeNode` 原型且未在原地修改原树指针；改为标准的原地交换指针。解构单行写法 `[root.left, root.right] = [invertTree(root.right), invertTree(root.left)]` 亦可。
 
 [110. 平衡二叉树](https://leetcode.cn/problems/balanced-binary-tree/)
 
