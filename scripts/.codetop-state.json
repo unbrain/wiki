@@ -1,6 +1,6 @@
 {
-  "newCursor": 4,
-  "reviewIdx": 4,
+  "newCursor": 6,
+  "reviewIdx": 6,
   "history": [
     {
       "date": "2026-09-09",
@@ -22,6 +22,17 @@
       "review": [
         "230",
         "226"
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "new": [
+        "415",
+        "1"
+      ],
+      "review": [
+        "110",
+        "543"
       ]
     }
   ]
