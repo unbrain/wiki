@@ -15,7 +15,6 @@ tags:
 <nav class="ub-nav" id="ub-nav">
 <div class="ub-nav-logo">
 <span class="ub-logo-bracket">[</span>UNBRAIN<span class="ub-logo-bracket">]</span>
-<span class="ub-nav-status"><span class="ub-status-dot"></span>在线 ONLINE</span>
 </div>
 <div class="ub-nav-links">
 <a href="/关于我" data-no-popover="true">关于我/简历</a>
@@ -66,7 +65,6 @@ tags:
 
 <div class="ub-hero-content">
 <div class="ub-hero-ticker">
-<span class="ub-ticker-badge">系统: 正常运行</span>
 <span class="ub-ticker-item">坐标: 39.90° N, 116.40° E (北京)</span>
 <span class="ub-ticker-sep">/</span>
 <span class="ub-ticker-item">技术栈: VUE 3 · TS · NODE</span>
@@ -454,7 +452,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-term-dot ub-term-dot--green"></span>
 </div>
 <div class="ub-term-title">unbrain@node-worker: ~ (zsh)</div>
-<div class="ub-term-status">会话状态: ACTIVE 在线</div>
+<div class="ub-term-status">会话就绪: SESSION READY</div>
 </div>
 <div class="ub-term-body" id="ub-term-output">
 <div class="ub-term-line ub-term-line--muted">欢迎访问 UNBRAIN 交互式终端 [v5.0.0-game-ui]</div>
