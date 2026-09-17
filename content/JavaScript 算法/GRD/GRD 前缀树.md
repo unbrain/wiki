@@ -67,6 +67,8 @@ L 为单词长度；建树总空间 O(26 · 总字符数)，前缀共享。
 
 关联：[[LeetCode Hot100 hash表 二]]、[[LeetCode Hot100 反转链表与课程表]] 中亦有 208 题记录。
 
+>  二刷 2026-09-17：抽取 `searchPrefix` 公共辅助方法复用前缀遍历逻辑，代码极其优雅无冗余。节点用对象字典模拟多叉树，时间复杂度 O(L)，空间复杂度 O(L)。
+
 
 ## 进阶：139. 单词拆分（Trie + DP 推式）
 
@@ -146,3 +148,6 @@ var wordBreak = function(s, wordDict) {
 **关键套路**：新单词从 root 重新走；`node = node.ch[s[k]]` 为 undefined 立即 break；dp 比 s 多 1 格（`dp[n]` 才是答案）。
 
 关联：[[LeetCode Hot100 hash表]]、[[LeetCode Hot100 环形链表]] 中 139 题占位链接；DP 系列见 [[LeetCode Hot100 动态规划]]。
+
+>  二刷 2026-09-17：一维 DP（Set 拉式）一次通过。重点细节：先判断 `dp[left]` 再做 `set.has(s.slice())`，利用短路求值避免无谓的字符串截取与哈希开销；找到合法前驱立即 break 剪枝。
+
