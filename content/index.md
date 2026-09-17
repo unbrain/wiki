@@ -1283,13 +1283,22 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       '    );',
       '}',
 
-      // Balanced Studio Environment
-      'vec3 balancedStudioEnvironment(vec3 d) {',
-      '    float base = 0.04 + 0.03 * max(d.y, 0.0);',
-      '    float keyLight = smoothstep(0.20, 0.70, d.y) * smoothstep(0.95, 0.50, d.y) * 1.6;',
-      '    float bilateralRim = smoothstep(0.40, 0.96, abs(d.x)) * 0.95;',
-      '    vec3 goldTone = vec3(0.96, 0.82, 0.48);',
-      '    return mix(vec3(base), goldTone * (keyLight + bilateralRim), 0.82);',
+      // High-Contrast Cyber-Studio Reflection Map (剔除平庸灰度，打造高反差黑曜石影棚反光)
+      'vec3 studioEnvironment(vec3 d) {',
+      '    vec3 col = vec3(0.004, 0.005, 0.007);',
+      '    // 主柔光箱：上方偏右暖金条形流光箱',
+      '    float softboxKey = smoothstep(0.25, 0.75, d.y) * smoothstep(-0.25, 0.45, d.x) * smoothstep(0.85, 0.15, d.x);',
+      '    col += vec3(1.0, 0.84, 0.48) * softboxKey * 1.9;',
+      '    // 侧翼柔光箱：右侧刀锋侧逆光 (暖金)',
+      '    float rimBoxR = smoothstep(0.65, 0.98, d.x) * smoothstep(-0.4, 0.6, d.y);',
+      '    col += vec3(0.96, 0.78, 0.40) * rimBoxR * 2.4;',
+      '    // 侧翼柔光箱：左侧冷冽青月光 (与站点主题 #43D9AD 呼应)',
+      '    float rimBoxL = smoothstep(-0.65, -0.98, d.x) * smoothstep(-0.35, 0.55, d.y);',
+      '    col += vec3(0.26, 0.85, 0.68) * rimBoxL * 1.8;',
+      '    // 顶部锐利天顶聚光',
+      '    float topSpot = pow(max(0.0, d.y), 8.0) * 1.6;',
+      '    col += vec3(0.98, 0.96, 0.92) * topSpot;',
+      '    return col;',
       '}',
 
       'void main() {',
@@ -1298,12 +1307,11 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       '    vec3 rd = normalize(vec3(ndc, -2.4));',
 
       '    float breath = 0.5 + 0.5 * sin(uTime * 1.05);',
-      '    float auraFalloff = 3.4 - 0.8 * breath;',
-      '    float auraIntensity = 0.05 + 0.06 * breath;',
+      '    float auraFalloff = 4.2 - 0.6 * breath;',
+      '    float auraIntensity = 0.045 + 0.04 * breath;',
 
       '    float bgDist = length(ndc - vec2(0.0, 0.12));',
       '    float aura = exp(-bgDist * auraFalloff) * auraIntensity;',
-      '    vec3 goldTone = vec3(0.92, 0.76, 0.40);',
 
       '    float t = 1.0;',
       '    float d = 0.0;',
@@ -1318,25 +1326,54 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       '        vec3 p = ro + rd * t;',
       '        vec3 n = calcNormal(p);',
       '        vec3 v = -rd;',
-
-      '        // 1. 深渊黑曜石矿物基底',
-      '        float facetLightL = max(0.0, dot(n, normalize(vec3(-0.6, 0.6, 0.5)))) * 0.065;',
-      '        float facetLightR = max(0.0, dot(n, normalize(vec3(0.6, 0.6, 0.5)))) * 0.065;',
-      '        float topLight = max(0.0, dot(n, normalize(vec3(0.0, 1.0, 0.2)))) * 0.085;',
-      '        vec3 obsidianBase = vec3(0.045, 0.038, 0.032) + vec3(facetLightL + facetLightR + topLight) * vec3(1.0, 0.96, 0.88);',
-
-      '        // 2. 左右对称均衡的物理菲涅尔暗金流光',
-      '        float fresnel = pow(1.0 - clamp(dot(n, v), 0.0, 1.0), 3.0);',
       '        vec3 reflDir = reflect(rd, n);',
-      '        vec3 envRefl = balancedStudioEnvironment(reflDir);',
-      '        vec3 antiqueGold = vec3(0.96, 0.82, 0.45);',
-      '        float edgeBreath = 0.85 + 0.25 * breath;',
-      '        vec3 goldFresnel = antiqueGold * envRefl * (fresnel * 2.2 * edgeBreath + 0.08);',
 
-      '        vec3 color = obsidianBase + goldFresnel;',
+      '        // 1. 深渊黑曜石矿物基底 (Pure Deep Glassy Obsidian Base)',
+      '        // 极低漫反射，保留微弱立体切面阴阳面，绝不泛白起灰',
+      '        float facetLightL = max(0.0, dot(n, normalize(vec3(-0.6, 0.6, 0.5)))) * 0.018;',
+      '        float facetLightR = max(0.0, dot(n, normalize(vec3(0.6, 0.6, 0.5)))) * 0.020;',
+      '        float topLight = max(0.0, dot(n, normalize(vec3(0.0, 1.0, 0.2)))) * 0.024;',
+      '        vec3 obsidianBase = vec3(0.010, 0.011, 0.014) + vec3(facetLightL + facetLightR + topLight) * vec3(0.9, 0.85, 0.78);',
+
+      '        // 2. 镜面高光 (Sharp Specular Highlights - 天然火山玻璃的镜面耀光与耀白核心)',
+      '        vec3 lightKey = normalize(vec3(0.55, 0.80, 0.65));',
+      '        vec3 lightRimL = normalize(vec3(-0.85, 0.0, 0.55));',
+      '        vec3 lightRimR = normalize(vec3(0.85, 0.15, 0.50));',
+
+      '        // 主光：暖金耀斑 + 耀白核心',
+      '        float specKey = pow(max(0.0, dot(reflDir, lightKey)), 42.0);',
+      '        float specKeyCore = pow(max(0.0, dot(reflDir, lightKey)), 160.0);',
+      '        vec3 specKeyCol = (vec3(1.0, 0.82, 0.45) * specKey + vec3(1.0, 0.98, 0.92) * specKeyCore * 1.8) * 1.3;',
+
+      '        // 侧翼高光：左侧赛博青 + 右侧辉金',
+      '        float specRimL = pow(max(0.0, dot(reflDir, lightRimL)), 36.0);',
+      '        vec3 specRimLCol = vec3(0.26, 0.85, 0.68) * specRimL * 1.2;',
+
+      '        float specRimR = pow(max(0.0, dot(reflDir, lightRimR)), 38.0);',
+      '        vec3 specRimRCol = vec3(1.0, 0.80, 0.42) * specRimR * 1.1;',
+
+      '        vec3 specular = specKeyCol + specRimLCol + specRimRCol;',
+
+      '        // 3. 菲涅尔边缘流光 (Crisp Fresnel Edge Reflections)',
+      '        // 指数提升至 4.2，流光紧贴锋利外轮廓与切割刃部，正面保持通透黑',
+      '        float fresnel = pow(1.0 - clamp(dot(n, v), 0.0, 1.0), 4.2);',
+      '        vec3 envRefl = studioEnvironment(reflDir);',
+      '        float edgeBreath = 0.90 + 0.20 * breath;',
+      '        vec3 rimFresnel = envRefl * (fresnel * 3.2 * edgeBreath);',
+
+      '        // 4. 彩虹黑曜石微质感薄膜彩晕 (Subtle Glassy Iridescence)',
+      '        // 在菲涅尔与切面交界处赋予通透灵动的金绿干涉光，拒绝单调泥滞',
+      '        float sheenFactor = pow(fresnel, 2.2) * (1.0 - fresnel) * 0.55;',
+      '        vec3 sheenCol = mix(vec3(0.96, 0.82, 0.45), vec3(0.26, 0.85, 0.68), clamp(n.x * 0.5 + 0.5, 0.0, 1.0)) * sheenFactor;',
+
+      '        // 最终合成',
+      '        vec3 color = obsidianBase + specular + rimFresnel + sheenCol;',
       '        gl_FragColor = vec4(color, 1.0);',
       '    } else {',
-      '        gl_FragColor = vec4(goldTone * aura * 1.5, aura * 1.2);',
+      '        // 背景光晕：更聚焦通透的神秘金青微光，消除外圈灰黄浊雾',
+      '        float bgAura = aura * 1.1;',
+      '        vec3 auraCol = mix(vec3(0.95, 0.78, 0.38), vec3(0.26, 0.85, 0.68), clamp(ndc.x * 0.35 + 0.5, 0.0, 1.0));',
+      '        gl_FragColor = vec4(auraCol * bgAura * 1.4, bgAura * 1.1);',
       '    }',
       '}'
     ].join('\n');
