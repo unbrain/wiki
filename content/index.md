@@ -64,14 +64,14 @@ tags:
 <div class="ub-hero-slash ub-hero-slash-2"></div>
 
 <div class="ub-hero-content">
-<div class="ub-hero-ticker">
+<div class="ub-hero-ticker notranslate" translate="no">
 <span class="ub-ticker-item">坐标: 39.90° N, 116.40° E (北京)</span>
 <span class="ub-ticker-sep">/</span>
 <span class="ub-ticker-item">技术栈: VUE 3 · TS · NODE</span>
 <span class="ub-ticker-sep">/</span>
 <span class="ub-ticker-item">工程经验: 7+ 年</span>
 </div>
-<div class="ub-hero-tag">
+<div class="ub-hero-tag notranslate" translate="no">
 <span class="ub-tag-bracket">[</span> 资深前端开发工程师 · WebGL / Vue.js · 算法探索者 <span class="ub-tag-bracket">]</span>
 </div>
 <h1 class="ub-hero-name">
@@ -96,7 +96,7 @@ tags:
 </section>
 
 <!-- MARQUEE STRIP -->
-<div class="ub-marquee-strip">
+<div class="ub-marquee-strip notranslate" translate="no">
 <div class="ub-marquee-inner">
 VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEETCODE HOT100 · 高并发架构 · NODE.JS · VITE · 虚拟滚动 · 性能调优 · 组件库设计 · VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEETCODE HOT100 · 高并发架构 · NODE.JS · VITE · 虚拟滚动 · 性能调优 · 组件库设计 ·&nbsp;
 </div>
@@ -412,25 +412,25 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <h2 class="ub-section-title ub-scroll-reveal">用数字沉淀<br/>工程印记。</h2>
 <div class="ub-metrics-grid">
 <div class="ub-metric-card ub-scroll-reveal">
-<div class="ub-metric-num" data-target="160">0</div>
+<div class="ub-metric-num" data-target="160">160</div>
 <div class="ub-metric-plus">+</div>
 <div class="ub-metric-label">知识卷轴篇数</div>
 <div class="ub-metric-sub">已公开发布 160+ 篇系统化技术与历史笔记</div>
 </div>
 <div class="ub-metric-card ub-scroll-reveal">
-<div class="ub-metric-num" data-target="130">0</div>
+<div class="ub-metric-num" data-target="130">130</div>
 <div class="ub-metric-plus">+</div>
 <div class="ub-metric-label">算法题解收录</div>
 <div class="ub-metric-sub">系统解析 130+ 道精选 LeetCode 经典题解</div>
 </div>
 <div class="ub-metric-card ub-scroll-reveal">
-<div class="ub-metric-num" data-target="7">0</div>
+<div class="ub-metric-num" data-target="7">7</div>
 <div class="ub-metric-plus">+</div>
 <div class="ub-metric-label">一线工程经验</div>
 <div class="ub-metric-sub">深耕超高并发亿级访问 Web 架构演进</div>
 </div>
 <div class="ub-metric-card ub-scroll-reveal">
-<div class="ub-metric-num" data-target="100">0</div>
+<div class="ub-metric-num" data-target="100">100</div>
 <div class="ub-metric-plus">M+</div>
 <div class="ub-metric-label">触达服务用户</div>
 <div class="ub-metric-sub">稳定护航生产环境峰值并发流量</div>
@@ -747,6 +747,10 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
   setTimeout(checkReveals, 200);
   setTimeout(checkReveals, 600);
   setTimeout(checkReveals, 1200);
+  // 兜底保护：2.5s 后强制显式所有板块，防止动画挂起导致黑屏
+  setTimeout(function() {
+    reveals.forEach(function(el) { el.classList.add('visible'); });
+  }, 2500);
 
   // ── STAT BARS ──
   var statBars = document.querySelectorAll('.ub-stat-bar-fill');
@@ -777,10 +781,11 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
         current = Math.floor(ease * target);
         el.textContent = current;
         if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target;
       }
       requestAnimationFrame(step);
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.15 });
   counters.forEach(function(c) { countObs.observe(c); });
 
   // ── 3D TILT EFFECT ON CARDS (仅鼠标精确指针设备启用，移动触屏禁用以防变形跳动) ──

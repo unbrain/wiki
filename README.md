@@ -14,7 +14,7 @@
 以 JavaScript 为主线的数据结构与算法刷题笔记，以及前端工程化项目实践。笔记在 Obsidian 中写作，由 Quartz 生成静态站点，GitHub Actions 自动构建并部署到 GitHub Pages。
 
 <p align="center">
-  <a href="https://unbrain.github.io/wiki"><b>访问在线站点 →</b></a>
+  <a href="https://blog.callmejesus.com"><b>访问在线站点 →</b></a>
 </p>
 
 ## 内容导航

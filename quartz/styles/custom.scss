@@ -1320,6 +1320,14 @@ body[data-slug="index"] {
     &:nth-child(6) { transition-delay: 0.40s; }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .ub-scroll-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
   /* ══════════════════════════════════════════════════════════
      07 CYBER ARCADE RETRO SNAKE (BASE STYLES)
      ══════════════════════════════════════════════════════════ */

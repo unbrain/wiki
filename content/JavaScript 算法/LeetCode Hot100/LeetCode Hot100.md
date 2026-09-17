@@ -11,7 +11,9 @@ aliases:
   - Hot100
 ---
 
-[160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)（见[[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]、[[LeetCode Hot100 hash表]]）
+## [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)
+
+> 相关题解专题：见 [[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]、[[LeetCode Hot100 hash表]]
 
 ```javascript
 var getIntersectionNode = function (headA, headB) {
@@ -26,13 +28,13 @@ var getIntersectionNode = function (headA, headB) {
 };
 ```
 
-复杂度分析
+### 复杂度分析
 
 时间复杂度：O(m+n)，其中 m 和 n 是分别是链表 headA 和 headB 的长度。两个指针同时遍历两个链表，每个指针遍历两个链表各一次。
 
 空间复杂度：O(1)。
 
-[236. 二叉树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)
+## [236. 二叉树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)
 
 ```javascript
 var lowestCommonAncestor = function(root, p, q) {
@@ -51,28 +53,32 @@ var lowestCommonAncestor = function(root, p, q) {
 };
 ```
 
-复杂度分析
+### 复杂度分析
 
 时间复杂度：O(n)，其中 n 是二叉树的节点数。每个节点最多被访问一次。
 
 空间复杂度：O(h)，其中 h 是二叉树的高度。递归调用栈的深度取决于树的高度，最坏情况下 h = n（链状树）。
 
 
-[234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)（见[[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]）
+## [234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)
+
+> 相关题解专题：见 [[LeetCode Hot100 链表]]、[[LeetCode Hot100 双指针]]
 
 ```javascript
 /**
  * Definition for singly-linked list.
 ```
 
-复杂度分析
+### 复杂度分析
 
 时间复杂度：O(n)，其中 n 是链表的长度。需要遍历链表一次（快慢指针找中点 + 反转后半部分 + 比较）。
 
 空间复杂度：O(1)，只使用了常数额外空间，在原链表上操作。
 
 
-[226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/)（见[[JavaScript 算法基础第八天]]）
+## [226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/)
+
+> 相关基础专题：见 [[JavaScript 算法基础第八天]]
 
 ```javascript
 var invertTree = function(root) {
@@ -86,13 +92,13 @@ var invertTree = function(root) {
 };
 ```
 
-复杂度分析
+### 复杂度分析
 
 时间复杂度：O(n)，其中 n 是二叉树的节点数。每个节点都被访问一次。
 
 空间复杂度：O(h)，其中 h 是二叉树的高度。递归调用栈的深度为树的高度，最坏情况 h = n。
 
-[739. 每日温度](https://leetcode.cn/problems/daily-temperatures/)
+## [739. 每日温度](https://leetcode.cn/problems/daily-temperatures/)
 
 ```javascript
 /**
@@ -134,14 +140,14 @@ var dailyTemperatures = function(temperatures) {
 };
 ```
 
-复杂度分析
+### 复杂度分析
 
 时间复杂度：O(n)，其中 n 是 temperatures 数组的长度。每个元素最多入栈和出栈一次。
 
 空间复杂度：O(n)，需要栈和结果数组各 O(n) 空间。
 
 
-[221. 最大正方形](https://leetcode.cn/problems/maximal-square/)
+## [221. 最大正方形](https://leetcode.cn/problems/maximal-square/)
 
 暴力解法：
 
@@ -216,11 +222,11 @@ var maximalSquare = function(matrix) {
 };
 ```
 
-复杂度分析
+### 复杂度分析
 
 时间复杂度：O(m×n)，其中 m 和 n 分别是矩阵的行数和列数。需要遍历每个单元格一次。
 
-空间复杂度：O(m×n)，使用了一个大小为 (m+1)×(n+1) 的二维 DP 数组。
+空间复杂度：O(m×n)，使用了一个大小为 (m+1)×(n+1) 的二维 DP数组。
 
 ## 相关笔记
 
