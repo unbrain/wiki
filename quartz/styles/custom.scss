@@ -915,22 +915,43 @@ body[data-slug="index"] {
   .ub-writing-list {
     display: flex;
     flex-direction: column;
+    gap: 16px;
   }
 
   .ub-writing-item {
     display: flex;
     align-items: center;
     gap: 28px;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--ub-border);
-    transition: padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+    padding: 22px 28px;
+    background: var(--ub-black-card);
+    border: 1px solid var(--ub-border);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     text-decoration: none !important;
     color: var(--ub-yellow);
     cursor: none;
+    box-sizing: border-box;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--ub-cyan), var(--ub-indigo));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
     &:hover {
-      padding-left: 16px;
-      border-bottom-color: rgba(67, 217, 173, 0.3);
+      border-color: var(--ub-border-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5), 0 0 16px -2px rgba(67, 217, 173, 0.12);
+
+      &::before {
+        opacity: 1;
+      }
 
       .ub-writing-title {
         color: var(--ub-cyan);
@@ -941,7 +962,7 @@ body[data-slug="index"] {
       }
       .ub-writing-num {
         color: var(--ub-cyan);
-        opacity: 0.8;
+        opacity: 0.9;
       }
     }
   }
@@ -949,18 +970,20 @@ body[data-slug="index"] {
   .ub-writing-num {
     font-family: var(--ub-font-hud);
     font-size: 13px;
-    opacity: 0.35;
-    min-width: 36px;
+    opacity: 0.4;
+    min-width: 32px;
     letter-spacing: 0.1em;
     color: var(--ub-yellow);
     transition: color 0.25s, opacity 0.25s;
+    flex-shrink: 0;
   }
 
   .ub-writing-info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
+    min-width: 0;
   }
 
   .ub-writing-title {
@@ -969,6 +992,7 @@ body[data-slug="index"] {
     letter-spacing: -0.01em;
     color: var(--ub-yellow);
     transition: color 0.25s;
+    line-height: 1.35;
   }
 
   .ub-writing-sub {
@@ -986,12 +1010,15 @@ body[data-slug="index"] {
     padding: 3px 10px;
     border-radius: 12px;
     letter-spacing: 0.05em;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .ub-writing-arrow {
     font-size: 20px;
     color: var(--ub-gray);
     transition: color 0.25s, transform 0.25s;
+    flex-shrink: 0;
   }
 
   // ── 05 TELEMETRY & STATS ─────────────────────
@@ -1794,6 +1821,10 @@ body[data-slug="index"] {
     }
     .ub-about-grid { grid-template-columns: 1fr; gap: 48px; }
     .ub-projects-grid { grid-template-columns: 1fr; }
+    .ub-writing-item {
+      padding: 20px 24px;
+      gap: 20px;
+    }
     .ub-metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .ub-hud-corner { display: none; }
     .ub-hero-ticker {
@@ -1999,19 +2030,26 @@ body[data-slug="index"] {
       span { font-size: 10px; padding: 3px 8px; }
     }
 
-    // 7. 04 Knowledge Scrolls (移动端篇数徽章恢复 & 触控反馈)
+    // 7. 04 Knowledge Scrolls (移动端卡片化独立模块适配 & 触控反馈)
+    .ub-writing-list {
+      gap: 12px;
+    }
     .ub-writing-item {
       gap: 12px;
-      padding: 18px 0;
+      padding: 16px 14px;
+      border-radius: 10px;
       align-items: center;
+      transform: none !important;
+
       &:active {
-        background: rgba(67, 217, 173, 0.05);
-        padding-left: 6px;
+        background: rgba(67, 217, 173, 0.08);
+        border-color: rgba(67, 217, 173, 0.4);
       }
     }
     .ub-writing-num {
       font-size: 12px;
       width: 24px;
+      min-width: 24px;
     }
     .ub-writing-title {
       font-size: 14px;
@@ -2224,6 +2262,10 @@ body[data-slug="index"] {
     .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
       padding-left: 12px;
       padding-right: 12px;
+    }
+    .ub-writing-item {
+      padding: 14px 10px;
+      gap: 8px;
     }
     .ub-metrics-grid {
       gap: 8px;
