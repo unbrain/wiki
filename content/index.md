@@ -84,9 +84,6 @@ tags:
 <a class="ub-btn ub-btn--outline" href="#ub-knowledge" data-router-ignore="true" data-no-popover="true">查阅知识库 ↓</a>
 <a class="ub-btn ub-btn--ghost" href="#ub-terminal" data-router-ignore="true" data-no-popover="true">打开终端 >_</a>
 </div>
-<div class="ub-hero-scroll-hint">
-<span>▼ 向下滚动探索 ▼</span>
-</div>
 </div>
 
 <div class="ub-hud-corner ub-hud-tl"></div>

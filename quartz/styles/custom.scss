@@ -532,14 +532,6 @@ body[data-slug="index"] {
     }
   }
 
-  .ub-hero-scroll-hint {
-    margin-top: 48px;
-    font-family: var(--ub-font-hud);
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    color: var(--ub-gray);
-    animation: ub-fadeUp 1s ease 1.1s both, ub-scrollPulse 2.2s infinite ease-in-out;
-  }
 
   // ── MARQUEE STRIP ────────────────────────────
   .ub-marquee-strip {
@@ -1308,10 +1300,6 @@ body[data-slug="index"] {
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes ub-scrollPulse {
-    0%, 100% { opacity: 0.35; transform: translateY(0); }
-    50%       { opacity: 0.85; transform: translateY(4px); }
-  }
 
   @keyframes ub-marquee {
     from { transform: translateX(0); }
@@ -1981,10 +1969,6 @@ body[data-slug="index"] {
         font-size: 11px !important;
         opacity: 0.85;
       }
-    }
-    .ub-hero-scroll-hint {
-      margin-top: 24px;
-      font-size: 10px;
     }
 
     // 3. Common Section Layout
