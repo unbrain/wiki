@@ -217,25 +217,45 @@ body[data-slug="index"] {
     mix-blend-mode: difference;
   }
 
-  // ── Navigation Bar ────────────────────────────
+  // ── Navigation Bar (悬浮长条椭圆玻璃态) ───────────────
   .ub-nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 16px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: calc(100% - 48px);
+    max-width: 1200px;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 48px;
-    transition: padding 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-    background: transparent;
+    padding: 12px 32px;
+    border-radius: 9999px;
     box-sizing: border-box;
 
+    // 玻璃态质感与赛博微光
+    background: rgba(14, 16, 22, 0.68);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(67, 217, 173, 0.22);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(254, 250, 224, 0.08);
+
+    transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+
     &.scrolled {
-      padding: 14px 48px;
-      background: rgba(10, 10, 10, 0.90);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--ub-border);
+      top: 12px;
+      padding: 10px 32px;
+      background: rgba(10, 10, 10, 0.88);
+      border-color: rgba(67, 217, 173, 0.38);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6),
+                  0 0 16px rgba(67, 217, 173, 0.12),
+                  inset 0 1px 0 rgba(254, 250, 224, 0.12);
     }
   }
 
@@ -279,7 +299,9 @@ body[data-slug="index"] {
 
   .ub-nav-links {
     display: flex;
-    gap: 28px;
+    gap: clamp(14px, 1.8vw, 28px);
+    align-items: center;
+    white-space: nowrap;
 
     a {
       font-family: var(--ub-font-hud);
@@ -1816,9 +1838,28 @@ body[data-slug="index"] {
       display: none !important;
     }
     .ub-nav {
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid transparent;
+      box-shadow: none;
       padding: max(14px, env(safe-area-inset-top)) 24px 14px;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+
       &.scrolled {
         padding: max(12px, env(safe-area-inset-top)) 24px 12px;
+        background: rgba(10, 10, 10, 0.90);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--ub-border);
+        box-shadow: none;
       }
     }
     .ub-nav-links { display: none; }
