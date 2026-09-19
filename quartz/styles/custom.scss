@@ -217,7 +217,7 @@ body[data-slug="index"] {
     mix-blend-mode: difference;
   }
 
-  // ── Navigation Bar (悬浮长条椭圆玻璃态) ───────────────
+  // ── Navigation Bar (Apple 液体水凝玻璃态) ───────────────
   .ub-nav {
     position: fixed;
     top: 16px;
@@ -235,44 +235,78 @@ body[data-slug="index"] {
     box-sizing: border-box;
     overflow: hidden;
 
-    // 1. 高通透双层底色与强毛玻璃折射滤镜
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.09) 0%,
-      rgba(255, 255, 255, 0.02) 40%,
-      rgba(0, 0, 0, 0.25) 100%
-    ), rgba(12, 15, 22, 0.48);
-    backdrop-filter: blur(24px) saturate(200%) contrast(105%);
-    -webkit-backdrop-filter: blur(24px) saturate(200%) contrast(105%);
+    // ① 苹果液体玻璃核心：凸透镜聚光底色 (Radial Specular + Deep Translucent Core)
+    background:
+      radial-gradient(
+        120% 180% at 50% -20%,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.05) 45%,
+        rgba(255, 255, 255, 0.01) 70%,
+        rgba(10, 12, 18, 0.40) 100%
+      ),
+      rgba(10, 12, 18, 0.40);
 
-    // 2. 真实晶莹玻璃倒角（棱角折射高光 + 立体景深阴影）
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    // ② 复合光学折射滤镜：大半径高斯毛玻璃 + 聚光提亮 (Brightness) + 高色彩饱和 (Saturate)
+    backdrop-filter: blur(32px) saturate(210%) brightness(115%) contrast(108%);
+    -webkit-backdrop-filter: blur(32px) saturate(210%) brightness(115%) contrast(108%);
+
+    // ③ 双折射水滴倒角（苹果高硬度晶体/水凝微切面）
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow:
-      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.45),      // 顶部锐利白月光切面高光
-      inset 0 -1px 0 0 rgba(255, 255, 255, 0.08),     // 底部边缘漫光
-      inset 0 0 24px 0 rgba(255, 255, 255, 0.03),     // 内部透光
-      0 20px 48px -12px rgba(0, 0, 0, 0.75),          // 悬浮深景深
-      0 0 24px -4px rgba(67, 217, 173, 0.16);         // 赛博微荧光
+      // 顶部超锐利液体水滴级高光（0.75px 纯白切线）
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.70),
+      // 顶部向下柔和液体漫透光
+      inset 0 2px 10px 0 rgba(255, 255, 255, 0.18),
+      // 内部深层通透漫射
+      inset 0 0 30px 0 rgba(255, 255, 255, 0.04),
+      // 底部暗色光学内折射
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.15),
+      // 物理级双层悬浮景深投影（近景柔和 + 远景深邃）
+      0 10px 24px -6px rgba(0, 0, 0, 0.50),
+      0 28px 64px -12px rgba(0, 0, 0, 0.80),
+      // 边缘极其微弱的赛博微极光泛色
+      0 0 28px -2px rgba(67, 217, 173, 0.18);
 
-    transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                padding 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                background 0.3s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
+    transition: top 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
 
-    // 3. 椭圆弧面顶部天光漫反射层
+    // ④ 液体弧面天光反光（表面张力水滴反射光斑）
     &::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 52%;
-      border-radius: 9999px 9999px 0 0;
+      inset: 1px 2px auto 2px;
+      height: 54%;
+      border-radius: 9999px 9999px 40px 40px;
       background: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.14) 0%,
-        rgba(255, 255, 255, 0.03) 65%,
+        rgba(255, 255, 255, 0.26) 0%,
+        rgba(255, 255, 255, 0.08) 45%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.8) 12%, black 50%, rgba(0,0,0,0.8) 88%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.8) 12%, black 50%, rgba(0,0,0,0.8) 88%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    // ⑤ 底部全反射水线（Liquid Bottom Rim Reflection）
+    &::after {
+      content: '';
+      position: absolute;
+      inset: auto 15% 1px 15%;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.28) 25%,
+        rgba(67, 217, 173, 0.40) 50%,
+        rgba(255, 255, 255, 0.28) 75%,
         transparent 100%
       );
+      filter: blur(0.3px);
       pointer-events: none;
       z-index: 0;
     }
@@ -282,21 +316,26 @@ body[data-slug="index"] {
       z-index: 1;
     }
 
+    // ⑥ 页面滚动时：液滴形态动态加固（更紧致、透光略微收聚）
     &.scrolled {
       top: 12px;
       padding: 10px 32px;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.10) 0%,
-        rgba(255, 255, 255, 0.03) 40%,
-        rgba(0, 0, 0, 0.35) 100%
-      ), rgba(10, 12, 18, 0.75);
-      border-color: rgba(67, 217, 173, 0.35);
+      background:
+        radial-gradient(
+          120% 180% at 50% -20%,
+          rgba(255, 255, 255, 0.20) 0%,
+          rgba(255, 255, 255, 0.06) 45%,
+          rgba(10, 12, 18, 0.65) 100%
+        ),
+        rgba(10, 12, 18, 0.72);
+      border-color: rgba(67, 217, 173, 0.38);
       box-shadow:
-        inset 0 1.5px 0 0 rgba(255, 255, 255, 0.5),
-        inset 0 -1px 0 0 rgba(67, 217, 173, 0.2),
-        0 24px 52px -10px rgba(0, 0, 0, 0.8),
-        0 0 28px rgba(67, 217, 173, 0.22);
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.75),
+        inset 0 2px 12px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 0 rgba(67, 217, 173, 0.25),
+        0 14px 32px -6px rgba(0, 0, 0, 0.60),
+        0 32px 72px -12px rgba(0, 0, 0, 0.85),
+        0 0 32px rgba(67, 217, 173, 0.24);
     }
   }
 
@@ -370,6 +409,7 @@ body[data-slug="index"] {
       &.active {
         opacity: 1;
         color: var(--ub-yellow);
+        text-shadow: 0 0 8px rgba(254, 250, 224, 0.4), 0 0 16px rgba(67, 217, 173, 0.3);
         &::after { width: 100%; }
       }
     }
