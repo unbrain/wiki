@@ -64,6 +64,7 @@ var coinChange = function (coins, amount) {
 - `dp[i]`：凑出金额 `i` 的最少硬币数；外层硬币、内层金额、i 正向（完全背包，硬币可无限复用）
 - `dp[i] === Infinity` 则凑不出来，返回 -1
 - 完整思路（遍历方向辨析、倒序变 0-1 背包、换序问题）见 [[322 零钱兑换]]
+- > 二刷 2026-09-20：完全背包模型正序遍历，顺利一次 AC。
 
 [416. 分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/)
 
