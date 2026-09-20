@@ -165,11 +165,17 @@ if (lastToday) {
     const q = byId.get(id)
     if (q) pool.push({ id, title: q.title, url: `https://leetcode.cn/problems/${q.slug}/`, file: '（vault 笔记待补）' })
   }
+  const newIds = new Set(newQuestions.map((q) => q.id))
   reviewQuestions = []
-  for (let i = 0; i < Math.min(REVIEW_COUNT, pool.length); i++) {
-    reviewQuestions.push(pool[(state.reviewIdx + i) % pool.length])
+  let step = 0
+  while (reviewQuestions.length < Math.min(REVIEW_COUNT, pool.length) && step < pool.length) {
+    const candidate = pool[(state.reviewIdx + step) % pool.length]
+    if (!newIds.has(candidate.id)) {
+      reviewQuestions.push(candidate)
+    }
+    step++
   }
-  state.reviewIdx = pool.length ? (state.reviewIdx + REVIEW_COUNT) % pool.length : 0
+  state.reviewIdx = pool.length ? (state.reviewIdx + step) % pool.length : 0
 }
 
 // --- 生成笔记 ---
