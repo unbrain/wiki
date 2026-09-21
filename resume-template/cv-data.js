@@ -240,10 +240,10 @@ window.CV_DATABASE = {
       nameCn: "JANE WILKINS",
       role: "Promotion Manager",
       roleCn: "Promotion Manager",
-      photo: "assets/hero-model-cycling.jpg",
+      photo: "assets/hero-model-cycling-exact.jpg",
       photoFit: "cover",
-      photoPosition: "47% 10%",
-      photoScale: 1.9,
+      photoPosition: "center center",
+      photoScale: 1.0,
       greeting: "Hello I'm<br>Jane Wilkins",
       aboutStamp: "About Me.",
       introBio: "Caboribusquidusam, cum sitisciaest repro et que pra vent harioribus ant laborep ratGentia perchitas magnatia nonesti imenihil il mod quatquis eos simoluptam comnimusae nossi rectibus"

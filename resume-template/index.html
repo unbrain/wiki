@@ -310,7 +310,7 @@
     }
     .dots-indicator .dot-outline {
       background-color: transparent;
-      border: 1px solid var(--text-main);
+      border: 1.3px solid var(--text-main);
     }
 
     .hero-title-group {
@@ -373,24 +373,28 @@
     .page-1-domain-line {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       color: var(--text-main);
       font-size: 11px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.18em;
+      font-weight: 500;
+      text-transform: lowercase;
     }
 
     .page-1-domain-line .thick-line {
-      width: 36px;
-      height: 2px;
-      background-color: var(--text-main);
+      width: 48px;
+      height: 3.5px;
+      background-color: #8c938d;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
     .p1-intro-grid {
       display: grid;
       grid-template-columns: 140px 1fr;
-      gap: 20px;
+      gap: 24px;
       margin-top: 4px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .p1-intro-left {
@@ -401,8 +405,8 @@
     }
 
     .p1-intro-right {
-      font-size: 10.5px;
-      line-height: 1.62;
+      font-size: 10px;
+      line-height: 1.55;
       color: var(--text-muted);
       text-align: justify;
     }
@@ -417,7 +421,7 @@
     }
 
     .p1-dots-wrapper {
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
 
     .p1-visual-and-info {
@@ -427,52 +431,29 @@
       position: relative;
     }
 
-    .photo-tab-composition {
+    .photo-folder-container {
       position: relative;
-      width: 330px;
-      height: 385px;
-      display: flex;
-      align-items: flex-end;
+      width: 348px;
+      height: 388px;
+      clip-path: url(#folder-tab-clip);
+      -webkit-clip-path: url(#folder-tab-clip);
+      background-color: #2b4955;
       cursor: pointer;
       user-select: none;
-    }
-
-    .tab-backdrop {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 82px;
-      height: 320px;
-      background-color: var(--accent-slate);
-      border-top-left-radius: 18px;
-      border-bottom-left-radius: 18px;
-    }
-
-    .tab-photo-box {
-      position: absolute;
-      left: 64px;
-      bottom: 0;
-      width: 266px;
-      height: 382px;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 16px;
-      border-bottom-left-radius: 0;
       overflow: hidden;
-      background-color: #2b4955;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      transition: opacity 0.2s ease;
+      flex-shrink: 0;
     }
 
-    .tab-photo-box img {
+    .photo-folder-container img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 20%;
+      object-position: center 15%;
       display: block;
+      transition: transform 0.2s ease;
     }
 
-    .photo-tab-composition .replace-hint {
+    .photo-folder-container .replace-hint {
       position: absolute;
       inset: 0;
       background: rgba(0, 0, 0, 0.45);
@@ -483,42 +464,41 @@
       justify-content: center;
       opacity: 0;
       transition: opacity 0.2s;
-      border-radius: 16px;
       text-align: center;
       padding: 10px;
       font-weight: 500;
     }
 
-    .photo-tab-composition:hover .replace-hint {
+    .photo-folder-container:hover .replace-hint {
       opacity: 1;
     }
 
     .p1-address-block {
       align-self: flex-start;
-      margin-top: 14px;
-      padding-left: 24px;
+      margin-top: 10px;
+      padding-left: 20px;
       flex: 1;
     }
 
     .p1-address-label {
-      font-size: 11.5px;
+      font-size: 11.8px;
       font-weight: 800;
       color: var(--text-main);
       letter-spacing: 0.06em;
-      margin-bottom: 9px;
+      margin-bottom: 8px;
     }
 
     .p1-address-lines {
-      font-size: 10.8px;
-      line-height: 1.64;
+      font-size: 10.2px;
+      line-height: 1.56;
       color: var(--text-sub);
     }
 
     .p1-about-stamp {
       position: absolute;
       right: 0;
-      bottom: 0;
-      font-size: 38px;
+      bottom: 2px;
+      font-size: 34px;
       font-weight: 900;
       letter-spacing: -0.03em;
       color: var(--text-main);
@@ -606,7 +586,7 @@
     .job-company {
       font-size: 10px;
       font-weight: 600;
-      color: var(--accent-slate);
+      color: var(--text-sub);
       margin-bottom: 4px;
     }
 
@@ -647,19 +627,43 @@
       flex-direction: column;
     }
 
+    .editorial-accent-divider {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+
+    .editorial-accent-divider .accent-pill {
+      width: 32px;
+      height: 3.5px;
+      background-color: var(--text-main);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .editorial-accent-divider .accent-line {
+      flex: 1;
+      height: 1px;
+      background-color: var(--line-color);
+    }
+
     .reference-card {
+      position: relative;
       background-color: var(--card-black);
       color: #fff;
-      border-radius: 12px;
-      padding: 16px 14px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      padding: 18px 16px 26px 16px;
+      clip-path: url(#ref-card-clip);
+      -webkit-clip-path: url(#ref-card-clip);
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.14));
+      margin-bottom: 20px;
     }
 
     .ref-title {
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       letter-spacing: 0.02em;
     }
 
@@ -671,22 +675,28 @@
     }
 
     .ref-role {
-      font-size: 9.2px;
+      font-size: 9.5px;
       color: #9da39e;
       margin-bottom: 10px;
     }
 
     .ref-divider {
       height: 1px;
-      background-color: rgba(255, 255, 255, 0.18);
+      background-color: rgba(255, 255, 255, 0.22);
       margin-bottom: 10px;
     }
 
     .ref-line {
-      font-size: 9.2px;
-      color: #e5e5e5;
-      line-height: 1.52;
+      font-size: 9.5px;
+      color: #f0f0f0;
+      line-height: 1.6;
       letter-spacing: 0.01em;
+    }
+
+    .ref-prefix {
+      font-weight: 800;
+      color: #ffffff;
+      margin-right: 4px;
     }
 
     .ref-endorsement {
@@ -700,14 +710,14 @@
     }
 
     .sidebar-lower-block {
-      margin-top: 22px;
+      margin-top: 14px;
     }
 
     .sidebar-block-title {
-      font-size: 13.5px;
+      font-size: 14.5px;
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .list-item {
@@ -719,24 +729,26 @@
     }
 
     .item-primary {
-      font-size: 10.5px;
+      font-size: 10.8px;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 1.5px;
+      margin-bottom: 2px;
       display: flex;
       align-items: center;
+      gap: 6px;
     }
 
     .item-secondary {
-      font-size: 9.2px;
+      font-size: 9.5px;
       color: var(--text-muted);
-      margin-bottom: 1px;
+      margin-bottom: 2px;
     }
 
     .item-meta {
-      font-size: 9.2px;
-      font-weight: 600;
-      color: var(--text-sub);
+      font-size: 10.2px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-top: 2px;
     }
 
     .manifesto-box {
@@ -763,18 +775,36 @@
 
     /* Cover Letter Page */
     .cl-top-bar {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 16px;
     }
 
     .cl-contact-summary {
-      font-size: 10.5px;
-      line-height: 1.5;
+      justify-self: center;
+      text-align: left;
+      font-size: 10.2px;
+      line-height: 1.55;
       color: var(--text-main);
       font-weight: 500;
       letter-spacing: 0.01em;
-      margin-left: -50px;
+      margin-left: 0;
+    }
+
+    .cl-contact-summary .cl-prefix,
+    .cl-contact-summary strong {
+      font-weight: 800;
+      color: var(--text-main);
+      margin-right: 3px;
+    }
+
+    .to-address .to-prefix,
+    .to-address strong {
+      font-weight: 800;
+      color: var(--text-main);
+      margin-right: 3px;
     }
 
     .cl-meta-grid {
@@ -1081,6 +1111,41 @@
     </div>
   </header>
 
+  <!-- Scalable SVG Vector Defs for Organic Folder-Tab Silhouettes -->
+  <svg width="0" height="0" class="svg-defs" style="position: absolute; width: 0; height: 0; pointer-events: none; overflow: hidden;" aria-hidden="true">
+    <defs>
+      <clipPath id="folder-tab-clip" clipPathUnits="objectBoundingBox">
+        <path d="M 0, 0.14
+                 A 0.04 0.04 0 0 1 0.04, 0.09
+                 L 0.29, 0.09
+                 C 0.32, 0.09, 0.34, 0.07, 0.355, 0.04
+                 C 0.365, 0.015, 0.38, 0, 0.405, 0
+                 L 0.96, 0
+                 A 0.04 0.04 0 0 1 1.0, 0.04
+                 L 1.0, 0.96
+                 A 0.04 0.04 0 0 1 0.96, 1.0
+                 L 0.04, 1.0
+                 A 0.04 0.04 0 0 1 0, 0.96
+                 Z" />
+      </clipPath>
+      <clipPath id="ref-card-clip" clipPathUnits="objectBoundingBox">
+        <path d="M 0.06, 0
+                 L 0.94, 0
+                 A 0.06 0.05 0 0 1 1.0, 0.05
+                 L 1.0, 0.72
+                 A 0.05 0.04 0 0 1 0.95, 0.76
+                 L 0.68, 0.76
+                 C 0.65, 0.76, 0.63, 0.80, 0.62, 0.85
+                 C 0.61, 0.91, 0.59, 1.0, 0.54, 1.0
+                 L 0.06, 1.0
+                 A 0.06 0.05 0 0 1 0, 0.95
+                 L 0, 0.05
+                 A 0.06 0.05 0 0 1 0.06, 0
+                 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
   <!-- ==========================================================================
        PAGES CONTAINER
        ========================================================================== -->
@@ -1116,19 +1181,16 @@
         <div class="p1-lower-area">
           <div class="p1-dots-wrapper">
             <div class="dots-indicator">
-              <span class="dot dot-filled"></span>
               <span class="dot dot-outline"></span>
+              <span class="dot dot-filled"></span>
               <span class="dot dot-outline"></span>
             </div>
           </div>
 
           <div class="p1-visual-and-info">
-            <div class="photo-tab-composition" id="photo-container" title="Click to replace photo">
-              <div class="tab-backdrop"></div>
-              <div class="tab-photo-box">
-                <img id="cover-photo" src="assets/avatar.jpg" alt="Photo" onerror="this.src='../quartz/static/avatar.jpg'">
-                <div class="replace-hint">Click to replace photo</div>
-              </div>
+            <div class="photo-folder-container" id="photo-container" title="Click to replace photo">
+              <img id="cover-photo" src="assets/avatar.jpg" alt="Photo" onerror="this.src='../quartz/static/avatar.jpg'">
+              <div class="replace-hint">Click to replace photo</div>
             </div>
 
             <div class="p1-address-block">
@@ -1170,6 +1232,10 @@
 
         <div class="two-col-layout">
           <div class="left-col">
+            <div class="editorial-accent-divider">
+              <span class="accent-pill"></span>
+              <span class="accent-line"></span>
+            </div>
             <div class="col-title editable" id="p2-col-title">Core Technical Pillars</div>
             <div id="p2-main-list">
               <!-- Dynamically populated skills or jobs -->
@@ -1188,6 +1254,10 @@
             </div>
 
             <div class="sidebar-lower-block">
+              <div class="editorial-accent-divider">
+                <span class="accent-pill"></span>
+                <span class="accent-line"></span>
+              </div>
               <div class="sidebar-block-title editable" id="p2-lower-title">Education</div>
               <div id="p2-lower-list">
                 <!-- Education or Material items -->
@@ -1226,6 +1296,10 @@
 
         <div class="two-col-layout">
           <div class="left-col">
+            <div class="editorial-accent-divider">
+              <span class="accent-pill"></span>
+              <span class="accent-line"></span>
+            </div>
             <div class="col-title editable" id="p3-col-title">Production Projects</div>
             <div id="p3-main-list">
               <!-- Dynamically populated production projects -->
@@ -1245,6 +1319,10 @@
             </div>
 
             <div class="sidebar-lower-block">
+              <div class="editorial-accent-divider">
+                <span class="accent-pill"></span>
+                <span class="accent-line"></span>
+              </div>
               <div class="sidebar-block-title editable" id="p3-lower-title">Cross-Platform Material</div>
               <div id="p3-lower-list">
                 <!-- Dynamically populated items -->
@@ -1296,9 +1374,9 @@
             </div>
           </div>
 
-          <div class="cl-custom-divider">
-            <div class="black-bar"></div>
-            <div class="thin-line"></div>
+          <div class="editorial-accent-divider" style="margin-top: 14px; margin-bottom: 20px;">
+            <span class="accent-pill"></span>
+            <span class="accent-line"></span>
           </div>
 
           <div class="cl-letter-grid">
@@ -1323,8 +1401,8 @@
 
         <div class="cl-footer-dots">
           <div class="dots-indicator">
-            <span class="dot dot-filled"></span>
             <span class="dot dot-outline"></span>
+            <span class="dot dot-filled"></span>
             <span class="dot dot-outline"></span>
           </div>
         </div>
@@ -1564,7 +1642,11 @@
           // Page 4: Cover Letter
           const clData = data.page4 || {};
           document.getElementById('p4-badge').innerHTML = clData.badge || 'Cover Letter';
-          document.getElementById('p4-contacts').innerHTML = data.meta.coverLetterContacts || '';
+          const contactsHtml = (data.meta.coverLetterContacts || '')
+            .replace(/P\s*\|\s*/g, '<span class="cl-prefix">P |</span> ')
+            .replace(/L\s*\|\s*/g, '<span class="cl-prefix">L |</span> ')
+            .replace(/E\s*\|\s*/g, '<span class="cl-prefix">E |</span> ');
+          document.getElementById('p4-contacts').innerHTML = contactsHtml;
           document.getElementById('p4-year-badge').innerHTML = clData.yearBadge || 'Year 2028';
           document.getElementById('p4-hero-name').innerHTML = heroNameHtml;
           document.getElementById('p4-hero-role').innerHTML = data.person.role || '';
@@ -1575,7 +1657,8 @@
           document.getElementById('p4-to-label').innerHTML = rec.label || 'TO';
           document.getElementById('p4-to-name').innerHTML = rec.name || '';
           document.getElementById('p4-to-role').innerHTML = rec.role || '';
-          document.getElementById('p4-to-address').innerHTML = rec.address || '';
+          const recAddr = (rec.address || '').replace(/A\s*\|\s*/g, '<span class="to-prefix">A |</span> ');
+          document.getElementById('p4-to-address').innerHTML = recAddr;
 
           document.getElementById('p4-letter-title').innerHTML = clData.letterTitle || 'Position';
           const clBody = document.getElementById('p4-letter-body');
@@ -1631,9 +1714,11 @@
           document.getElementById('p2-card-name').innerHTML = ref.name || '';
           document.getElementById('p2-card-role').innerHTML = ref.role || '';
           const cardLinesContainer = document.getElementById('p2-card-lines');
+          const phoneLine = (ref.phone || '').replace(/P\s*\|\s*/g, '');
+          const emailLine = (ref.email || '').replace(/E\s*\|\s*/g, '');
           cardLinesContainer.innerHTML = `
-            <div class="ref-line editable">${ref.phone || ''}</div>
-            <div class="ref-line editable">${ref.email || ''}</div>
+            <div class="ref-line editable"><span class="ref-prefix">P |</span> ${phoneLine}</div>
+            <div class="ref-line editable"><span class="ref-prefix">E |</span> ${emailLine}</div>
           `;
 
           // Page 2 Education
@@ -1654,7 +1739,11 @@
           // Page 4 becomes Page 3 (Cover Letter)
           const clData = data.page3 || {};
           document.getElementById('p4-badge').innerHTML = clData.badge || 'Cover Letter';
-          document.getElementById('p4-contacts').innerHTML = data.meta.coverLetterContacts || '';
+          const contactsHtml3 = (data.meta.coverLetterContacts || '')
+            .replace(/P\s*\|\s*/g, '<span class="cl-prefix">P |</span> ')
+            .replace(/L\s*\|\s*/g, '<span class="cl-prefix">L |</span> ')
+            .replace(/E\s*\|\s*/g, '<span class="cl-prefix">E |</span> ');
+          document.getElementById('p4-contacts').innerHTML = contactsHtml3;
           document.getElementById('p4-year-badge').innerHTML = clData.yearBadge || 'Year 2028';
           document.getElementById('p4-hero-name').innerHTML = heroNameHtml;
           document.getElementById('p4-hero-role').innerHTML = data.person.role || '';
@@ -1665,7 +1754,8 @@
           document.getElementById('p4-to-label').innerHTML = rec.label || 'TO';
           document.getElementById('p4-to-name').innerHTML = rec.name || '';
           document.getElementById('p4-to-role').innerHTML = rec.role || '';
-          document.getElementById('p4-to-address').innerHTML = rec.address || '';
+          const recAddr3 = (rec.address || '').replace(/A\s*\|\s*/g, '<span class="to-prefix">A |</span> ');
+          document.getElementById('p4-to-address').innerHTML = recAddr3;
 
           document.getElementById('p4-letter-title').innerHTML = clData.letterTitle || 'Position';
           const clBody = document.getElementById('p4-letter-body');
@@ -1694,15 +1784,19 @@
 
       function loadPreset(key) {
         activePresetKey = key;
-        const presetData = db[key] || db['unbrain_full'] || db['original'];
+        const presetData = db[key] || db['original'] || db['unbrain_full'];
         if (presetData) {
           renderResume(JSON.parse(JSON.stringify(presetData)));
+          datasetSelector.value = key;
           showToast(`已载入: ${presetData.label || key}`);
         }
       }
 
       datasetSelector.addEventListener('change', (e) => {
         loadPreset(e.target.value);
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set('data', e.target.value);
+        window.history.replaceState(null, '', newUrl);
       });
 
       function applyZoom(scale) {
@@ -1726,8 +1820,13 @@
           allPages.forEach(p => p.classList.remove('current-active'));
         } else if (mode === 'single') {
           container.classList.add('layout-single');
+          let actualTarget = targetPage;
+          if (currentActivePageCount === 3 && targetPage === 3) {
+            actualTarget = 4; // In 3-page mode, 3rd page is #page-4 (Cover Letter)
+          }
+
           allPages.forEach((p, idx) => {
-            if (idx + 1 === targetPage) {
+            if (idx + 1 === actualTarget) {
               p.classList.add('current-active');
             } else {
               p.classList.remove('current-active');
@@ -1740,21 +1839,32 @@
         }
       }
 
-      viewGrid.addEventListener('click', () => setViewMode('grid'));
-      viewVertical.addEventListener('click', () => setViewMode('vertical'));
-      viewP1.addEventListener('click', () => setViewMode('single', 1));
-      viewP2.addEventListener('click', () => setViewMode('single', 2));
-      viewP3.addEventListener('click', () => setViewMode('single', 3));
-      viewP4.addEventListener('click', () => setViewMode('single', 4));
+      function handleHashChange() {
+        const hash = window.location.hash.toLowerCase();
+        if (hash === '#p1') setViewMode('single', 1);
+        else if (hash === '#p2') setViewMode('single', 2);
+        else if (hash === '#p3') setViewMode('single', 3);
+        else if (hash === '#p4') setViewMode('single', 4);
+        else if (hash === '#vertical') setViewMode('vertical');
+        else if (hash === '#grid') setViewMode('grid');
+      }
+
+      viewGrid.addEventListener('click', () => { window.location.hash = '#grid'; setViewMode('grid'); });
+      viewVertical.addEventListener('click', () => { window.location.hash = '#vertical'; setViewMode('vertical'); });
+      viewP1.addEventListener('click', () => { window.location.hash = '#p1'; setViewMode('single', 1); });
+      viewP2.addEventListener('click', () => { window.location.hash = '#p2'; setViewMode('single', 2); });
+      viewP3.addEventListener('click', () => { window.location.hash = '#p3'; setViewMode('single', 3); });
+      viewP4.addEventListener('click', () => { window.location.hash = '#p4'; setViewMode('single', 4); });
+
+      window.addEventListener('hashchange', handleHashChange);
+
+      // Expose globally for automated inspection & testing
+      window.setViewMode = setViewMode;
+      window.applyZoom = applyZoom;
+      window.loadPreset = loadPreset;
 
       // Hash support
-      const initialHash = window.location.hash.toLowerCase();
-      if (initialHash === '#p1') setViewMode('single', 1);
-      else if (initialHash === '#p2') setViewMode('single', 2);
-      else if (initialHash === '#p3') setViewMode('single', 3);
-      else if (initialHash === '#p4') setViewMode('single', 4);
-      else if (initialHash === '#vertical') setViewMode('vertical');
-      else setViewMode('grid');
+      // Startup hash handling is invoked at the end after loadPreset initializes currentActivePageCount.
 
       if (window.innerWidth < 1100) {
         zoomSlider.value = 50;
@@ -1854,8 +1964,17 @@
         }, 500);
       });
 
-      // Initialize
-      loadPreset('unbrain_full');
+      // Initialize with URL parameter (?data=original or ?data=unbrain_full)
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialPreset = urlParams.get('data') || 'original';
+      loadPreset(db[initialPreset] ? initialPreset : 'original');
+
+      // Hash support at startup (runs after loadPreset)
+      if (window.location.hash) {
+        handleHashChange();
+      } else {
+        setViewMode('grid');
+      }
     })();
   </script>
 </body>
