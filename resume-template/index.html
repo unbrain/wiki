@@ -581,12 +581,12 @@
       font-size: 15px;
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       letter-spacing: -0.01em;
     }
 
     .job-item {
-      margin-bottom: 22px;
+      margin-bottom: 16px;
     }
 
     .job-item:last-child {
@@ -594,27 +594,35 @@
     }
 
     .job-header {
-      font-size: 11.8px;
+      font-size: 11.6px;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 3px;
+      margin-bottom: 2px;
       line-height: 1.3;
       display: flex;
       align-items: center;
     }
 
     .job-company {
-      font-size: 10.2px;
-      font-weight: 500;
-      color: var(--text-muted);
-      margin-bottom: 6px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--accent-slate);
+      margin-bottom: 4px;
+    }
+
+    .job-subtitle {
+      font-size: 9.2px;
+      font-weight: 600;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+      letter-spacing: 0.02em;
     }
 
     .job-summary {
-      font-size: 9.8px;
-      line-height: 1.54;
+      font-size: 9.5px;
+      line-height: 1.5;
       color: var(--text-muted);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       text-align: justify;
     }
 
@@ -625,10 +633,10 @@
     }
 
     .job-bullets li {
-      font-size: 9.5px;
-      line-height: 1.52;
+      font-size: 9.3px;
+      line-height: 1.48;
       color: var(--text-sub);
-      margin-bottom: 3.5px;
+      margin-bottom: 2.5px;
       display: flex;
       align-items: flex-start;
       text-align: justify;
@@ -643,57 +651,67 @@
       background-color: var(--card-black);
       color: #fff;
       border-radius: 12px;
-      padding: 18px 16px;
+      padding: 16px 14px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     }
 
     .ref-title {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       letter-spacing: 0.02em;
     }
 
     .ref-name {
-      font-size: 11px;
+      font-size: 10.8px;
       font-weight: 600;
       color: #ffffff;
       margin-bottom: 2px;
     }
 
     .ref-role {
-      font-size: 9.5px;
+      font-size: 9.2px;
       color: #9da39e;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .ref-divider {
       height: 1px;
       background-color: rgba(255, 255, 255, 0.18);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .ref-line {
-      font-size: 9.5px;
+      font-size: 9.2px;
       color: #e5e5e5;
-      line-height: 1.58;
+      line-height: 1.52;
       letter-spacing: 0.01em;
     }
 
+    .ref-endorsement {
+      font-size: 8.8px;
+      color: #b0b8b2;
+      line-height: 1.45;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.15);
+      font-style: italic;
+    }
+
     .sidebar-lower-block {
-      margin-top: 32px;
+      margin-top: 22px;
     }
 
     .sidebar-block-title {
-      font-size: 14.5px;
+      font-size: 13.5px;
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .list-item {
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .list-item:last-child {
@@ -701,24 +719,46 @@
     }
 
     .item-primary {
-      font-size: 10.8px;
+      font-size: 10.5px;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 2px;
+      margin-bottom: 1.5px;
       display: flex;
       align-items: center;
     }
 
     .item-secondary {
-      font-size: 9.5px;
+      font-size: 9.2px;
       color: var(--text-muted);
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
 
     .item-meta {
-      font-size: 9.5px;
+      font-size: 9.2px;
       font-weight: 600;
       color: var(--text-sub);
+    }
+
+    .manifesto-box {
+      margin-top: 18px;
+      padding: 10px 12px;
+      border-left: 2.5px solid var(--text-main);
+      background: rgba(18, 20, 18, 0.04);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .manifesto-box .m-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .manifesto-box .m-quote {
+      font-size: 9.2px;
+      line-height: 1.45;
+      color: var(--text-sub);
+      font-style: italic;
     }
 
     /* Cover Letter Page */
@@ -1392,11 +1432,17 @@
           (data.page2.skills || []).forEach(s => {
             const item = document.createElement('div');
             item.className = 'job-item';
+            let bulletsHtml = '';
+            (s.bullets || []).forEach(b => {
+              bulletsHtml += `<li><span class="tri-bullet">▸</span><span>${b}</span></li>`;
+            });
             item.innerHTML = `
               <div class="job-header">
                 <span class="sq-bullet"></span><span class="editable">${s.title}</span>
               </div>
+              ${s.subtitle ? `<div class="job-subtitle editable">${s.subtitle}</div>` : ''}
               <div class="job-summary editable">${s.summary}</div>
+              ${bulletsHtml ? `<ul class="job-bullets editable">${bulletsHtml}</ul>` : ''}
             `;
             p2MainList.appendChild(item);
           });
@@ -1415,7 +1461,7 @@
             cardLinesContainer.appendChild(div);
           });
 
-          // Page 2: Education
+          // Page 2: Education & Extra Artifacts
           document.getElementById('p2-lower-title').innerHTML = data.page2.education.title || 'Education';
           const p2LowerList = document.getElementById('p2-lower-list');
           p2LowerList.innerHTML = '';
@@ -1430,7 +1476,26 @@
             p2LowerList.appendChild(div);
           });
 
-          // Page 3: Work Experience
+          if (data.page2.extraArtifacts && data.page2.extraArtifacts.items) {
+            const artTitle = document.createElement('div');
+            artTitle.className = 'sidebar-block-title editable';
+            artTitle.style.marginTop = '16px';
+            artTitle.textContent = data.page2.extraArtifacts.title || 'Knowledge Base';
+            p2LowerList.appendChild(artTitle);
+
+            data.page2.extraArtifacts.items.forEach(art => {
+              const div = document.createElement('div');
+              div.className = 'list-item';
+              div.innerHTML = `
+                <div class="item-primary"><span class="sq-bullet"></span><span class="editable">${art.degree}</span></div>
+                <div class="item-secondary editable">${art.school}</div>
+                <div class="item-meta editable">${art.year}</div>
+              `;
+              p2LowerList.appendChild(div);
+            });
+          }
+
+          // Page 3: Work Experience & Projects
           document.getElementById('p3-badge').innerHTML = data.page3.badge || 'Work Experience';
           document.getElementById('p3-hero-name').innerHTML = heroNameHtml;
           document.getElementById('p3-hero-role').innerHTML = data.person.role || '';
@@ -1458,7 +1523,7 @@
             p3MainList.appendChild(item);
           });
 
-          // Page 3: Reference Card
+          // Page 3: Reference Card with Endorsement
           const ref3 = data.page3.referenceCard || {};
           document.getElementById('p3-card-title').innerHTML = ref3.title || 'Reference';
           document.getElementById('p3-card-name').innerHTML = ref3.name || '';
@@ -1467,14 +1532,15 @@
           p3CardLines.innerHTML = `
             <div class="ref-line editable">${ref3.phone || ''}</div>
             <div class="ref-line editable">${ref3.email || ''}</div>
+            ${ref3.endorsement ? `<div class="ref-endorsement editable">${ref3.endorsement}</div>` : ''}
           `;
 
-          // Page 3: Material Block
-          const mat = data.page3.materialBlock || {};
-          document.getElementById('p3-lower-title').innerHTML = mat.title || 'Cross-Platform Material';
+          // Page 3: Infrastructure Block & Manifesto
+          const infra = data.page3.infrastructureBlock || data.page3.materialBlock || {};
+          document.getElementById('p3-lower-title').innerHTML = infra.title || 'Infrastructure';
           const p3LowerList = document.getElementById('p3-lower-list');
           p3LowerList.innerHTML = '';
-          (mat.items || []).forEach(m => {
+          (infra.items || []).forEach(m => {
             const div = document.createElement('div');
             div.className = 'list-item';
             div.innerHTML = `
@@ -1484,6 +1550,16 @@
             `;
             p3LowerList.appendChild(div);
           });
+
+          if (data.page3.manifesto) {
+            const manDiv = document.createElement('div');
+            manDiv.className = 'manifesto-box';
+            manDiv.innerHTML = `
+              <div class="m-title editable">${data.page3.manifesto.title}</div>
+              <div class="m-quote editable">${data.page3.manifesto.quote}</div>
+            `;
+            p3LowerList.appendChild(manDiv);
+          }
 
           // Page 4: Cover Letter
           const clData = data.page4 || {};
