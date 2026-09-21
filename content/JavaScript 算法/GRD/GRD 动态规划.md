@@ -105,6 +105,9 @@ var uniquePaths = function (m, n) {
     return dp[n-1]
 };
 ```
+
+> 二刷 2026-09-21：一维数组滚动优化，dp[j] += dp[j-1] 状态压缩一次 AC。
+
 ## 相关笔记
 
 - [[经典 150 Kadane 算法|Kadane 算法题目]]（最大子数组和）
