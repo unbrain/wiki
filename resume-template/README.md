@@ -1,76 +1,109 @@
-# 高端极简杂志风 3 页 A4 简历模板套件 (Editorial Resume Template)
+# 高端极简杂志风 3 页 A4 简历与求职信模板（数据驱动版）
 
-根据高阶杂志画册级求职模板设计，精确还原 **3 页标准 A4（210mm × 297mm）** 规格，集成了**封面展示与自述 (About Me)**、**核心履历正文 (Resume / CV)** 与 **求职自荐信 (Cover Letter)** 三大核心板块。
-
----
-
-## 🌟 核心设计特色
-
-- **杂志编辑级美学 (Editorial Design)**：
-  - **底色系统**：冷峻、高级的莫兰迪灰绿艺术纸调（`#eaeee9`），带来自然画册的高级触感。
-  - **版式排版**：采用 Neo-grotesque 强冲击力加粗标题（`JANE WILKINS`）、阶梯式文件标签（Folder Tab）异形照片构图、极简药丸徽章（Pill Badges）、纯黑磨砂质感推荐人卡片（Reference Card）以及飘逸自然的手写连笔签名。
-- **100% 真实 A4 打印与 PDF 导出**：
-  - CSS 针对 `@media print` 与 `@page { size: A4 portrait; margin: 0; }` 深度优化。
-  - 无浏览器页眉页脚干扰，自动精确分页为 **3 张独立完整的 A4 纸**，无溢出、无截断、无空白错页。
-- **开箱即用的所见即所得交互系统**：
-  - ✏️ **在线实时编辑 (Live Edit)**：无需改动代码，点击页面上任意文字即可直接修改，支持自动保存草稿到本地浏览器（`localStorage`）。
-  - 🌐 **一键中/英范本切换**：内置原版英文案例与一套精修中文职场范本（“简蔚琳 / 品牌推广主管”）。
-  - 🖼️ **一键更换照片**：点击封面照片或点击工具栏，即可从本地选择属于你的个人形象照。
-  - 📐 **多视图切换**：支持「3 联画廊展台模式」、「连续垂直滚动模式」与「单页精修模式」，支持 50% ~ 130% 自由缩放。
+根据高端现代杂志设计规范打造，严格匹配 **3 页独立标准 A4（210mm × 297mm）** 规格。现已升级为**完全数据驱动架构（Data-Driven Architecture）**，彻底实现“表现与数据解耦”，无缝接入项目真实履历，支持无限拓展。
 
 ---
 
-## 📂 文件结构
+## 🌟 核心特性与架构升级
+
+1. **彻底的数据驱动（Data-Driven & Extensible）**：
+   - 告别死板写死的静态页面，所有文字、经历、联系方式、收件人及照片全部抽取为结构化数据源。
+   - **内置当前项目真实履历**：自动载入 **刘朝阳 (unbrain) · 7年新浪微博核心 Web 团队资深前端工程师/架构师** 的全量真实工程履历。
+   - **保留原版设计稿数据集**：随时一键切换为原设计图的 **Jane Wilkins (原版英文模板)**。
+   - **支持自定义 JSON 导入/导出**：支持一键导出当前编辑数据为 `cv-data.json`，或导入任意外部符合规范的 JSON 数据即时渲染！
+2. **杂志编辑级美学 (Editorial Design System)**：
+   - **底色系统**：冷峻、高级的莫兰迪灰绿艺术纸调（`#eaeee9`）。
+   - **版式排版**：加粗大黑体标题（`LIU ZHAOYANG` / `JANE WILKINS`）、阶梯式文件标签（Folder Tab）异形照片构图、极简药丸徽章（Pill Badges）、纯黑磨砂质感推荐人名片（Reference Card）以及真实自然的手写连笔艺术签名。
+3. **严格 1:1 标准 A4 打印与 PDF 导出**：
+   - CSS 针对 `@media print` 与 `@page { size: A4 portrait; margin: 0; }` 深度优化。
+   - 自动隐藏工具栏与阴影，**导出精确为 3 张独立 A4（594.96pt × 841.92pt）**，绝无错页与半页截断。
+
+---
+
+## 📂 文件目录结构
 
 ```text
 resume-template/
-├── index.html                  # 核心单文件模板（包含全部样式、SVG、交互脚本）
+├── index.html                  # 核心模板系统（现代化 CSS + 动态数据绑定引擎）
+├── cv-data.js                  # 独立结构化简历数据源（支持自由修改与拓展）
 ├── README.md                   # 本说明文档
-├── resume-export.pdf           # 导出的 3 页完整标准 A4 PDF 样例
-├── preview-spread.png          # 3 页并排渲染预览高清图
+├── resume-export.pdf           # 3 页标准 A4 PDF 导出成品样例
+├── preview-spread.png          # 3 联排展台高清效果预览
+├── inspect-p1.png              # 第 1 页单页 1:1 核查图
+├── inspect-p2.png              # 第 2 页单页 1:1 核查图
+├── inspect-p3.png              # 第 3 页单页 1:1 核查图
 └── assets/
-    ├── hero-model-cycling.jpg  # 默认时尚骑行侧影摄影图（高保真契合原图氛围）
-    └── hero-model-portrait.jpg # 备选近景特写形象图
+    ├── avatar.jpg              # 项目真实头像（刘朝阳极客插画头像）
+    ├── hero-model-cycling.jpg  # 原版设计稿骑行模特图
+    └── hero-model-portrait.jpg # 备选特写模特图
 ```
 
 ---
 
-## 🚀 快速上手使用
+## 🚀 如何使用与数据拓展
 
-### 1. 本地直接预览与编辑
-无需安装任何复杂环境，直接在文件管理器中**双击 `resume-template/index.html`** 或拖拽至任意现代浏览器（Chrome、Edge、Safari）中打开即可。
+### 1. 本地浏览与数据切换
+双击在浏览器中打开 `resume-template/index.html`：
+- **切换数据集**：点击顶部左侧下拉菜单，可秒级在 **“当前项目 CV (刘朝阳)”** 与 **“原版设计稿 (Jane Wilkins)”** 之间无缝切换。
+- **在线即时编辑**：点击 **「在线编辑」**，直接在页面上打字修改任意内容。
+- **导出/导入数据**：
+  - 点击 **「导出 JSON」** 可将当前页面上的简历结构完整导出为 `.json` 文件备份；
+  - 点击 **「导入 JSON」** 可选取本地的简历 JSON 配置文件，页面瞬间自动重绘渲染。
+- **更换照片**：点击第一页照片或顶部 **「更换照片」** 按钮，即可上传您的个人形象照。
 
-### 2. 导出为高清 PDF
-1. 点击顶部右侧的绿色按钮 **「Print / Save PDF」**（或按快捷键 `Ctrl + P` / `Cmd + P`）。
-2. 在浏览器弹出的打印设置面板中：
-   - **目标打印机**：选择 **「另存为 PDF」** (Save as PDF)。
-   - **纸张大小**：选择 **「A4」**。
-   - **边距**：选择 **「无」** (None)。
-   - **选项**：勾选 **「背景图形」** (Background graphics)。
-3. 点击保存，即可获得与设计稿 100% 一致的高清矢量 3 页 A4 PDF 简历！
+### 2. 在代码中直接拓展数据（编辑 `cv-data.js`）
+在 `cv-data.js` 中，每个数据集包含极其清晰的字段，您可以随时添加新的经历、替换技能或添加新的项目经历：
 
----
+```javascript
+window.CV_DATABASE = {
+  // 你的专属数据集
+  myData: {
+    id: "myData",
+    label: "我的专属简历",
+    meta: {
+      year: "Year 2028",
+      website: "github.com/yourname",
+      addressTitle: "ADDRESS :",
+      addressLines: "电话<br>邮箱<br>城市<br>网址",
+      coverLetterContacts: "P | ...<br>L | ...<br>E | ..."
+    },
+    person: {
+      nameFirst: "FIRSTNAME",
+      nameLast: "LASTNAME",
+      role: "职位名称",
+      photo: "assets/avatar.jpg",
+      greeting: "Hello I'm<br>Your Name",
+      introBio: "个人概述段落..."
+    },
+    page2: {
+      badge: "Resume",
+      profileOverview: "专业技能核心综述...",
+      experiences: [
+        {
+          title: "职位 / 时间",
+          company: "公司名称",
+          summary: "核心职责概述",
+          bullets: ["成果要点 1", "成果要点 2", "成果要点 3"]
+        }
+      ],
+      reference: { ... },
+      education: { ... }
+    },
+    page3: {
+      letterTitle: "应聘岗位：...",
+      letterBody: ["求职信第一段...", "求职信第二段..."],
+      signatureText: "Your Name",
+      signerName: "YOUR NAME"
+    }
+  }
+};
+```
 
-## 📄 3 页板块详细拆解
-
-### 第 1 页：个人简介与形象展示 (Page 01 · About Me / Cover)
-- **Top Meta**：域名横线标与 `Year 2028` 药丸胶囊。
-- **Hero Title**：超大加粗姓名 `JANE WILKINS` 及职位 `Promotion Manager`。
-- **Intro**：两栏式问候（`Hello I'm Jane Wilkins`）与自述段落。
-- **Visual Anchor**：标志性阶梯标签状（Folder Tab）深色衬底与时尚骑行摄影照。
-- **Contact & Stamp**：地址与联系方式区块，右下角极简大字 `About Me.`。
-
-### 第 2 页：核心履历正文 (Page 02 · Resume / CV)
-- **Header**：左侧 `Resume` 胶囊，右上角右对齐姓名与职位。
-- **Profile Overview**：左栏分类大标，右栏综合专业能力综述。
-- **Work Experience**：3 段高层级工作经历，带黑色小方块（■）项目标头、公司名、概述段落与向右细三角（▸）职责要点。
-- **Reference Card**：纯黑磨砂背景、高对比度白色排版的资深推荐人名片。
-- **Education**：本科与硕士学位阶段及年份。
-
-### 第 3 页：求职信与签名 (Page 03 · Cover Letter)
-- **Header**：左侧 `Cover Letter` 胶囊，居中紧凑联系方式，右侧年份标。
-- **Meta Section**：左侧信件日期，右侧清晰结构化的收件人与组织信息。
-- **Accent Line & Side Title**：带实心黑块的分割线与左侧应聘岗位标头。
-- **Letter Body**：两段行云流水的严谨自荐信正文，段落饱满规整。
-- **Sign-off**：`Sincerely`、灵动优雅的手写艺术签名（`Signature`）与大写落款。
-- **Footer**：左下角三点标志性装饰圆点（`● ○ ○`）。
+### 3. 一键打印与导出 3 页标准 A4 PDF
+1. 点击右上角绿色按钮 **「Print / Save PDF」**（或按 `Ctrl+P` / `Cmd+P`）；
+2. 打印选项选择：
+   - **目标打印机**：另存为 PDF (Save as PDF)
+   - **纸张大小**：A4
+   - **边距**：无 (None)
+   - **选项**：勾选“背景图形” (Background graphics)
+3. 点击保存，即可获得纯矢量超清的 3 页 A4 PDF 简历。
