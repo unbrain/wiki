@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editorial 3-Page A4 Resume & Cover Letter Template (Data-Driven)</title>
-  <!-- Google Fonts: Inter for editorial sans-serif, Great Vibes & Dancing Script for authentic handwritten signature -->
+  <title>Editorial Resume & Portfolio Template (Data-Driven)</title>
+  <!-- Google Fonts: Inter for editorial sans-serif, Great Vibes & Dancing Script for handwritten signature -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
   <style>
     /* ==========================================================================
        DESIGN SYSTEM & CSS VARIABLES
-       Based on the Minimalist Editorial 3-Page Resume Mockup
+       Based on the Minimalist Editorial Resume Mockup
        ========================================================================== */
     :root {
       /* Paper & Editorial Colors */
@@ -126,7 +126,7 @@
       cursor: pointer;
       outline: none;
       white-space: nowrap;
-      max-width: 260px;
+      max-width: 320px;
     }
 
     .tb-select option {
@@ -184,12 +184,11 @@
     }
 
     .zoom-control input[type="range"] {
-      width: 80px;
+      width: 75px;
       accent-color: #3b6576;
       cursor: pointer;
     }
 
-    /* Editable Highlight Glow */
     body.is-editing [contenteditable="true"] {
       outline: 2px dashed rgba(59, 101, 118, 0.45);
       outline-offset: 3px;
@@ -222,7 +221,6 @@
       transition: transform 0.2s ease, gap 0.2s ease;
     }
 
-    /* View Modes */
     .pages-container.layout-grid {
       display: flex;
       flex-direction: row;
@@ -236,10 +234,10 @@
     }
 
     .pages-container.layout-single .a4-page {
-      display: none;
+      display: none !important;
     }
     .pages-container.layout-single .a4-page.current-active {
-      display: flex;
+      display: flex !important;
     }
 
     /* ==========================================================================
@@ -264,6 +262,10 @@
       page-break-inside: avoid;
     }
 
+    .a4-page.is-hidden {
+      display: none !important;
+    }
+
     .page-indicator-tag {
       position: absolute;
       top: -30px;
@@ -276,9 +278,7 @@
       pointer-events: none;
     }
 
-    /* ==========================================================================
-       COMMON EDITORIAL TYPOGRAPHY & ELEMENTS
-       ========================================================================== */
+    /* Common Typography & Elements */
     .pill-badge {
       display: inline-flex;
       align-items: center;
@@ -340,7 +340,7 @@
       height: 1px;
       background-color: var(--line-color);
       border: none;
-      margin: 20px 0;
+      margin: 18px 0;
     }
 
     .sq-bullet {
@@ -362,9 +362,7 @@
       flex-shrink: 0;
     }
 
-    /* ==========================================================================
-       PAGE 1: ABOUT ME / COVER
-       ========================================================================== */
+    /* Page 1 Specific */
     .page-1-top-bar {
       display: flex;
       align-items: center;
@@ -472,7 +470,6 @@
       object-fit: cover;
       object-position: center 20%;
       display: block;
-      transition: transform 0.2s;
     }
 
     .photo-tab-composition .replace-hint {
@@ -528,116 +525,116 @@
       line-height: 1;
     }
 
-    /* ==========================================================================
-       PAGE 2: RESUME / CV
-       ========================================================================== */
-    .page-2-header {
+    /* Page 2 & Page 3 Shared Grid */
+    .editorial-page-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    .page-2-header-right {
+    .editorial-page-header-right {
       text-align: right;
     }
 
-    .page-2-header-right .hero-name {
+    .editorial-page-header-right .hero-name {
       font-size: 54px;
       line-height: 0.88;
       margin-bottom: 12px;
     }
 
-    .page-2-header-right .hero-role {
+    .editorial-page-header-right .hero-role {
       font-size: 15px;
     }
 
-    .p2-profile-grid {
+    .overview-grid {
       display: grid;
       grid-template-columns: 140px 1fr;
       gap: 24px;
       align-items: flex-start;
-      margin: 6px 0;
+      margin: 4px 0;
     }
 
-    .p2-section-heading {
+    .overview-heading {
       font-size: 13px;
       font-weight: 800;
       line-height: 1.35;
       color: var(--text-main);
     }
 
-    .p2-profile-text {
+    .overview-text {
       font-size: 10.2px;
       line-height: 1.6;
       color: var(--text-muted);
       text-align: justify;
     }
 
-    .p2-main-grid {
+    .two-col-layout {
       display: grid;
       grid-template-columns: 1fr 210px;
-      gap: 32px;
+      gap: 30px;
       flex: 1;
-      margin-top: 14px;
+      margin-top: 10px;
     }
 
-    .p2-column-title {
-      font-size: 16px;
+    .col-title {
+      font-size: 15px;
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       letter-spacing: -0.01em;
     }
 
-    .p2-job-item {
-      margin-bottom: 28px;
+    .job-item {
+      margin-bottom: 22px;
     }
 
-    .p2-job-item:last-child {
+    .job-item:last-child {
       margin-bottom: 0;
     }
 
-    .p2-job-header {
-      font-size: 12px;
+    .job-header {
+      font-size: 11.8px;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       line-height: 1.3;
       display: flex;
       align-items: center;
     }
 
-    .p2-job-company {
-      font-size: 10.5px;
+    .job-company {
+      font-size: 10.2px;
       font-weight: 500;
       color: var(--text-muted);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    .p2-job-summary {
-      font-size: 10px;
-      line-height: 1.56;
+    .job-summary {
+      font-size: 9.8px;
+      line-height: 1.54;
       color: var(--text-muted);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      text-align: justify;
     }
 
-    .p2-job-bullets {
+    .job-bullets {
       list-style: none;
       padding: 0;
       margin: 0;
     }
 
-    .p2-job-bullets li {
-      font-size: 9.8px;
-      line-height: 1.56;
+    .job-bullets li {
+      font-size: 9.5px;
+      line-height: 1.52;
       color: var(--text-sub);
-      margin-bottom: 4px;
+      margin-bottom: 3.5px;
       display: flex;
       align-items: flex-start;
+      text-align: justify;
     }
 
-    .p2-right-col {
+    .right-sidebar {
       display: flex;
       flex-direction: column;
     }
@@ -646,7 +643,7 @@
       background-color: var(--card-black);
       color: #fff;
       border-radius: 12px;
-      padding: 20px 18px;
+      padding: 18px 16px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     }
 
@@ -654,7 +651,7 @@
       font-size: 12px;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       letter-spacing: 0.02em;
     }
 
@@ -668,43 +665,43 @@
     .ref-role {
       font-size: 9.5px;
       color: #9da39e;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .ref-divider {
       height: 1px;
       background-color: rgba(255, 255, 255, 0.18);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
-    .ref-contact-line {
+    .ref-line {
       font-size: 9.5px;
       color: #e5e5e5;
-      line-height: 1.6;
+      line-height: 1.58;
       letter-spacing: 0.01em;
     }
 
-    .education-block {
-      margin-top: 40px;
+    .sidebar-lower-block {
+      margin-top: 32px;
     }
 
-    .edu-section-title {
-      font-size: 15px;
+    .sidebar-block-title {
+      font-size: 14.5px;
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
-    .edu-item {
-      margin-bottom: 22px;
+    .list-item {
+      margin-bottom: 18px;
     }
 
-    .edu-item:last-child {
+    .list-item:last-child {
       margin-bottom: 0;
     }
 
-    .edu-degree {
-      font-size: 11px;
+    .item-primary {
+      font-size: 10.8px;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 2px;
@@ -712,28 +709,26 @@
       align-items: center;
     }
 
-    .edu-school {
+    .item-secondary {
       font-size: 9.5px;
       color: var(--text-muted);
       margin-bottom: 2px;
     }
 
-    .edu-year {
+    .item-meta {
       font-size: 9.5px;
       font-weight: 600;
       color: var(--text-sub);
     }
 
-    /* ==========================================================================
-       PAGE 3: COVER LETTER
-       ========================================================================== */
-    .page-3-top-bar {
+    /* Cover Letter Page */
+    .cl-top-bar {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
     }
 
-    .page-3-contact-summary {
+    .cl-contact-summary {
       font-size: 10.5px;
       line-height: 1.5;
       color: var(--text-main);
@@ -742,7 +737,7 @@
       margin-left: -50px;
     }
 
-    .p3-meta-grid {
+    .cl-meta-grid {
       display: grid;
       grid-template-columns: 140px 1fr;
       gap: 24px;
@@ -750,19 +745,19 @@
       margin-bottom: 16px;
     }
 
-    .p3-meta-left .cl-label {
+    .cl-meta-left .cl-label {
       font-size: 13.5px;
       font-weight: 800;
       color: var(--text-main);
       margin-bottom: 4px;
     }
 
-    .p3-meta-left .cl-date {
+    .cl-meta-left .cl-date {
       font-size: 11px;
       color: var(--text-sub);
     }
 
-    .p3-recipient-box .to-label {
+    .cl-recipient-box .to-label {
       font-size: 9.5px;
       font-weight: 700;
       color: var(--text-light);
@@ -771,46 +766,46 @@
       margin-bottom: 3px;
     }
 
-    .p3-recipient-box .to-name {
+    .cl-recipient-box .to-name {
       font-size: 13.5px;
       font-weight: 800;
       color: var(--text-main);
       margin-bottom: 2px;
     }
 
-    .p3-recipient-box .to-role {
+    .cl-recipient-box .to-role {
       font-size: 11px;
       color: var(--text-sub);
       margin-bottom: 8px;
     }
 
-    .p3-recipient-box .to-address {
+    .cl-recipient-box .to-address {
       font-size: 10.5px;
       line-height: 1.5;
       color: var(--text-muted);
     }
 
-    .p3-custom-divider {
+    .cl-custom-divider {
       display: flex;
       align-items: center;
       margin-top: 14px;
       margin-bottom: 20px;
     }
 
-    .p3-custom-divider .black-bar {
+    .cl-custom-divider .black-bar {
       width: 28px;
       height: 4px;
       background-color: var(--text-main);
       flex-shrink: 0;
     }
 
-    .p3-custom-divider .thin-line {
+    .cl-custom-divider .thin-line {
       flex: 1;
       height: 1px;
       background-color: var(--line-color);
     }
 
-    .p3-letter-grid {
+    .cl-letter-grid {
       display: grid;
       grid-template-columns: 140px 1fr;
       gap: 24px;
@@ -818,39 +813,39 @@
       margin-bottom: 24px;
     }
 
-    .p3-letter-side-title {
+    .cl-letter-side-title {
       font-size: 13.5px;
       font-weight: 800;
       color: var(--text-main);
     }
 
-    .p3-letter-body-content {
+    .cl-letter-body-content {
       font-size: 10.4px;
       line-height: 1.62;
       color: var(--text-sub);
       text-align: justify;
     }
 
-    .p3-letter-body-content p {
+    .cl-letter-body-content p {
       margin-bottom: 16px;
     }
 
-    .p3-letter-body-content p:last-child {
+    .cl-letter-body-content p:last-child {
       margin-bottom: 0;
     }
 
-    .p3-signoff-area {
+    .cl-signoff-area {
       margin-top: 24px;
       margin-left: 164px;
     }
 
-    .p3-sincerely {
+    .cl-sincerely {
       font-size: 11.5px;
       color: var(--text-sub);
       margin-bottom: 4px;
     }
 
-    .p3-signature-box {
+    .cl-signature-box {
       margin: 2px 0 10px;
       height: 48px;
       display: flex;
@@ -867,7 +862,7 @@
       letter-spacing: 0.02em;
     }
 
-    .p3-signer-name {
+    .cl-signer-name {
       font-size: 11.5px;
       font-weight: 800;
       letter-spacing: 0.06em;
@@ -875,7 +870,7 @@
       text-transform: uppercase;
     }
 
-    .p3-footer-dots {
+    .cl-footer-dots {
       margin-top: auto;
       padding-top: 16px;
     }
@@ -908,9 +903,7 @@
       pointer-events: auto;
     }
 
-    /* ==========================================================================
-       PRINT STYLES FOR EXACT 3-PAGE A4 EXPORT
-       ========================================================================== */
+    /* Print Optimization */
     @media print {
       @page {
         size: A4 portrait;
@@ -963,6 +956,10 @@
         print-color-adjust: exact !important;
       }
 
+      .a4-page.is-hidden {
+        display: none !important;
+      }
+
       .a4-page:last-child {
         page-break-after: avoid !important;
       }
@@ -983,20 +980,18 @@
   <!-- Toast Notification -->
   <div id="toast" class="toast-notice">Notice</div>
 
-  <!-- ==========================================================================
-       TOP CONTROL TOOLBAR (Data-Driven Dashboard)
-       ========================================================================== */ -->
+  <!-- Top Control Toolbar -->
   <header class="top-toolbar">
     <div class="toolbar-left">
       <div class="toolbar-brand">
         <span>Editorial Resume</span>
-        <span class="badge">3x A4</span>
+        <span class="badge" id="page-count-badge">Multi-A4</span>
       </div>
 
       <!-- Dataset Selector -->
       <select id="dataset-selector" class="tb-select" title="Switch dataset">
-        <option value="unbrain">✨ 当前项目 CV: 刘朝阳 (新浪微博资深前端架构)</option>
-        <option value="original">🎨 原图设计稿: Jane Wilkins (原版英文模板)</option>
+        <option value="unbrain_full">✨ 当前项目完整版: 刘朝阳 (4页 · 全景技能与大厂标杆工程)</option>
+        <option value="original">🎨 原图设计稿: Jane Wilkins (原版 3 页标准版)</option>
       </select>
 
       <button type="button" class="tb-btn" id="btn-toggle-edit" title="Click any text on page to edit directly">
@@ -1021,12 +1016,13 @@
     </div>
 
     <div class="toolbar-center">
-      <div style="display: flex; gap: 4px; background: rgba(0,0,0,0.3); padding: 3px; border-radius: 6px;">
-        <button type="button" class="tb-btn active" id="view-grid" title="3-Page Spread Mockup">3-Page Spread</button>
-        <button type="button" class="tb-btn" id="view-vertical" title="Vertical Scroll">Vertical</button>
-        <button type="button" class="tb-btn" id="view-p1" title="Page 1 Only">P1</button>
-        <button type="button" class="tb-btn" id="view-p2" title="Page 2 Only">P2</button>
-        <button type="button" class="tb-btn" id="view-p3" title="Page 3 Only">P3</button>
+      <div style="display: flex; gap: 4px; background: rgba(0,0,0,0.3); padding: 3px; border-radius: 6px;" id="nav-btn-group">
+        <button type="button" class="tb-btn active" id="view-grid">All Pages</button>
+        <button type="button" class="tb-btn" id="view-vertical">Vertical</button>
+        <button type="button" class="tb-btn" id="view-p1">P1</button>
+        <button type="button" class="tb-btn" id="view-p2">P2</button>
+        <button type="button" class="tb-btn" id="view-p3">P3</button>
+        <button type="button" class="tb-btn" id="view-p4">P4</button>
       </div>
 
       <div class="zoom-control">
@@ -1038,7 +1034,7 @@
 
     <div class="toolbar-right">
       <button type="button" class="tb-btn" id="btn-reset-data" title="Restore dataset defaults">Reset</button>
-      <button type="button" class="tb-btn btn-primary" id="btn-print" title="Print or save as 3-page A4 PDF">
+      <button type="button" class="tb-btn btn-primary" id="btn-print" title="Print or save as multi-page A4 PDF">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
         <span>Print / Save PDF</span>
       </button>
@@ -1046,18 +1042,17 @@
   </header>
 
   <!-- ==========================================================================
-       DESK STAGE / 3 A4 PAGES CONTAINER
-       ========================================================================== */ -->
+       PAGES CONTAINER
+       ========================================================================== -->
   <main class="desk-stage">
     <div class="pages-container layout-grid" id="pages-container">
 
       <!-- ======================================================================
-           PAGE 1: PORTFOLIO / ABOUT ME / COVER
+           PAGE 1: COVER & ABOUT ME
            ====================================================================== -->
       <section class="a4-page" id="page-1" data-page="1">
         <div class="page-indicator-tag">Page 01 · About Me / Cover</div>
 
-        <!-- Header: Domain line + Year Pill -->
         <div class="page-1-top-bar">
           <div class="page-1-domain-line">
             <span class="thick-line"></span>
@@ -1066,7 +1061,6 @@
           <div class="pill-badge editable" id="p1-badge">Year 2028</div>
         </div>
 
-        <!-- Hero Title (Left Aligned) -->
         <div class="hero-title-group">
           <div class="hero-name editable" id="p1-hero-name">LIU<br>ZHAOYANG</div>
           <div class="hero-role editable" id="p1-hero-role">Senior Frontend Engineer / Web Architect</div>
@@ -1074,17 +1068,11 @@
 
         <hr class="editorial-hr">
 
-        <!-- Intro Text: Left small title & Right paragraph -->
         <div class="p1-intro-grid">
-          <div class="p1-intro-left editable" id="p1-greeting">
-            Hello I'm<br>Liu Zhaoyang
-          </div>
-          <div class="p1-intro-right editable" id="p1-bio">
-            2019 年毕业至今长期任职于新浪微博核心前端团队，7 年一线工程沉淀。主导并参与了微博 PC 旗舰主站、PC 创作者中心、高并发私信消息箱（WebChat）等多条核心业务线的架构升级与工程治理，稳定护航数亿级用户的高并发与脉冲流量。
-          </div>
+          <div class="p1-intro-left editable" id="p1-greeting">Hello I'm<br>Liu Zhaoyang</div>
+          <div class="p1-intro-right editable" id="p1-bio">...</div>
         </div>
 
-        <!-- Lower Section: Dots + Tab Photo + Address + About Me. -->
         <div class="p1-lower-area">
           <div class="p1-dots-wrapper">
             <div class="dots-indicator">
@@ -1095,7 +1083,6 @@
           </div>
 
           <div class="p1-visual-and-info">
-            <!-- Stepped Tab-shaped Photo Composition -->
             <div class="photo-tab-composition" id="photo-container" title="Click to replace photo">
               <div class="tab-backdrop"></div>
               <div class="tab-photo-box">
@@ -1104,36 +1091,28 @@
               </div>
             </div>
 
-            <!-- Address and Contact info -->
             <div class="p1-address-block">
               <div class="p1-address-label editable" id="p1-address-title">ADDRESS :</div>
-              <div class="p1-address-lines editable" id="p1-address-lines">
-                (+86) 183-4910-8862<br>
-                marsorsun@gmail.com<br>
-                北京市海淀区中关村软件园<br>
-                rxresu.me/unbrain/cv
-              </div>
+              <div class="p1-address-lines editable" id="p1-address-lines">...</div>
             </div>
 
-            <!-- Big Bottom Right Stamp -->
             <div class="p1-about-stamp editable" id="p1-stamp">About Me.</div>
           </div>
         </div>
       </section>
 
       <!-- ======================================================================
-           PAGE 2: RESUME / CURRICULUM VITAE
+           PAGE 2: SKILLS & ARCHITECTURE (OR EXPERIENCE IN 3-PAGE ORIGINAL)
            ====================================================================== -->
       <section class="a4-page" id="page-2" data-page="2">
-        <div class="page-indicator-tag">Page 02 · Resume / CV</div>
+        <div class="page-indicator-tag" id="p2-tag">Page 02 · Skills & Architecture</div>
 
         <div>
-          <!-- Header: Left Pill + Right Aligned Hero Name -->
-          <div class="page-2-header">
+          <div class="editorial-page-header">
             <div>
-              <div class="pill-badge editable" id="p2-badge">Resume</div>
+              <div class="pill-badge editable" id="p2-badge">Skills & Architecture</div>
             </div>
-            <div class="page-2-header-right">
+            <div class="editorial-page-header-right">
               <div class="hero-name editable" id="p2-hero-name">LIU<br>ZHAOYANG</div>
               <div class="hero-role editable" id="p2-hero-role">Senior Frontend Engineer / Web Architect</div>
             </div>
@@ -1141,44 +1120,37 @@
 
           <hr class="editorial-hr">
 
-          <!-- Profile Overview -->
-          <div class="p2-profile-grid">
-            <div class="p2-section-heading editable" id="p2-profile-title">Profile<br>Overview</div>
-            <div class="p2-profile-text editable" id="p2-profile-content">
-              深耕 Vue 3 核心运作机制与响应式内核（独立手写实现 Reactive、Effect、Diff 与编译全流程）、TypeScript 企业级大型模块规范与现代前端工程化。具备亿级访问量高并发系统架构与生产级性能调优实战经验，结合 Node.js 胶水层与 Redis 缓存限流，追求每一行代码的可验证性与工业级健壮性。
-            </div>
+          <div class="overview-grid">
+            <div class="overview-heading editable" id="p2-profile-title">Technical<br>Overview</div>
+            <div class="overview-text editable" id="p2-profile-content">...</div>
           </div>
 
           <hr class="editorial-hr">
         </div>
 
-        <!-- Main Content 2-Column: Left Experience & Right Reference/Edu -->
-        <div class="p2-main-grid">
-          <!-- Left Column: Work Experience -->
-          <div class="p2-left-col">
-            <div class="p2-column-title editable" id="p2-exp-title">Work Experience</div>
-            <div id="p2-job-list">
-              <!-- Dynamically Populated Experiences -->
+        <div class="two-col-layout">
+          <div class="left-col">
+            <div class="col-title editable" id="p2-col-title">Core Technical Pillars</div>
+            <div id="p2-main-list">
+              <!-- Dynamically populated skills or jobs -->
             </div>
           </div>
 
-          <!-- Right Column: Reference Card & Education -->
-          <div class="p2-right-col">
-            <!-- Reference Black Card -->
-            <div class="reference-card">
-              <div class="ref-title editable" id="ref-card-title">Reference</div>
-              <div class="ref-name editable" id="ref-name">新浪微博技术委员会</div>
-              <div class="ref-role editable" id="ref-role">技术总监 / 研发部负责人</div>
+          <div class="right-sidebar">
+            <div class="reference-card" id="p2-ref-card">
+              <div class="ref-title editable" id="p2-card-title">Capability Radar</div>
+              <div class="ref-name editable" id="p2-card-name">工程能力六维评级</div>
+              <div class="ref-role editable" id="p2-card-role">Production Capability</div>
               <div class="ref-divider"></div>
-              <div class="ref-contact-line editable" id="ref-phone">P | (+86) 183-4910-8862</div>
-              <div class="ref-contact-line editable" id="ref-email">E | marsorsun@gmail.com</div>
+              <div id="p2-card-lines">
+                <!-- Dynamically populated lines -->
+              </div>
             </div>
 
-            <!-- Education Section -->
-            <div class="education-block">
-              <div class="edu-section-title editable" id="edu-title">Education</div>
-              <div id="p2-edu-list">
-                <!-- Dynamically Populated Education -->
+            <div class="sidebar-lower-block">
+              <div class="sidebar-block-title editable" id="p2-lower-title">Education</div>
+              <div id="p2-lower-list">
+                <!-- Education or Material items -->
               </div>
             </div>
           </div>
@@ -1186,80 +1158,130 @@
       </section>
 
       <!-- ======================================================================
-           PAGE 3: COVER LETTER
+           PAGE 3: WORK EXPERIENCE & PRODUCTION PROJECTS
            ====================================================================== -->
       <section class="a4-page" id="page-3" data-page="3">
-        <div class="page-indicator-tag">Page 03 · Cover Letter</div>
+        <div class="page-indicator-tag" id="p3-tag">Page 03 · Work Experience & Projects</div>
 
         <div>
-          <!-- Header: Pill + Contact center + Year Pill -->
-          <div class="page-3-top-bar">
-            <div class="pill-badge editable" id="p3-badge">Cover Letter</div>
+          <div class="editorial-page-header">
+            <div>
+              <div class="pill-badge editable" id="p3-badge">Work Experience</div>
+            </div>
+            <div class="editorial-page-header-right">
+              <div class="hero-name editable" id="p3-hero-name">LIU<br>ZHAOYANG</div>
+              <div class="hero-role editable" id="p3-hero-role">Senior Frontend Engineer / Web Architect</div>
+            </div>
+          </div>
+
+          <hr class="editorial-hr">
+
+          <div class="overview-grid">
+            <div class="overview-heading editable" id="p3-profile-title">Engineering<br>Track Record</div>
+            <div class="overview-text editable" id="p3-profile-content">...</div>
+          </div>
+
+          <hr class="editorial-hr">
+        </div>
+
+        <div class="two-col-layout">
+          <div class="left-col">
+            <div class="col-title editable" id="p3-col-title">Production Projects</div>
+            <div id="p3-main-list">
+              <!-- Dynamically populated production projects -->
+            </div>
+          </div>
+
+          <div class="right-sidebar">
+            <div class="reference-card" id="p3-ref-card">
+              <div class="ref-title editable" id="p3-card-title">Reference</div>
+              <div class="ref-name editable" id="p3-card-name">新浪微博技术委员会</div>
+              <div class="ref-role editable" id="p3-card-role">技术总监 / 研发部负责人</div>
+              <div class="ref-divider"></div>
+              <div id="p3-card-lines">
+                <div class="ref-line editable">P | (+86) 183-4910-8862</div>
+                <div class="ref-line editable">E | marsorsun@gmail.com</div>
+              </div>
+            </div>
+
+            <div class="sidebar-lower-block">
+              <div class="sidebar-block-title editable" id="p3-lower-title">Cross-Platform Material</div>
+              <div id="p3-lower-list">
+                <!-- Dynamically populated items -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           PAGE 4: COVER LETTER
+           ====================================================================== -->
+      <section class="a4-page" id="page-4" data-page="4">
+        <div class="page-indicator-tag" id="p4-tag">Page 04 · Cover Letter</div>
+
+        <div>
+          <div class="cl-top-bar">
+            <div class="pill-badge editable" id="p4-badge">Cover Letter</div>
             
-            <div class="page-3-contact-summary editable" id="p3-contacts">
+            <div class="cl-contact-summary editable" id="p4-contacts">
               P | (+86) 183-4910-8862<br>
               L | 北京市海淀区新浪总部大厦<br>
               E | marsorsun@gmail.com
             </div>
 
-            <div class="pill-badge editable" id="p3-year-badge">Year 2028</div>
+            <div class="pill-badge editable" id="p4-year-badge">Year 2028</div>
           </div>
 
-          <!-- Hero Name (Left Aligned) -->
           <div class="hero-title-group">
-            <div class="hero-name editable" id="p3-hero-name">LIU<br>ZHAOYANG</div>
-            <div class="hero-role editable" id="p3-hero-role">Senior Frontend Engineer / Web Architect</div>
+            <div class="hero-name editable" id="p4-hero-name">LIU<br>ZHAOYANG</div>
+            <div class="hero-role editable" id="p4-hero-role">Senior Frontend Engineer / Web Architect</div>
           </div>
 
           <hr class="editorial-hr">
 
-          <!-- Meta Grid: Date & Recipient Details -->
-          <div class="p3-meta-grid">
-            <div class="p3-meta-left">
-              <div class="cl-label editable" id="p3-date-title">Cover Letter.</div>
-              <div class="cl-date editable" id="p3-date">2028 年 3 月</div>
+          <div class="cl-meta-grid">
+            <div class="cl-meta-left">
+              <div class="cl-label editable" id="p4-date-title">Cover Letter.</div>
+              <div class="cl-date editable" id="p4-date">2028 年 3 月</div>
             </div>
-            <div class="p3-recipient-box">
-              <div class="to-label editable" id="p3-to-label">TO</div>
-              <div class="to-name editable" id="p3-to-name">招聘团队 / 技术评委会</div>
-              <div class="to-role editable" id="p3-to-role">前端技术部 / 架构委员会</div>
-              <div class="to-address editable" id="p3-to-address">
+            <div class="cl-recipient-box">
+              <div class="to-label editable" id="p4-to-label">TO</div>
+              <div class="to-name editable" id="p4-to-name">招聘团队 / 技术评委会</div>
+              <div class="to-role editable" id="p4-to-role">前端技术部 / 架构委员会</div>
+              <div class="to-address editable" id="p4-to-address">
                 A | 目标公司创新研发中心,<br>
-                前端架构团队
+                前端技术架构组
               </div>
             </div>
           </div>
 
-          <!-- Custom Divider with Left Black Block -->
-          <div class="p3-custom-divider">
+          <div class="cl-custom-divider">
             <div class="black-bar"></div>
             <div class="thin-line"></div>
           </div>
 
-          <!-- Letter Content Grid: Left Title + Right Letter Paragraphs -->
-          <div class="p3-letter-grid">
-            <div class="p3-letter-side-title editable" id="p3-letter-title">
+          <div class="cl-letter-grid">
+            <div class="cl-letter-side-title editable" id="p4-letter-title">
               应聘岗位：资深前端工程师 / 架构师
             </div>
-            <div class="p3-letter-body-content editable" id="p3-letter-body">
-              <!-- Dynamically Populated Paragraphs -->
+            <div class="cl-letter-body-content editable" id="p4-letter-body">
+              <!-- Dynamically populated paragraphs -->
             </div>
           </div>
 
-          <!-- Sign-off Area -->
-          <div class="p3-signoff-area">
-            <div class="p3-sincerely editable" id="p3-sincerely">Sincerely</div>
+          <div class="cl-signoff-area">
+            <div class="cl-sincerely editable" id="p4-sincerely">Sincerely</div>
             
-            <div class="p3-signature-box">
-              <span class="signature-font-text editable" id="p3-signature-text">Zhaoyang Liu</span>
+            <div class="cl-signature-box">
+              <span class="signature-font-text editable" id="p4-signature-text">Zhaoyang Liu</span>
             </div>
 
-            <div class="p3-signer-name editable" id="p3-signer-name">ZHAOYANG LIU (UNBRAIN)</div>
+            <div class="cl-signer-name editable" id="p4-signer-name">ZHAOYANG LIU (UNBRAIN)</div>
           </div>
         </div>
 
-        <!-- Footer: Dots Indicator (Left Bottom) -->
-        <div class="p3-footer-dots">
+        <div class="cl-footer-dots">
           <div class="dots-indicator">
             <span class="dot dot-filled"></span>
             <span class="dot dot-outline"></span>
@@ -1271,20 +1293,23 @@
     </div>
   </main>
 
-  <!-- External Data File (fallback safe) -->
+  <!-- External Data File -->
   <script src="cv-data.js"></script>
 
-  <!-- ==========================================================================
-       DATA-DRIVEN RENDERING & INTERACTION SCRIPT
-       ========================================================================== -->
+  <!-- Dynamic Data Engine -->
   <script>
     (function () {
-      // DOM References
       const container = document.getElementById('pages-container');
-      const pages = document.querySelectorAll('.a4-page');
+      const page1 = document.getElementById('page-1');
+      const page2 = document.getElementById('page-2');
+      const page3 = document.getElementById('page-3');
+      const page4 = document.getElementById('page-4');
+      const allPages = [page1, page2, page3, page4];
+
       const zoomSlider = document.getElementById('zoom-slider');
       const zoomVal = document.getElementById('zoom-val');
       const datasetSelector = document.getElementById('dataset-selector');
+      const pageCountBadge = document.getElementById('page-count-badge');
       const btnToggleEdit = document.getElementById('btn-toggle-edit');
       const editModeText = document.getElementById('edit-mode-text');
       const btnExportJson = document.getElementById('btn-export-json');
@@ -1298,16 +1323,17 @@
       const btnResetData = document.getElementById('btn-reset-data');
       const toast = document.getElementById('toast');
 
-      // View Buttons
       const viewGrid = document.getElementById('view-grid');
       const viewVertical = document.getElementById('view-vertical');
       const viewP1 = document.getElementById('view-p1');
       const viewP2 = document.getElementById('view-p2');
       const viewP3 = document.getElementById('view-p3');
-      const viewBtns = [viewGrid, viewVertical, viewP1, viewP2, viewP3];
+      const viewP4 = document.getElementById('view-p4');
+      const viewBtns = [viewGrid, viewVertical, viewP1, viewP2, viewP3, viewP4];
 
       let isEditing = false;
       let currentData = null;
+      let currentActivePageCount = 4;
 
       function showToast(msg) {
         toast.textContent = msg;
@@ -1316,18 +1342,22 @@
       }
 
       // ========================================================================
-      // 1. DATA RENDERING ENGINE (Binds structured data object to 3-page DOM)
+      // RENDER ENGINE
       // ========================================================================
-      function renderCV(data) {
+      function renderResume(data) {
         if (!data) return;
         currentData = data;
+        const pageCount = data.pageCount || (data.id === 'original' ? 3 : 4);
+        currentActivePageCount = pageCount;
+        pageCountBadge.textContent = `${pageCount}x A4`;
 
-        // Page 1
+        const heroNameHtml = (data.person.nameFirst && data.person.nameLast)
+          ? `${data.person.nameFirst}<br>${data.person.nameLast}`
+          : (data.person.nameCn || 'RESUME');
+
+        // Page 1: Cover
         document.getElementById('p1-website').innerHTML = data.meta.website || '';
         document.getElementById('p1-badge').innerHTML = data.meta.year || '';
-        const heroNameHtml = (data.person.nameFirst && data.person.nameLast) 
-          ? `${data.person.nameFirst}<br>${data.person.nameLast}` 
-          : (data.person.nameCn || 'RESUME');
         document.getElementById('p1-hero-name').innerHTML = heroNameHtml;
         document.getElementById('p1-hero-role').innerHTML = data.person.role || '';
         document.getElementById('p1-greeting').innerHTML = data.person.greeting || '';
@@ -1336,131 +1366,262 @@
         document.getElementById('p1-address-lines').innerHTML = data.meta.addressLines || '';
         document.getElementById('p1-stamp').innerHTML = data.person.aboutStamp || 'About Me.';
 
-        // Photo styling
-        if (data.person.photo) {
-          coverPhoto.src = data.person.photo;
-        }
-        if (data.person.photoPosition) {
-          coverPhoto.style.objectPosition = data.person.photoPosition;
-        }
-        if (data.person.photoScale) {
-          coverPhoto.style.transform = `scale(${data.person.photoScale})`;
-        } else {
-          coverPhoto.style.transform = 'none';
-        }
+        if (data.person.photo) coverPhoto.src = data.person.photo;
+        if (data.person.photoPosition) coverPhoto.style.objectPosition = data.person.photoPosition;
+        if (data.person.photoScale) coverPhoto.style.transform = `scale(${data.person.photoScale})`;
+        else coverPhoto.style.transform = 'none';
 
-        // Page 2
-        document.getElementById('p2-badge').innerHTML = data.page2.badge || 'Resume';
-        document.getElementById('p2-hero-name').innerHTML = heroNameHtml;
-        document.getElementById('p2-hero-role').innerHTML = data.person.role || '';
-        document.getElementById('p2-profile-title').innerHTML = data.page2.profileTitle || 'Profile<br>Overview';
-        document.getElementById('p2-profile-content').innerHTML = data.page2.profileOverview || '';
-        document.getElementById('p2-exp-title').innerHTML = data.page2.expTitle || 'Work Experience';
+        if (pageCount === 4) {
+          // 4-PAGE FULL ARCHITECTURE
+          page3.classList.remove('is-hidden');
+          viewP4.style.display = 'inline-flex';
+          document.getElementById('p2-tag').textContent = 'Page 02 · Skills & Architecture';
+          document.getElementById('p3-tag').textContent = 'Page 03 · Production Projects';
+          document.getElementById('p4-tag').textContent = 'Page 04 · Cover Letter';
 
-        // Render Work Experiences
-        const jobListContainer = document.getElementById('p2-job-list');
-        jobListContainer.innerHTML = '';
-        (data.page2.experiences || []).forEach(exp => {
-          const item = document.createElement('div');
-          item.className = 'p2-job-item';
-          
-          let bulletsHtml = '';
-          (exp.bullets || []).forEach(b => {
-            bulletsHtml += `<li><span class="tri-bullet">▸</span><span>${b}</span></li>`;
+          // Page 2: Skills
+          document.getElementById('p2-badge').innerHTML = data.page2.badge || 'Skills & Architecture';
+          document.getElementById('p2-hero-name').innerHTML = heroNameHtml;
+          document.getElementById('p2-hero-role').innerHTML = data.person.role || '';
+          document.getElementById('p2-profile-title').innerHTML = data.page2.profileTitle || 'Technical<br>Overview';
+          document.getElementById('p2-profile-content').innerHTML = data.page2.profileOverview || '';
+          document.getElementById('p2-col-title').innerHTML = data.page2.expTitle || 'Core Technical Pillars';
+
+          const p2MainList = document.getElementById('p2-main-list');
+          p2MainList.innerHTML = '';
+          (data.page2.skills || []).forEach(s => {
+            const item = document.createElement('div');
+            item.className = 'job-item';
+            item.innerHTML = `
+              <div class="job-header">
+                <span class="sq-bullet"></span><span class="editable">${s.title}</span>
+              </div>
+              <div class="job-summary editable">${s.summary}</div>
+            `;
+            p2MainList.appendChild(item);
           });
 
-          item.innerHTML = `
-            <div class="p2-job-header">
-              <span class="sq-bullet"></span><span class="editable">${exp.title}</span>
-            </div>
-            <div class="p2-job-company editable">${exp.company}</div>
-            <div class="p2-job-summary editable">${exp.summary}</div>
-            <ul class="p2-job-bullets editable">${bulletsHtml}</ul>
+          // Page 2: Capability Radar Card
+          const card = data.page2.referenceCard || {};
+          document.getElementById('p2-card-title').innerHTML = card.title || 'Capability Radar';
+          document.getElementById('p2-card-name').innerHTML = card.header || '工程能力评级';
+          document.getElementById('p2-card-role').innerHTML = card.role || '';
+          const cardLinesContainer = document.getElementById('p2-card-lines');
+          cardLinesContainer.innerHTML = '';
+          (card.items || []).forEach(line => {
+            const div = document.createElement('div');
+            div.className = 'ref-line editable';
+            div.textContent = line;
+            cardLinesContainer.appendChild(div);
+          });
+
+          // Page 2: Education
+          document.getElementById('p2-lower-title').innerHTML = data.page2.education.title || 'Education';
+          const p2LowerList = document.getElementById('p2-lower-list');
+          p2LowerList.innerHTML = '';
+          (data.page2.education.items || []).forEach(edu => {
+            const div = document.createElement('div');
+            div.className = 'list-item';
+            div.innerHTML = `
+              <div class="item-primary"><span class="sq-bullet"></span><span class="editable">${edu.degree}</span></div>
+              <div class="item-secondary editable">${edu.school}</div>
+              <div class="item-meta editable">${edu.year}</div>
+            `;
+            p2LowerList.appendChild(div);
+          });
+
+          // Page 3: Work Experience
+          document.getElementById('p3-badge').innerHTML = data.page3.badge || 'Work Experience';
+          document.getElementById('p3-hero-name').innerHTML = heroNameHtml;
+          document.getElementById('p3-hero-role').innerHTML = data.person.role || '';
+          document.getElementById('p3-profile-title').innerHTML = data.page3.profileTitle || 'Engineering<br>Track Record';
+          document.getElementById('p3-profile-content').innerHTML = data.page3.profileOverview || '';
+          document.getElementById('p3-col-title').innerHTML = data.page3.expTitle || 'Production Projects';
+
+          const p3MainList = document.getElementById('p3-main-list');
+          p3MainList.innerHTML = '';
+          (data.page3.experiences || []).forEach(exp => {
+            const item = document.createElement('div');
+            item.className = 'job-item';
+            let bulletsHtml = '';
+            (exp.bullets || []).forEach(b => {
+              bulletsHtml += `<li><span class="tri-bullet">▸</span><span>${b}</span></li>`;
+            });
+            item.innerHTML = `
+              <div class="job-header">
+                <span class="sq-bullet"></span><span class="editable">${exp.title}</span>
+              </div>
+              <div class="job-company editable">${exp.company}</div>
+              <div class="job-summary editable">${exp.summary}</div>
+              <ul class="job-bullets editable">${bulletsHtml}</ul>
+            `;
+            p3MainList.appendChild(item);
+          });
+
+          // Page 3: Reference Card
+          const ref3 = data.page3.referenceCard || {};
+          document.getElementById('p3-card-title').innerHTML = ref3.title || 'Reference';
+          document.getElementById('p3-card-name').innerHTML = ref3.name || '';
+          document.getElementById('p3-card-role').innerHTML = ref3.role || '';
+          const p3CardLines = document.getElementById('p3-card-lines');
+          p3CardLines.innerHTML = `
+            <div class="ref-line editable">${ref3.phone || ''}</div>
+            <div class="ref-line editable">${ref3.email || ''}</div>
           `;
-          jobListContainer.appendChild(item);
-        });
 
-        // Reference
-        document.getElementById('ref-card-title').innerHTML = data.page2.reference.title || 'Reference';
-        document.getElementById('ref-name').innerHTML = data.page2.reference.name || '';
-        document.getElementById('ref-role').innerHTML = data.page2.reference.role || '';
-        document.getElementById('ref-phone').innerHTML = data.page2.reference.phone || '';
-        document.getElementById('ref-email').innerHTML = data.page2.reference.email || '';
+          // Page 3: Material Block
+          const mat = data.page3.materialBlock || {};
+          document.getElementById('p3-lower-title').innerHTML = mat.title || 'Cross-Platform Material';
+          const p3LowerList = document.getElementById('p3-lower-list');
+          p3LowerList.innerHTML = '';
+          (mat.items || []).forEach(m => {
+            const div = document.createElement('div');
+            div.className = 'list-item';
+            div.innerHTML = `
+              <div class="item-primary"><span class="sq-bullet"></span><span class="editable">${m.degree}</span></div>
+              <div class="item-secondary editable">${m.school}</div>
+              <div class="item-meta editable">${m.year}</div>
+            `;
+            p3LowerList.appendChild(div);
+          });
 
-        // Education
-        document.getElementById('edu-title').innerHTML = data.page2.education.title || 'Education';
-        const eduListContainer = document.getElementById('p2-edu-list');
-        eduListContainer.innerHTML = '';
-        (data.page2.education.items || []).forEach(edu => {
-          const item = document.createElement('div');
-          item.className = 'edu-item';
-          item.innerHTML = `
-            <div class="edu-degree">
-              <span class="sq-bullet"></span><span class="editable">${edu.degree}</span>
-            </div>
-            <div class="edu-school editable">${edu.school}</div>
-            <div class="edu-year editable">${edu.year}</div>
+          // Page 4: Cover Letter
+          const clData = data.page4 || {};
+          document.getElementById('p4-badge').innerHTML = clData.badge || 'Cover Letter';
+          document.getElementById('p4-contacts').innerHTML = data.meta.coverLetterContacts || '';
+          document.getElementById('p4-year-badge').innerHTML = clData.yearBadge || 'Year 2028';
+          document.getElementById('p4-hero-name').innerHTML = heroNameHtml;
+          document.getElementById('p4-hero-role').innerHTML = data.person.role || '';
+          document.getElementById('p4-date-title').innerHTML = clData.dateTitle || 'Cover Letter.';
+          document.getElementById('p4-date').innerHTML = clData.date || '';
+
+          const rec = clData.recipient || {};
+          document.getElementById('p4-to-label').innerHTML = rec.label || 'TO';
+          document.getElementById('p4-to-name').innerHTML = rec.name || '';
+          document.getElementById('p4-to-role').innerHTML = rec.role || '';
+          document.getElementById('p4-to-address').innerHTML = rec.address || '';
+
+          document.getElementById('p4-letter-title').innerHTML = clData.letterTitle || 'Position';
+          const clBody = document.getElementById('p4-letter-body');
+          clBody.innerHTML = '';
+          (clData.letterBody || []).forEach(p => {
+            const pEl = document.createElement('p');
+            pEl.innerHTML = p;
+            clBody.appendChild(pEl);
+          });
+
+          document.getElementById('p4-sincerely').innerHTML = clData.sincerely || 'Sincerely';
+          document.getElementById('p4-signature-text').innerHTML = clData.signatureText || 'Signature';
+          document.getElementById('p4-signer-name').innerHTML = clData.signerName || '';
+
+        } else {
+          // 3-PAGE ORIGINAL (Hide Page 3, use Page 2 for work experience, Page 4 as Page 3 Cover Letter)
+          page3.classList.add('is-hidden');
+          viewP4.style.display = 'none';
+          document.getElementById('p2-tag').textContent = 'Page 02 · Resume / CV';
+          document.getElementById('p4-tag').textContent = 'Page 03 · Cover Letter';
+
+          // Page 2: Work Experience (Original format)
+          document.getElementById('p2-badge').innerHTML = data.page2.badge || 'Resume';
+          document.getElementById('p2-hero-name').innerHTML = heroNameHtml;
+          document.getElementById('p2-hero-role').innerHTML = data.person.role || '';
+          document.getElementById('p2-profile-title').innerHTML = data.page2.profileTitle || 'Profile<br>Overview';
+          document.getElementById('p2-profile-content').innerHTML = data.page2.profileOverview || '';
+          document.getElementById('p2-col-title').innerHTML = data.page2.expTitle || 'Work Experience';
+
+          const p2MainList = document.getElementById('p2-main-list');
+          p2MainList.innerHTML = '';
+          (data.page2.experiences || []).forEach(exp => {
+            const item = document.createElement('div');
+            item.className = 'job-item';
+            let bulletsHtml = '';
+            (exp.bullets || []).forEach(b => {
+              bulletsHtml += `<li><span class="tri-bullet">▸</span><span>${b}</span></li>`;
+            });
+            item.innerHTML = `
+              <div class="job-header">
+                <span class="sq-bullet"></span><span class="editable">${exp.title}</span>
+              </div>
+              <div class="job-company editable">${exp.company}</div>
+              <div class="job-summary editable">${exp.summary}</div>
+              <ul class="job-bullets editable">${bulletsHtml}</ul>
+            `;
+            p2MainList.appendChild(item);
+          });
+
+          // Page 2 Reference Card
+          const ref = data.page2.referenceCard || {};
+          document.getElementById('p2-card-title').innerHTML = ref.title || 'Reference';
+          document.getElementById('p2-card-name').innerHTML = ref.name || '';
+          document.getElementById('p2-card-role').innerHTML = ref.role || '';
+          const cardLinesContainer = document.getElementById('p2-card-lines');
+          cardLinesContainer.innerHTML = `
+            <div class="ref-line editable">${ref.phone || ''}</div>
+            <div class="ref-line editable">${ref.email || ''}</div>
           `;
-          eduListContainer.appendChild(item);
-        });
 
-        // Page 3
-        document.getElementById('p3-badge').innerHTML = data.page3.badge || 'Cover Letter';
-        document.getElementById('p3-contacts').innerHTML = data.meta.coverLetterContacts || '';
-        document.getElementById('p3-year-badge').innerHTML = data.page3.yearBadge || data.meta.year || 'Year 2028';
-        document.getElementById('p3-hero-name').innerHTML = heroNameHtml;
-        document.getElementById('p3-hero-role').innerHTML = data.person.role || '';
-        document.getElementById('p3-date-title').innerHTML = data.page3.dateTitle || 'Cover Letter.';
-        document.getElementById('p3-date').innerHTML = data.page3.date || '';
+          // Page 2 Education
+          document.getElementById('p2-lower-title').innerHTML = data.page2.education.title || 'Education';
+          const p2LowerList = document.getElementById('p2-lower-list');
+          p2LowerList.innerHTML = '';
+          (data.page2.education.items || []).forEach(edu => {
+            const div = document.createElement('div');
+            div.className = 'list-item';
+            div.innerHTML = `
+              <div class="item-primary"><span class="sq-bullet"></span><span class="editable">${edu.degree}</span></div>
+              <div class="item-secondary editable">${edu.school}</div>
+              <div class="item-meta editable">${edu.year}</div>
+            `;
+            p2LowerList.appendChild(div);
+          });
 
-        document.getElementById('p3-to-label').innerHTML = data.page3.recipient.label || 'TO';
-        document.getElementById('p3-to-name').innerHTML = data.page3.recipient.name || '';
-        document.getElementById('p3-to-role').innerHTML = data.page3.recipient.role || '';
-        document.getElementById('p3-to-address').innerHTML = data.page3.recipient.address || '';
+          // Page 4 becomes Page 3 (Cover Letter)
+          const clData = data.page3 || {};
+          document.getElementById('p4-badge').innerHTML = clData.badge || 'Cover Letter';
+          document.getElementById('p4-contacts').innerHTML = data.meta.coverLetterContacts || '';
+          document.getElementById('p4-year-badge').innerHTML = clData.yearBadge || 'Year 2028';
+          document.getElementById('p4-hero-name').innerHTML = heroNameHtml;
+          document.getElementById('p4-hero-role').innerHTML = data.person.role || '';
+          document.getElementById('p4-date-title').innerHTML = clData.dateTitle || 'Cover Letter.';
+          document.getElementById('p4-date').innerHTML = clData.date || '';
 
-        document.getElementById('p3-letter-title').innerHTML = data.page3.letterTitle || 'Position';
-        
-        const letterBodyContainer = document.getElementById('p3-letter-body');
-        letterBodyContainer.innerHTML = '';
-        (data.page3.letterBody || []).forEach(p => {
-          const pEl = document.createElement('p');
-          pEl.innerHTML = p;
-          letterBodyContainer.appendChild(pEl);
-        });
+          const rec = clData.recipient || {};
+          document.getElementById('p4-to-label').innerHTML = rec.label || 'TO';
+          document.getElementById('p4-to-name').innerHTML = rec.name || '';
+          document.getElementById('p4-to-role').innerHTML = rec.role || '';
+          document.getElementById('p4-to-address').innerHTML = rec.address || '';
 
-        document.getElementById('p3-sincerely').innerHTML = data.page3.sincerely || 'Sincerely';
-        document.getElementById('p3-signature-text').innerHTML = data.page3.signatureText || 'Signature';
-        document.getElementById('p3-signer-name').innerHTML = data.page3.signerName || '';
+          document.getElementById('p4-letter-title').innerHTML = clData.letterTitle || 'Position';
+          const clBody = document.getElementById('p4-letter-body');
+          clBody.innerHTML = '';
+          (clData.letterBody || []).forEach(p => {
+            const pEl = document.createElement('p');
+            pEl.innerHTML = p;
+            clBody.appendChild(pEl);
+          });
 
-        // Reapply editable if active
+          document.getElementById('p4-sincerely').innerHTML = clData.sincerely || 'Sincerely';
+          document.getElementById('p4-signature-text').innerHTML = clData.signatureText || 'Signature';
+          document.getElementById('p4-signer-name').innerHTML = clData.signerName || '';
+        }
+
         if (isEditing) {
           document.querySelectorAll('.editable').forEach(el => el.setAttribute('contenteditable', 'true'));
         }
       }
 
       // ========================================================================
-      // 2. DATA SOURCE INITIALIZATION
+      // CONTROLS & EVENTS
       // ========================================================================
       const db = window.CV_DATABASE || {};
-      
-      // Default dataset: unbrain (current project CV)
-      let activePresetKey = 'unbrain';
-      
+      let activePresetKey = 'unbrain_full';
+
       function loadPreset(key) {
         activePresetKey = key;
-        const presetData = db[key] || db['unbrain'] || db['original'];
+        const presetData = db[key] || db['unbrain_full'] || db['original'];
         if (presetData) {
-          // Check local custom overrides
-          const localSaved = localStorage.getItem('editorial_cv_custom_' + key);
-          if (localSaved) {
-            try {
-              renderCV(JSON.parse(localSaved));
-              showToast(`已载入 ${presetData.label || key} (本地修改版)`);
-              return;
-            } catch (e) {}
-          }
-          renderCV(JSON.parse(JSON.stringify(presetData)));
-          showToast(`已切换至: ${presetData.label || key}`);
+          renderResume(JSON.parse(JSON.stringify(presetData)));
+          showToast(`已载入: ${presetData.label || key}`);
         }
       }
 
@@ -1468,21 +1629,13 @@
         loadPreset(e.target.value);
       });
 
-      // ========================================================================
-      // 3. ZOOM CONTROLLER
-      // ========================================================================
       function applyZoom(scale) {
         container.style.transform = `scale(${scale / 100})`;
         zoomVal.textContent = `${scale}%`;
       }
 
-      zoomSlider.addEventListener('input', (e) => {
-        applyZoom(e.target.value);
-      });
+      zoomSlider.addEventListener('input', (e) => applyZoom(e.target.value));
 
-      // ========================================================================
-      // 4. VIEW MODES (Spread / Vertical / Single Page)
-      // ========================================================================
       function setViewMode(mode, targetPage = 1) {
         viewBtns.forEach(btn => btn.classList.remove('active'));
         container.className = 'pages-container';
@@ -1490,14 +1643,14 @@
         if (mode === 'grid') {
           container.classList.add('layout-grid');
           viewGrid.classList.add('active');
-          pages.forEach(p => p.classList.remove('current-active'));
+          allPages.forEach(p => p.classList.remove('current-active'));
         } else if (mode === 'vertical') {
           container.classList.add('layout-vertical');
           viewVertical.classList.add('active');
-          pages.forEach(p => p.classList.remove('current-active'));
+          allPages.forEach(p => p.classList.remove('current-active'));
         } else if (mode === 'single') {
           container.classList.add('layout-single');
-          pages.forEach((p, idx) => {
+          allPages.forEach((p, idx) => {
             if (idx + 1 === targetPage) {
               p.classList.add('current-active');
             } else {
@@ -1507,6 +1660,7 @@
           if (targetPage === 1) viewP1.classList.add('active');
           if (targetPage === 2) viewP2.classList.add('active');
           if (targetPage === 3) viewP3.classList.add('active');
+          if (targetPage === 4) viewP4.classList.add('active');
         }
       }
 
@@ -1515,30 +1669,29 @@
       viewP1.addEventListener('click', () => setViewMode('single', 1));
       viewP2.addEventListener('click', () => setViewMode('single', 2));
       viewP3.addEventListener('click', () => setViewMode('single', 3));
+      viewP4.addEventListener('click', () => setViewMode('single', 4));
 
       // Hash support
       const initialHash = window.location.hash.toLowerCase();
       if (initialHash === '#p1') setViewMode('single', 1);
       else if (initialHash === '#p2') setViewMode('single', 2);
       else if (initialHash === '#p3') setViewMode('single', 3);
+      else if (initialHash === '#p4') setViewMode('single', 4);
       else if (initialHash === '#vertical') setViewMode('vertical');
       else setViewMode('grid');
 
-      // Auto zoom adjustment
       if (window.innerWidth < 1100) {
-        zoomSlider.value = 55;
-        applyZoom(55);
+        zoomSlider.value = 50;
+        applyZoom(50);
       } else if (window.innerWidth < 1440) {
-        zoomSlider.value = 75;
-        applyZoom(75);
+        zoomSlider.value = 70;
+        applyZoom(70);
       } else {
-        zoomSlider.value = 85;
-        applyZoom(85);
+        zoomSlider.value = 80;
+        applyZoom(80);
       }
 
-      // ========================================================================
-      // 5. LIVE EDIT & JSON EXPORT / IMPORT
-      // ========================================================================
+      // Live edit
       btnToggleEdit.addEventListener('click', () => {
         isEditing = !isEditing;
         document.body.classList.toggle('is-editing', isEditing);
@@ -1570,10 +1723,7 @@
       });
 
       // Import JSON
-      btnImportJson.addEventListener('click', () => {
-        jsonImportInput.click();
-      });
-
+      btnImportJson.addEventListener('click', () => jsonImportInput.click());
       jsonImportInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -1581,7 +1731,7 @@
           reader.onload = function (evt) {
             try {
               const imported = JSON.parse(evt.target.result);
-              renderCV(imported);
+              renderResume(imported);
               showToast('成功导入并渲染自定义简历数据！');
             } catch (err) {
               alert('JSON 解析失败，请检查文件格式！');
@@ -1612,16 +1762,13 @@
         }
       });
 
-      // Reset
       btnResetData.addEventListener('click', () => {
-        if (confirm('确定要恢复当前数据集的默认设置吗？')) {
-          localStorage.removeItem('editorial_cv_custom_' + activePresetKey);
+        if (confirm('确定要重置恢复为初始数据吗？')) {
           loadPreset(activePresetKey);
           showToast('已恢复为初始数据！');
         }
       });
 
-      // Print / PDF
       btnPrint.addEventListener('click', () => {
         const prevTransform = container.style.transform;
         container.style.transform = 'none';
@@ -1631,8 +1778,8 @@
         }, 500);
       });
 
-      // Initial execution
-      loadPreset('unbrain');
+      // Initialize
+      loadPreset('unbrain_full');
     })();
   </script>
 </body>
