@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jane Wilkins - High-End Minimalist Resume & Cover Letter Template (3-Page A4)</title>
+  <!-- Google Fonts: Inter for editorial sans-serif, Alex Brush & Dancing Script for authentic handwritten signature -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & CSS VARIABLES
+       Based on the Minimalist Editorial 3-Page Resume Mockup
+       ========================================================================== */
+    :root {
+      /* Paper & Editorial Colors */
+      --page-bg: #eaeee9;           /* Refined Morandi grey-green paper tint */
+      --text-main: #121412;         /* Deep editorial carbon black */
+      --text-sub: #383d39;          /* Secondary dark graphite */
+      --text-muted: #5e6660;        /* Muted paragraph grey */
+      --text-light: #89938b;        /* Pale metadata label grey */
+      --line-color: #bec6bf;        /* Subtle horizontal divider */
+      --card-black: #121413;        /* Reference card deep matte black */
+      --accent-slate: #3b6576;      /* Folder tab photo accent blue-grey */
+      
+      /* Standard A4 Dimensions */
+      --a4-width: 210mm;
+      --a4-height: 297mm;
+      --page-padding-top: 20mm;
+      --page-padding-bottom: 20mm;
+      --page-padding-horizontal: 22mm;
+      
+      /* UI Desk Preview Colors */
+      --desk-bg: #d7dcd8;
+      --desk-shadow: rgba(22, 28, 24, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--desk-bg);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.45;
+    }
+
+    /* ==========================================================================
+       TOP CONTROL TOOLBAR (Hidden in Print Mode)
+       ========================================================================== */
+    .top-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(18, 20, 19, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      font-size: 13px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .toolbar-brand {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toolbar-brand .badge {
+      background: #3b6576;
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .toolbar-center {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tb-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .tb-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .tb-btn.active {
+      background: #fff;
+      color: #121413;
+      border-color: #fff;
+      font-weight: 600;
+    }
+
+    .tb-btn.btn-primary {
+      background: #2a7b62;
+      border-color: #389b7c;
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(42, 123, 98, 0.4);
+    }
+
+    .tb-btn.btn-primary:hover {
+      background: #339174;
+    }
+
+    .zoom-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    .zoom-control input[type="range"] {
+      width: 90px;
+      accent-color: #3b6576;
+      cursor: pointer;
+    }
+
+    /* Editable Highlight Glow */
+    body.is-editing [contenteditable="true"] {
+      outline: 2px dashed rgba(59, 101, 118, 0.45);
+      outline-offset: 3px;
+      border-radius: 3px;
+      background: rgba(59, 101, 118, 0.05);
+      cursor: text;
+    }
+
+    body.is-editing [contenteditable="true"]:hover {
+      outline: 2px solid #3b6576;
+      background: rgba(59, 101, 118, 0.1);
+    }
+
+    /* ==========================================================================
+       WORKSPACE / DESK WRAPPER (Screen Preview Layout)
+       ========================================================================== */
+    .desk-stage {
+      min-height: calc(100vh - 54px);
+      padding: 48px 32px 80px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-x: auto;
+    }
+
+    .pages-container {
+      display: flex;
+      gap: 48px;
+      transform-origin: top center;
+      transition: transform 0.2s ease, gap 0.2s ease;
+    }
+
+    /* View Modes */
+    .pages-container.layout-grid {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+
+    .pages-container.layout-vertical {
+      flex-direction: column;
+      align-items: center;
+      gap: 56px;
+    }
+
+    .pages-container.layout-single .a4-page {
+      display: none;
+    }
+    .pages-container.layout-single .a4-page.current-active {
+      display: flex;
+    }
+
+    /* ==========================================================================
+       A4 PAGE BASE STYLES
+       Exact 210mm x 297mm physical A4 sheet
+       ========================================================================== */
+    .a4-page {
+      width: var(--a4-width);
+      min-width: var(--a4-width);
+      height: var(--a4-height);
+      min-height: var(--a4-height);
+      background-color: var(--page-bg);
+      position: relative;
+      padding: var(--page-padding-top) var(--page-padding-horizontal) var(--page-padding-bottom);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 16px 36px var(--desk-shadow), 0 2px 10px rgba(0, 0, 0, 0.06);
+      border-radius: 2px;
+      overflow: hidden;
+      page-break-after: always;
+      page-break-inside: avoid;
+    }
+
+    /* Page numbering / screen badge */
+    .page-indicator-tag {
+      position: absolute;
+      top: -30px;
+      left: 0;
+      color: #647067;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       COMMON EDITORIAL TYPOGRAPHY & ELEMENTS
+       ========================================================================== */
+    
+    /* Pill Badge */
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.2px solid var(--text-main);
+      border-radius: 9999px;
+      padding: 3.5px 14px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      letter-spacing: 0.02em;
+      background: transparent;
+      line-height: 1.15;
+      text-transform: none;
+    }
+
+    /* Three Dots Indicator (● ○ ○) */
+    .dots-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6.5px;
+    }
+    .dots-indicator .dot {
+      width: 6.5px;
+      height: 6.5px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dots-indicator .dot-filled {
+      background-color: var(--text-main);
+    }
+    .dots-indicator .dot-outline {
+      background-color: transparent;
+      border: 1px solid var(--text-main);
+    }
+
+    /* Huge Hero Title (JANE WILKINS) */
+    .hero-title-group {
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    .hero-name {
+      font-size: 60px;
+      font-weight: 900;
+      line-height: 0.86;
+      letter-spacing: -0.04em;
+      color: var(--text-main);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-role {
+      font-size: 15.5px;
+      font-weight: 500;
+      color: var(--text-sub);
+      letter-spacing: 0.01em;
+    }
+
+    /* Editorial Separator Line */
+    .editorial-hr {
+      width: 100%;
+      height: 1px;
+      background-color: var(--line-color);
+      border: none;
+      margin: 20px 0;
+    }
+
+    /* Small Square Marker (■) */
+    .sq-bullet {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--text-main);
+      vertical-align: 1.5px;
+      margin-right: 6px;
+    }
+
+    /* Triangle Bullet (▸) */
+    .tri-bullet {
+      display: inline-block;
+      font-size: 9px;
+      color: var(--text-main);
+      margin-right: 6px;
+      vertical-align: 0.5px;
+    }
+
+    /* ==========================================================================
+       PAGE 1 SPECIFIC STYLES (PORTFOLIO / ABOUT ME)
+       ========================================================================== */
+    .page-1-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 4px;
+    }
+
+    .page-1-domain-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-main);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+    }
+
+    .page-1-domain-line .thick-line {
+      width: 36px;
+      height: 2px;
+      background-color: var(--text-main);
+    }
+
+    /* Intro Split Text (Hello I'm Jane Wilkins / Bio paragraph) */
+    .p1-intro-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
+      margin-top: 4px;
+      margin-bottom: 32px;
+    }
+
+    .p1-intro-left {
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text-main);
+    }
+
+    .p1-intro-right {
+      font-size: 10.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      text-align: justify;
+    }
+
+    /* Lower Section: Dots + Tab Photo + Address + About Me */
+    .p1-lower-area {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 8px;
+    }
+
+    .p1-dots-wrapper {
+      margin-bottom: 24px;
+    }
+
+    .p1-visual-and-info {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    /* Composite Folder-Tab Styled Photo Frame */
+    .photo-tab-composition {
+      position: relative;
+      width: 310px;
+      height: 350px;
+      display: flex;
+      align-items: flex-end;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Left Stepped Blue Accent Backdrop */
+    .tab-backdrop {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 76px;
+      height: 290px;
+      background-color: var(--accent-slate);
+      border-top-left-radius: 18px;
+      border-bottom-left-radius: 18px;
+    }
+
+    /* Main Taller Photo Container */
+    .tab-photo-box {
+      position: absolute;
+      left: 58px;
+      bottom: 0;
+      width: 252px;
+      height: 348px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 16px;
+      border-bottom-left-radius: 0;
+      overflow: hidden;
+      background-color: #2b4955;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transition: opacity 0.2s ease;
+    }
+
+    .tab-photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 47% 12%;
+      transform: scale(1.82) translateY(24px);
+      transform-origin: 47% 12%;
+      display: block;
+    }
+
+    .photo-tab-composition:hover .tab-photo-box {
+      filter: brightness(1.03);
+    }
+
+    .photo-tab-composition .replace-hint {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+      border-radius: 16px;
+      text-align: center;
+      padding: 10px;
+      font-weight: 500;
+    }
+
+    .photo-tab-composition:hover .replace-hint {
+      opacity: 1;
+    }
+
+    /* Address Information block (Right side) */
+    .p1-address-block {
+      align-self: flex-start;
+      margin-top: 10px;
+      padding-left: 20px;
+      flex: 1;
+    }
+
+    .p1-address-label {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .p1-address-lines {
+      font-size: 10.5px;
+      line-height: 1.6;
+      color: var(--text-sub);
+    }
+
+    /* "About Me." Big Stamp */
+    .p1-about-stamp {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      line-height: 1;
+    }
+
+    /* ==========================================================================
+       PAGE 2 SPECIFIC STYLES (RESUME)
+       ========================================================================== */
+    .page-2-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .page-2-header-right {
+      text-align: right;
+    }
+
+    .page-2-header-right .hero-name {
+      font-size: 54px;
+      line-height: 0.86;
+      margin-bottom: 12px;
+    }
+
+    .page-2-header-right .hero-role {
+      font-size: 15px;
+    }
+
+    /* Profile Overview Section */
+    .p2-profile-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+      align-items: flex-start;
+      margin: 6px 0;
+    }
+
+    .p2-section-heading {
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+      color: var(--text-main);
+    }
+
+    .p2-profile-text {
+      font-size: 10.2px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      text-align: justify;
+    }
+
+    /* Lower 2-Column Layout (Work Experience vs Reference & Education) */
+    .p2-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 210px;
+      gap: 32px;
+      flex: 1;
+      margin-top: 14px;
+    }
+
+    /* Work Experience Column */
+    .p2-column-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .p2-job-item {
+      margin-bottom: 26px;
+    }
+
+    .p2-job-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .p2-job-header {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+
+    .p2-job-company {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+    }
+
+    .p2-job-summary {
+      font-size: 9.5px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .p2-job-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .p2-job-bullets li {
+      font-size: 9.3px;
+      line-height: 1.52;
+      color: var(--text-sub);
+      margin-bottom: 3px;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .p2-job-bullets li .tri-bullet {
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Right Column: Reference Dark Card & Education */
+    .p2-right-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .reference-card {
+      background-color: var(--card-black);
+      color: #fff;
+      border-radius: 12px;
+      padding: 20px 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .ref-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .ref-name {
+      font-size: 11px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .ref-role {
+      font-size: 9.5px;
+      color: #9da39e;
+      margin-bottom: 14px;
+    }
+
+    .ref-divider {
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.18);
+      margin-bottom: 14px;
+    }
+
+    .ref-contact-line {
+      font-size: 9.5px;
+      color: #e5e5e5;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+    }
+
+    /* Education Block */
+    .education-block {
+      margin-top: 40px;
+    }
+
+    .edu-section-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+
+    .edu-item {
+      margin-bottom: 22px;
+    }
+
+    .edu-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .edu-degree {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .edu-school {
+      font-size: 9.5px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .edu-year {
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--text-sub);
+    }
+
+    /* ==========================================================================
+       PAGE 3 SPECIFIC STYLES (COVER LETTER)
+       ========================================================================== */
+    .page-3-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .page-3-contact-summary {
+      font-size: 10.5px;
+      line-height: 1.5;
+      color: var(--text-main);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      margin-left: -50px;
+    }
+
+    /* Meta Recipients row */
+    .p3-meta-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+      margin-top: 6px;
+      margin-bottom: 16px;
+    }
+
+    .p3-meta-left .cl-label {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .p3-meta-left .cl-date {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .p3-recipient-box .to-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 3px;
+    }
+
+    .p3-recipient-box .to-name {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .p3-recipient-box .to-role {
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+
+    .p3-recipient-box .to-address {
+      font-size: 10.5px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    /* Accent Bar Divider (Black block + thin line) */
+    .p3-custom-divider {
+      display: flex;
+      align-items: center;
+      margin-top: 14px;
+      margin-bottom: 20px;
+    }
+
+    .p3-custom-divider .black-bar {
+      width: 28px;
+      height: 4px;
+      background-color: var(--text-main);
+      flex-shrink: 0;
+    }
+
+    .p3-custom-divider .thin-line {
+      flex: 1;
+      height: 1px;
+      background-color: var(--line-color);
+      margin-left: 0;
+    }
+
+    /* Cover Letter Body Content Grid */
+    .p3-letter-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .p3-letter-side-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .p3-letter-body-content {
+      font-size: 10.4px;
+      line-height: 1.62;
+      color: var(--text-sub);
+      text-align: justify;
+    }
+
+    .p3-letter-body-content p {
+      margin-bottom: 16px;
+    }
+
+    .p3-letter-body-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Sign-off Area */
+    .p3-signoff-area {
+      margin-top: 24px;
+      margin-left: 164px; /* aligned with body content column */
+    }
+
+    .p3-sincerely {
+      font-size: 11.5px;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+    }
+
+    .p3-signature-box {
+      margin: 2px 0 10px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+    }
+
+    .signature-font-text {
+      font-family: 'Great Vibes', 'Dancing Script', 'Alex Brush', cursive;
+      font-size: 38px;
+      color: var(--text-main);
+      line-height: 1;
+      user-select: none;
+      transform: rotate(-2.5deg);
+      letter-spacing: 0.02em;
+    }
+
+    .p3-signer-name {
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--text-main);
+      text-transform: uppercase;
+    }
+
+    .signature-font-text {
+      font-family: 'Dancing Script', 'Caveat', cursive;
+      font-size: 32px;
+      color: var(--text-main);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .p3-signer-name {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--text-main);
+      text-transform: uppercase;
+    }
+
+    .p3-footer-dots {
+      margin-top: auto;
+      padding-top: 16px;
+    }
+
+    /* ==========================================================================
+       MODAL & INTERACTIVE CONTROLS
+       ========================================================================== */
+    .hidden-file-input {
+      display: none;
+    }
+
+    .toast-notice {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #121413;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: all 0.25s ease;
+      z-index: 2000;
+    }
+
+    .toast-notice.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* ==========================================================================
+       PRINT STYLES FOR EXACT 3-PAGE A4 EXPORT
+       ========================================================================== */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      html, body {
+        background: transparent !important;
+        background-color: #fff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: var(--a4-width) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .top-toolbar,
+      .page-indicator-tag,
+      .replace-hint,
+      .toast-notice {
+        display: none !important;
+      }
+
+      .desk-stage {
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+        min-height: auto !important;
+        overflow: visible !important;
+      }
+
+      .pages-container {
+        display: block !important;
+        gap: 0 !important;
+        transform: none !important;
+      }
+
+      .a4-page {
+        display: flex !important;
+        width: var(--a4-width) !important;
+        height: var(--a4-height) !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        page-break-before: auto !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+        background-color: var(--page-bg) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .a4-page:last-child {
+        page-break-after: avoid !important;
+      }
+
+      /* In print, disable contenteditable visual cues */
+      [contenteditable="true"] {
+        outline: none !important;
+        background: transparent !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hidden Photo Upload Input -->
+  <input type="file" id="photo-upload-input" class="hidden-file-input" accept="image/*">
+
+  <!-- Floating Toast Notification -->
+  <div id="toast" class="toast-notice">Template saved to local browser storage.</div>
+
+  <!-- ==========================================================================
+       TOP INTERACTIVE TOOLBAR
+       ========================================================================== -->
+  <header class="top-toolbar">
+    <div class="toolbar-left">
+      <div class="toolbar-brand">
+        <span>Editorial Resume</span>
+        <span class="badge">3x A4</span>
+      </div>
+
+      <button type="button" class="tb-btn" id="btn-toggle-edit" title="Click anywhere on page to edit text directly">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <span id="edit-mode-text">Enable Edit</span>
+      </button>
+
+      <button type="button" class="tb-btn" id="btn-save-content" title="Save your edited content to browser">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        <span>Save Draft</span>
+      </button>
+
+      <button type="button" class="tb-btn" id="btn-toggle-lang" title="Switch between English original and Chinese demo">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="lang-switch-label">Switch to 中文</span>
+      </button>
+
+      <button type="button" class="tb-btn" id="btn-change-photo" title="Replace cover photo">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Change Photo</span>
+      </button>
+    </div>
+
+    <div class="toolbar-center">
+      <!-- Layout View Mode Buttons -->
+      <div style="display: flex; gap: 4px; background: rgba(0,0,0,0.3); padding: 3px; border-radius: 6px;">
+        <button type="button" class="tb-btn active" id="view-grid" title="3-Page Mockup Side-by-Side">3-Page Spread</button>
+        <button type="button" class="tb-btn" id="view-vertical" title="Continuous Vertical Scroll">Vertical</button>
+        <button type="button" class="tb-btn" id="view-p1" title="Focus Page 1">P1</button>
+        <button type="button" class="tb-btn" id="view-p2" title="Focus Page 2">P2</button>
+        <button type="button" class="tb-btn" id="view-p3" title="Focus Page 3">P3</button>
+      </div>
+
+      <div class="zoom-control">
+        <span>Zoom:</span>
+        <input type="range" id="zoom-slider" min="50" max="130" value="85">
+        <span id="zoom-val">85%</span>
+      </div>
+    </div>
+
+    <div class="toolbar-right">
+      <button type="button" class="tb-btn" id="btn-reset-data" title="Restore default template text">Reset</button>
+      <button type="button" class="tb-btn btn-primary" id="btn-print" title="Print or save as 3-page PDF">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span>Print / Save PDF</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       DESK STAGE / 3 A4 PAGES CONTAINER
+       ========================================================================== */ -->
+  <main class="desk-stage">
+    <div class="pages-container layout-grid" id="pages-container">
+
+      <!-- ======================================================================
+           PAGE 1: PORTFOLIO / ABOUT ME / COVER
+           ====================================================================== -->
+      <section class="a4-page" id="page-1" data-page="1">
+        <div class="page-indicator-tag">Page 01 · About Me / Cover</div>
+
+        <!-- Header: Domain line + Year Pill -->
+        <div class="page-1-top-bar">
+          <div class="page-1-domain-line">
+            <span class="thick-line"></span>
+            <span class="editable" data-key="website">www.example.com</span>
+          </div>
+          <div class="pill-badge editable" data-key="p1_badge">Year 2028</div>
+        </div>
+
+        <!-- Hero Title (Left Aligned) -->
+        <div class="hero-title-group">
+          <div class="hero-name editable" data-key="hero_name">JANE<br>WILKINS</div>
+          <div class="hero-role editable" data-key="hero_role">Promotion Manager</div>
+        </div>
+
+        <hr class="editorial-hr">
+
+        <!-- Intro Text: Left small title & Right paragraph -->
+        <div class="p1-intro-grid">
+          <div class="p1-intro-left editable" data-key="p1_greeting">
+            Hello I'm<br>Jane Wilkins
+          </div>
+          <div class="p1-intro-right editable" data-key="p1_bio">
+            Caboribusquidusam, cum sitisciaest repro et que pra vent harioribus ant laborep ratGentia perchitas magnatia nonesti imenihil il mod quatquis eos simoluptam comnimusae nossi rectibus
+          </div>
+        </div>
+
+        <!-- Lower Section: Dots + Tab Photo + Address + About Me. -->
+        <div class="p1-lower-area">
+          <div class="p1-dots-wrapper">
+            <div class="dots-indicator">
+              <span class="dot dot-filled"></span>
+              <span class="dot dot-outline"></span>
+              <span class="dot dot-outline"></span>
+            </div>
+          </div>
+
+          <div class="p1-visual-and-info">
+            <!-- Stepped Tab-shaped Photo Composition -->
+            <div class="photo-tab-composition" id="photo-container" title="Click to change photo">
+              <div class="tab-backdrop"></div>
+              <div class="tab-photo-box">
+                <img id="cover-photo" src="assets/hero-model-cycling.jpg" alt="Jane Wilkins" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
+                <div class="replace-hint">Click to replace photo</div>
+              </div>
+            </div>
+
+            <!-- Address and Contact info -->
+            <div class="p1-address-block">
+              <div class="p1-address-label editable" data-key="address_title">ADDRESS :</div>
+              <div class="p1-address-lines editable" data-key="p1_address_lines">
+                (311) 555-2368<br>
+                123 Street Name City Name,<br>
+                State Country 12345.<br>
+                www.example.com
+              </div>
+            </div>
+
+            <!-- Big Bottom Right Stamp -->
+            <div class="p1-about-stamp editable" data-key="p1_stamp">About Me.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           PAGE 2: RESUME / CURRICULUM VITAE
+           ====================================================================== -->
+      <section class="a4-page" id="page-2" data-page="2">
+        <div class="page-indicator-tag">Page 02 · Resume / CV</div>
+
+        <!-- Header: Left Pill + Right Aligned Hero Name -->
+        <div>
+          <div class="page-2-header">
+            <div>
+              <div class="pill-badge editable" data-key="p2_badge">Resume</div>
+            </div>
+            <div class="page-2-header-right">
+              <div class="hero-name editable" data-key="hero_name">JANE<br>WILKINS</div>
+              <div class="hero-role editable" data-key="hero_role">Promotion Manager</div>
+            </div>
+          </div>
+
+          <hr class="editorial-hr">
+
+          <!-- Profile Overview -->
+          <div class="p2-profile-grid">
+            <div class="p2-section-heading editable" data-key="p2_profile_title">Profile<br>Overview</div>
+            <div class="p2-profile-text editable" data-key="p2_profile_content">
+              Cabor rempelese labori nimpor aliqui culparis iurest quat et facepel estia nobitibus iliquo tempernaturi cus quiam qui id quis aceperum iducit quatem eum doluptas con net est eatas explit moluptam, vent modi reped quam venimpor sinctiae ipist fugiatiatur
+            </div>
+          </div>
+
+          <hr class="editorial-hr">
+        </div>
+
+        <!-- Main Content 2-Column: Left Experience & Right Reference/Edu -->
+        <div class="p2-main-grid">
+          <!-- Left Column: Work Experience -->
+          <div class="p2-left-col">
+            <div class="p2-column-title editable" data-key="p2_exp_title">Work Experience</div>
+
+            <!-- Job 1 -->
+            <div class="p2-job-item">
+              <div class="p2-job-header">
+                <span class="sq-bullet"></span><span class="editable" data-key="job1_title">Senior Graphic Designer / 2028 Present</span>
+              </div>
+              <div class="p2-job-company editable" data-key="job1_company">Company Name Here</div>
+              <div class="p2-job-summary editable" data-key="job1_summary">
+                Harchici picaborem inienditat quo quas nimendit quidignam in ea sit quter cuptam et plis consecto beraesti corem
+              </div>
+              <ul class="p2-job-bullets editable" data-key="job1_bullets">
+                <li><span class="tri-bullet">▸</span><span>Ratur aut excestorem in re consect urenihil idit</span></li>
+                <li><span class="tri-bullet">▸</span><span>optur si id quis eatis verrum eosant que volorer epedignatur audit optat</span></li>
+                <li><span class="tri-bullet">▸</span><span>ipsa dolore strum quamus et a venis aperum etur sin rerias</span></li>
+              </ul>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="p2-job-item">
+              <div class="p2-job-header">
+                <span class="sq-bullet"></span><span class="editable" data-key="job2_title">Web Developer / 2025 - 2027</span>
+              </div>
+              <div class="p2-job-company editable" data-key="job2_company">Company Name Here</div>
+              <div class="p2-job-summary editable" data-key="job2_summary">
+                Harchici picaborem inienditat quo quas nimendit quidignam in ea sit quter cuptam et plis consecto beraesti corem
+              </div>
+              <ul class="p2-job-bullets editable" data-key="job2_bullets">
+                <li><span class="tri-bullet">▸</span><span>Ratur aut excestorem in re consect urenihil idit</span></li>
+                <li><span class="tri-bullet">▸</span><span>optur si id quis eatis verrum eosant que volorer epedignatur audit optat</span></li>
+                <li><span class="tri-bullet">▸</span><span>ipsa dolore strum quamus et a venis aperum etur sin rerias</span></li>
+              </ul>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="p2-job-item">
+              <div class="p2-job-header">
+                <span class="sq-bullet"></span><span class="editable" data-key="job3_title">Senior UI / UX Designer / 2023 - 2025</span>
+              </div>
+              <div class="p2-job-company editable" data-key="job3_company">Company Name Here</div>
+              <div class="p2-job-summary editable" data-key="job3_summary">
+                Harchici picaborem inienditat quo quas nimendit quidignam in ea sit quter cuptam et plis consecto beraesti corem
+              </div>
+              <ul class="p2-job-bullets editable" data-key="job3_bullets">
+                <li><span class="tri-bullet">▸</span><span>Ratur aut excestorem in re consect urenihil idit</span></li>
+                <li><span class="tri-bullet">▸</span><span>optur si id quis eatis verrum eosant que volorer epedignatur audit optat</span></li>
+                <li><span class="tri-bullet">▸</span><span>ipsa dolore strum quamus et a venis aperum etur sin rerias</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column: Reference Card & Education -->
+          <div class="p2-right-col">
+            <!-- Reference Black Card -->
+            <div class="reference-card">
+              <div class="ref-title editable" data-key="ref_card_title">Reference</div>
+              <div class="ref-name editable" data-key="ref_name">Wilkins Elizabeth</div>
+              <div class="ref-role editable" data-key="ref_role">Position / Company Name</div>
+              <div class="ref-divider"></div>
+              <div class="ref-contact-line editable" data-key="ref_phone">P | (311) 555-2368</div>
+              <div class="ref-contact-line editable" data-key="ref_email">E | www.user@mail.com</div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="education-block">
+              <div class="edu-section-title editable" data-key="edu_title">Education</div>
+
+              <div class="edu-item">
+                <div class="edu-degree">
+                  <span class="sq-bullet"></span><span class="editable" data-key="edu1_degree">Bachelor Of Science</span>
+                </div>
+                <div class="edu-school editable" data-key="edu1_school">Name Of University / Location</div>
+                <div class="edu-year editable" data-key="edu1_year">2024 - 2028</div>
+              </div>
+
+              <div class="edu-item">
+                <div class="edu-degree">
+                  <span class="sq-bullet"></span><span class="editable" data-key="edu2_degree">Masters Of Degree</span>
+                </div>
+                <div class="edu-school editable" data-key="edu2_school">Name Of University / Location</div>
+                <div class="edu-year editable" data-key="edu2_year">2029 - 2032</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           PAGE 3: COVER LETTER
+           ====================================================================== -->
+      <section class="a4-page" id="page-3" data-page="3">
+        <div class="page-indicator-tag">Page 03 · Cover Letter</div>
+
+        <div>
+          <!-- Header: Pill + Contact center + Year Pill -->
+          <div class="page-3-top-bar">
+            <div class="pill-badge editable" data-key="p3_badge">Cover Letter</div>
+            
+            <div class="page-3-contact-summary editable" data-key="p3_contacts">
+              P | (311) 555-2368<br>
+              L | 123 Street Name City Name<br>
+              E | www.user@mail.com
+            </div>
+
+            <div class="pill-badge editable" data-key="p3_year_badge">Year 2028</div>
+          </div>
+
+          <!-- Hero Name (Left Aligned) -->
+          <div class="hero-title-group">
+            <div class="hero-name editable" data-key="hero_name">JANE<br>WILKINS</div>
+            <div class="hero-role editable" data-key="hero_role">Promotion Manager</div>
+          </div>
+
+          <hr class="editorial-hr">
+
+          <!-- Meta Grid: Date & Recipient Details -->
+          <div class="p3-meta-grid">
+            <div class="p3-meta-left">
+              <div class="cl-label editable" data-key="p3_date_title">Cover Letter.</div>
+              <div class="cl-date editable" data-key="p3_date">12 March 2028</div>
+            </div>
+            <div class="p3-recipient-box">
+              <div class="to-label editable" data-key="p3_to_label">TO</div>
+              <div class="to-name editable" data-key="p3_to_name">Linda Brown</div>
+              <div class="to-role editable" data-key="p3_to_role">Office Manager</div>
+              <div class="to-address editable" data-key="p3_to_address">
+                A | 123 Street Name City Name,<br>
+                Country 121345.
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom Divider with Left Black Block -->
+          <div class="p3-custom-divider">
+            <div class="black-bar"></div>
+            <div class="thin-line"></div>
+          </div>
+
+          <!-- Letter Content Grid: Left Title + Right Letter Paragraphs -->
+          <div class="p3-letter-grid">
+            <div class="p3-letter-side-title editable" data-key="p3_letter_title">
+              Office Manager
+            </div>
+            <div class="p3-letter-body-content editable" data-key="p3_letter_body">
+              <p>
+                Cabor rempelese labori nimpor aliqui culparis iurest quat et facepel estia nobitibus iliquo tempernaturi cus quiam qui id quis aceperum iducit quatem eum doluptas con net est eatas explit moluptam, vent modi reped quam venimpor sinctiae ipist fugiatiatur
+              </p>
+              <p>
+                Usiter con es simaiorrovid qui volupidel earcit reperum cone nonetui squo beate dipsa ducim volupta coriand ellaccus quae conet anduscimus escient. Harum non net quas ut que ped que dolorerum fuga. Et et endem essit asped maximolum as si sit hitatium vidiuntiorem net, nam volorum facearciis explaborem. Tis et re venis cus doluptat et volupta temporepudi dus sim autem. Ximus volor alit di consequia dundam dolorem hictis dolum imincipsam sequate nimenihil eaqui omnis et, ut maioreici dus eosam volest apidebi taturis atur, alia ipit, que prae eiumquo tem. Accum, ut quo is mi, essi officipsam derovit rempore si untiati dolorenia vid que quature henihicer illecep eribusda ipit pro volor soluptur.
+              </p>
+            </div>
+          </div>
+
+          <!-- Sign-off Section -->
+          <div class="p3-signoff-area">
+            <div class="p3-sincerely editable" data-key="p3_sincerely">Sincerely</div>
+            
+            <div class="p3-signature-box">
+              <span class="signature-font-text editable" data-key="signature_text">Signature</span>
+            </div>
+
+            <div class="p3-signer-name editable" data-key="p3_signer_name">JANE WILKINS</div>
+          </div>
+        </div>
+
+        <!-- Footer: Dots Indicator (Left Bottom) -->
+        <div class="p3-footer-dots">
+          <div class="dots-indicator">
+            <span class="dot dot-filled"></span>
+            <span class="dot dot-outline"></span>
+            <span class="dot dot-outline"></span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       JAVASCRIPT: INTERACTION, PREVIEW, LIVE EDIT & PERSISTENCE
+       ========================================================================== -->
+  <script>
+    (function () {
+      // DOM Elements
+      const container = document.getElementById('pages-container');
+      const pages = document.querySelectorAll('.a4-page');
+      const zoomSlider = document.getElementById('zoom-slider');
+      const zoomVal = document.getElementById('zoom-val');
+      const btnToggleEdit = document.getElementById('btn-toggle-edit');
+      const editModeText = document.getElementById('edit-mode-text');
+      const btnSaveContent = document.getElementById('btn-save-content');
+      const btnToggleLang = document.getElementById('btn-toggle-lang');
+      const langSwitchLabel = document.getElementById('lang-switch-label');
+      const btnChangePhoto = document.getElementById('btn-change-photo');
+      const photoUploadInput = document.getElementById('photo-upload-input');
+      const coverPhoto = document.getElementById('cover-photo');
+      const photoContainer = document.getElementById('photo-container');
+      const btnPrint = document.getElementById('btn-print');
+      const btnResetData = document.getElementById('btn-reset-data');
+      const toast = document.getElementById('toast');
+
+      // View Buttons
+      const viewGrid = document.getElementById('view-grid');
+      const viewVertical = document.getElementById('view-vertical');
+      const viewP1 = document.getElementById('view-p1');
+      const viewP2 = document.getElementById('view-p2');
+      const viewP3 = document.getElementById('view-p3');
+      const viewBtns = [viewGrid, viewVertical, viewP1, viewP2, viewP3];
+
+      let isEditing = false;
+      let currentLang = 'en'; // 'en' or 'zh'
+
+      // ========================================================================
+      // 1. ZOOM CONTROLLER
+      // ========================================================================
+      function applyZoom(scale) {
+        container.style.transform = `scale(${scale / 100})`;
+        zoomVal.textContent = `${scale}%`;
+      }
+
+      zoomSlider.addEventListener('input', (e) => {
+        applyZoom(e.target.value);
+      });
+
+      // ========================================================================
+      // 2. VIEW MODES (3-Spread / Vertical / Single Page Focus)
+      // ========================================================================
+      function setViewMode(mode, targetPage = 1) {
+        viewBtns.forEach(btn => btn.classList.remove('active'));
+        container.className = 'pages-container';
+
+        if (mode === 'grid') {
+          container.classList.add('layout-grid');
+          viewGrid.classList.add('active');
+          pages.forEach(p => p.classList.remove('current-active'));
+        } else if (mode === 'vertical') {
+          container.classList.add('layout-vertical');
+          viewVertical.classList.add('active');
+          pages.forEach(p => p.classList.remove('current-active'));
+        } else if (mode === 'single') {
+          container.classList.add('layout-single');
+          pages.forEach((p, idx) => {
+            if (idx + 1 === targetPage) {
+              p.classList.add('current-active');
+            } else {
+              p.classList.remove('current-active');
+            }
+          });
+          if (targetPage === 1) viewP1.classList.add('active');
+          if (targetPage === 2) viewP2.classList.add('active');
+          if (targetPage === 3) viewP3.classList.add('active');
+        }
+      }
+
+      viewGrid.addEventListener('click', () => setViewMode('grid'));
+      viewVertical.addEventListener('click', () => setViewMode('vertical'));
+      viewP1.addEventListener('click', () => setViewMode('single', 1));
+      viewP2.addEventListener('click', () => setViewMode('single', 2));
+      viewP3.addEventListener('click', () => setViewMode('single', 3));
+
+      // Responsive default zoom
+      if (window.innerWidth < 1100) {
+        zoomSlider.value = 55;
+        applyZoom(55);
+      } else if (window.innerWidth < 1440) {
+        zoomSlider.value = 75;
+        applyZoom(75);
+      } else {
+        zoomSlider.value = 85;
+        applyZoom(85);
+      }
+
+      // ========================================================================
+      // 3. EDITABLE MODE & LOCAL STORAGE PERSISTENCE
+      // ========================================================================
+      const editables = document.querySelectorAll('.editable');
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2600);
+      }
+
+      btnToggleEdit.addEventListener('click', () => {
+        isEditing = !isEditing;
+        document.body.classList.toggle('is-editing', isEditing);
+        btnToggleEdit.classList.toggle('active', isEditing);
+        editModeText.textContent = isEditing ? 'Finish Editing' : 'Enable Edit';
+
+        editables.forEach(el => {
+          el.setAttribute('contenteditable', isEditing ? 'true' : 'false');
+        });
+
+        if (isEditing) {
+          showToast('Live Edit Mode active. Click any text to customize!');
+        } else {
+          saveToLocalStorage();
+          showToast('Changes saved automatically.');
+        }
+      });
+
+      function saveToLocalStorage() {
+        const data = {};
+        editables.forEach(el => {
+          const key = el.getAttribute('data-key');
+          if (key) {
+            data[key] = el.innerHTML;
+          }
+        });
+        localStorage.setItem('editorial_resume_content_' + currentLang, JSON.stringify(data));
+      }
+
+      btnSaveContent.addEventListener('click', () => {
+        saveToLocalStorage();
+        showToast('Draft successfully saved to browser storage!');
+      });
+
+      function loadFromLocalStorage(lang) {
+        const saved = localStorage.getItem('editorial_resume_content_' + lang);
+        if (saved) {
+          try {
+            const data = JSON.parse(saved);
+            editables.forEach(el => {
+              const key = el.getAttribute('data-key');
+              if (key && data[key] !== undefined) {
+                el.innerHTML = data[key];
+              }
+            });
+            return true;
+          } catch (e) {
+            console.error('Error loading saved draft', e);
+          }
+        }
+        return false;
+      }
+
+      // ========================================================================
+      // 4. CHINESE / ENGLISH TEMPLATE PRESETS
+      // ========================================================================
+      const presets = {
+        en: {
+          website: "www.example.com",
+          p1_badge: "Year 2028",
+          hero_name: "JANE<br>WILKINS",
+          hero_role: "Promotion Manager",
+          p1_greeting: "Hello I'm<br>Jane Wilkins",
+          p1_bio: "Caboribusquidusam, cum sitisciaest repro et que pra vent harioribus ant laborep ratGentia perchitas magnatia nonesti imenihil il mod quatquis eos simoluptam comnimusae nossi rectibus",
+          address_title: "ADDRESS :",
+          p1_address_lines: "(311) 555-2368<br>123 Street Name City Name,<br>State Country 12345.<br>www.example.com",
+          p1_stamp: "About Me.",
+          p2_badge: "Resume",
+          p2_profile_title: "Profile<br>Overview",
+          p2_profile_content: "Cabor rempelese labori nimpor aliqui culparis iurest quat et facepel estia nobitibus iliquo tempernaturi cus quiam qui id quis aceperum iducit quatem eum doluptas con net est eatas explit moluptam, vent modi reped quam venimpor sinctiae ipist fugiatiatur",
+          p2_exp_title: "Work Experience",
+          job1_title: "Senior Graphic Designer / 2028 Present",
+          job1_company: "Company Name Here",
+          job1_summary: "Harchici picaborem inienditat quo quas nimendit quidignam in ea sit quter cuptam et plis consecto beraesti corem",
+          job1_bullets: `<li><span class="tri-bullet">▸</span><span>Ratur aut excestorem in re consect urenihil idit</span></li><li><span class="tri-bullet">▸</span><span>optur si id quis eatis verrum eosant que volorer epedignatur audit optat</span></li><li><span class="tri-bullet">▸</span><span>ipsa dolore strum quamus et a venis aperum etur sin rerias</span></li>`,
+          job2_title: "Web Developer / 2025 - 2027",
+          job2_company: "Company Name Here",
+          job2_summary: "Harchici picaborem inienditat quo quas nimendit quidignam in ea sit quter cuptam et plis consecto beraesti corem",
+          job2_bullets: `<li><span class="tri-bullet">▸</span><span>Ratur aut excestorem in re consect urenihil idit</span></li><li><span class="tri-bullet">▸</span><span>optur si id quis eatis verrum eosant que volorer epedignatur audit optat</span></li><li><span class="tri-bullet">▸</span><span>ipsa dolore strum quamus et a venis aperum etur sin rerias</span></li>`,
+          job3_title: "Senior UI / UX Designer / 2023 - 2025",
+          job3_company: "Company Name Here",
+          job3_summary: "Harchici picaborem inienditat quo quas nimendit quidignam in ea sit quter cuptam et plis consecto beraesti corem",
+          job3_bullets: `<li><span class="tri-bullet">▸</span><span>Ratur aut excestorem in re consect urenihil idit</span></li><li><span class="tri-bullet">▸</span><span>optur si id quis eatis verrum eosant que volorer epedignatur audit optat</span></li><li><span class="tri-bullet">▸</span><span>ipsa dolore strum quamus et a venis aperum etur sin rerias</span></li>`,
+          ref_card_title: "Reference",
+          ref_name: "Wilkins Elizabeth",
+          ref_role: "Position / Company Name",
+          ref_phone: "P | (311) 555-2368",
+          ref_email: "E | www.user@mail.com",
+          edu_title: "Education",
+          edu1_degree: "Bachelor Of Science",
+          edu1_school: "Name Of University / Location",
+          edu1_year: "2024 - 2028",
+          edu2_degree: "Masters Of Degree",
+          edu2_school: "Name Of University / Location",
+          edu2_year: "2029 - 2032",
+          p3_badge: "Cover Letter",
+          p3_contacts: "P | (311) 555-2368<br>L | 123 Street Name City Name<br>E | www.user@mail.com",
+          p3_year_badge: "Year 2028",
+          p3_date_title: "Cover Letter.",
+          p3_date: "12 March 2028",
+          p3_to_label: "TO",
+          p3_to_name: "Linda Brown",
+          p3_to_role: "Office Manager",
+          p3_to_address: "A | 123 Street Name City Name,<br>Country 121345.",
+          p3_letter_title: "Office Manager",
+          p3_letter_body: `<p>Cabor rempelese labori nimpor aliqui culparis iurest quat et facepel estia nobitibus iliquo tempernaturi cus quiam qui id quis aceperum iducit quatem eum doluptas con net est eatas explit moluptam, vent modi reped quam venimpor sinctiae ipist fugiatiatur</p><p>Usiter con es simaiorrovid qui volupidel earcit reperum cone nonetui squo beate dipsa ducim volupta coriand ellaccus quae conet anduscimus escient. Harum non net quas ut que ped que dolorerum fuga. Et et endem essit asped maximolum as si sit hitatium vidiuntiorem net, nam volorum facearciis explaborem. Tis et re venis cus doluptat et volupta temporepudi dus sim autem. Ximus volor alit di consequia dundam dolorem hictis dolum imincipsam sequate nimenihil eaqui omnis et, ut maioreici dus eosam volest apidebi taturis atur, alia ipit, que prae eiumquo tem. Accum, ut quo is mi, essi officipsam derovit rempore si untiati dolorenia vid que quature henihicer illecep eribusda ipit pro volor soluptur.</p>`,
+          p3_sincerely: "Sincerely",
+          p3_signer_name: "JANE WILKINS"
+        },
+        zh: {
+          website: "www.janewilkins.design",
+          p1_badge: "2028 年度",
+          hero_name: "JANE<br>WILKINS",
+          hero_role: "品牌推广主管 · 视觉设计顾问",
+          p1_greeting: "你好，我是<br>简·威尔金斯",
+          p1_bio: "拥有8年品牌战略策划与全链路视觉设计经验。精通现代新锐杂志编辑美学、多渠道整合营销战役与品牌数字化转型，擅长以克制优雅的视觉语言驱动商业增长与受众心智渗透。",
+          address_title: "联系方式 :",
+          p1_address_lines: "+86 138 0000 2368<br>北京市朝阳区三里屯中心路<br>设计创意产业园区 100020<br>www.janewilkins.design",
+          p1_stamp: "关于我.",
+          p2_badge: "个人履历",
+          p2_profile_title: "专业背景<br>个人概述",
+          p2_profile_content: "资深设计总监与整合营销专家，致力于将高级艺术美学与商业目标高度统一。主导操盘超过20+国际一线品牌年度整合推广项目，在品牌重塑、视觉设计体系构建、UI/UX产品交互体验与跨职能敏捷团队管理方面具备深厚积累。",
+          p2_exp_title: "工作经历",
+          job1_title: "资深平面与品牌总监 / 2028 - 至今",
+          job1_company: "宏创国际文化传媒集团",
+          job1_summary: "负责集团核心品牌集群的整体视觉升级与整合推广方案落地，带领15人设计与策划团队协同作战。",
+          job1_bullets: `<li><span class="tri-bullet">▸</span><span>重构品牌视觉设计系统（Design System），推动全渠道品牌形象统一与资产沉淀</span></li><li><span class="tri-bullet">▸</span><span>主导2028年度全网核心发布会传播战役，累计触达全网曝光超3500万次</span></li><li><span class="tri-bullet">▸</span><span>优化设计交付协作流程，将跨部门设计资产落地交付周期有效缩短35%</span></li>`,
+          job2_title: "高级前端开发 / Web 设计师 / 2025 - 2027",
+          job2_company: "极光未来科技工作室",
+          job2_summary: "负责品牌官方网站群、交互型专题页面以及品牌设计资产组件库的研发与前端架构设计。",
+          job2_bullets: `<li><span class="tri-bullet">▸</span><span>主导基于现代化技术栈的高保真响应式官网开发，实现极致首屏渲染与动效质感</span></li><li><span class="tri-bullet">▸</span><span>深度协作UI/UX团队，规范化Design Token与组件生态，保障高精度还原度</span></li><li><span class="tri-bullet">▸</span><span>主导核心交互站点SEO与性能优化，整体Lighthouse性能评分提升至98分</span></li>`,
+          job3_title: "资深 UI / UX 设计师 / 2023 - 2025",
+          job3_company: "星河无限交互设计事务所",
+          job3_summary: "专注高端数字产品体验设计，完成多款SaaS平台与消费级移动端产品的核心架构演进。",
+          job3_bullets: `<li><span class="tri-bullet">▸</span><span>完成核心产品全链路用户旅程地图梳理，重塑整体信息架构与交互动效逻辑</span></li><li><span class="tri-bullet">▸</span><span>推动用户调研与A/B测试实验闭环，关键业务转化漏斗提升达24.6%</span></li><li><span class="tri-bullet">▸</span><span>建立团队设计走查与评审标准，有效保障线上版本的视觉质量一致性</span></li>`,
+          ref_card_title: "推荐人信息",
+          ref_name: "伊丽莎白·威尔金斯",
+          ref_role: "设计副总裁 / 创意合伙人",
+          ref_phone: "电话 | +86 138 5555 2368",
+          ref_email: "邮箱 | wilkins@mail.com",
+          edu_title: "教育背景",
+          edu1_degree: "艺术设计与传播学士",
+          edu1_school: "著名美术学院 / 设计艺术学院",
+          edu1_year: "2024 - 2028",
+          edu2_degree: "设计战略与创新硕士",
+          edu2_school: "知名综合大学 / 创新设计研究所",
+          edu2_year: "2029 - 2032",
+          p3_badge: "求职自荐信",
+          p3_contacts: "电话 | +86 138 0000 2368<br>地址 | 北京市朝阳区创意园<br>邮箱 | contact@janewilkins.com",
+          p3_year_badge: "2028 年度",
+          p3_date_title: "自荐信.",
+          p3_date: "2028年3月12日",
+          p3_to_label: "致收件人",
+          p3_to_name: "琳达·布朗",
+          p3_to_role: "招聘总监 / 综合管理部",
+          p3_to_address: "地址 | 北京市朝阳区商务核心区<br>国际创投大厦 1801 室",
+          p3_letter_title: "应聘岗位：推广经理",
+          p3_letter_body: `<p>尊敬的招聘主管及团队：</p><p>非常高兴能借由此封求职信向贵司表达我对“品牌推广主管 / 视觉创意经理”职位的诚挚兴趣。在过去数年的从业实践中，我始终专注于将前沿的现代杂志编辑美学与严谨的商业市场战略深度融合，帮助多个高成长型品牌完成从0到1的品牌定位建立与数字化触点升级。</p><p>贵司在业界前瞻性的产品视野与追求极致的设计追求令我深感契合。凭借在整合营销策划、多端视觉体系搭建、跨职能高效组织协作以及深厚的设计开发复合背景，我相信自己能够快速融入团队，为贵司接下来的核心业务拓展和品牌声量建设贡献扎实而富有创造力的价值。非常期待能有机会与您展开进一步交流！</p>`,
+          p3_sincerely: "此致 敬礼",
+          p3_signer_name: "简·威尔金斯 (JANE WILKINS)"
+        }
+      };
+
+      function applyPreset(lang) {
+        const p = presets[lang];
+        if (!p) return;
+        currentLang = lang;
+        langSwitchLabel.textContent = lang === 'en' ? 'Switch to 中文' : '切换为 English';
+
+        // Check if user has saved custom data for this lang
+        if (!loadFromLocalStorage(lang)) {
+          editables.forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (key && p[key] !== undefined) {
+              el.innerHTML = p[key];
+            }
+          });
+        }
+      }
+
+      btnToggleLang.addEventListener('click', () => {
+        const nextLang = currentLang === 'en' ? 'zh' : 'en';
+        applyPreset(nextLang);
+        showToast(`Switched to ${nextLang === 'en' ? 'English (Original)' : '中文 (示范)'}`);
+      });
+
+      btnResetData.addEventListener('click', () => {
+        if (confirm('Are you sure you want to reset all edits to default?')) {
+          localStorage.removeItem('editorial_resume_content_' + currentLang);
+          const p = presets[currentLang];
+          editables.forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (key && p[key] !== undefined) {
+              el.innerHTML = p[key];
+            }
+          });
+          showToast('Template restored to default!');
+        }
+      });
+
+      // ========================================================================
+      // 5. CUSTOM COVER PHOTO REPLACEMENT
+      // ========================================================================
+      function triggerPhotoSelect() {
+        photoUploadInput.click();
+      }
+
+      btnChangePhoto.addEventListener('click', triggerPhotoSelect);
+      photoContainer.addEventListener('click', (e) => {
+        if (!isEditing) {
+          triggerPhotoSelect();
+        }
+      });
+
+      photoUploadInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (evt) {
+            coverPhoto.src = evt.target.result;
+            try {
+              localStorage.setItem('editorial_resume_photo', evt.target.result);
+            } catch (err) {
+              console.warn('Image too large for localStorage, rendered in session.');
+            }
+            showToast('Cover photo updated successfully!');
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Restore saved custom photo if any
+      const savedPhoto = localStorage.getItem('editorial_resume_photo');
+      if (savedPhoto) {
+        coverPhoto.src = savedPhoto;
+      }
+
+      // ========================================================================
+      // 6. PRINT & PDF EXPORT
+      // ========================================================================
+      btnPrint.addEventListener('click', () => {
+        // Automatically switch to standard layout before printing
+        const prevTransform = container.style.transform;
+        container.style.transform = 'none';
+
+        // Trigger native print dialogue
+        window.print();
+
+        // Restore preview zoom after print dialog
+        setTimeout(() => {
+          container.style.transform = prevTransform;
+        }, 500);
+      });
+
+      // Initial load
+      loadFromLocalStorage('en');
+    })();
+  </script>
+</body>
+</html>
