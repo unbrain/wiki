@@ -88,6 +88,9 @@ var canPartition = function(nums) {
 };
 ```
 
+> 二刷 2026-09-21：0-1 背包模型，容量逆序遍历防重复选取，布尔状态压缩一次 AC。
+
+
 
 [62. 不同路径](https://leetcode.cn/problems/unique-paths/)
 
