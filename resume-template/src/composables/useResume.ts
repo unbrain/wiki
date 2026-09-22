@@ -4,10 +4,10 @@ import { PRESETS } from '../data/presets'
 import { normalizeCvData } from '../data/normalizer'
 
 export function useResume() {
-  // Read initial dataset key from URL query param
+  // Read initial dataset key from URL query param (default to unbrain_full)
   const urlParams = new URLSearchParams(window.location.search)
-  const queryPreset = urlParams.get('data') || 'original'
-  const initialKey = PRESETS[queryPreset] ? queryPreset : 'original'
+  const queryPreset = urlParams.get('data') || 'unbrain_full'
+  const initialKey = PRESETS[queryPreset] ? queryPreset : 'unbrain_full'
 
   const activePresetKey = ref<string>(initialKey)
   const cv = ref<CVData>(JSON.parse(JSON.stringify(PRESETS[initialKey])))
