@@ -241,6 +241,7 @@ export const PRESETS: CVDatabase = {
     },
     page2: {
       badge: 'Resume',
+      showHeader: true,
       profileTitle: 'Profile<br>Overview',
       profileOverview: 'Cabor rempelese labori nimpor aliqui culparis iurest quat et facepel estia nobitibus iliquo tempernaturi cus quiam qui id quis aceperum iducit quatem eum doluptas con net est eatas explit moluptam, vent modi reped quam venimpor sinctiae ipist fugiatiatur',
       expTitle: 'Work Experience',

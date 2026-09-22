@@ -61,6 +61,7 @@ export interface CVMeta {
 
 export interface CVPage2 {
   badge?: string
+  showHeader?: boolean
   profileTitle?: string
   profileOverview?: string
   expTitle?: string
@@ -79,6 +80,7 @@ export interface CVPage2 {
 
 export interface CVPage3 {
   badge?: string
+  showHeader?: boolean
   profileTitle?: string
   profileOverview?: string
   expTitle?: string

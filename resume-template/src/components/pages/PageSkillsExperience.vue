@@ -21,25 +21,28 @@ const pageTag = computed(() => isThreePageMode.value ? 'Page 02 · Resume / CV' 
 const pageBadge = computed(() => isThreePageMode.value ? (props.cv.page2.badge || 'Resume') : (props.cv.page2.badge || 'Skills & Architecture'))
 const colTitle = computed(() => isThreePageMode.value ? (props.cv.page2.expTitle || 'Work Experience') : (props.cv.page2.expTitle || 'Core Technical Pillars'))
 const listItems = computed(() => isThreePageMode.value ? (props.cv.page2.experiences || []) : (props.cv.page2.skills || props.cv.page2.experiences || []))
+const showHeader = computed(() => Boolean(props.cv.page2.showHeader))
 </script>
 
 <template>
   <A4Sheet page-id="page-2" :page-num="2" :tag-text="pageTag" :active="active">
     <div>
-      <div class="editorial-page-header">
-        <div>
-          <PillBadge :text="pageBadge" />
+      <template v-if="showHeader">
+        <div class="editorial-page-header">
+          <div>
+            <PillBadge :text="pageBadge" />
+          </div>
+          <HeroNameTitle
+            custom-class="editorial-page-header-right"
+            :name-first="cv.person.nameFirst"
+            :name-last="cv.person.nameLast"
+            :name-cn="cv.person.nameCn"
+            :role="cv.person.role"
+          />
         </div>
-        <HeroNameTitle
-          custom-class="editorial-page-header-right"
-          :name-first="cv.person.nameFirst"
-          :name-last="cv.person.nameLast"
-          :name-cn="cv.person.nameCn"
-          :role="cv.person.role"
-        />
-      </div>
 
-      <hr class="editorial-hr" />
+        <hr class="editorial-hr" />
+      </template>
 
       <EditorialGrid custom-class="overview-grid">
         <template #left>

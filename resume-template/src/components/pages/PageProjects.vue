@@ -36,25 +36,28 @@ const colTitle = computed(() => {
 })
 
 const infra = computed(() => props.cv.page3.infrastructureBlock || props.cv.page3.materialBlock)
+const showHeader = computed(() => Boolean(props.cv.page3.showHeader))
 </script>
 
 <template>
   <A4Sheet :page-id="`page-${pageNum}`" :page-num="pageNum" :tag-text="pageTag" :active="active">
     <div>
-      <div class="editorial-page-header">
-        <div>
-          <PillBadge :text="props.cv.page3.badge || 'Production Projects'" />
+      <template v-if="showHeader">
+        <div class="editorial-page-header">
+          <div>
+            <PillBadge :text="props.cv.page3.badge || 'Production Projects'" />
+          </div>
+          <HeroNameTitle
+            custom-class="editorial-page-header-right"
+            :name-first="cv.person.nameFirst"
+            :name-last="cv.person.nameLast"
+            :name-cn="cv.person.nameCn"
+            :role="cv.person.role"
+          />
         </div>
-        <HeroNameTitle
-          custom-class="editorial-page-header-right"
-          :name-first="cv.person.nameFirst"
-          :name-last="cv.person.nameLast"
-          :name-cn="cv.person.nameCn"
-          :role="cv.person.role"
-        />
-      </div>
 
-      <hr class="editorial-hr" />
+        <hr class="editorial-hr" />
+      </template>
 
       <EditorialGrid custom-class="overview-grid">
         <template #left>
