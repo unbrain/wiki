@@ -455,6 +455,20 @@
       transition: transform 0.2s ease;
     }
 
+    .photo-folder-container.is-contain {
+      background: radial-gradient(circle at center, #1b3240 0%, #101c24 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-folder-container.is-contain img {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.45));
+    }
+
     .photo-folder-container .replace-hint {
       position: absolute;
       inset: 0;
@@ -1119,10 +1133,12 @@
       <div style="display: flex; gap: 4px; background: rgba(0,0,0,0.3); padding: 3px; border-radius: 6px;" id="nav-btn-group">
         <button type="button" class="tb-btn active" id="view-grid">All Pages</button>
         <button type="button" class="tb-btn" id="view-vertical">Vertical</button>
-        <button type="button" class="tb-btn" id="view-p1">P1</button>
-        <button type="button" class="tb-btn" id="view-p2">P2</button>
-        <button type="button" class="tb-btn" id="view-p3">P3</button>
-        <button type="button" class="tb-btn" id="view-p4">P4</button>
+        <span id="page-num-toggles" style="display: flex; gap: 4px;">
+          <button type="button" class="tb-btn" id="view-p1">P1</button>
+          <button type="button" class="tb-btn" id="view-p2">P2</button>
+          <button type="button" class="tb-btn" id="view-p3">P3</button>
+          <button type="button" class="tb-btn" id="view-p4">P4</button>
+        </span>
       </div>
 
       <div class="zoom-control">
@@ -1219,7 +1235,7 @@
 
           <div class="p1-visual-and-info">
             <div class="photo-folder-container" id="photo-container" title="Click to replace photo">
-              <img id="cover-photo" src="assets/avatar.jpg" alt="Photo" onerror="this.src='../quartz/static/avatar.jpg'">
+              <img id="cover-photo" src="https://ssl.gstatic.com/gb/images/ring/pr_56px_2x_asknjuyerc.png" alt="Photo" onerror="this.src='assets/avatar-user.png'">
               <div class="replace-hint">Click to replace photo</div>
             </div>
 
@@ -1514,8 +1530,16 @@
         document.getElementById('p1-address-lines').innerHTML = data.meta.addressLines || '';
         document.getElementById('p1-stamp').innerHTML = data.person.aboutStamp || 'About Me.';
 
+        document.querySelectorAll('.dynamic-continuation-page').forEach(el => el.remove());
+
         if (data.person.photo) coverPhoto.src = data.person.photo;
         if (data.person.photoPosition) coverPhoto.style.objectPosition = data.person.photoPosition;
+        if (data.person.photoFit) coverPhoto.style.objectFit = data.person.photoFit;
+        if (data.person.photoFit === 'contain') {
+          photoContainer.classList.add('is-contain');
+        } else {
+          photoContainer.classList.remove('is-contain');
+        }
         if (data.person.photoScale) coverPhoto.style.transform = `scale(${data.person.photoScale})`;
         else coverPhoto.style.transform = 'none';
 
@@ -1604,16 +1628,22 @@
           }
 
           // Page 3: Work Experience & Projects
-          document.getElementById('p3-badge').innerHTML = data.page3.badge || 'Work Experience';
+          document.getElementById('p3-badge').innerHTML = data.page3.badge || 'Production Projects';
           document.getElementById('p3-hero-name').innerHTML = heroNameHtml;
           document.getElementById('p3-hero-role').innerHTML = data.person.role || '';
           document.getElementById('p3-profile-title').innerHTML = data.page3.profileTitle || 'Engineering<br>Track Record';
           document.getElementById('p3-profile-content').innerHTML = data.page3.profileOverview || '';
           document.getElementById('p3-col-title').innerHTML = data.page3.expTitle || 'Production Projects';
 
+          const allProjects = data.page3.experiences || [];
           const p3MainList = document.getElementById('p3-main-list');
           p3MainList.innerHTML = '';
-          (data.page3.experiences || []).forEach(exp => {
+
+          // If projects exceed 2, dynamically split into Page 3 (chunk 1) and Page 4 continuation (chunk 2)
+          const chunk1 = allProjects.slice(0, 2);
+          const chunk2 = allProjects.slice(2);
+
+          chunk1.forEach(exp => {
             const item = document.createElement('div');
             item.className = 'job-item';
             let bulletsHtml = '';
@@ -1625,7 +1655,7 @@
                 <span class="sq-bullet"></span><span class="editable">${exp.title}</span>
               </div>
               <div class="job-company editable">${exp.company}</div>
-              <div class="job-summary editable">${exp.summary}</div>
+              ${exp.summary ? `<div class="job-summary editable">${exp.summary}</div>` : ''}
               <ul class="job-bullets editable">${bulletsHtml}</ul>
             `;
             p3MainList.appendChild(item);
@@ -1643,33 +1673,140 @@
             ${ref3.endorsement ? `<div class="ref-endorsement editable">${ref3.endorsement}</div>` : ''}
           `;
 
-          // Page 3: Infrastructure Block & Manifesto
           const infra = data.page3.infrastructureBlock || data.page3.materialBlock || {};
-          document.getElementById('p3-lower-title').innerHTML = infra.title || 'Infrastructure';
           const p3LowerList = document.getElementById('p3-lower-list');
           p3LowerList.innerHTML = '';
-          (infra.items || []).forEach(m => {
-            const div = document.createElement('div');
-            div.className = 'list-item';
-            div.innerHTML = `
-              <div class="item-primary"><span class="sq-bullet"></span><span class="editable">${m.degree}</span></div>
-              <div class="item-secondary editable">${m.school}</div>
-              <div class="item-meta editable">${m.year}</div>
-            `;
-            p3LowerList.appendChild(div);
-          });
 
-          if (data.page3.manifesto) {
-            const manDiv = document.createElement('div');
-            manDiv.className = 'manifesto-box';
-            manDiv.innerHTML = `
-              <div class="m-title editable">${data.page3.manifesto.title}</div>
-              <div class="m-quote editable">${data.page3.manifesto.quote}</div>
+          if (chunk2.length === 0) {
+            // Fits in single page
+            document.getElementById('p3-lower-title').innerHTML = infra.title || 'Infrastructure';
+            (infra.items || []).forEach(m => {
+              const div = document.createElement('div');
+              div.className = 'list-item';
+              div.innerHTML = `
+                <div class="item-primary"><span class="sq-bullet"></span><span class="editable">${m.degree}</span></div>
+                <div class="item-secondary editable">${m.school}</div>
+                <div class="item-meta editable">${m.year}</div>
+              `;
+              p3LowerList.appendChild(div);
+            });
+
+            if (data.page3.manifesto) {
+              const manDiv = document.createElement('div');
+              manDiv.className = 'manifesto-box';
+              manDiv.innerHTML = `
+                <div class="m-title editable">${data.page3.manifesto.title}</div>
+                <div class="m-quote editable">${data.page3.manifesto.quote}</div>
+              `;
+              p3LowerList.appendChild(manDiv);
+            }
+          } else {
+            // Overflow: Add new A4 continuation page instead of hiding content!
+            document.getElementById('p3-lower-title').innerHTML = '';
+
+            const contPage = document.createElement('section');
+            contPage.className = 'a4-page dynamic-continuation-page';
+            contPage.id = 'page-3-cont';
+            contPage.setAttribute('data-page', '4');
+
+            let infraItemsHtml = '';
+            (infra.items || []).forEach(m => {
+              infraItemsHtml += `
+                <div class="list-item">
+                  <div class="item-primary"><span class="sq-bullet"></span><span class="editable">${m.degree}</span></div>
+                  <div class="item-secondary editable">${m.school}</div>
+                  <div class="item-meta editable">${m.year}</div>
+                </div>
+              `;
+            });
+
+            let manifestoHtml = '';
+            if (data.page3.manifesto) {
+              manifestoHtml = `
+                <div class="manifesto-box">
+                  <div class="m-title editable">${data.page3.manifesto.title}</div>
+                  <div class="m-quote editable">${data.page3.manifesto.quote}</div>
+                </div>
+              `;
+            }
+
+            contPage.innerHTML = `
+              <div class="page-indicator-tag" id="p3-cont-tag">Page 04 · Production Projects (Cont.)</div>
+
+              <div>
+                <div class="editorial-page-header">
+                  <div>
+                    <div class="pill-badge editable">Production Projects</div>
+                  </div>
+                  <div class="editorial-page-header-right">
+                    <div class="hero-name editable">${heroNameHtml}</div>
+                    <div class="hero-role editable">${data.person.role || ''}</div>
+                  </div>
+                </div>
+
+                <hr class="editorial-hr">
+
+                <div class="overview-grid">
+                  <div class="overview-heading editable">System<br>Architecture</div>
+                  <div class="overview-text editable">深度攻坚数亿级访问量大型系统的高性能渲染、微前端基建与高并发通信架构，持续追求每一行代码的可验证性与工程健壮性。</div>
+                </div>
+
+                <hr class="editorial-hr">
+              </div>
+
+              <div class="two-col-layout">
+                <div class="left-col">
+                  <div class="editorial-accent-divider">
+                    <span class="accent-pill"></span>
+                    <span class="accent-line"></span>
+                  </div>
+                  <div class="col-title editable">Production Projects (Cont.)</div>
+                  <div class="continuation-main-list" id="p3-cont-main-list"></div>
+                </div>
+
+                <div class="right-sidebar">
+                  <div class="sidebar-lower-block" style="margin-top: 0;">
+                    <div class="editorial-accent-divider">
+                      <span class="accent-pill"></span>
+                      <span class="accent-line"></span>
+                    </div>
+                    <div class="sidebar-block-title editable">${infra.title || 'Infrastructure & Tools'}</div>
+                    <div>${infraItemsHtml}</div>
+                    ${manifestoHtml}
+                  </div>
+                </div>
+              </div>
             `;
-            p3LowerList.appendChild(manDiv);
+
+            page4.parentNode.insertBefore(contPage, page4);
+
+            const p3ContMainList = contPage.querySelector('#p3-cont-main-list');
+            chunk2.forEach(exp => {
+              const item = document.createElement('div');
+              item.className = 'job-item';
+              let bulletsHtml = '';
+              (exp.bullets || []).forEach(b => {
+                bulletsHtml += `<li><span class="tri-bullet">▸</span><span>${b}</span></li>`;
+              });
+              item.innerHTML = `
+                <div class="job-header">
+                  <span class="sq-bullet"></span><span class="editable">${exp.title}</span>
+                </div>
+                <div class="job-company editable">${exp.company}</div>
+                ${exp.summary ? `<div class="job-summary editable">${exp.summary}</div>` : ''}
+                <ul class="job-bullets editable">${bulletsHtml}</ul>
+              `;
+              p3ContMainList.appendChild(item);
+            });
           }
 
-          // Page 4: Cover Letter
+          // Page 4: Cover Letter (or Page 5 if continuation page exists)
+          const totalPagesNow = document.querySelectorAll('.pages-container .a4-page:not(.is-hidden)').length;
+          document.getElementById('p4-tag').textContent = `Page 0${totalPagesNow} · Cover Letter`;
+          currentActivePageCount = totalPagesNow;
+          pageCountBadge.textContent = `${totalPagesNow}x A4`;
+          updatePageButtons(totalPagesNow);
+
           const clData = data.page4 || {};
           document.getElementById('p4-badge').innerHTML = clData.badge || 'Cover Letter';
           const contactsHtml = (data.meta.coverLetterContacts || '')
@@ -1706,9 +1843,11 @@
         } else {
           // 3-PAGE ORIGINAL (Hide Page 3, use Page 2 for work experience, Page 4 as Page 3 Cover Letter)
           page3.classList.add('is-hidden');
-          viewP4.style.display = 'none';
           document.getElementById('p2-tag').textContent = 'Page 02 · Resume / CV';
           document.getElementById('p4-tag').textContent = 'Page 03 · Cover Letter';
+          currentActivePageCount = 3;
+          pageCountBadge.textContent = '3x A4';
+          updatePageButtons(3);
 
           // Page 2: Work Experience (Original format)
           document.getElementById('p2-badge').innerHTML = data.page2.badge || 'Resume';
@@ -1836,55 +1975,66 @@
 
       zoomSlider.addEventListener('input', (e) => applyZoom(e.target.value));
 
+      function updatePageButtons(pageCount) {
+        const toggles = document.getElementById('page-num-toggles');
+        if (!toggles) return;
+        toggles.innerHTML = '';
+        for (let i = 1; i <= pageCount; i++) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'tb-btn';
+          btn.id = `view-p${i}`;
+          btn.textContent = `P${i}`;
+          btn.addEventListener('click', () => {
+            window.location.hash = `#p${i}`;
+            setViewMode('single', i);
+          });
+          toggles.appendChild(btn);
+        }
+      }
+
       function setViewMode(mode, targetPage = 1) {
-        viewBtns.forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('#nav-btn-group .tb-btn').forEach(btn => btn.classList.remove('active'));
         container.className = 'pages-container';
+
+        const visiblePages = Array.from(document.querySelectorAll('.pages-container .a4-page')).filter(p => !p.classList.contains('is-hidden'));
 
         if (mode === 'grid') {
           container.classList.add('layout-grid');
-          viewGrid.classList.add('active');
-          allPages.forEach(p => p.classList.remove('current-active'));
+          document.getElementById('view-grid')?.classList.add('active');
+          visiblePages.forEach(p => p.classList.remove('current-active'));
         } else if (mode === 'vertical') {
           container.classList.add('layout-vertical');
-          viewVertical.classList.add('active');
-          allPages.forEach(p => p.classList.remove('current-active'));
+          document.getElementById('view-vertical')?.classList.add('active');
+          visiblePages.forEach(p => p.classList.remove('current-active'));
         } else if (mode === 'single') {
           container.classList.add('layout-single');
-          let actualTarget = targetPage;
-          if (currentActivePageCount === 3 && targetPage === 3) {
-            actualTarget = 4; // In 3-page mode, 3rd page is #page-4 (Cover Letter)
-          }
-
-          allPages.forEach((p, idx) => {
-            if (idx + 1 === actualTarget) {
+          visiblePages.forEach((p, idx) => {
+            if (idx + 1 === targetPage) {
               p.classList.add('current-active');
             } else {
               p.classList.remove('current-active');
             }
           });
-          if (targetPage === 1) viewP1.classList.add('active');
-          if (targetPage === 2) viewP2.classList.add('active');
-          if (targetPage === 3) viewP3.classList.add('active');
-          if (targetPage === 4) viewP4.classList.add('active');
+          document.getElementById(`view-p${targetPage}`)?.classList.add('active');
         }
       }
 
       function handleHashChange() {
         const hash = window.location.hash.toLowerCase();
-        if (hash === '#p1') setViewMode('single', 1);
-        else if (hash === '#p2') setViewMode('single', 2);
-        else if (hash === '#p3') setViewMode('single', 3);
-        else if (hash === '#p4') setViewMode('single', 4);
-        else if (hash === '#vertical') setViewMode('vertical');
-        else if (hash === '#grid') setViewMode('grid');
+        const pMatch = hash.match(/^#p(\d+)$/);
+        if (pMatch) {
+          const pNum = parseInt(pMatch[1], 10);
+          setViewMode('single', pNum);
+        } else if (hash === '#vertical') {
+          setViewMode('vertical');
+        } else if (hash === '#grid') {
+          setViewMode('grid');
+        }
       }
 
       viewGrid.addEventListener('click', () => { window.location.hash = '#grid'; setViewMode('grid'); });
       viewVertical.addEventListener('click', () => { window.location.hash = '#vertical'; setViewMode('vertical'); });
-      viewP1.addEventListener('click', () => { window.location.hash = '#p1'; setViewMode('single', 1); });
-      viewP2.addEventListener('click', () => { window.location.hash = '#p2'; setViewMode('single', 2); });
-      viewP3.addEventListener('click', () => { window.location.hash = '#p3'; setViewMode('single', 3); });
-      viewP4.addEventListener('click', () => { window.location.hash = '#p4'; setViewMode('single', 4); });
 
       window.addEventListener('hashchange', handleHashChange);
 
@@ -2028,10 +2178,10 @@
               nameCn: rawName,
               role: roleMain,
               roleCn: roleMain,
-              photo: "assets/avatar.jpg",
-              photoFit: "cover",
-              photoPosition: "center 18%",
-              photoScale: 1.15,
+              photo: "https://ssl.gstatic.com/gb/images/ring/pr_56px_2x_asknjuyerc.png",
+              photoFit: "contain",
+              photoPosition: "center center",
+              photoScale: 1.0,
               greeting: `Hello I'm<br>${nameMain}`,
               aboutStamp: "About Me.",
               introBio: introBio
