@@ -28,10 +28,10 @@ const effectiveCard = computed(() => {
   const card = props.cv.page2.referenceCard || {}
   if (!showHeader.value) {
     return {
-      ...card,
       title: card.title || colTitle.value,
       header: card.header || card.name,
-      summary: card.summary || props.cv.page2.profileOverview
+      indexItems: card.indexItems,
+      ...card
     }
   }
   return card
@@ -84,6 +84,16 @@ const effectiveCard = computed(() => {
       <div class="right-sidebar">
         <!-- Section Hero Card (Chapter badge in Option A) -->
         <ReferenceCard :card="effectiveCard" />
+
+        <!-- Core Skills Matrix (Below dark card) -->
+        <div v-if="cv.page2.skillsMatrix && cv.page2.skillsMatrix.items" class="sidebar-lower-block">
+          <AccentDivider />
+          <div class="sidebar-block-title editable">{{ cv.page2.skillsMatrix.title || 'Core Skills' }}</div>
+          <div v-for="(skill, idx) in cv.page2.skillsMatrix.items" :key="idx" class="skill-matrix-item">
+            <span class="sq-bullet"></span>
+            <span class="editable">{{ skill }}</span>
+          </div>
+        </div>
 
         <!-- Education -->
         <div v-if="cv.page2.education" class="sidebar-lower-block">

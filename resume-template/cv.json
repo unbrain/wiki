@@ -51,9 +51,20 @@
     ],
     "referenceCard": {
       "title": "WORK EXPERIENCE",
-      "header": "微博移动服务技术部 · 核心开发",
-      "role": "Technical Architecture",
-      "summary": "熟练使用 Vue.js 敏捷开发，6 年前端生产工程沉淀。负责 PC 主站、创作者中心、小程序与即时通信系统的架构与研发，具备健全的工程化与跨端落地能力。",
+      "header": "经历时间线索引",
+      "indexItems": [
+        {
+          "title": "微博 前端开发 / 2019.7 - 至今",
+          "subtitle": "微博 · 移动服务技术部"
+        },
+        {
+          "title": "微博 前端实习 / 2019.2 - 2019.5",
+          "subtitle": "微博 · 移动服务技术部"
+        }
+      ]
+    },
+    "skillsMatrix": {
+      "title": "Core Skills",
       "items": [
         "对 Vue.js 原理有深入理解，并曾自主实现核心功能",
         "熟练使用 Vite、ESLint 等构建工具",
@@ -132,11 +143,17 @@
     ],
     "referenceCard": {
       "title": "PRODUCTION PROJECTS",
-      "header": "4 项核心大厂生产工程",
-      "role": "Tier-1 Production Systems",
-      "summary": "深度攻坚国民级社交平台亿级访问量旗舰主站、创作者生态多端同构中台及高并发即时通信系统的架构演进与全链路工程治理。",
-      "phone": "(+86) 183-4910-8862",
-      "email": "marsorsun@gmail.com"
+      "header": "标杆生产工程索引",
+      "indexItems": [
+        {
+          "title": "微博 PC 主站 / 2019.11 - 至今",
+          "subtitle": "核心业务主站 (https://www.weibo.com)"
+        },
+        {
+          "title": "微博小程序 / 2020 - 至今",
+          "subtitle": "创作者生态与跨端同构"
+        }
+      ]
     },
     "infrastructureBlock": {
       "title": "Infrastructure & Tools",

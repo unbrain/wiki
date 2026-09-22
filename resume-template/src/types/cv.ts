@@ -22,6 +22,10 @@ export interface CVReferenceCard {
   summary?: string
   endorsement?: string
   items?: string[]
+  indexItems?: {
+    title: string
+    subtitle?: string
+  }[]
 }
 
 export interface CVInfrastructureItem {
@@ -69,6 +73,10 @@ export interface CVPage2 {
   experiences?: CVExperience[]
   skills?: CVExperience[]
   referenceCard?: CVReferenceCard
+  skillsMatrix?: {
+    title?: string
+    items: string[]
+  }
   education?: {
     title?: string
     items?: CVEducationItem[]

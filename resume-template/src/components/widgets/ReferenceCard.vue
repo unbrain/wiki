@@ -19,7 +19,16 @@ function cleanPrefix(val?: string, prefix?: string) {
       <div v-if="card.role" class="ref-role editable">{{ card.role }}</div>
     </template>
 
-    <!-- Summary / Overview block inside card -->
+    <!-- Minimal Timeline / Project Index Items (High breathability) -->
+    <div v-if="card.indexItems && card.indexItems.length" class="ref-index-group">
+      <div v-for="(it, idx) in card.indexItems" :key="idx" class="ref-index-item">
+        <div class="ref-index-title editable">{{ it.title }}</div>
+        <div v-if="it.subtitle" class="ref-index-subtitle editable">{{ it.subtitle }}</div>
+        <div v-if="idx < card.indexItems.length - 1" class="ref-index-divider"></div>
+      </div>
+    </div>
+
+    <!-- Summary / Overview block inside card (if present) -->
     <div v-if="card.summary" class="ref-summary editable" v-html="card.summary"></div>
 
     <!-- Phone & Email (or custom items) -->
@@ -30,8 +39,8 @@ function cleanPrefix(val?: string, prefix?: string) {
       <span class="ref-prefix">E |</span> {{ cleanPrefix(card.email, 'E') }}
     </div>
 
-    <!-- Capability radar / items list -->
-    <template v-if="card.items && card.items.length">
+    <!-- Legacy capability items (if indexItems not provided) -->
+    <template v-if="!card.indexItems && card.items && card.items.length">
       <div v-for="(line, idx) in card.items" :key="idx" class="ref-line editable">
         {{ line }}
       </div>

@@ -43,10 +43,10 @@ const effectiveCard = computed(() => {
   const card = props.cv.page3.referenceCard || {}
   if (!showHeader.value) {
     return {
-      ...card,
       title: card.title || colTitle.value,
       header: card.header || card.name,
-      summary: card.summary || props.cv.page3.profileOverview
+      indexItems: card.indexItems,
+      ...card
     }
   }
   return card
