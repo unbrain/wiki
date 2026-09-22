@@ -1,7 +1,20 @@
+<script setup lang="ts">
+withDefaults(
+  defineProps<{
+    pattern?: ('filled' | 'outline')[]
+  }>(),
+  {
+    pattern: () => ['filled', 'filled', 'outline']
+  }
+)
+</script>
+
 <template>
   <div class="dots-indicator">
-    <span class="dot dot-outline"></span>
-    <span class="dot dot-filled"></span>
-    <span class="dot dot-outline"></span>
+    <span
+      v-for="(type, idx) in pattern"
+      :key="idx"
+      :class="['dot', type === 'filled' ? 'dot-filled' : 'dot-outline']"
+    ></span>
   </div>
 </template>

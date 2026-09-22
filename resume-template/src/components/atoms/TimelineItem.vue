@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { CVExperience } from '../../types/cv'
+
 export interface TimelineItemData {
   title: string
   company?: string
@@ -8,7 +10,7 @@ export interface TimelineItemData {
 }
 
 defineProps<{
-  item: TimelineItemData
+  item: CVExperience | TimelineItemData
 }>()
 </script>
 

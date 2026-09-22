@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { CVData } from '../../types/cv'
-import A4Page from '../A4Page.vue'
-import PillBadge from '../PillBadge.vue'
-import DotsIndicator from '../DotsIndicator.vue'
+import A4Sheet from '../atoms/A4Sheet.vue'
+import PillBadge from '../atoms/PillBadge.vue'
+import DotsIndicator from '../atoms/DotsIndicator.vue'
+import HeroNameTitle from '../atoms/HeroNameTitle.vue'
+import EditorialGrid from '../layouts/EditorialGrid.vue'
 
 const props = defineProps<{
   cv: CVData
@@ -14,13 +16,6 @@ const emit = defineEmits<{
   (e: 'replace-photo'): void
 }>()
 
-const heroNameLines = computed(() => {
-  if (props.cv.person.nameFirst && props.cv.person.nameLast) {
-    return [props.cv.person.nameFirst, props.cv.person.nameLast]
-  }
-  return [props.cv.person.nameCn || 'RESUME']
-})
-
 const photoStyle = computed(() => {
   const s: Record<string, string> = {}
   if (props.cv.person.photoPosition) s.objectPosition = props.cv.person.photoPosition
@@ -30,8 +25,9 @@ const photoStyle = computed(() => {
 </script>
 
 <template>
-  <A4Page page-id="page-1" :page-num="1" tag-text="Page 01 · About Me / Cover" :active="active">
+  <A4Sheet page-id="page-1" :page-num="1" tag-text="Page 01 · About Me / Cover" :active="active">
     <div>
+      <!-- Top Navigation Bar: Domain and Year Badge -->
       <div class="page-1-top-bar">
         <div class="page-1-domain-line">
           <span class="thick-line"></span>
@@ -40,23 +36,28 @@ const photoStyle = computed(() => {
         <PillBadge :text="cv.meta.year || 'Year 2028'" />
       </div>
 
-      <div class="hero-title-group">
-        <div class="hero-name editable">
-          <template v-for="(line, idx) in heroNameLines" :key="idx">
-            {{ line }}<br v-if="idx < heroNameLines.length - 1" />
-          </template>
-        </div>
-        <div class="hero-role editable">{{ cv.person.role }}</div>
-      </div>
+      <!-- Hero Title: Big Name & Role -->
+      <HeroNameTitle
+        :name-first="cv.person.nameFirst"
+        :name-last="cv.person.nameLast"
+        :name-cn="cv.person.nameCn"
+        :role="cv.person.role"
+      />
 
       <hr class="editorial-hr" />
 
-      <div class="p1-intro-grid">
-        <div class="p1-intro-left editable" v-html="cv.person.greeting"></div>
-        <div class="p1-intro-right editable" v-html="cv.person.introBio"></div>
-      </div>
+      <!-- Editorial Asymmetric Intro Grid (140px + 1fr) -->
+      <EditorialGrid custom-class="p1-intro-grid">
+        <template #left>
+          <div class="p1-intro-left editable" v-html="cv.person.greeting"></div>
+        </template>
+        <template #right>
+          <div class="p1-intro-right editable" v-html="cv.person.introBio"></div>
+        </template>
+      </EditorialGrid>
     </div>
 
+    <!-- Visual Area: Dots, Folder Photo & Address Block -->
     <div class="p1-lower-area">
       <div class="p1-dots-wrapper">
         <DotsIndicator />
@@ -86,5 +87,5 @@ const photoStyle = computed(() => {
         <div class="p1-about-stamp editable">{{ cv.person.aboutStamp || 'About Me.' }}</div>
       </div>
     </div>
-  </A4Page>
+  </A4Sheet>
 </template>

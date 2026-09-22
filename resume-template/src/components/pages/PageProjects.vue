@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { CVData, CVExperience } from '../../types/cv'
-import A4Page from '../A4Page.vue'
-import PillBadge from '../PillBadge.vue'
-import AccentDivider from '../AccentDivider.vue'
-import ReferenceCard from '../ReferenceCard.vue'
-import JobItem from '../JobItem.vue'
+import A4Sheet from '../atoms/A4Sheet.vue'
+import PillBadge from '../atoms/PillBadge.vue'
+import AccentDivider from '../atoms/AccentDivider.vue'
+import HeroNameTitle from '../atoms/HeroNameTitle.vue'
+import TimelineItem from '../atoms/TimelineItem.vue'
+import CompactListItem from '../atoms/CompactListItem.vue'
+import ManifestoCard from '../atoms/ManifestoCard.vue'
+import EditorialGrid from '../layouts/EditorialGrid.vue'
+import ReferenceCard from '../widgets/ReferenceCard.vue'
 
 const props = defineProps<{
   cv: CVData
@@ -17,13 +21,6 @@ const props = defineProps<{
 }>()
 
 const isContinuation = computed(() => props.chunkIndex > 0)
-
-const heroNameLines = computed(() => {
-  if (props.cv.person.nameFirst && props.cv.person.nameLast) {
-    return [props.cv.person.nameFirst, props.cv.person.nameLast]
-  }
-  return [props.cv.person.nameCn || 'RESUME']
-})
 
 const pageTag = computed(() => {
   const numStr = String(props.pageNum).padStart(2, '0')
@@ -42,34 +39,43 @@ const infra = computed(() => props.cv.page3.infrastructureBlock || props.cv.page
 </script>
 
 <template>
-  <A4Page :page-id="`page-${pageNum}`" :page-num="pageNum" :tag-text="pageTag" :active="active">
+  <A4Sheet :page-id="`page-${pageNum}`" :page-num="pageNum" :tag-text="pageTag" :active="active">
     <div>
       <div class="editorial-page-header">
         <div>
           <PillBadge :text="props.cv.page3.badge || 'Production Projects'" />
         </div>
-        <div class="editorial-page-header-right">
-          <div class="hero-name editable">
-            <template v-for="(line, idx) in heroNameLines" :key="idx">
-              {{ line }}<br v-if="idx < heroNameLines.length - 1" />
-            </template>
-          </div>
-          <div class="hero-role editable">{{ cv.person.role }}</div>
-        </div>
+        <HeroNameTitle
+          custom-class="editorial-page-header-right"
+          :name-first="cv.person.nameFirst"
+          :name-last="cv.person.nameLast"
+          :name-cn="cv.person.nameCn"
+          :role="cv.person.role"
+        />
       </div>
 
       <hr class="editorial-hr" />
 
-      <div class="overview-grid">
-        <template v-if="!isContinuation">
-          <div class="overview-heading editable" v-html="cv.page3.profileTitle || 'Engineering<br>Track Record'"></div>
-          <div class="overview-text editable" v-html="cv.page3.profileOverview"></div>
+      <EditorialGrid custom-class="overview-grid">
+        <template #left>
+          <div
+            v-if="!isContinuation"
+            class="overview-heading editable"
+            v-html="cv.page3.profileTitle || 'Engineering<br>Track Record'"
+          ></div>
+          <div v-else class="overview-heading editable">System<br>Architecture</div>
         </template>
-        <template v-else>
-          <div class="overview-heading editable">System<br>Architecture</div>
-          <div class="overview-text editable">深度攻坚数亿级访问量大型系统的高性能渲染、微前端基建与高并发通信架构，持续追求每一行代码的可验证性与工程健壮性。</div>
+        <template #right>
+          <div
+            v-if="!isContinuation"
+            class="overview-text editable"
+            v-html="cv.page3.profileOverview"
+          ></div>
+          <div v-else class="overview-text editable">
+            深度攻坚数亿级访问量大型系统的高性能渲染、微前端基建与高并发通信架构，持续追求每一行代码的可验证性与工程健壮性。
+          </div>
         </template>
-      </div>
+      </EditorialGrid>
 
       <hr class="editorial-hr" />
     </div>
@@ -80,7 +86,7 @@ const infra = computed(() => props.cv.page3.infrastructureBlock || props.cv.page
         <AccentDivider />
         <div class="col-title editable">{{ colTitle }}</div>
         <div class="main-list">
-          <JobItem v-for="(item, idx) in chunk" :key="idx" :item="item" />
+          <TimelineItem v-for="(item, idx) in chunk" :key="idx" :item="item" />
         </div>
       </div>
 
@@ -95,20 +101,20 @@ const infra = computed(() => props.cv.page3.infrastructureBlock || props.cv.page
             <div v-if="infra && infra.items" class="sidebar-lower-block">
               <AccentDivider />
               <div class="sidebar-block-title editable">{{ infra.title || 'Infrastructure' }}</div>
-              <div v-for="(m, idx) in infra.items" :key="idx" class="list-item">
-                <div class="item-primary">
-                  <span class="sq-bullet"></span>
-                  <span class="editable">{{ m.degree }}</span>
-                </div>
-                <div class="item-secondary editable">{{ m.school }}</div>
-                <div class="item-meta editable">{{ m.year }}</div>
-              </div>
+              <CompactListItem
+                v-for="(m, idx) in infra.items"
+                :key="idx"
+                :primary="m.degree"
+                :secondary="m.school"
+                :meta="m.year"
+              />
             </div>
 
-            <div v-if="cv.page3.manifesto" class="manifesto-box">
-              <div class="m-title editable">{{ cv.page3.manifesto.title }}</div>
-              <div class="m-quote editable">{{ cv.page3.manifesto.quote }}</div>
-            </div>
+            <ManifestoCard
+              v-if="cv.page3.manifesto"
+              :title="cv.page3.manifesto.title"
+              :quote="cv.page3.manifesto.quote"
+            />
           </template>
         </template>
 
@@ -117,22 +123,22 @@ const infra = computed(() => props.cv.page3.infrastructureBlock || props.cv.page
           <div v-if="infra && infra.items" class="sidebar-lower-block" style="margin-top: 0;">
             <AccentDivider />
             <div class="sidebar-block-title editable">{{ infra.title || 'Infrastructure & Tools' }}</div>
-            <div v-for="(m, idx) in infra.items" :key="idx" class="list-item">
-              <div class="item-primary">
-                <span class="sq-bullet"></span>
-                <span class="editable">{{ m.degree }}</span>
-              </div>
-              <div class="item-secondary editable">{{ m.school }}</div>
-              <div class="item-meta editable">{{ m.year }}</div>
-            </div>
+            <CompactListItem
+              v-for="(m, idx) in infra.items"
+              :key="idx"
+              :primary="m.degree"
+              :secondary="m.school"
+              :meta="m.year"
+            />
           </div>
 
-          <div v-if="cv.page3.manifesto" class="manifesto-box">
-            <div class="m-title editable">{{ cv.page3.manifesto.title }}</div>
-            <div class="m-quote editable">{{ cv.page3.manifesto.quote }}</div>
-          </div>
+          <ManifestoCard
+            v-if="cv.page3.manifesto"
+            :title="cv.page3.manifesto.title"
+            :quote="cv.page3.manifesto.quote"
+          />
         </template>
       </div>
     </div>
-  </A4Page>
+  </A4Sheet>
 </template>

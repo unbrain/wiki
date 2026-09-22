@@ -6,6 +6,7 @@ const props = defineProps<{
   nameLast?: string
   nameCn?: string
   role?: string
+  customClass?: string
 }>()
 
 const nameLines = computed(() => {
@@ -17,7 +18,7 @@ const nameLines = computed(() => {
 </script>
 
 <template>
-  <div class="hero-title-group">
+  <div :class="customClass || 'hero-title-group'">
     <div class="hero-name editable">
       <template v-for="(line, idx) in nameLines" :key="idx">
         {{ line }}<br v-if="idx < nameLines.length - 1" />

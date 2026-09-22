@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { CVData } from '../../types/cv'
-import A4Page from '../A4Page.vue'
+import A4Sheet from '../atoms/A4Sheet.vue'
 import CoverLetterTopBar from '../widgets/CoverLetterTopBar.vue'
 import HeroNameTitle from '../atoms/HeroNameTitle.vue'
-import AccentDivider from '../AccentDivider.vue'
-import DotsIndicator from '../DotsIndicator.vue'
+import AccentDivider from '../atoms/AccentDivider.vue'
+import DotsIndicator from '../atoms/DotsIndicator.vue'
+import EditorialGrid from '../layouts/EditorialGrid.vue'
 
 const props = defineProps<{
   cv: CVData
@@ -30,7 +31,7 @@ function formatAddress(addr?: string) {
 </script>
 
 <template>
-  <A4Page page-id="page-letter" :page-num="pageNum" :tag-text="pageTag" :active="active">
+  <A4Sheet page-id="page-letter" :page-num="pageNum" :tag-text="pageTag" :active="active">
     <div>
       <!-- Top Bar: Badge, Centered Contacts, Year Badge -->
       <CoverLetterTopBar
@@ -52,19 +53,22 @@ function formatAddress(addr?: string) {
       <hr class="editorial-hr" />
 
       <!-- Metadata Grid: Cover Letter Date on Left, Recipient on Right -->
-      <div class="cl-meta-grid">
-        <div class="cl-meta-left">
-          <div class="cl-label editable">{{ clData.dateTitle || 'Cover Letter.' }}</div>
-          <div class="cl-date editable">{{ clData.date || '2028 年 3 月' }}</div>
-        </div>
-
-        <div v-if="clData.recipient" class="cl-recipient-box">
-          <div class="to-label editable">{{ clData.recipient.label || 'TO' }}</div>
-          <div class="to-name editable">{{ clData.recipient.name }}</div>
-          <div class="to-role editable">{{ clData.recipient.role }}</div>
-          <div class="to-address editable" v-html="formatAddress(clData.recipient.address)"></div>
-        </div>
-      </div>
+      <EditorialGrid custom-class="cl-meta-grid">
+        <template #left>
+          <div class="cl-meta-left">
+            <div class="cl-label editable">{{ clData.dateTitle || 'Cover Letter.' }}</div>
+            <div class="cl-date editable">{{ clData.date || '2028 年 3 月' }}</div>
+          </div>
+        </template>
+        <template #right>
+          <div v-if="clData.recipient" class="cl-recipient-box">
+            <div class="to-label editable">{{ clData.recipient.label || 'TO' }}</div>
+            <div class="to-name editable">{{ clData.recipient.name }}</div>
+            <div class="to-role editable">{{ clData.recipient.role }}</div>
+            <div class="to-address editable" v-html="formatAddress(clData.recipient.address)"></div>
+          </div>
+        </template>
+      </EditorialGrid>
 
       <!-- Accent Divider Line: █───────────── -->
       <div style="margin-top: 14px; margin-bottom: 20px;">
@@ -72,14 +76,18 @@ function formatAddress(addr?: string) {
       </div>
 
       <!-- Letter Body Grid: Side Title on Left, Letter Paragraphs on Right -->
-      <div class="cl-letter-grid">
-        <div class="cl-letter-side-title editable">
-          {{ clData.letterTitle || '应聘岗位' }}
-        </div>
-        <div class="cl-letter-body-content editable">
-          <p v-for="(p, idx) in clData.letterBody || []" :key="idx" v-html="p"></p>
-        </div>
-      </div>
+      <EditorialGrid custom-class="cl-letter-grid">
+        <template #left>
+          <div class="cl-letter-side-title editable">
+            {{ clData.letterTitle || '应聘岗位' }}
+          </div>
+        </template>
+        <template #right>
+          <div class="cl-letter-body-content editable">
+            <p v-for="(p, idx) in clData.letterBody || []" :key="idx" v-html="p"></p>
+          </div>
+        </template>
+      </EditorialGrid>
 
       <!-- Signoff Area: Sincerely, Fluid Cursive Signature, Signer Name -->
       <div class="cl-signoff-area">
@@ -95,5 +103,5 @@ function formatAddress(addr?: string) {
     <div class="cl-footer-dots">
       <DotsIndicator />
     </div>
-  </A4Page>
+  </A4Sheet>
 </template>
