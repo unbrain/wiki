@@ -38,15 +38,26 @@ const colTitle = computed(() => {
 const infra = computed(() => props.cv.page3.infrastructureBlock || props.cv.page3.materialBlock)
 const showHeader = computed(() => Boolean(props.cv.page3.showHeader))
 
-// In Option A (no top header), the dark card becomes the section hero guide badge
+// Dynamically extract minimal index metadata matching current page chunk
+const currentChunkIndexItems = computed(() => {
+  if (props.chunk && props.chunk.length) {
+    return props.chunk.map(proj => ({
+      title: proj.title,
+      subtitle: proj.company || proj.subtitle
+    }))
+  }
+  return props.cv.page3.referenceCard?.indexItems || []
+})
+
+// In Option A (no top header), the dark card dynamically reflects the current chunk
 const effectiveCard = computed(() => {
   const card = props.cv.page3.referenceCard || {}
   if (!showHeader.value) {
     return {
-      title: card.title || colTitle.value,
-      header: card.header || card.name,
-      indexItems: card.indexItems,
-      ...card
+      ...card,
+      title: isContinuation.value ? 'PROJECTS · CONT.' : (card.title || colTitle.value),
+      header: isContinuation.value ? '大厂核心工程 · 续篇' : (card.header || card.name),
+      indexItems: currentChunkIndexItems.value
     }
   }
   return card
@@ -109,35 +120,12 @@ const effectiveCard = computed(() => {
 
       <!-- Right Column: Contextually distributed sidebar items -->
       <div class="right-sidebar">
-        <!-- First page chunk: Section Hero Card -->
+        <!-- Section Hero Card: Dynamically reflects the current chunk's projects -->
+        <ReferenceCard :card="effectiveCard" />
+
+        <!-- First page chunk: Infrastructure & Tools -->
         <template v-if="!isContinuation">
-          <ReferenceCard :card="effectiveCard" />
-
-          <!-- If only 1 chunk total, also show infrastructure & manifesto here -->
-          <template v-if="totalChunks === 1">
-            <div v-if="infra && infra.items" class="sidebar-lower-block">
-              <AccentDivider />
-              <div class="sidebar-block-title editable">{{ infra.title || 'Infrastructure' }}</div>
-              <CompactListItem
-                v-for="(m, idx) in infra.items"
-                :key="idx"
-                :primary="m.degree"
-                :secondary="m.school"
-                :meta="m.year"
-              />
-            </div>
-
-            <ManifestoCard
-              v-if="cv.page3.manifesto"
-              :title="cv.page3.manifesto.title"
-              :quote="cv.page3.manifesto.quote"
-            />
-          </template>
-        </template>
-
-        <!-- Continuation page chunk: Infrastructure & Tools + Manifesto -->
-        <template v-else>
-          <div v-if="infra && infra.items" class="sidebar-lower-block" style="margin-top: 0;">
+          <div v-if="infra && infra.items" class="sidebar-lower-block">
             <AccentDivider />
             <div class="sidebar-block-title editable">{{ infra.title || 'Infrastructure & Tools' }}</div>
             <CompactListItem
@@ -148,9 +136,13 @@ const effectiveCard = computed(() => {
               :meta="m.year"
             />
           </div>
+        </template>
 
+        <!-- Continuation page chunk: Engineering Manifesto -->
+        <template v-else>
           <ManifestoCard
             v-if="cv.page3.manifesto"
+            style="margin-top: 18px;"
             :title="cv.page3.manifesto.title"
             :quote="cv.page3.manifesto.quote"
           />

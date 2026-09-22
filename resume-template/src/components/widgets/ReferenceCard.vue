@@ -39,8 +39,8 @@ function cleanPrefix(val?: string, prefix?: string) {
       <span class="ref-prefix">E |</span> {{ cleanPrefix(card.email, 'E') }}
     </div>
 
-    <!-- Legacy capability items (if indexItems not provided) -->
-    <template v-if="!card.indexItems && card.items && card.items.length">
+    <!-- Legacy capability items (if indexItems not provided or empty) -->
+    <template v-if="(!card.indexItems || !card.indexItems.length) && card.items && card.items.length">
       <div v-for="(line, idx) in card.items" :key="idx" class="ref-line editable">
         {{ line }}
       </div>
