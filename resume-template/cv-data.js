@@ -240,7 +240,7 @@ window.CV_DATABASE = {
       nameCn: "JANE WILKINS",
       role: "Promotion Manager",
       roleCn: "Promotion Manager",
-      photo: "assets/hero-model-cycling-exact.jpg",
+      photo: "assets/hero-model-cycling-clean.jpg",
       photoFit: "cover",
       photoPosition: "center center",
       photoScale: 1.0,
