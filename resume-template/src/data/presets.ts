@@ -1,0 +1,323 @@
+import type { CVDatabase } from '../types/cv'
+
+export const PRESETS: CVDatabase = {
+  // 1. 用户当前项目完整版（刘朝阳 · 新浪微博资深前端架构）
+  unbrain_full: {
+    id: 'unbrain_full',
+    label: '✨ 刘朝阳 · 标杆工程全景版 (高信息密度 · 核心大厂技术体系)',
+    pageCount: 4,
+    meta: {
+      year: 'Year 2028',
+      website: 'github.com/unbrain',
+      addressTitle: 'ADDRESS :',
+      addressLines: '(+86) 183-4910-8862<br>marsorsun@gmail.com<br>北京市海淀区中关村软件园<br>rxresu.me/unbrain/cv',
+      coverLetterContacts: 'P | (+86) 183-4910-8862<br>L | 北京市海淀区新浪总部大厦<br>E | marsorsun@gmail.com'
+    },
+    person: {
+      nameFirst: 'LIU',
+      nameLast: 'ZHAOYANG',
+      nameCn: '刘朝阳 (unbrain)',
+      role: 'Senior Frontend Engineer / Web Architect',
+      roleCn: '资深前端开发工程师 · 前端架构师',
+      photo: 'https://ssl.gstatic.com/gb/images/ring/pr_56px_2x_asknjuyerc.png',
+      photoFit: 'contain',
+      photoPosition: 'center center',
+      photoScale: 1.0,
+      greeting: "Hello I'm<br>Liu Zhaoyang",
+      aboutStamp: 'About Me.',
+      introBio: '2019 年毕业至今长期任职于新浪微博核心 Web 前端团队，7 年一线大型生产工程沉淀。主导并参与了微博 PC 旗舰主站、PC 创作者中心、高并发私信消息箱（WebChat）等多条核心主干业务线的架构升级与性能治理，稳定护航数亿级用户的高并发与突发热点脉冲流量。'
+    },
+    page2: {
+      badge: 'Skills & Architecture',
+      profileTitle: 'Technical<br>Overview',
+      profileOverview: '深耕 Vue 3 核心运作机制与响应式内核（独立手写实现 Reactive、Effect、Readonly、Diff 算法与模板编译器全流程）；精通 TypeScript 高级类型体操与企业级大型项目模块规范；具备亿级访问量高并发系统架构与生产级性能调优实战经验，结合 Node.js (Egg.js) 胶水层与 Redis 缓存限流，追求每一行代码的可验证性与工业级健壮性。',
+      expTitle: 'Core Technical Pillars',
+      skills: [
+        {
+          title: 'Vue 3 响应式内核与底层机制',
+          subtitle: 'Vue 3 Core · TypeScript · Reactive Engine · AST Compiler',
+          summary: '深入剖析 Vue 3 核心运作原理与架构设计，独立手写复现现代前端框架核心机制：',
+          bullets: [
+            '基于 Proxy 与 Reflect 实现 Reactive/Effect 依赖收集、深层代理追踪与精准副作用调度机制',
+            '手写实现双端对比 Diff 算法，融合最长递增子序列（LIS）贪心算法，实现最小化 DOM 节点移动',
+            '构建完备的模板解析状态机，涵盖 AST 词法/语法树转换、静态节点标记（PatchFlag）与代码生成'
+          ]
+        },
+        {
+          title: '亿级高并发渲染与极致性能治理',
+          subtitle: 'High Concurrency · Virtual Scrolling · 60FPS · Zero Jank',
+          summary: '具备处理亿级访问量旗舰门户与即时通讯系统的高性能渲染及调优实战经验：',
+          bullets: [
+            '自研万级会话长列表双向虚拟滚动引擎，DOM 节点与内存开销消减 85%，彻底杜绝大内存白屏卡顿',
+            '深度构建 HTTP 强缓存/协商缓存体系、动态分包懒加载与 Vite 万级模块秒级热更新（HMR）构建优化',
+            '制定多倍屏 1px 物理像素自适应规范，攻克海量实时消息夹子的高频渲染，保障热点脉冲峰值平滑'
+          ]
+        },
+        {
+          title: '企业级服务端架构与高频网络通信',
+          subtitle: 'Node.js · Egg.js · Redis · WebSocket · Distributed Architecture',
+          summary: '具备深厚的 Full-Stack 中间胶水层与高频网络通信落地能力：',
+          bullets: [
+            '基于 Node.js (Egg.js) 构建企业级高可用 BFF 中间层，承载业务数据聚合、鉴权收口与跨域容灾',
+            '深度应用 Redis (ioredis) 进行分布式高频会话鉴权、访问令牌限流与多级热点数据缓存',
+            '精通 WebSocket 双向长链接多路复用，攻克弱网心跳保活、断线指数退避重连与高频消息防抖去重'
+          ]
+        },
+        {
+          title: 'DSA 数据结构与极客图形探索',
+          subtitle: 'Algorithms · 130+ LeetCode DSA · WebGL Shader · Canvas Dynamics',
+          summary: '坚持底层技术深潜与工程算法推导，建立系统的计算机科学基础储备：',
+          bullets: [
+            '系统化推导并沉淀 130+ 道 LeetCode 核心算法题解（图论、动态规划、单调栈、二叉树与贪心策略）',
+            '持续探索 WebGL Shader 光学折射材质与现代图形学渲染管线，精通原生 Canvas 粒子动力学引擎'
+          ]
+        }
+      ],
+      referenceCard: {
+        title: 'Capability Radar',
+        header: '工程能力六维量化评级',
+        role: 'Production Capability',
+        items: [
+          'Vue 3 响应式与内核: 96%',
+          '亿级高并发与性能: 94%',
+          '大型前端工程规范: 92%',
+          'DSA 算法推导体系: 90%',
+          'Node.js 服务端架构: 88%',
+          'WebGL / 图形学渲染: 86%'
+        ]
+      },
+      education: {
+        title: 'Education',
+        items: [
+          {
+            degree: 'Bachelor Of Science',
+            school: '计算机科学与技术 / 本科',
+            year: '2015 - 2019'
+          },
+          {
+            degree: 'DSA & Core Architecture',
+            school: '130+ DSA 题解 / Vue3 源码剖析',
+            year: '2019 - 2026'
+          }
+        ]
+      },
+      extraArtifacts: {
+        title: 'Knowledge & Artifacts',
+        items: [
+          {
+            degree: '算法体系知识库',
+            school: '涵盖 Hot100/经典150等 5 大系列',
+            year: '全网公开 Wiki'
+          },
+          {
+            degree: '朝花夕拾技术专区',
+            school: '收录 78 篇早期原创博客与求职真题',
+            year: '历史技术足迹'
+          }
+        ]
+      }
+    },
+    page3: {
+      badge: 'Production Projects',
+      profileTitle: 'Engineering<br>Track Record',
+      profileOverview: '7+ 年专注新浪微博核心 Web 团队主力开发，作为核心骨干主导并深度攻坚了微博 PC 旗舰主站、PC 创作者运营中台、高并发 WebChat 消息箱等多项核心系统的架构演进与全链路工程治理，具备超大型复杂业务场景下的技术破局与高标准交付能力。',
+      expTitle: 'Production Projects',
+      experiences: [
+        {
+          title: 'Senior Frontend Engineer / 2021 - Present',
+          company: '新浪微博 · PC 微博旗舰主站（旗舰门户架构）',
+          summary: '数亿级访问量的新浪微博核心旗舰门户系统，负责核心发布流重构与全网热点脉冲峰值渲染治理：',
+          bullets: [
+            '独立负责微博主站核心富媒体发布器重构，支撑图文、超长微博、表情包体系与高可用草稿箱机制',
+            '构建大文件切片直传与异步并发流控管线，实现断点续传与分片校验，文件上传成功率提升至 99.8%',
+            '攻克海量动态 Feed 实时流与动态抽屉高频虚拟渲染，保障突发全网热点脉冲峰值期间界面平滑零卡顿'
+          ]
+        },
+        {
+          title: 'Core Frontend Developer / 2020 - 2021',
+          company: '新浪微博 · PC 微博创作者中心（全链路运营中台）',
+          summary: '面向全网创作者的一站式数据分析、商业化运营矩阵与内容变现平台：',
+          bullets: [
+            '主导抽奖运营中心、视频媒体资产托管中心、定时发博调度流与商业变现收益看板全链路业务落地',
+            '研发高吞吐量数据指标监控大盘，支持多维度时序数据动态聚合分析与即时可视化图表渲染',
+            '推进微前端体系集成与通用组件物料规范化，大幅降低团队跨模块协同摩擦与长期维护成本'
+          ]
+        },
+        {
+          title: 'Frontend Architect / 2019 - 2020',
+          company: '新浪微博 · WebChat 高并发即时通讯消息中心',
+          summary: '微博全网用户私信即时通讯、群聊与多维通知聚合中心：',
+          bullets: [
+            '全面架构解耦：推行模块化状态机拆分治理，彻底根治旧版长会话内存泄漏与卡顿严重痛点',
+            '研发高性能双向虚拟滚动组件，极致压缩 DOM 树占用，万级历史记录首屏渲染耗时降低 60%',
+            '抽离核心通信协议层与消息状态中心，实现 PC 端与移动端轻量同构跨平台复用'
+          ]
+        },
+        {
+          title: 'Component Architect / 2022 - 2023',
+          company: '新浪微博 · 移动端工程化与瀑布流自适应物料体系',
+          summary: '面向跨端高自适应业务场景的前端轻量通用物料库解决方案：',
+          bullets: [
+            '研发高性能自适应瀑布流布局引擎，独创动态高度预估与列平衡算法，保障超长列表流式加载',
+            '基于 Vite + Tailwind CSS 打造现代化轻量组件物料体系，全面赋能跨端业务高保真快速交付'
+          ]
+        }
+      ],
+      referenceCard: {
+        title: 'Reference',
+        name: '新浪微博技术委员会',
+        role: '技术总监 / 研发部负责人',
+        phone: 'P | (+86) 183-4910-8862',
+        email: 'E | marsorsun@gmail.com',
+        endorsement: '评语：深厚的前端底层掌控力与亿级并发实战沉淀，具备极强的大型工程破局与交付能力。'
+      },
+      infrastructureBlock: {
+        title: 'Infrastructure & Tools',
+        items: [
+          {
+            degree: '微前端与组件基建',
+            school: '统一多业务线资源隔离与通信',
+            year: 'Module Federation'
+          },
+          {
+            degree: '自动化测试与质量守卫',
+            school: '核心业务单测覆盖与 CI 拦截',
+            year: 'Vitest + Playwright'
+          }
+        ]
+      },
+      manifesto: {
+        title: 'Engineering Manifesto',
+        quote: '『追求每一行代码的可验证性与工业级健壮性。没有证据就不说完成。』'
+      }
+    },
+    page4: {
+      badge: 'Cover Letter',
+      yearBadge: 'Year 2028',
+      dateTitle: 'Cover Letter.',
+      date: '2028 年 3 月',
+      recipient: {
+        label: 'TO',
+        name: '招聘团队 / 技术评委会',
+        role: '前端技术部 / 架构委员会',
+        address: 'A | 目标公司创新研发中心,<br>前端技术架构组'
+      },
+      letterTitle: '应聘岗位：资深前端开发工程师 / 前端架构师',
+      letterBody: [
+        '尊敬的招聘负责人及技术评委团队：<br><br>您好！非常荣幸能借由此信向贵团队自荐应聘“资深前端开发工程师 / 前端架构师”岗位。自 2019 年毕业至今，我始终全职深耕于新浪微博核心 Web 前端团队。7 年一线大型生产工程沉淀中，我主导并深度参与了微博 PC 旗舰主站、创作者运营中台、以及高并发 WebChat 消息箱等多条核心主干线的重构治理与性能攻坚，拥有成熟的数亿级高并发脉冲流量护航经验与全链路技术破局实力。',
+        '我始终坚持『追求每一行代码的可验证性与工业级健壮性，没有证据就不说完成』的工程信条。在业务主战场之外，我深入剖析并独立手写了 Vue 3 核心响应式与模板编译内核，系统化推导了 130+ 道核心数据结构与算法真题。贵团队对技术卓越、严谨工程规范与极致用户体验的追求令我倍感共鸣。我相信自身深厚的大厂亿级系统架构积累、敏锐的工程直觉与全链路极客探索精神，能够为团队的关键技术攻坚与业务突破创造切实的价值。非常期待能有机会与您展开深入交流！'
+      ],
+      sincerely: 'Sincerely',
+      signatureText: 'Zhaoyang Liu',
+      signerName: 'ZHAOYANG LIU (UNBRAIN)'
+    }
+  },
+
+  // 2. 原版设计稿数据集：Jane Wilkins (原版 3 页英文标准版)
+  original: {
+    id: 'original',
+    label: ' Jane Wilkins (原版设计稿 · 3 页英文标准版)',
+    pageCount: 3,
+    meta: {
+      year: 'Year 2028',
+      website: 'www.example.com',
+      addressTitle: 'ADDRESS :',
+      addressLines: '(311) 555-2368<br>123 Street Name City Name,<br>State Country 12345.<br>www.example.com',
+      coverLetterContacts: 'P | (311) 555-2368<br>L | 123 Street Name City Name<br>E | www.user@mail.com'
+    },
+    person: {
+      nameFirst: 'JANE',
+      nameLast: 'WILKINS',
+      nameCn: 'JANE WILKINS',
+      role: 'Promotion Manager',
+      roleCn: 'Promotion Manager',
+      photo: 'assets/hero-model-cycling-clean.jpg',
+      photoFit: 'cover',
+      photoPosition: 'center center',
+      photoScale: 1.0,
+      greeting: "Hello I'm<br>Jane Wilkins",
+      aboutStamp: 'About Me.',
+      introBio: 'Caboribusquidusam, cum sitisciaest repro et que pra vent harioribus ant laborep ratGentia perchitas magnatia nonesti imenihil il mod quatquis eos simoluptam comnimusae nossi rectibus'
+    },
+    page2: {
+      badge: 'Resume',
+      profileTitle: 'Profile<br>Overview',
+      profileOverview: 'Cabor rempelese labori nimpor aliqui culparis iurest quat et facepel estia nobitibus iliquo tempernaturi cus quiam qui id quis aceperum iducit quatem eum doluptas con net est eatas explit moluptam, vent modi reped quam venimpor sinctiae ipist fugiatiatur',
+      expTitle: 'Work Experience',
+      experiences: [
+        {
+          title: 'Senior Graphic Designer / 2028 Present',
+          company: 'Company Name Here',
+          summary: 'Harchici picaborem inienditat quo quas nimendit quidignam in ea sit quter cuptam et plis consecto beraesti corem',
+          bullets: [
+            'Ratur aut excestorem in re consect urenihil idit',
+            'optur si id quis eatis verrum eosant que volorer epedignatur audit optat',
+            'ipsa dolore strum quamus et a venis aperum etur sin rerias'
+          ]
+        },
+        {
+          title: 'Web Developer / 2025 - 2027',
+          company: 'Company Name Here',
+          summary: 'Harchici picaborem inienditat quo quas nimendit quidignam in ea sit quter cuptam et plis consecto beraesti corem',
+          bullets: [
+            'Ratur aut excestorem in re consect urenihil idit',
+            'optur si id quis eatis verrum eosant que volorer epedignatur audit optat',
+            'ipsa dolore strum quamus et a venis aperum etur sin rerias'
+          ]
+        },
+        {
+          title: 'Senior UI / UX Designer / 2023 - 2025',
+          company: 'Company Name Here',
+          summary: 'Harchici picaborem inienditat quo quas nimendit quidignam in ea sit quter cuptam et plis consecto beraesti corem',
+          bullets: [
+            'Ratur aut excestorem in re consect urenihil idit',
+            'optur si id quis eatis verrum eosant que volorer epedignatur audit optat',
+            'ipsa dolore strum quamus et a venis aperum etur sin rerias'
+          ]
+        }
+      ],
+      referenceCard: {
+        title: 'Reference',
+        name: 'Wilkins Elizabeth',
+        role: 'Position / Company Name',
+        phone: 'P | (311) 555-2368',
+        email: 'E | www.user@mail.com'
+      },
+      education: {
+        title: 'Education',
+        items: [
+          {
+            degree: 'Bachelor Of Science',
+            school: 'Name Of University / Location',
+            year: '2024 - 2028'
+          },
+          {
+            degree: 'Masters Of Degree',
+            school: 'Name Of University / Location',
+            year: '2029 - 2032'
+          }
+        ]
+      }
+    },
+    page3: {
+      badge: 'Cover Letter',
+      yearBadge: 'Year 2028',
+      dateTitle: 'Cover Letter.',
+      date: '12 March 2028',
+      recipient: {
+        label: 'TO',
+        name: 'Linda Brown',
+        role: 'Office Manager',
+        address: 'A | 123 Street Name City Name,<br>Country 121345.'
+      },
+      letterTitle: 'Office Manager',
+      letterBody: [
+        'Cabor rempelese labori nimpor aliqui culparis iurest quat et facepel estia nobitibus iliquo tempernaturi cus quiam qui id quis aceperum iducit quatem eum doluptas con net est eatas explit moluptam, vent modi reped quam venimpor sinctiae ipist fugiatiatur',
+        'Usiter con es simaiorrovid qui volupidel earcit reperum cone nonetui squo beate dipsa ducim volupta coriand ellaccus quae conet anduscimus escient. Harum non net quas ut que ped que dolorerum fuga. Et et endem essit asped maximolum as si sit hitatium vidiuntiorem net, nam volorum facearciis explaborem. Tis et re venis cus doluptat et volupta temporepudi dus sim autem. Ximus volor alit di consequia dundam dolorem hictis dolum imincipsam sequate nimenihil eaqui omnis et, ut maioreici dus eosam volest apidebi taturis atur, alia ipit, que prae eiumquo tem. Accum, ut quo is mi, essi officipsam derovit rempore si untiati dolorenia vid que quature henihicer illecep eribusda ipit pro volor soluptur.'
+      ],
+      sincerely: 'Sincerely',
+      signatureText: 'Signature',
+      signerName: 'JANE WILKINS'
+    }
+  }
+}
