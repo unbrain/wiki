@@ -81,6 +81,8 @@ class Maxheap {
 }
 ```
 
+> 二刷 2026-09-22：大顶堆维护 TopK 最近点，超量剔除堆顶；自建堆掌握上下浮动。
+
 [621. 任务调度器](https://leetcode.cn/problems/task-scheduler/)
 
 ```javascript
