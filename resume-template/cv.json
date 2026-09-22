@@ -10,12 +10,10 @@
     "coverLetterContacts": "P | (+86) 183-4910-8862<br>L | 期望地点：深圳<br>E | marsorsun@gmail.com<br>G | github.com/unbrain"
   },
   "person": {
-    "nameFirst": "LIU",
-    "nameLast": "ZHAOYANG",
     "nameCn": "刘朝阳",
     "role": "前端开发工程师",
     "roleCn": "前端开发工程师",
-    "photo": "https://storage.rxresu.me/clslju2m301akmeh50lwlmr8l/pictures/clslju2m301akmeh50lwlmr8l.jpg",
+    "photo": "https://lh3.googleusercontent.com/a/ACg8ocLfn368pljrx6cO8K0kLqjKDw_EeyjIvN_3abHQaqarKjZR_3vs=s576-c-no",
     "photoFit": "cover",
     "photoPosition": "center center",
     "photoScale": 1.0,
@@ -52,9 +50,10 @@
       }
     ],
     "referenceCard": {
-      "title": "Core Skills",
-      "header": "专业技能清单",
-      "role": "Technical Stack",
+      "title": "WORK EXPERIENCE",
+      "header": "微博移动服务技术部 · 核心开发",
+      "role": "Technical Architecture",
+      "summary": "熟练使用 Vue.js 敏捷开发，6 年前端生产工程沉淀。负责 PC 主站、创作者中心、小程序与即时通信系统的架构与研发，具备健全的工程化与跨端落地能力。",
       "items": [
         "对 Vue.js 原理有深入理解，并曾自主实现核心功能",
         "熟练使用 Vite、ESLint 等构建工具",
@@ -132,9 +131,10 @@
       }
     ],
     "referenceCard": {
-      "title": "Reference",
-      "name": "新浪微博技术部",
-      "role": "前端项目组",
+      "title": "PRODUCTION PROJECTS",
+      "header": "4 项核心大厂生产工程",
+      "role": "Tier-1 Production Systems",
+      "summary": "深度攻坚国民级社交平台亿级访问量旗舰主站、创作者生态多端同构中台及高并发即时通信系统的架构演进与全链路工程治理。",
       "phone": "(+86) 183-4910-8862",
       "email": "marsorsun@gmail.com"
     },
@@ -180,7 +180,7 @@
       "在技术积累上，对 Vue.js 原理有深入理解并曾自主实现核心功能，熟练掌握 Vite、ESLint 等现代化构建工具，熟悉 HTTP 协议与浏览器缓存策略，并在 Node.js 服务端接口代理与多端同构方案上有成熟实践。非常期待能有机会加入贵团队，共同打造卓越的前端产品！"
     ],
     "sincerely": "Sincerely",
-    "signatureText": "Zhaoyang Liu",
-    "signerName": "LIU ZHAOYANG (unbrain)"
+    "signatureText": "刘朝阳",
+    "signerName": "刘朝阳"
   }
 }

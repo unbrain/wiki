@@ -127,6 +127,15 @@ body {
   margin-bottom: 10px;
 }
 
+.hero-name.is-chinese-art {
+  font-family: 'Ma Shan Zheng', 'Zhi Mang Xing', 'Long Cang', 'Kaiti SC', 'STKaiti', cursive, serif;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+  font-size: 80px;
+  line-height: 1.05;
+  text-transform: none;
+}
+
 .hero-role {
   font-size: 20px;
   font-weight: 600;
@@ -378,6 +387,10 @@ body {
   margin-top: 6px;
 }
 
+.two-col-layout.top-expanded {
+  margin-top: 0;
+}
+
 .col-title {
   font-size: 18px;
   font-weight: 800;
@@ -482,11 +495,12 @@ body {
 }
 
 .ref-title {
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 900;
   color: #fff;
   margin-bottom: 6px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .ref-name {
@@ -506,6 +520,14 @@ body {
   height: 1px;
   background-color: rgba(255, 255, 255, 0.22);
   margin-bottom: 12px;
+}
+
+.ref-summary {
+  font-size: 10.2px;
+  line-height: 1.55;
+  color: #cdd4ce;
+  margin-bottom: 12px;
+  text-align: justify;
 }
 
 .ref-line {
@@ -752,6 +774,13 @@ body {
   user-select: none;
   transform: rotate(-2deg);
   letter-spacing: 0.02em;
+}
+
+.signature-font-text.is-chinese-art {
+  font-family: 'Ma Shan Zheng', 'Zhi Mang Xing', 'Long Cang', 'Kaiti SC', 'STKaiti', cursive, serif;
+  font-size: 48px;
+  letter-spacing: 0.12em;
+  transform: rotate(-1deg);
 }
 
 .cl-signer-name {

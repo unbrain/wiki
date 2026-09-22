@@ -28,6 +28,10 @@ function formatAddress(addr?: string) {
   if (!addr) return ''
   return addr.replace(/A\s*\|\s*/g, '<span class="to-prefix">A |</span> ')
 }
+
+const isChineseSignature = computed(() => {
+  return /[\u4e00-\u9fa5]/.test(clData.value.signatureText || props.cv.person.nameCn || '')
+})
 </script>
 
 <template>
@@ -93,7 +97,10 @@ function formatAddress(addr?: string) {
       <div class="cl-signoff-area">
         <div class="cl-sincerely editable">{{ clData.sincerely || 'Sincerely' }}</div>
         <div class="cl-signature-box">
-          <span class="signature-font-text editable">{{ clData.signatureText || 'Signature' }}</span>
+          <span
+            class="signature-font-text editable"
+            :class="{ 'is-chinese-art': isChineseSignature }"
+          >{{ clData.signatureText || 'Signature' }}</span>
         </div>
         <div class="cl-signer-name editable">{{ clData.signerName }}</div>
       </div>

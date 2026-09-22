@@ -19,6 +19,7 @@ export interface CVReferenceCard {
   role?: string
   phone?: string
   email?: string
+  summary?: string
   endorsement?: string
   items?: string[]
 }

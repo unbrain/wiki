@@ -37,27 +37,40 @@ const colTitle = computed(() => {
 
 const infra = computed(() => props.cv.page3.infrastructureBlock || props.cv.page3.materialBlock)
 const showHeader = computed(() => Boolean(props.cv.page3.showHeader))
+
+// In Option A (no top header), the dark card becomes the section hero guide badge
+const effectiveCard = computed(() => {
+  const card = props.cv.page3.referenceCard || {}
+  if (!showHeader.value) {
+    return {
+      ...card,
+      title: card.title || colTitle.value,
+      header: card.header || card.name,
+      summary: card.summary || props.cv.page3.profileOverview
+    }
+  }
+  return card
+})
 </script>
 
 <template>
   <A4Sheet :page-id="`page-${pageNum}`" :page-num="pageNum" :tag-text="pageTag" :active="active">
-    <div>
-      <template v-if="showHeader">
-        <div class="editorial-page-header">
-          <div>
-            <PillBadge :text="props.cv.page3.badge || 'Production Projects'" />
-          </div>
-          <HeroNameTitle
-            custom-class="editorial-page-header-right"
-            :name-first="cv.person.nameFirst"
-            :name-last="cv.person.nameLast"
-            :name-cn="cv.person.nameCn"
-            :role="cv.person.role"
-          />
+    <!-- Top Hero Header (Only rendered when showHeader is explicitly true) -->
+    <div v-if="showHeader">
+      <div class="editorial-page-header">
+        <div>
+          <PillBadge :text="props.cv.page3.badge || 'Production Projects'" />
         </div>
+        <HeroNameTitle
+          custom-class="editorial-page-header-right"
+          :name-first="cv.person.nameFirst"
+          :name-last="cv.person.nameLast"
+          :name-cn="cv.person.nameCn"
+          :role="cv.person.role"
+        />
+      </div>
 
-        <hr class="editorial-hr" />
-      </template>
+      <hr class="editorial-hr" />
 
       <EditorialGrid custom-class="overview-grid">
         <template #left>
@@ -83,8 +96,9 @@ const showHeader = computed(() => Boolean(props.cv.page3.showHeader))
       <hr class="editorial-hr" />
     </div>
 
-    <div class="two-col-layout">
-      <!-- Left Column: Current chunk of projects -->
+    <!-- Main Two-Column Layout (Expanded to top when showHeader is false) -->
+    <div class="two-col-layout" :class="{ 'top-expanded': !showHeader }">
+      <!-- Left Column: Current chunk of projects from top to bottom -->
       <div class="left-col">
         <AccentDivider />
         <div class="col-title editable">{{ colTitle }}</div>
@@ -95,9 +109,9 @@ const showHeader = computed(() => Boolean(props.cv.page3.showHeader))
 
       <!-- Right Column: Contextually distributed sidebar items -->
       <div class="right-sidebar">
-        <!-- First page chunk: Reference card -->
+        <!-- First page chunk: Section Hero Card -->
         <template v-if="!isContinuation">
-          <ReferenceCard :card="cv.page3.referenceCard" />
+          <ReferenceCard :card="effectiveCard" />
 
           <!-- If only 1 chunk total, also show infrastructure & manifesto here -->
           <template v-if="totalChunks === 1">

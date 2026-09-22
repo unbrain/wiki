@@ -19,6 +19,9 @@ function cleanPrefix(val?: string, prefix?: string) {
       <div v-if="card.role" class="ref-role editable">{{ card.role }}</div>
     </template>
 
+    <!-- Summary / Overview block inside card -->
+    <div v-if="card.summary" class="ref-summary editable" v-html="card.summary"></div>
+
     <!-- Phone & Email (or custom items) -->
     <div v-if="card.phone" class="ref-line editable">
       <span class="ref-prefix">P |</span> {{ cleanPrefix(card.phone, 'P') }}
