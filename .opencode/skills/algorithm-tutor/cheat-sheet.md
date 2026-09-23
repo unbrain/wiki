@@ -87,6 +87,37 @@
 - **易错点**：`randomIndex` 必加左端点 `+ l`（防偷区间外的数）；外层 `while (i <= j)` 动指针不动边界；内层严格比较无等号防全同退化；错开后 $j < i$，递归必须传 `(l, j)` 和 `(i, r)`，误写 `(l, i)` 原地打转必爆栈
 - **真实场景**：引擎底层排序、海量日志分批快速初排、图形渲染层级深度排序
 
+## 快速选择（QuickSelect / 找第 K 大）
+
+- **触发词**：第 K 大、第 K 小、无序数组前 K 个、O(n) 限制选择问题
+- **判断口诀**：快排底子 + 二分胆魄；门神定位：比 j 小入左院，比 i 大进右院，夹中间直取果
+- **模板骨架**：
+  ```js
+  function findKth(nums, k) {
+    const target = nums.length - k; // 升序第 k 大对应下标
+    const qs = (l, r) => {
+      if (l >= r) return nums[target];
+      const pivot = nums[Math.floor(Math.random() * (r - l + 1)) + l];
+      let i = l, j = r;
+      while (i <= j) {
+        while (nums[i] < pivot) i++;
+        while (nums[j] > pivot) j--;
+        if (i <= j) {
+          [nums[i], nums[j]] = [nums[j], nums[i]];
+          i++; j--;
+        }
+      }
+      if (target <= j) return qs(l, j); // 入左院 [l, j]
+      if (target >= i) return qs(i, r); // 进右院 [i, r]
+      return nums[target];              // 夹在中间过道直接命中
+    };
+    return qs(0, nums.length - 1);
+  }
+  ```
+- **复杂度**：时间期望 O(n)（等比级数收敛 $n + n/2 + n/4 \dots \approx 2n$） / 空间 O(log n) 原地
+- **易错点**：第 k 大转下标为 `nums.length - k`；门神定位判定方向别写反（`target <= j` 去左，`target >= i` 去右）；基准必须随机防单调有序退化 O(n²)
+- **真实场景**：海量数据无序找中位数、高并发排行榜快速截取 TopK 门槛值
+
 ## 二分查找
 
 - **触发词**：有序 / 单调、求最大中的最小或最小中的最大、"O(log n)" 暗示

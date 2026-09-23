@@ -75,57 +75,57 @@ var canFinish = function(numCourses, prerequisites) {
 
 [215. 数组中的第K个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array/)
 
-你必须设计并实现时间复杂度为 `O(n)` 的算法解决此问题
-
-放弃最小堆
-
+你必须设计并实现时间复杂度为 `O(n)` 的算法解决此问题（放弃小顶堆，采用快速选择 QuickSelect 原地划分）。
 
 ```javascript
+/**
+ * 快速选择 QuickSelect（复用 912 题 Hoare 双指针模板 + 随机化基准）
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
 var findKthLargest = function(nums, k) {
-    let len = nums.length
-    let left = 0
-    let right = len-1
-    const target = len - k
-    const swap = (i, j) => {
-        [nums[i], nums[j]] = [nums[j], nums[i]]
-    }
+    const target = nums.length - k; // 升序排列后的目标下标
 
-    const dfs = (start, end) => {
-        const povint = nums[end]
-        let i = start
-        let j = end - 1
-        while(true) {
-            while(i<=j && nums[i]<povint) i++
-            while(i<=j && nums[j]>povint) j--
-            if(i>=j) break
-            swap(i, j)
-            i++
-            j--
+    const qs = (l, r) => {
+        if (l >= r) return nums[target];
+
+        // 1. 基准随机偏移 l
+        const randomIndex = Math.floor(Math.random() * (r - l + 1)) + l;
+        const pivot = nums[randomIndex];
+
+        let i = l, j = r;
+
+        // 2. 双指针对撞严格比较
+        while (i <= j) {
+            while (nums[i] < pivot) i++;
+            while (nums[j] > pivot) j--;
+            if (i <= j) {
+                [nums[i], nums[j]] = [nums[j], nums[i]];
+                i++;
+                j--;
+            }
         }
-        swap(i, end)
-        return i
-    }
 
+        // 3. 门神法则：入左院、进右院、夹中间直取果
+        if (target <= j) return qs(l, j); // target <= j 入左院 [l, j]
+        if (target >= i) return qs(i, r); // target >= i 进右院 [i, r]
+        return nums[target];              // 夹在中间过道，直接命中
+    };
 
-    while(left <= right) {
-        const povintIndex = dfs(left, right)
-        if(target === povintIndex) {
-            return nums[target]
-        } else if(povintIndex < target) {
-            left = povintIndex +1
-        } else {
-            right = povintIndex-1
-        }
-    }
-    return -1;
+    return qs(0, nums.length - 1);
 };
 ```
 
-复杂度分析
+复杂度分析：
+- 时间复杂度：平均 O(n)，最坏通过随机基准避免退化；快速选择每次剪枝抛弃一半数据，总处理量为等比级数 $n + n/2 + n/4 + \dots \approx 2n$。
+- 空间复杂度：O(log n)，系统递归调用栈消耗（纯原地交换，0 额外数组开销）。
 
-时间复杂度：平均 O(n)，最坏 O(n²)。快速选择算法，每次分区将问题规模减半（平均情况），最坏情况发生在每次选择的基准值都是极端值时。
+关键套路与记忆点：
+- **与 912 快排同源**：底层同样是单次对撞双指针分区，快排“全都要”双边递归 $O(n \log n)$，快选“只要一个”单边递归剪枝 $O(n)$。
+- **定位门神诀**：错开后 $j < i$。`target <= j` 入左院，`target >= i` 进右院，夹中间直取果。
 
-空间复杂度：O(1)，迭代实现，只使用了常数额外空间。
+详细思路与记忆法见 [[215 数组中的第K个最大元素]]
 
 
 [208. 实现 Trie (前缀树)](https://leetcode.cn/problems/implement-trie-prefix-tree/)
