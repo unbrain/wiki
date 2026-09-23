@@ -60,6 +60,33 @@
 - **易错点**：排序前提不能丢；三数之和要先去重再移动
 - **真实场景**：合并两个有序数组、给数组原地去重
 
+## 快速排序（Hoare 双指针分区）
+
+- **触发词**：手撕排序、原地排序、无额外空间数组排序、第 K 大/快速选择（QuickSelect）
+- **判断口诀**：基准随机偏移 l，双针对撞 i 到 j；内层严格无等号，原地交换两步走；错开定界看仔细，左配小 j 右配大 i
+- **模板骨架**：
+  ```js
+  function quickSort(nums, l = 0, r = nums.length - 1) {
+    if (l >= r) return nums;
+    const pivot = nums[Math.floor(Math.random() * (r - l + 1)) + l];
+    let i = l, j = r;
+    while (i <= j) {
+      while (nums[i] < pivot) i++;
+      while (nums[j] > pivot) j--;
+      if (i <= j) {
+        [nums[i], nums[j]] = [nums[j], nums[i]];
+        i++; j--;
+      }
+    }
+    quickSort(nums, l, j);
+    quickSort(nums, i, r);
+    return nums;
+  }
+  ```
+- **复杂度**：时间平均 O(n log n) / 空间 O(log n) 原地
+- **易错点**：`randomIndex` 必加左端点 `+ l`（防偷区间外的数）；外层 `while (i <= j)` 动指针不动边界；内层严格比较无等号防全同退化；错开后 $j < i$，递归必须传 `(l, j)` 和 `(i, r)`，误写 `(l, i)` 原地打转必爆栈
+- **真实场景**：引擎底层排序、海量日志分批快速初排、图形渲染层级深度排序
+
 ## 二分查找
 
 - **触发词**：有序 / 单调、求最大中的最小或最小中的最大、"O(log n)" 暗示
