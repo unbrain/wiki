@@ -13,6 +13,8 @@ function formatContacts(html?: string) {
     .replace(/P\s*\|\s*/g, '<span class="cl-prefix">P |</span> ')
     .replace(/L\s*\|\s*/g, '<span class="cl-prefix">L |</span> ')
     .replace(/E\s*\|\s*/g, '<span class="cl-prefix">E |</span> ')
+    .replace(/G\s*\|\s*/g, '<span class="cl-prefix">G |</span> ')
+    .replace(/A\s*\|\s*/g, '<span class="cl-prefix">A |</span> ')
 }
 </script>
 

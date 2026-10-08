@@ -4,7 +4,7 @@ withDefaults(
     pattern?: ('filled' | 'outline')[]
   }>(),
   {
-    pattern: () => ['filled', 'filled', 'outline']
+    pattern: () => ['outline', 'filled', 'outline']
   }
 )
 </script>
