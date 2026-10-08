@@ -7,6 +7,7 @@ import AccentDivider from '../atoms/AccentDivider.vue'
 import HeroNameTitle from '../atoms/HeroNameTitle.vue'
 import TimelineItem from '../atoms/TimelineItem.vue'
 import CompactListItem from '../atoms/CompactListItem.vue'
+import MiniDarkBadge from '../atoms/MiniDarkBadge.vue'
 import EditorialGrid from '../layouts/EditorialGrid.vue'
 import ReferenceCard from '../widgets/ReferenceCard.vue'
 
@@ -82,15 +83,35 @@ const effectiveCard = computed(() => {
 
       <!-- Right Column: Dark Hero Card & Education -->
       <div class="right-sidebar">
-        <!-- Section Hero Card (Chapter badge in Option A / Item 1 pair) -->
-        <ReferenceCard :card="effectiveCard" :custom-class="cv.page2.secondaryCard ? 'compact' : ''" />
+        <!-- Solution A: Lightweight Mini Dark Badges (1-2 lines) paired with experiences -->
+        <template v-if="cv.page2.badges && cv.page2.badges.length">
+          <div class="badges-pair-container">
+            <MiniDarkBadge
+              v-for="(b, idx) in cv.page2.badges"
+              :key="idx"
+              :metric="b.metric"
+              :annotation="b.annotation"
+            />
+          </div>
 
-        <!-- Dual Card Layout: Item 2 paired black card (Education & Arsenal) -->
-        <template v-if="cv.page2.secondaryCard">
+          <!-- Core Skills Matrix (Below badges) -->
+          <div v-if="cv.page2.skillsMatrix && cv.page2.skillsMatrix.items" class="sidebar-lower-block">
+            <AccentDivider />
+            <div class="sidebar-block-title editable">{{ cv.page2.skillsMatrix.title || 'Core Skills' }}</div>
+            <div v-for="(skill, idx) in cv.page2.skillsMatrix.items" :key="idx" class="skill-matrix-item">
+              <span class="sq-bullet"></span>
+              <span class="editable">{{ skill }}</span>
+            </div>
+          </div>
+        </template>
+
+        <!-- Mode 2: Dual Large Cutout Card Layout -->
+        <template v-else-if="cv.page2.secondaryCard">
+          <ReferenceCard :card="effectiveCard" custom-class="compact" />
           <ReferenceCard :card="cv.page2.secondaryCard" custom-class="compact" />
         </template>
 
-        <!-- Classic Layout: Text blocks below single card -->
+        <!-- Mode 3: Classic Single Card Layout -->
         <template v-else>
           <!-- Core Skills Matrix (Below dark card) -->
           <div v-if="cv.page2.skillsMatrix && cv.page2.skillsMatrix.items" class="sidebar-lower-block">

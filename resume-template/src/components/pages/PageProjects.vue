@@ -8,6 +8,7 @@ import HeroNameTitle from '../atoms/HeroNameTitle.vue'
 import TimelineItem from '../atoms/TimelineItem.vue'
 import CompactListItem from '../atoms/CompactListItem.vue'
 import ManifestoCard from '../atoms/ManifestoCard.vue'
+import MiniDarkBadge from '../atoms/MiniDarkBadge.vue'
 import EditorialGrid from '../layouts/EditorialGrid.vue'
 import ReferenceCard from '../widgets/ReferenceCard.vue'
 
@@ -47,6 +48,11 @@ const currentChunkIndexItems = computed(() => {
     }))
   }
   return props.cv.page3.referenceCard?.indexItems || []
+})
+
+// Check if projects in current chunk have lightweight mini badges (1-2 lines)
+const chunkHasBadges = computed(() => {
+  return props.chunk && props.chunk.length > 0 && props.chunk.some(p => Boolean(p.badge))
 })
 
 // Check if projects in current chunk have individual paired cards
@@ -124,8 +130,57 @@ const effectiveCard = computed(() => {
 
       <!-- Right Column: Contextually distributed sidebar items -->
       <div class="right-sidebar">
+        <!-- Solution A: Lightweight Mini Dark Badges (1-2 lines) paired with projects -->
+        <template v-if="chunkHasBadges">
+          <div class="badges-pair-container">
+            <template v-for="(item, idx) in chunk" :key="idx">
+              <MiniDarkBadge
+                v-if="item.badge"
+                :metric="item.badge.metric"
+                :annotation="item.badge.annotation"
+              />
+            </template>
+          </div>
+
+          <!-- First page chunk: Infrastructure & Tools below badges -->
+          <template v-if="!isContinuation">
+            <div v-if="infra && infra.items" class="sidebar-lower-block">
+              <AccentDivider />
+              <div class="sidebar-block-title editable">{{ infra.title || 'Infrastructure & Tools' }}</div>
+              <CompactListItem
+                v-for="(m, idx) in infra.items"
+                :key="idx"
+                :primary="m.degree"
+                :secondary="m.school"
+                :meta="m.year"
+              />
+            </div>
+          </template>
+
+          <!-- Continuation page chunk: Milestones & Manifesto below badges -->
+          <template v-else>
+            <div v-if="cv.page3.milestonesBlock && cv.page3.milestonesBlock.items" class="sidebar-lower-block">
+              <AccentDivider />
+              <div class="sidebar-block-title editable">{{ cv.page3.milestonesBlock.title || 'Impact & Milestones' }}</div>
+              <CompactListItem
+                v-for="(m, idx) in cv.page3.milestonesBlock.items"
+                :key="idx"
+                :primary="m.degree"
+                :secondary="m.school"
+                :meta="m.year"
+              />
+            </div>
+            <ManifestoCard
+              v-if="cv.page3.manifesto"
+              style="margin-top: 14px;"
+              :title="cv.page3.manifesto.title"
+              :quote="cv.page3.manifesto.quote"
+            />
+          </template>
+        </template>
+
         <!-- Paired Project Cards: Each project on left pairs with a dedicated black card on right -->
-        <template v-if="chunkHasCards">
+        <template v-else-if="chunkHasCards">
           <template v-for="(item, idx) in chunk" :key="idx">
             <ReferenceCard
               v-if="item.card"

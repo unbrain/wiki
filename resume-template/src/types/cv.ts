@@ -1,3 +1,8 @@
+export interface CVBadgePlaque {
+  metric: string
+  annotation?: string
+}
+
 export interface CVExperience {
   title: string
   company?: string
@@ -5,6 +10,7 @@ export interface CVExperience {
   summary?: string
   bullets?: string[]
   card?: CVReferenceCard
+  badge?: CVBadgePlaque
 }
 
 export interface CVEducationItem {
@@ -75,6 +81,7 @@ export interface CVPage2 {
   skills?: CVExperience[]
   referenceCard?: CVReferenceCard
   secondaryCard?: CVReferenceCard
+  badges?: CVBadgePlaque[]
   capabilityCard?: CVReferenceCard
   skillsMatrix?: {
     title?: string
