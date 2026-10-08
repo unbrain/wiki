@@ -74,17 +74,20 @@ export function usePagination(cv: Ref<CVData>) {
       })
     }
 
-    // Final Page: Cover Letter
-    const letterPageNum = result.length + 1
-    const padLetterNum = String(letterPageNum).padStart(2, '0')
-    result.push({
-      id: 'page-letter',
-      pageIndex: result.length,
-      pageNumber: letterPageNum,
-      totalCount: 0,
-      type: 'letter',
-      tagText: `Page ${padLetterNum} · Cover Letter`
-    })
+    // Final Page: Cover Letter (only when not explicitly disabled)
+    const shouldIncludeLetter = cv.value.includeCoverLetter !== false
+    if (shouldIncludeLetter) {
+      const letterPageNum = result.length + 1
+      const padLetterNum = String(letterPageNum).padStart(2, '0')
+      result.push({
+        id: 'page-letter',
+        pageIndex: result.length,
+        pageNumber: letterPageNum,
+        totalCount: 0,
+        type: 'letter',
+        tagText: `Page ${padLetterNum} · Cover Letter`
+      })
+    }
 
     // Backfill totalCount
     const total = result.length

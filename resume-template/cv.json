@@ -1,18 +1,21 @@
 {
   "id": "unbrain_full",
   "label": "✨ 刘朝阳 · 完整档案 (100% 原始数据保真版)",
-  "pageCount": 5,
+  "pageCount": 4,
+  "includeCoverLetter": false,
   "meta": {
     "year": "Year 2028",
     "website": "marsblog.online",
-    "addressTitle": "ADDRESS :",
-    "addressLines": "(+86) 183-4910-8862<br>marsorsun@gmail.com<br>期望地点：深圳<br>github.com/unbrain<br>marsblog.online",
+    "addressTitle": "CONTACT & PROFILE :",
+    "addressLines": "P | (+86) 183-4910-8862<br>E | marsorsun@gmail.com<br>L | 期望地点：深圳<br>G | github.com/unbrain<br>W | marsblog.online<br>EDU | 统招全日制本科 · 计算机科学与技术<br>EXP | 6 年企业级工程沉淀 (微博核心前端)",
     "coverLetterContacts": "P | (+86) 183-4910-8862<br>L | 期望地点：深圳<br>E | marsorsun@gmail.com<br>G | github.com/unbrain"
   },
   "person": {
+    "nameFirst": "LIU",
+    "nameLast": "ZHAOYANG",
     "nameCn": "刘朝阳",
-    "role": "前端开发工程师",
-    "roleCn": "前端开发工程师",
+    "role": "资深前端开发工程师 / 核心工程架构",
+    "roleCn": "资深前端开发工程师 / 核心工程架构",
     "photo": "https://lh3.googleusercontent.com/a/ACg8ocLfn368pljrx6cO8K0kLqjKDw_EeyjIvN_3abHQaqarKjZR_3vs=s576-c-no",
     "photoFit": "cover",
     "photoPosition": "center center",

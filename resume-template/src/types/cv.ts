@@ -136,6 +136,7 @@ export interface CVData {
   id: string
   label: string
   pageCount: number
+  includeCoverLetter?: boolean
   meta: CVMeta
   person: CVPerson
   page2: CVPage2

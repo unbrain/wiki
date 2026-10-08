@@ -318,6 +318,13 @@ body {
   color: var(--text-sub);
 }
 
+.p1-address-lines .addr-prefix {
+  font-weight: 800;
+  color: var(--text-main);
+  margin-right: 3px;
+  letter-spacing: 0.02em;
+}
+
 .p1-about-stamp {
   position: absolute;
   right: 0;

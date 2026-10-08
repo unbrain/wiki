@@ -22,6 +22,15 @@ const photoStyle = computed(() => {
   if (props.cv.person.photoScale) s.transform = `scale(${props.cv.person.photoScale})`
   return s
 })
+
+const formattedAddress = computed(() => {
+  const lines = props.cv.meta.addressLines || ''
+  return lines.replace(/(?:^|<br\s*\/?>)\s*([A-Za-z]+)\s*\|\s*/g, (match, prefix) => {
+    const isBr = match.startsWith('<')
+    const brPart = isBr ? match.slice(0, match.indexOf(prefix)) : ''
+    return `${brPart}<span class="addr-prefix">${prefix} |</span> `
+  })
+})
 </script>
 
 <template>
@@ -81,7 +90,7 @@ const photoStyle = computed(() => {
 
         <div class="p1-address-block">
           <div class="p1-address-label editable">{{ cv.meta.addressTitle || 'ADDRESS :' }}</div>
-          <div class="p1-address-lines editable" v-html="cv.meta.addressLines"></div>
+          <div class="p1-address-lines editable" v-html="formattedAddress"></div>
         </div>
 
         <div class="p1-about-stamp editable">{{ cv.person.aboutStamp || 'About Me.' }}</div>
