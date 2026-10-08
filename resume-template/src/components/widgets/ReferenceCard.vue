@@ -4,6 +4,7 @@ import CutoutCard from '../atoms/CutoutCard.vue'
 
 defineProps<{
   card?: CVReferenceCard
+  customClass?: string
 }>()
 
 function cleanPrefix(val?: string, prefix?: string) {
@@ -13,7 +14,7 @@ function cleanPrefix(val?: string, prefix?: string) {
 </script>
 
 <template>
-  <CutoutCard v-if="card" :title="card.title || 'Reference'">
+  <CutoutCard v-if="card" :title="card.title || 'Reference'" :custom-class="customClass">
     <template #header>
       <div v-if="card.name || card.header" class="ref-name editable">{{ card.name || card.header }}</div>
       <div v-if="card.role" class="ref-role editable">{{ card.role }}</div>

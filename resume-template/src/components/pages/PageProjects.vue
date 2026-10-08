@@ -49,6 +49,11 @@ const currentChunkIndexItems = computed(() => {
   return props.cv.page3.referenceCard?.indexItems || []
 })
 
+// Check if projects in current chunk have individual paired cards
+const chunkHasCards = computed(() => {
+  return props.chunk && props.chunk.length > 0 && props.chunk.some(p => Boolean(p.card))
+})
+
 // Dynamically generate effective card matching current page context
 const effectiveCard = computed(() => {
   const card = props.cv.page3.referenceCard || {}
@@ -119,43 +124,57 @@ const effectiveCard = computed(() => {
 
       <!-- Right Column: Contextually distributed sidebar items -->
       <div class="right-sidebar">
-        <!-- Section Hero Card: Dynamically reflects the current chunk's projects -->
-        <ReferenceCard :card="effectiveCard" />
-
-        <!-- First page chunk: Infrastructure & Tools -->
-        <template v-if="!isContinuation">
-          <div v-if="infra && infra.items" class="sidebar-lower-block">
-            <AccentDivider />
-            <div class="sidebar-block-title editable">{{ infra.title || 'Infrastructure & Tools' }}</div>
-            <CompactListItem
-              v-for="(m, idx) in infra.items"
-              :key="idx"
-              :primary="m.degree"
-              :secondary="m.school"
-              :meta="m.year"
+        <!-- Paired Project Cards: Each project on left pairs with a dedicated black card on right -->
+        <template v-if="chunkHasCards">
+          <template v-for="(item, idx) in chunk" :key="idx">
+            <ReferenceCard
+              v-if="item.card"
+              :card="item.card"
+              custom-class="compact"
             />
-          </div>
+          </template>
         </template>
 
-        <!-- Continuation page chunk: Milestones & Manifesto -->
+        <!-- Legacy Single Card Layout -->
         <template v-else>
-          <div v-if="cv.page3.milestonesBlock && cv.page3.milestonesBlock.items" class="sidebar-lower-block">
-            <AccentDivider />
-            <div class="sidebar-block-title editable">{{ cv.page3.milestonesBlock.title || 'Impact & Milestones' }}</div>
-            <CompactListItem
-              v-for="(m, idx) in cv.page3.milestonesBlock.items"
-              :key="idx"
-              :primary="m.degree"
-              :secondary="m.school"
-              :meta="m.year"
+          <!-- Section Hero Card: Dynamically reflects the current chunk's projects -->
+          <ReferenceCard :card="effectiveCard" />
+
+          <!-- First page chunk: Infrastructure & Tools -->
+          <template v-if="!isContinuation">
+            <div v-if="infra && infra.items" class="sidebar-lower-block">
+              <AccentDivider />
+              <div class="sidebar-block-title editable">{{ infra.title || 'Infrastructure & Tools' }}</div>
+              <CompactListItem
+                v-for="(m, idx) in infra.items"
+                :key="idx"
+                :primary="m.degree"
+                :secondary="m.school"
+                :meta="m.year"
+              />
+            </div>
+          </template>
+
+          <!-- Continuation page chunk: Milestones & Manifesto -->
+          <template v-else>
+            <div v-if="cv.page3.milestonesBlock && cv.page3.milestonesBlock.items" class="sidebar-lower-block">
+              <AccentDivider />
+              <div class="sidebar-block-title editable">{{ cv.page3.milestonesBlock.title || 'Impact & Milestones' }}</div>
+              <CompactListItem
+                v-for="(m, idx) in cv.page3.milestonesBlock.items"
+                :key="idx"
+                :primary="m.degree"
+                :secondary="m.school"
+                :meta="m.year"
+              />
+            </div>
+            <ManifestoCard
+              v-if="cv.page3.manifesto"
+              style="margin-top: 18px;"
+              :title="cv.page3.manifesto.title"
+              :quote="cv.page3.manifesto.quote"
             />
-          </div>
-          <ManifestoCard
-            v-if="cv.page3.manifesto"
-            style="margin-top: 18px;"
-            :title="cv.page3.manifesto.title"
-            :quote="cv.page3.manifesto.quote"
-          />
+          </template>
         </template>
       </div>
     </div>

@@ -82,43 +82,51 @@ const effectiveCard = computed(() => {
 
       <!-- Right Column: Dark Hero Card & Education -->
       <div class="right-sidebar">
-        <!-- Section Hero Card (Chapter badge in Option A) -->
-        <ReferenceCard :card="effectiveCard" />
+        <!-- Section Hero Card (Chapter badge in Option A / Item 1 pair) -->
+        <ReferenceCard :card="effectiveCard" :custom-class="cv.page2.secondaryCard ? 'compact' : ''" />
 
-        <!-- Core Skills Matrix (Below dark card) -->
-        <div v-if="cv.page2.skillsMatrix && cv.page2.skillsMatrix.items" class="sidebar-lower-block">
-          <AccentDivider />
-          <div class="sidebar-block-title editable">{{ cv.page2.skillsMatrix.title || 'Core Skills' }}</div>
-          <div v-for="(skill, idx) in cv.page2.skillsMatrix.items" :key="idx" class="skill-matrix-item">
-            <span class="sq-bullet"></span>
-            <span class="editable">{{ skill }}</span>
+        <!-- Dual Card Layout: Item 2 paired black card (Education & Arsenal) -->
+        <template v-if="cv.page2.secondaryCard">
+          <ReferenceCard :card="cv.page2.secondaryCard" custom-class="compact" />
+        </template>
+
+        <!-- Classic Layout: Text blocks below single card -->
+        <template v-else>
+          <!-- Core Skills Matrix (Below dark card) -->
+          <div v-if="cv.page2.skillsMatrix && cv.page2.skillsMatrix.items" class="sidebar-lower-block">
+            <AccentDivider />
+            <div class="sidebar-block-title editable">{{ cv.page2.skillsMatrix.title || 'Core Skills' }}</div>
+            <div v-for="(skill, idx) in cv.page2.skillsMatrix.items" :key="idx" class="skill-matrix-item">
+              <span class="sq-bullet"></span>
+              <span class="editable">{{ skill }}</span>
+            </div>
           </div>
-        </div>
 
-        <!-- Education -->
-        <div v-if="cv.page2.education" class="sidebar-lower-block">
-          <AccentDivider />
-          <div class="sidebar-block-title editable">{{ cv.page2.education.title || 'Education' }}</div>
-          <CompactListItem
-            v-for="(edu, idx) in cv.page2.education.items || []"
-            :key="idx"
-            :primary="edu.degree"
-            :secondary="edu.school"
-            :meta="edu.year"
-          />
-        </div>
+          <!-- Education -->
+          <div v-if="cv.page2.education" class="sidebar-lower-block">
+            <AccentDivider />
+            <div class="sidebar-block-title editable">{{ cv.page2.education.title || 'Education' }}</div>
+            <CompactListItem
+              v-for="(edu, idx) in cv.page2.education.items || []"
+              :key="idx"
+              :primary="edu.degree"
+              :secondary="edu.school"
+              :meta="edu.year"
+            />
+          </div>
 
-        <!-- Extra Artifacts / Knowledge Base (if present) -->
-        <div v-if="cv.page2.extraArtifacts && cv.page2.extraArtifacts.items" class="sidebar-lower-block" style="margin-top: 14px;">
-          <div class="sidebar-block-title editable">{{ cv.page2.extraArtifacts.title }}</div>
-          <CompactListItem
-            v-for="(art, idx) in cv.page2.extraArtifacts.items"
-            :key="idx"
-            :primary="art.degree"
-            :secondary="art.school"
-            :meta="art.year"
-          />
-        </div>
+          <!-- Extra Artifacts / Knowledge Base (if present) -->
+          <div v-if="cv.page2.extraArtifacts && cv.page2.extraArtifacts.items" class="sidebar-lower-block" style="margin-top: 14px;">
+            <div class="sidebar-block-title editable">{{ cv.page2.extraArtifacts.title }}</div>
+            <CompactListItem
+              v-for="(art, idx) in cv.page2.extraArtifacts.items"
+              :key="idx"
+              :primary="art.degree"
+              :secondary="art.school"
+              :meta="art.year"
+            />
+          </div>
+        </template>
       </div>
     </div>
   </A4Sheet>

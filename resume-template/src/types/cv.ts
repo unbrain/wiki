@@ -4,6 +4,7 @@ export interface CVExperience {
   subtitle?: string
   summary?: string
   bullets?: string[]
+  card?: CVReferenceCard
 }
 
 export interface CVEducationItem {
@@ -73,6 +74,8 @@ export interface CVPage2 {
   experiences?: CVExperience[]
   skills?: CVExperience[]
   referenceCard?: CVReferenceCard
+  secondaryCard?: CVReferenceCard
+  capabilityCard?: CVReferenceCard
   skillsMatrix?: {
     title?: string
     items: string[]
