@@ -25,16 +25,16 @@ defineProps<{
 }
 
 .badge-metric {
-  font-size: 11.6px;
-  font-weight: 700;
+  font-size: 12.5px;
+  font-weight: 800;
   color: #ffffff;
   line-height: 1.35;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
 }
 
 .badge-annotation {
-  font-size: 9.6px;
-  color: #9ea9a1;
+  font-size: 9.8px;
+  color: #a4aea7;
   line-height: 1.35;
   margin-top: 3px;
   letter-spacing: 0.015em;

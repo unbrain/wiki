@@ -77,7 +77,12 @@ const effectiveCard = computed(() => {
         <AccentDivider />
         <div class="col-title editable">{{ colTitle }}</div>
         <div class="main-list">
-          <TimelineItem v-for="(item, idx) in listItems" :key="idx" :item="item" />
+          <TimelineItem
+            v-for="(item, idx) in listItems"
+            :key="idx"
+            :item="item"
+            :hide-header="Boolean(cv.page2.badges && cv.page2.badges.length)"
+          />
         </div>
       </div>
 
@@ -102,6 +107,19 @@ const effectiveCard = computed(() => {
               <span class="sq-bullet"></span>
               <span class="editable">{{ skill }}</span>
             </div>
+          </div>
+
+          <!-- Education -->
+          <div v-if="cv.page2.education" class="sidebar-lower-block">
+            <AccentDivider />
+            <div class="sidebar-block-title editable">{{ cv.page2.education.title || 'Education' }}</div>
+            <CompactListItem
+              v-for="(edu, idx) in cv.page2.education.items || []"
+              :key="idx"
+              :primary="edu.degree"
+              :secondary="edu.school"
+              :meta="edu.year"
+            />
           </div>
         </template>
 

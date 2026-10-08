@@ -124,7 +124,12 @@ const effectiveCard = computed(() => {
         <AccentDivider />
         <div class="col-title editable">{{ colTitle }}</div>
         <div class="main-list">
-          <TimelineItem v-for="(item, idx) in chunk" :key="idx" :item="item" />
+          <TimelineItem
+            v-for="(item, idx) in chunk"
+            :key="idx"
+            :item="item"
+            :hide-header="chunkHasBadges"
+          />
         </div>
       </div>
 
