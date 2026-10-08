@@ -26,7 +26,7 @@
   },
   "page2": {
     "badge": "Resume",
-    "showHeader": false,
+    "showHeader": true,
     "profileTitle": "Profile<br>Overview",
     "profileOverview": "熟练使用 Vue.js 敏捷开发方法，具备 6 年的前端开发经验。在微博前端项目组的多个大型项目中担任核心开发者，负责 PC 主站、创作者中心、小程序与即时通信系统的架构与研发，具备健全的工程化体系与跨端落地能力。",
     "expTitle": "Work Experience",
@@ -53,18 +53,13 @@
       }
     ],
     "referenceCard": {
-      "title": "WORK EXPERIENCE",
-      "header": "经历时间线索引",
-      "indexItems": [
-        {
-          "title": "微博 前端开发 / 2019.7 - 至今",
-          "subtitle": "微博 · 移动服务技术部"
-        },
-        {
-          "title": "微博 前端实习 / 2019.2 - 2019.5",
-          "subtitle": "微博 · 移动服务技术部"
-        }
-      ]
+      "title": "REFERENCE & EVALUATION",
+      "name": "新浪微博 · 移动服务技术部",
+      "role": "核心前端团队 / 权威评价",
+      "phone": "P | 认证核心开发者",
+      "email": "E | weibo.com 核心架构组",
+      "summary": "在 PC 旗舰主站、创作者生态及小程序中主导多项关键重构，代码工整健壮，技术深度与自研突破能力突出。",
+      "endorsement": "“具备深厚的复杂系统攻坚实力与端到端高标准落地能力。”"
     },
     "skillsMatrix": {
       "title": "Core Skills",
@@ -90,7 +85,7 @@
   },
   "page3": {
     "badge": "Production Projects",
-    "showHeader": false,
+    "showHeader": true,
     "profileTitle": "Projects<br>Overview",
     "profileOverview": "深度参与微博 PC 主站、创作者中心小程序、PC 创作者中心及 PC 即时聊天消息箱的核心架构重构与业务落地。",
     "expTitle": "Production Projects",
@@ -145,16 +140,16 @@
       }
     ],
     "referenceCard": {
-      "title": "PRODUCTION PROJECTS",
-      "header": "标杆生产工程索引",
+      "title": "FLAGSHIP HIGHLIGHTS",
+      "header": "数亿级访问量核心技术指标",
       "indexItems": [
         {
-          "title": "微博 PC 主站 / 2019.11 - 至今",
-          "subtitle": "核心业务主站 (https://www.weibo.com)"
+          "title": "PC 主站音视频 SDK / 成功率 99.9%",
+          "subtitle": "分片/断点续传/多链路容灾"
         },
         {
-          "title": "微博小程序 / 2020 - 至今",
-          "subtitle": "创作者生态与跨端同构"
+          "title": "创作者小程序 / 商业化创收超 10 亿",
+          "subtitle": "跨端同构/动态 Card 架构/100+ 页面"
         }
       ]
     },
@@ -175,6 +170,26 @@
           "degree": "Vue 3 跨端同构 + Card 系统",
           "school": "小程序与 PC 端代码高复用与后台动态配置",
           "year": "Architecture"
+        }
+      ]
+    },
+    "milestonesBlock": {
+      "title": "Impact & Milestones",
+      "items": [
+        {
+          "degree": "创收超 10 亿 · 专项项目奖 6w",
+          "school": "创作者中心与互动激励任务商单赋能",
+          "year": "Business Impact"
+        },
+        {
+          "degree": "千行 if-else 治理 · 性能提升 60%",
+          "school": "消息箱下推机制与长连接通信架构重构",
+          "year": "Performance"
+        },
+        {
+          "degree": "全团队 ESLint 与规范体系推行",
+          "school": "@antfu 规范与 CI 门禁在多项目统一落地",
+          "year": "Standards"
         }
       ]
     },

@@ -49,14 +49,13 @@ const currentChunkIndexItems = computed(() => {
   return props.cv.page3.referenceCard?.indexItems || []
 })
 
-// In Option A (no top header), the dark card dynamically reflects the current chunk
+// Dynamically generate effective card matching current page context
 const effectiveCard = computed(() => {
   const card = props.cv.page3.referenceCard || {}
-  if (!showHeader.value) {
+  if (isContinuation.value) {
     return {
-      ...card,
-      title: isContinuation.value ? 'PROJECTS · CONT.' : (card.title || colTitle.value),
-      header: isContinuation.value ? '大厂核心工程 · 续篇' : (card.header || card.name),
+      title: 'PROJECTS · CONT.',
+      header: '创作者中台与通信治理',
       indexItems: currentChunkIndexItems.value
     }
   }
@@ -138,8 +137,19 @@ const effectiveCard = computed(() => {
           </div>
         </template>
 
-        <!-- Continuation page chunk: Engineering Manifesto -->
+        <!-- Continuation page chunk: Milestones & Manifesto -->
         <template v-else>
+          <div v-if="cv.page3.milestonesBlock && cv.page3.milestonesBlock.items" class="sidebar-lower-block">
+            <AccentDivider />
+            <div class="sidebar-block-title editable">{{ cv.page3.milestonesBlock.title || 'Impact & Milestones' }}</div>
+            <CompactListItem
+              v-for="(m, idx) in cv.page3.milestonesBlock.items"
+              :key="idx"
+              :primary="m.degree"
+              :secondary="m.school"
+              :meta="m.year"
+            />
+          </div>
           <ManifestoCard
             v-if="cv.page3.manifesto"
             style="margin-top: 18px;"

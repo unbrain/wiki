@@ -99,6 +99,10 @@ export interface CVPage3 {
     title?: string
     items?: CVInfrastructureItem[]
   }
+  milestonesBlock?: {
+    title?: string
+    items?: CVInfrastructureItem[]
+  }
   materialBlock?: {
     title?: string
     items?: CVInfrastructureItem[]
