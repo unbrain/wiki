@@ -399,6 +399,48 @@ body {
   margin-top: 0;
 }
 
+/* Solution 1: Paired Section Rows with Baseline Alignment */
+.paired-section-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  margin-top: 6px;
+}
+
+.paired-section-rows.top-expanded {
+  margin-top: 0;
+}
+
+.section-row {
+  display: grid;
+  grid-template-columns: 1fr 236px;
+  gap: 28px;
+  align-items: start;
+}
+
+.section-row-main {
+  min-width: 0;
+}
+
+.section-row-aside {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+}
+
+.section-row-aside .mini-dark-badge {
+  margin-bottom: 0;
+}
+
+.section-row-aside .sidebar-lower-block {
+  margin-top: 14px;
+}
+
+.col-title-bar {
+  margin-bottom: 6px;
+}
+
 .col-title {
   font-size: 18px;
   font-weight: 800;

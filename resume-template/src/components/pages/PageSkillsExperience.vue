@@ -70,8 +70,55 @@ const effectiveCard = computed(() => {
       <hr class="editorial-hr" />
     </div>
 
-    <!-- Main Two-Column Layout (Expanded to top when showHeader is false) -->
-    <div class="two-col-layout" :class="{ 'top-expanded': !showHeader }">
+    <!-- Section Row Layout (Solution 1: Row-paired with baseline alignment) -->
+    <div v-if="cv.page2.badges && cv.page2.badges.length" class="paired-section-rows" :class="{ 'top-expanded': !showHeader }">
+      <div class="col-title-bar">
+        <AccentDivider />
+        <div class="col-title editable">{{ colTitle }}</div>
+      </div>
+
+      <div v-for="(item, idx) in listItems" :key="idx" class="section-row">
+        <!-- Left: Experience Details (no redundant title) -->
+        <div class="section-row-main">
+          <TimelineItem :item="item" :hide-header="true" />
+        </div>
+
+        <!-- Right: Aligned Mini Dark Title Badge + Attachments -->
+        <div class="section-row-aside">
+          <MiniDarkBadge
+            v-if="cv.page2.badges[idx]"
+            :metric="cv.page2.badges[idx].metric"
+            :annotation="cv.page2.badges[idx].annotation"
+          />
+
+          <!-- Attachment for Item 0: Core Skills Matrix -->
+          <div v-if="idx === 0 && cv.page2.skillsMatrix && cv.page2.skillsMatrix.items" class="sidebar-lower-block">
+            <AccentDivider />
+            <div class="sidebar-block-title editable">{{ cv.page2.skillsMatrix.title || 'Core Skills' }}</div>
+            <div v-for="(skill, sidx) in cv.page2.skillsMatrix.items" :key="sidx" class="skill-matrix-item">
+              <span class="sq-bullet"></span>
+              <span class="editable">{{ skill }}</span>
+            </div>
+          </div>
+
+          <!-- Attachment for Item 1: Education -->
+          <div v-else-if="idx === 1 && cv.page2.education" class="sidebar-lower-block">
+            <AccentDivider />
+            <div class="sidebar-block-title editable">{{ cv.page2.education.title || 'Education' }}</div>
+            <CompactListItem
+              v-for="(edu, eidx) in cv.page2.education.items || []"
+              :key="eidx"
+              :primary="edu.degree"
+              :secondary="edu.school"
+              :meta="edu.year"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legacy Two-Column Layout (Fallback for cards or classic preset) -->
+    <div v-else class="two-col-layout" :class="{ 'top-expanded': !showHeader }">
       <!-- Left Column: Work Experience from top to bottom -->
       <div class="left-col">
         <AccentDivider />

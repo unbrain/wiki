@@ -117,8 +117,72 @@ const effectiveCard = computed(() => {
       <hr class="editorial-hr" />
     </div>
 
-    <!-- Main Two-Column Layout (Expanded to top when showHeader is false) -->
-    <div class="two-col-layout" :class="{ 'top-expanded': !showHeader }">
+    <!-- Section Row Layout (Solution 1: Row-paired with baseline alignment) -->
+    <div v-if="chunkHasBadges" class="paired-section-rows" :class="{ 'top-expanded': !showHeader }">
+      <div class="col-title-bar">
+        <AccentDivider />
+        <div class="col-title editable">{{ colTitle }}</div>
+      </div>
+
+      <div v-for="(item, idx) in chunk" :key="idx" class="section-row">
+        <!-- Left: Project Details (no redundant title) -->
+        <div class="section-row-main">
+          <TimelineItem :item="item" :hide-header="true" />
+        </div>
+
+        <!-- Right: Aligned Mini Dark Title Badge + Section Attachments -->
+        <div class="section-row-aside">
+          <MiniDarkBadge
+            v-if="item.badge"
+            :metric="item.badge.metric"
+            :annotation="item.badge.annotation"
+          />
+
+          <!-- Attachment for Item 0 -->
+          <template v-if="idx === 0">
+            <!-- First chunk: Infrastructure & Tools below item 0 badge -->
+            <div v-if="!isContinuation && infra && infra.items" class="sidebar-lower-block">
+              <AccentDivider />
+              <div class="sidebar-block-title editable">{{ infra.title || 'Infrastructure & Tools' }}</div>
+              <CompactListItem
+                v-for="(m, midx) in infra.items"
+                :key="midx"
+                :primary="m.degree"
+                :secondary="m.school"
+                :meta="m.year"
+              />
+            </div>
+
+            <!-- Continuation chunk: Milestones below item 0 badge -->
+            <div v-else-if="isContinuation && cv.page3.milestonesBlock && cv.page3.milestonesBlock.items" class="sidebar-lower-block">
+              <AccentDivider />
+              <div class="sidebar-block-title editable">{{ cv.page3.milestonesBlock.title || 'Impact & Milestones' }}</div>
+              <CompactListItem
+                v-for="(m, midx) in cv.page3.milestonesBlock.items"
+                :key="midx"
+                :primary="m.degree"
+                :secondary="m.school"
+                :meta="m.year"
+              />
+            </div>
+          </template>
+
+          <!-- Attachment for Item 1 -->
+          <template v-else-if="idx === 1">
+            <!-- Continuation chunk: Engineering Manifesto below item 1 badge -->
+            <ManifestoCard
+              v-if="isContinuation && cv.page3.manifesto"
+              style="margin-top: 14px;"
+              :title="cv.page3.manifesto.title"
+              :quote="cv.page3.manifesto.quote"
+            />
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legacy Two-Column Layout (Fallback for cards or classic preset) -->
+    <div v-else class="two-col-layout" :class="{ 'top-expanded': !showHeader }">
       <!-- Left Column: Current chunk of projects from top to bottom -->
       <div class="left-col">
         <AccentDivider />
