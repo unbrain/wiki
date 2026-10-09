@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import NotchedBox from './NotchedBox.vue'
+
 defineProps<{
   metric: string
   annotation?: string
@@ -6,23 +8,15 @@ defineProps<{
 </script>
 
 <template>
-  <div class="notched-title-badge">
+  <NotchedBox custom-class="notched-title-badge">
     <div class="badge-metric editable">{{ metric }}</div>
     <div v-if="annotation" class="badge-annotation editable">{{ annotation }}</div>
-  </div>
+  </NotchedBox>
 </template>
 
 <style scoped>
 .notched-title-badge {
-  position: relative;
-  background-color: var(--card-black);
-  color: #fff;
-  padding: 11px 16px 17px 16px;
-  clip-path: url(#ref-card-mini-clip);
-  -webkit-clip-path: url(#ref-card-mini-clip);
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.16));
-  display: flex;
-  flex-direction: column;
+  display: block;
 }
 
 .badge-metric {
