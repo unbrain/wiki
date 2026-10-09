@@ -27,6 +27,11 @@ const {
 const { pages, totalPages } = usePagination(cv)
 const { viewMode, targetPage, zoom, setViewMode, triggerPrint } = useViewControls(totalPages)
 
+const studioShadow = ref(true)
+function toggleStudioShadow() {
+  studioShadow.value = !studioShadow.value
+}
+
 const photoInputRef = ref<HTMLInputElement | null>(null)
 
 function onPhotoFileChange(e: Event) {
@@ -48,7 +53,7 @@ watch(isEditing, async (newVal) => {
 </script>
 
 <template>
-  <div :class="{ 'is-editing': isEditing }">
+  <div :class="{ 'is-editing': isEditing, 'no-studio-shadow': !studioShadow }">
     <!-- SVG Vector Clip Paths -->
     <SvgDefs />
 
@@ -75,6 +80,7 @@ watch(isEditing, async (newVal) => {
       :view-mode="viewMode"
       :target-page="targetPage"
       :zoom="zoom"
+      :studio-shadow="studioShadow"
       @change-preset="loadPreset"
       @toggle-edit="toggleEdit"
       @export-json="exportJson"
@@ -83,11 +89,15 @@ watch(isEditing, async (newVal) => {
       @set-view-mode="setViewMode"
       @update:zoom="zoom = $event"
       @reset-defaults="resetToPresetDefaults"
+      @toggle-shadow="toggleStudioShadow"
       @print="triggerPrint"
     />
 
     <!-- Workspace / Desk Stage -->
     <main class="desk-stage">
+      <!-- Studio Botanical Ambient Shadow Layer (Natural sunlight & foliage overlay) -->
+      <div v-if="studioShadow" class="studio-botanical-shadow" aria-hidden="true"></div>
+
       <div
         class="pages-container"
         :class="{

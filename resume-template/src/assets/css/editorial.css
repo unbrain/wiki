@@ -30,10 +30,13 @@
 body {
   font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: var(--desk-bg);
+  background-image: radial-gradient(ellipse at 50% 25%, #e1e7e2 0%, #cbd2cd 100%);
+  background-attachment: fixed;
   color: var(--text-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.45;
+  min-height: 100vh;
 }
 
 /* ==========================================================================
@@ -46,16 +49,52 @@ body {
   height: var(--a4-height);
   min-height: var(--a4-height);
   background-color: var(--page-bg);
+  background-image: linear-gradient(145deg, #edf2ed 0%, #e5eae4 100%);
   position: relative;
   padding: var(--page-padding-top) var(--page-padding-horizontal) var(--page-padding-bottom);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 16px 36px var(--desk-shadow), 0 2px 10px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 2px 4px rgba(18, 24, 20, 0.08),
+    0 10px 24px -4px rgba(18, 24, 20, 0.14),
+    0 28px 56px -10px rgba(18, 24, 20, 0.18),
+    0 48px 96px -16px rgba(18, 24, 20, 0.10);
   border-radius: 2px;
   overflow: hidden;
   page-break-after: always;
   page-break-inside: avoid;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Studio Botanical Ambient Shadow (Dappled natural sunlight & foliage) */
+.studio-botanical-shadow {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 850px;
+  height: 1100px;
+  max-width: 65vw;
+  max-height: 90vh;
+  background-image: url('../studio-shadow-overlay.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left top;
+  pointer-events: none;
+  z-index: 90;
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+  transition: opacity 0.3s ease;
+}
+
+.no-studio-shadow .studio-botanical-shadow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.no-studio-shadow .a4-page {
+  box-shadow: 0 16px 36px var(--desk-shadow), 0 2px 10px rgba(0, 0, 0, 0.06);
+  background-image: none;
 }
 
 .page-indicator-tag {
@@ -1000,6 +1039,7 @@ body {
   }
 
   .top-toolbar,
+  .studio-botanical-shadow,
   .page-indicator-tag,
   .replace-hint,
   .toast-notice {

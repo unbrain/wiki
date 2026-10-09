@@ -11,6 +11,7 @@ const props = defineProps<{
   viewMode: ViewMode
   targetPage: number
   zoom: number
+  studioShadow?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -22,6 +23,7 @@ const emit = defineEmits<{
   (e: 'set-view-mode', mode: ViewMode, page?: number): void
   (e: 'update:zoom', val: number): void
   (e: 'reset-defaults'): void
+  (e: 'toggle-shadow'): void
   (e: 'print'): void
 }>()
 
@@ -190,6 +192,20 @@ function onPhotoFileChange(e: Event) {
 
     <!-- Right Controls -->
     <div class="toolbar-right">
+      <button
+        type="button"
+        class="tb-btn"
+        :class="{ active: studioShadow }"
+        title="切换柔焦植物树影与摄影棚景深光效"
+        @click="emit('toggle-shadow')"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <span>{{ studioShadow ? '光影质感' : '平面视图' }}</span>
+      </button>
+
       <button
         type="button"
         class="tb-btn"
