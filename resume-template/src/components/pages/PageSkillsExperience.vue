@@ -87,7 +87,6 @@ const effectiveCard = computed(() => {
         <div class="section-row-aside">
           <MiniDarkBadge
             v-if="cv.page2.badges[idx]"
-            :category="`CAREER · ${String(idx + 1).padStart(2, '0')}`"
             :metric="cv.page2.badges[idx].metric"
             :annotation="cv.page2.badges[idx].annotation"
           />
