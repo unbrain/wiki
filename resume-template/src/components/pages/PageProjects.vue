@@ -134,6 +134,7 @@ const effectiveCard = computed(() => {
         <div class="section-row-aside">
           <MiniDarkBadge
             v-if="item.badge"
+            :category="`PROJECT · ${String(idx + 1 + (chunkIndex * 2)).padStart(2, '0')}`"
             :metric="item.badge.metric"
             :annotation="item.badge.annotation"
           />
