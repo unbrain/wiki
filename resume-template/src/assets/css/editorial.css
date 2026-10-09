@@ -41,7 +41,7 @@ body {
 
 /* ==========================================================================
    A4 PAGE BASE STYLES
-   Exact 210mm x 297mm physical A4 sheet
+   Exact 210mm x 297mm physical A4 sheet with Directional Studio Lighting
    ========================================================================== */
 .a4-page {
   width: var(--a4-width);
@@ -49,17 +49,26 @@ body {
   height: var(--a4-height);
   min-height: var(--a4-height);
   background-color: var(--page-bg);
-  background-image: linear-gradient(145deg, #edf2ed 0%, #e5eae4 100%);
+  background-image: linear-gradient(135deg, #f2f7f1 0%, #eaeee9 45%, #e1e7e0 100%);
   position: relative;
   padding: var(--page-padding-top) var(--page-padding-horizontal) var(--page-padding-bottom);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* 4-Tier Directional Physical Studio Shadow + Illuminated Paper Bevel */
   box-shadow:
-    0 2px 4px rgba(18, 24, 20, 0.08),
-    0 10px 24px -4px rgba(18, 24, 20, 0.14),
-    0 28px 56px -10px rgba(18, 24, 20, 0.18),
-    0 48px 96px -16px rgba(18, 24, 20, 0.10);
+    /* Tier 1: Crisp contact shadow under left & bottom edges */
+    -3px 5px 10px rgba(18, 24, 20, 0.18),
+    /* Tier 2: Mid-elevation paper lift */
+    -14px 22px 38px -6px rgba(18, 24, 20, 0.22),
+    /* Tier 3: Diffuse ambient studio drop shadow */
+    -32px 48px 80px -12px rgba(18, 24, 20, 0.18),
+    /* Tier 4: Far atmospheric penumbra haze */
+    -55px 80px 130px -20px rgba(18, 24, 20, 0.10),
+    /* Inset 1: Top cut edge specular light reflection */
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.85),
+    /* Inset 2: Right cut edge illuminated paper bevel */
+    inset -1px 0 1.5px rgba(255, 255, 255, 0.45);
   border-radius: 2px;
   overflow: hidden;
   page-break-after: always;
@@ -67,29 +76,74 @@ body {
   transition: box-shadow 0.3s ease;
 }
 
-/* Studio Botanical Ambient Shadow (Dappled natural sunlight & foliage) */
+/* Studio Botanical Ambient Shadow (Dappled natural sunlight & foliage on page surface) */
+.page-botanical-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  mix-blend-mode: multiply;
+  background-image: url('../studio-shadow-overlay.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0.88;
+  transition: opacity 0.3s ease;
+}
+
+/* Per-page organic botanical variations (maintains consistent physical light angle from top-right) */
+.page-botanical-overlay.page-shadow-1 {
+  background-position: left top;
+  opacity: 0.90;
+}
+
+.page-botanical-overlay.page-shadow-2 {
+  background-position: -80px -60px;
+  transform: scale(1.08);
+  transform-origin: top left;
+  opacity: 0.78;
+}
+
+.page-botanical-overlay.page-shadow-3 {
+  background-position: -40px -100px;
+  transform: scale(0.96);
+  transform-origin: top left;
+  opacity: 0.72;
+}
+
+.page-botanical-overlay.page-shadow-4 {
+  background-position: -120px -40px;
+  transform: scale(1.12);
+  transform-origin: top left;
+  opacity: 0.68;
+}
+
+/* Studio Botanical Ambient Stage Shadow (Soft ambient backdrop around workspace) */
 .studio-botanical-shadow {
   position: fixed;
   top: 50px;
   left: 0;
-  width: 850px;
-  height: 1100px;
-  max-width: 65vw;
-  max-height: 90vh;
+  width: 600px;
+  height: 900px;
+  max-width: 50vw;
+  max-height: 80vh;
   background-image: url('../studio-shadow-overlay.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left top;
   pointer-events: none;
-  z-index: 90;
+  z-index: 10;
   mix-blend-mode: multiply;
-  opacity: 0.92;
+  opacity: 0.35;
   transition: opacity 0.3s ease;
 }
 
-.no-studio-shadow .studio-botanical-shadow {
-  opacity: 0;
+.no-studio-shadow .studio-botanical-shadow,
+.no-studio-shadow .page-botanical-overlay {
+  opacity: 0 !important;
   pointer-events: none;
+  display: none !important;
 }
 
 .no-studio-shadow .a4-page {
@@ -1040,6 +1094,7 @@ body {
 
   .top-toolbar,
   .studio-botanical-shadow,
+  .page-botanical-overlay,
   .page-indicator-tag,
   .replace-hint,
   .toast-notice {
