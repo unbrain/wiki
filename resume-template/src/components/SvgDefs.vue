@@ -17,7 +17,7 @@
                  Z" />
       </clipPath>
 
-      <!-- Page 2 Reference Card Notched Silhouette -->
+      <!-- Page 2 Reference Card Notched Silhouette (Large Classic Card) -->
       <clipPath id="ref-card-clip" clipPathUnits="objectBoundingBox">
         <path d="M 0.06, 0
                  L 0.94, 0
@@ -31,6 +31,22 @@
                  A 0.06 0.05 0 0 1 0, 0.95
                  L 0, 0.05
                  A 0.06 0.05 0 0 1 0.06, 0
+                 Z" />
+      </clipPath>
+
+      <!-- Mini Notched Title Badge: Calibrated true circular corners (8px) for ~236px x ~65px, retaining original signature notch -->
+      <clipPath id="ref-card-mini-clip" clipPathUnits="objectBoundingBox">
+        <path d="M 0, 0.123
+                 A 0.034 0.123 0 0 1 0.034, 0
+                 L 0.966, 0
+                 A 0.034 0.123 0 0 1 1.0, 0.123
+                 L 1.0, 0.65
+                 A 0.025 0.08 0 0 1 0.975, 0.73
+                 L 0.72, 0.73
+                 C 0.69, 0.73, 0.67, 0.79, 0.65, 0.86
+                 C 0.64, 0.93, 0.61, 1.0, 0.55, 1.0
+                 L 0.034, 1.0
+                 A 0.034 0.123 0 0 1 0, 0.877
                  Z" />
       </clipPath>
     </defs>

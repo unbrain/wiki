@@ -20,12 +20,9 @@ defineProps<{
   position: relative;
   background-color: var(--card-black);
   color: #fff;
-  padding: 12px 18px 14px 16px;
-  /* 确保每个角都是严格 8px 正圆圆角，彻底告别被拉扁的椭圆 */
-  border-radius: 8px;
-  /* 右下角以绝对正圆像素 (18px) 内凹切角，保持 Notch 异形设计感，永不形变 */
-  -webkit-mask-image: radial-gradient(circle 18px at 100% 100%, transparent 18px, #000 18.5px);
-  mask-image: radial-gradient(circle 18px at 100% 100%, transparent 18px, #000 18.5px);
+  padding: 12px 18px 20px 16px;
+  clip-path: url(#ref-card-mini-clip);
+  -webkit-clip-path: url(#ref-card-mini-clip);
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.16));
   display: flex;
   flex-direction: column;
