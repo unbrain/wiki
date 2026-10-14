@@ -203,6 +203,40 @@ var minWindow = function (s, t) {
 };
 ```
 
+[5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring/)
+
+```javascript
+/**
+ * 双指针中心扩散法（实时结算 + 索引优化）
+ * 详细思路见 [[5 最长回文子串]]
+ * 时间复杂度: O(n^2), 空间复杂度: O(1)
+ */
+var longestPalindrome = function(s) {
+    if (s.length < 2) return s;
+
+    let start = 0, maxLen = 1;
+
+    const expand = (i, j) => {
+        while (i >= 0 && j < s.length && s[i] === s[j]) {
+            const curLen = j - i + 1;
+            if (curLen > maxLen) {
+                maxLen = curLen;
+                start = i;
+            }
+            i--;
+            j++;
+        }
+    };
+
+    for (let i = 0; i < s.length; i++) {
+        expand(i, i);     // 奇数中心
+        expand(i, i + 1); // 偶数中心
+    }
+
+    return s.slice(start, start + maxLen);
+};
+```
+
 ## 相关笔记
 
 - [[经典 150 滑动窗口|滑动窗口题目]]（无重复字符的最长子串、最小覆盖子串）
