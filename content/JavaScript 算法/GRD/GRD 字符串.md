@@ -31,6 +31,8 @@ var isPalindrome = function(s) {
 };
 ```
 
+> 二刷 2026-10-15：正则预清洗 + 双指针对撞；进阶可直接双指针字符级跳跃压到 O(1) 空间。
+
 [242. 有效的字母异位词](https://leetcode.cn/problems/valid-anagram/)
 
 ```javascript
