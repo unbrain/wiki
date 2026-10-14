@@ -29,6 +29,7 @@ var climbStairs = function(n) {
 ```
 
 > 二刷 2026-09-20：滚动变量解构赋值，注意初始值与返回值语义对齐。
+> 三刷 2026-10-15：解构滚动优化至两变量 `[a, b] = [b, a+b]`，空间 O(1)。
 
 [53. 最大子数组和](https://leetcode.cn/problems/maximum-subarray/)
 
