@@ -49,6 +49,8 @@ var isAnagram = function(s, t) {
 };
 ```
 
+> 二刷 2026-10-15：定长 26 频次数组计数；进阶可优化为单数组正负抵消与短路剪枝。
+
 [409. 最长回文串](https://leetcode.cn/problems/longest-palindrome/)
 
 ```javascript
