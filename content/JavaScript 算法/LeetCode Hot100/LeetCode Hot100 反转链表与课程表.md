@@ -241,6 +241,8 @@ var numIslands = function(grid) {
 
 空间复杂度：O(m×n)，最坏情况下（整个网格都是陆地）递归深度为 m×n。
 
+> 二刷 2026-10-16：递归深度精确等于 **n²**（全 `1` 的 n×n 网格，实测 n=5→25、n=50→2500、n=80→6400），本地 Node 在 `100×100` 全陆即 `RangeError: Maximum call stack size exceeded`；本题约束 m, n ≤ 300，外推约 90000 层，存在爆栈风险。改法：① 显式栈 / 队列（一份骨架，`pop()` 是 DFS、`queue[head++]` 是 BFS）；② 四周套一圈 `'0'` 哨兵边框（内层判断 5 个条件 → 1 个，且不改入参）。打卡见 [[每日题单 2026-10-16]]。
+
 [198. 打家劫舍](https://leetcode.cn/problems/house-robber/)（见[[JavaScript 算法基础第九天]]）
 
 ```javascript
