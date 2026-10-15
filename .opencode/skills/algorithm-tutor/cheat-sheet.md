@@ -18,8 +18,24 @@
     x += DIRS[dir][0]; y += DIRS[dir][1];
   }
   ```
+- **模板骨架②（推荐默写：四条 for 剥壳法）**：
+  ```js
+  var spiralOrder = function (matrix) {
+    if (matrix.length === 0 || matrix[0].length === 0) return [];
+    const res = [];
+    let top = 0, bottom = matrix.length - 1, left = 0, right = matrix[0].length - 1;
+    while (top <= bottom && left <= right) {
+      for (let j = left; j <= right; j++) res.push(matrix[top][j]);   top++;    // ① 上边 左→右
+      for (let i = top; i <= bottom; i++) res.push(matrix[i][right]); right--;   // ② 右边 上→下
+      if (top <= bottom) { for (let j = right; j >= left; j--) res.push(matrix[bottom][j]); bottom--; } // ③ 下边 右→左
+      if (left <= right) { for (let i = bottom; i >= top; i--) res.push(matrix[i][left]); left++; }     // ④ 左边 下→上
+    }
+    return res;
+  };
+  ```
+  **四句话口诀**：上边左→右，右边上→下，下边右→左，左边下→上；每扫完一条边，把那条边界往里收一格。
 - **复杂度**：时间 O(m×n) / 空间 O(1)（不计输出）
-- **易错点**：转向用 `else if` 防级联换向；dy 向上 -1 向下 +1；以 `res.length < m*n` 为终止条件可免去 `top<=bottom` 守卫；空矩阵提前返回；边界变量与方向名不要重名（如 up/up）
+- **易错点**：转向用 `else if` 防级联换向；dy 向上 -1 向下 +1；以 `res.length < m*n` 为终止条件可免去 `top<=bottom` 守卫；空矩阵提前返回；边界变量与方向名不要重名（如 up/up）；（剥壳法）扫「下边」「左边」前的 2 个守卫只挡单行/单列——必须专门测 `1×3` / `3×1`，用 `2×3`、`3×3` 永远测不出来
 - **真实场景**：打印机螺旋铺墨、无人机螺旋巡飞、图像螺旋采样
 
 ## 滑动窗口
