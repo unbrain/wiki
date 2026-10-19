@@ -74,6 +74,14 @@ body[data-slug="index"] {
   --ub-font-mono: 'Fira Code', 'Space Mono', 'IBM Plex Mono', monospace;
   --ub-font-hud:  'Orbitron', 'Noto Sans SC', 'Space Mono', monospace;
 
+  // ── Layout Tokens（桌面基准值；移动端断点仅改 token 值，桌面视觉零回归）──
+  --ub-space-section-y: 140px; // 大留白 section 垂直节奏
+  --ub-space-section-x: 48px;  // section 水平 padding
+  --ub-radius-card: 14px;      // 大卡片（project）
+  --ub-radius-card-sm: 12px;   // 通用卡片（writing/metric/social）
+  --ub-radius-btn: 6px;        // 按钮
+  --ub-warp-blur: 87px;        // snake warp 光斑 blur 半径（600px 断点降载）
+
   // ── Global Layout Reset on Index ───────────────
   background: var(--ub-black) !important;
   color: var(--ub-yellow) !important;
@@ -419,6 +427,7 @@ body[data-slug="index"] {
   .ub-hero {
     position: relative;
     height: 100vh;
+    height: 100dvh; // 移动端动态工具栏修正（渐进增强，桌面端与 100vh 等价）
     min-height: 740px;
     display: flex;
     align-items: center;
@@ -655,7 +664,7 @@ body[data-slug="index"] {
   .ub-stats,
   .ub-terminal-section,
   .ub-arcade-section {
-    padding: 140px 48px;
+    padding: var(--ub-space-section-y) var(--ub-space-section-x);
     box-sizing: border-box;
     width: 100%;
   }
@@ -893,7 +902,7 @@ body[data-slug="index"] {
   .ub-project-card {
     background: var(--ub-black-card);
     border: 1px solid var(--ub-border);
-    border-radius: 14px;
+    border-radius: var(--ub-radius-card);
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
@@ -902,7 +911,7 @@ body[data-slug="index"] {
       content: '';
       position: absolute;
       inset: 0;
-      border-radius: 14px;
+      border-radius: var(--ub-radius-card);
       border: 1px solid transparent;
       transition: border-color 0.3s ease;
       pointer-events: none;
@@ -981,6 +990,13 @@ body[data-slug="index"] {
     text-decoration: none !important;
     transition: color 0.25s, transform 0.25s;
     cursor: none;
+    // 触控热区 ≥44px：视觉字号不变，用 padding 扩展可点击范围
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    margin: -12px; // 抵消热区扩张对布局的影响，视觉位置不变
   }
 
   .ub-project-desc {
@@ -1020,7 +1036,7 @@ body[data-slug="index"] {
     padding: 22px 28px;
     background: var(--ub-black-card);
     border: 1px solid var(--ub-border);
-    border-radius: 12px;
+    border-radius: var(--ub-radius-card-sm);
     position: relative;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1126,7 +1142,7 @@ body[data-slug="index"] {
   .ub-metric-card {
     background: var(--ub-black-card);
     border: 1px solid var(--ub-border);
-    border-radius: 12px;
+    border-radius: var(--ub-radius-card-sm);
     padding: 36px 24px;
     text-align: center;
     position: relative;
@@ -1199,7 +1215,7 @@ body[data-slug="index"] {
     padding: 28px 28px;
     background: rgba(13, 15, 20, 0.6);
     border: 1px solid var(--ub-border);
-    border-radius: 12px;
+    border-radius: var(--ub-radius-card-sm);
     transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none !important;
     color: var(--ub-yellow);
@@ -1233,6 +1249,8 @@ body[data-slug="index"] {
     font-weight: 600;
     letter-spacing: -0.01em;
     transition: color 0.25s ease;
+    overflow-wrap: anywhere; // 长邮箱地址防溢出破版
+    word-break: break-word;
   }
 
   .ub-social-arrow {
@@ -1301,6 +1319,27 @@ body[data-slug="index"] {
       transform: none !important;
       transition: none !important;
     }
+    // 无障碍：停止跑马灯无限滚动（静止展示首屏内容）
+    .ub-marquee-inner {
+      animation: none !important;
+    }
+    // 无障碍：状态灯、入场动画降级为静态
+    .ub-status-dot,
+    .ub-reveal-line {
+      animation: none !important;
+    }
+    // 无障碍：禁用 tilt 卡片与 writing 卡片 hover 位移
+    [data-tilt],
+    .ub-writing-item,
+    .ub-project-card,
+    .ub-metric-card {
+      transform: none !important;
+      transition: none !important;
+    }
+    // glitch 伪元素随机抖动已在 JS 侧读取本媒体查询禁用（见 index.md），此处先保底清空伪元素动画
+    #ub-hero-glitch {
+      text-shadow: none !important;
+    }
   }
 
   /* ══════════════════════════════════════════════════════════
@@ -1308,11 +1347,12 @@ body[data-slug="index"] {
      ══════════════════════════════════════════════════════════ */
   .ub-arcade-section {
     position: relative;
-    padding: 120px 48px 140px;
     max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
     width: 100%;
+    // padding 由上方统一 section 列表（token 化）提供，此处不再重复定义，
+    // 避免基准值打架迫使后续断点使用 !important
   }
 
   .ub-arcade-container {
@@ -1345,7 +1385,7 @@ body[data-slug="index"] {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
     &.is-active {
-      border-color: #43d9ad;
+      border-color: var(--ub-cyan);
       box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.35), 0 0 35px rgba(67, 217, 173, 0.3), 0 25px 60px rgba(0, 0, 0, 0.65);
     }
   }
@@ -1356,9 +1396,9 @@ body[data-slug="index"] {
     height: 100%;
     left: -50px;
     top: -112px;
-    background: #43D9AD;
+    background: var(--ub-cyan);
     opacity: 0.35;
-    filter: blur(87px);
+    filter: blur(var(--ub-warp-blur, 87px));
     transform: rotate(-94.3deg);
     pointer-events: none;
   }
@@ -1369,9 +1409,9 @@ body[data-slug="index"] {
     height: 100%;
     left: 173px;
     top: 30px;
-    background: #4D5BCE;
+    background: var(--ub-indigo);
     opacity: 0.35;
-    filter: blur(87px);
+    filter: blur(var(--ub-warp-blur, 87px));
     transform: rotate(13.51deg);
     pointer-events: none;
   }
@@ -1444,7 +1484,7 @@ body[data-slug="index"] {
 
     .overlay-title {
       font-family: var(--codeFont);
-      color: #43d9ad;
+      color: var(--ub-cyan);
       font-size: 13px;
       font-weight: 600;
       margin-bottom: 6px;
@@ -1454,7 +1494,7 @@ body[data-slug="index"] {
 
     .overlay-sub {
       font-family: var(--codeFont);
-      color: #607b96;
+      color: var(--ub-gray);
       font-size: 11px;
       line-height: 1.6;
 
@@ -1463,7 +1503,7 @@ body[data-slug="index"] {
       }
 
       &.overlay-sub--warn {
-        color: #fea55f;
+        color: var(--ub-amber);
       }
     }
   }
@@ -1484,11 +1524,11 @@ body[data-slug="index"] {
     font-family: var(--codeFont);
     font-size: 12px;
     line-height: 1.6;
-    color: #607b96;
+    color: var(--ub-gray);
     margin-bottom: 16px;
 
     .info-code {
-      color: #43d9ad;
+      color: var(--ub-cyan);
       margin-bottom: 8px;
       display: block;
     }
@@ -1506,8 +1546,8 @@ body[data-slug="index"] {
     font-family: var(--codeFont);
     font-size: 12px;
 
-    .stat-label { color: #607b96; }
-    .stat-val { color: #43d9ad; font-weight: bold; font-size: 14px; }
+    .stat-label { color: var(--ub-gray); }
+    .stat-val { color: var(--ub-cyan); font-weight: bold; font-size: 14px; }
   }
 
   .ub-snake-controls {
@@ -1527,7 +1567,7 @@ body[data-slug="index"] {
       background: #010c15;
       border: 1px solid #1e2d3d;
       border-radius: 6px;
-      color: #607b96;
+      color: var(--ub-gray);
       font-size: 12px;
       display: flex;
       align-items: center;
@@ -1541,8 +1581,8 @@ body[data-slug="index"] {
 
       &:hover {
         background: #1c2b3a;
-        color: #43d9ad;
-        border-color: #43d9ad;
+        color: var(--ub-cyan);
+        border-color: var(--ub-cyan);
       }
 
       &:active {
@@ -1557,9 +1597,10 @@ body[data-slug="index"] {
     width: 100%;
     background: #1c2b3a;
     border: 1px solid #314457;
-    color: #fea55f;
+    color: var(--ub-amber);
     border-radius: 6px;
-    padding: 8px 12px;
+    padding: 10px 12px;
+    min-height: 44px; // 最小触控热区 ≥44px（视觉尺寸不变，仅保证热区）
     font-family: var(--codeFont);
     font-size: 11px;
     cursor: pointer;
@@ -1572,7 +1613,7 @@ body[data-slug="index"] {
 
     &:hover {
       background: #25394e;
-      border-color: #fea55f;
+      border-color: var(--ub-amber);
     }
   }
 
@@ -1581,9 +1622,10 @@ body[data-slug="index"] {
     width: 100%;
     background: #010c15;
     border: 1px solid #1e2d3d;
-    color: #43d9ad;
+    color: var(--ub-cyan);
     border-radius: 6px;
-    padding: 6px 12px;
+    padding: 8px 12px;
+    min-height: 44px; // 最小触控热区 ≥44px
     font-family: var(--codeFont);
     font-size: 11px;
     cursor: pointer;
@@ -1596,7 +1638,7 @@ body[data-slug="index"] {
 
     &:hover {
       background: #1c2b3a;
-      border-color: #43d9ad;
+      border-color: var(--ub-cyan);
     }
   }
 
@@ -1683,10 +1725,10 @@ body[data-slug="index"] {
     border: 1px solid var(--ub-border);
     color: var(--ub-yellow);
     font-size: 16px;
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    min-height: 40px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px; // 最小触控热区 ≥44px
+    min-height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1756,7 +1798,9 @@ body[data-slug="index"] {
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--ub-border);
     border-radius: 24px;
-    padding: 8px 16px;
+    padding: 10px 18px; // 视觉尺寸不变，热区高度 ≥44px
+    min-height: 44px;
+    box-sizing: border-box;
     font-family: var(--ub-font-hud);
     font-size: 10px;
     letter-spacing: 0.15em;
@@ -1784,7 +1828,8 @@ body[data-slug="index"] {
 
   // ── RESPONSIVE MEDIA QUERIES ─────────────────────────────
 
-  // Touch device resets
+  // Touch device resets（合并原 960px 断点内重复的 cursor/cursorFollower 重置：
+  // 触屏设备本身就命中本块；窄屏鼠标设备也命中下方 960px 断点，两者不再重复声明）
   @media (hover: none) and (pointer: coarse) {
     cursor: auto !important;
     * { cursor: auto !important; }
@@ -1799,6 +1844,8 @@ body[data-slug="index"] {
 
   // Tablet & Medium Screens (≤ 960px)
   @media (max-width: 960px) {
+    // 窄屏鼠标设备（如小尺寸笔记本窗口）隐藏自定义光标并恢复系统光标，
+    // 与上方触屏块职责互补、不再重复
     cursor: auto !important;
     * { cursor: auto !important; }
     #ub-cursor,
@@ -1833,8 +1880,9 @@ body[data-slug="index"] {
     .ub-nav-links { display: none; }
     .ub-nav-toggle { display: flex; }
     .ub-hero { padding: 0 24px; }
+    // section padding 统一走 token，600px/380px 断点只改 token 值，不再逐条覆写
     .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section, .ub-arcade-section {
-      padding: 90px 24px;
+      padding: 90px var(--ub-space-section-x);
     }
     .ub-about-grid { grid-template-columns: 1fr; gap: 48px; }
     .ub-projects-grid { grid-template-columns: 1fr; }
@@ -1916,42 +1964,37 @@ body[data-slug="index"] {
       padding: 0 6px;
     }
     .ub-hero-actions {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 100% !important;
-      max-width: 320px !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      gap: 12px !important;
-      padding: 0 !important;
-      box-sizing: border-box !important;
+      // 桌面基准已是 flex + center，移动端只需改方向与宽度，不再需要 !important 抗争
+      flex-direction: column;
+      width: 100%;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+      gap: 12px;
+      padding: 0;
+      box-sizing: border-box;
     }
     .ub-btn {
-      display: flex !important;
-      width: 100% !important;
-      max-width: 320px !important;
-      box-sizing: border-box !important;
-      justify-content: center !important;
-      align-items: center !important;
-      text-align: center !important;
-      padding: 13px 20px !important;
-      font-size: 11.5px !important;
-      border-radius: 6px !important;
-      margin: 0 auto !important;
+      // 桌面基准已是 inline-flex + center，此处仅覆写尺寸与宽度
+      width: 100%;
+      max-width: 320px;
+      box-sizing: border-box;
+      padding: 13px 20px;
+      font-size: 11.5px;
+      border-radius: var(--ub-radius-btn);
+      margin: 0 auto;
 
       &--ghost {
-        padding: 10px 16px !important;
-        font-size: 11px !important;
+        padding: 10px 16px;
+        font-size: 11px;
         opacity: 0.85;
       }
     }
 
-    // 3. Common Section Layout
-    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
-      padding: 64px 16px;
-    }
+    // 3. Common Section Layout（token 化：600px 下只改 token 值，含 arcade-section 补齐）
+    --ub-space-section-y: 64px;
+    --ub-space-section-x: 16px;
+    --ub-warp-blur: 40px; // warp 光斑 blur 降载（87px → 40px），移动端 GPU 开销显著降低
     .ub-section-label {
       font-size: 10px;
       margin-bottom: 12px;
@@ -2040,15 +2083,14 @@ body[data-slug="index"] {
       span { font-size: 10px; padding: 3px 8px; }
     }
 
-    // 7. 04 Knowledge Scrolls (移动端卡片化独立模块适配 & 触控反馈)
+    // 7. 04 Knowledge Scrolls (移动端改纵向卡片布局：num+title 一行，sub 独立行，meta+arrow 收尾行，解除横向挤压)
     .ub-writing-list {
       gap: 12px;
     }
     .ub-writing-item {
-      gap: 12px;
+      display: block;
       padding: 16px 14px;
       border-radius: 10px;
-      align-items: center;
       transform: none !important;
 
       &:active {
@@ -2057,20 +2099,33 @@ body[data-slug="index"] {
       }
     }
     .ub-writing-num {
+      display: inline-block;
       font-size: 12px;
-      width: 24px;
       min-width: 24px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .ub-writing-info {
+      display: block;
+      // num 与 title 同行：info 内首行标题上浮对齐
+      .ub-writing-title {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(100% - 32px);
+      }
     }
     .ub-writing-title {
       font-size: 14px;
       line-height: 1.4;
     }
     .ub-writing-sub {
+      display: block;
       font-size: 11.5px;
       line-height: 1.5;
+      margin-top: 6px;
     }
     .ub-writing-meta {
-      display: inline-flex !important;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       font-family: var(--ub-font-mono);
@@ -2080,12 +2135,16 @@ body[data-slug="index"] {
       border: 1px solid rgba(67, 217, 173, 0.25);
       border-radius: 12px;
       padding: 3px 8px;
-      white-space: nowrap;
       flex-shrink: 0;
+      margin-top: 8px;
     }
     .ub-writing-arrow {
       font-size: 14px;
       flex-shrink: 0;
+      // 与 meta 同行收尾
+      position: absolute;
+      right: 14px;
+      bottom: 16px;
     }
 
     // 8. 05 Stats & Metrics
@@ -2132,9 +2191,7 @@ body[data-slug="index"] {
     }
 
     // 10. 07 Cyber Arcade Mobile Adaptation (防溢出 + 44px 触控手柄)
-    .ub-arcade-section {
-      padding: 60px 14px 110px !important;
-    }
+    // section padding 已由上方 token（--ub-space-*）统一接管，此处不再需要 !important 覆写
     .ub-snake-grid {
       flex-direction: column;
       align-items: center;
@@ -2213,20 +2270,17 @@ body[data-slug="index"] {
     }
     .ub-hero { padding-left: 12px; padding-right: 12px; }
     .ub-hero-actions {
-      max-width: 290px !important;
+      max-width: 290px;
     }
     .ub-btn {
-      max-width: 290px !important;
-      padding: 12px 16px !important;
-      font-size: 11px !important;
+      max-width: 290px;
+      padding: 12px 16px;
+      font-size: 11px;
     }
-    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section {
-      padding-left: 12px;
-      padding-right: 12px;
-    }
+    // token 化：只改水平 padding token，覆盖含 arcade-section 的全部 section
+    --ub-space-section-x: 12px;
     .ub-writing-item {
       padding: 14px 10px;
-      gap: 8px;
     }
     .ub-metrics-grid {
       gap: 8px;
@@ -2235,6 +2289,10 @@ body[data-slug="index"] {
       padding: 16px 8px;
     }
     .ub-metric-num { font-size: 26px; }
+    .ub-writing-arrow {
+      right: 10px; // 对齐 380px 下更窄的卡片内边距
+      bottom: 14px;
+    }
     .ub-snake-chassis {
       padding: 20px 8px;
     }

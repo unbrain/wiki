@@ -573,10 +573,14 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
   }
 
   // ── PARTICLES NETWORK ──
+  // 移动端性能降级：粗指针/窄屏下减粒子数并节流至 ~30fps（桌面端全量不变）
+  var isMobilePerf = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 960;
   var canvas = document.getElementById('ub-particleCanvas');
   if (canvas) {
     var ctx = canvas.getContext('2d');
     var W, H, particles = [], pMouse = { x: -999, y: -999 };
+    var particleFrameInterval = isMobilePerf ? 2 : 1; // 每 N 帧绘制一次
+    var particleFrameCount = 0;
     function resizeP() {
       W = canvas.width = canvas.offsetWidth;
       H = canvas.height = canvas.offsetHeight;
@@ -588,7 +592,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       pMouse.x = e.clientX - r.left;
       pMouse.y = e.clientY - r.top;
     });
-    var COUNT = Math.min(80, Math.floor(window.innerWidth / 16));
+    var COUNT = Math.min(isMobilePerf ? 36 : 80, Math.floor(window.innerWidth / (isMobilePerf ? 12 : 16)));
     for (var i = 0; i < COUNT; i++) {
       particles.push({
         x: Math.random() * W, y: Math.random() * H,
@@ -613,6 +617,10 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 
     function drawP() {
       if (!isParticleRunning) return;
+      // 移动端帧率节流：每 N 帧才真正绘制一帧
+      particleFrameCount++;
+      var shouldDraw = (particleFrameCount % particleFrameInterval) === 0;
+      if (shouldDraw) {
       ctx.clearRect(0, 0, W, H);
       particles.forEach(function(p) {
         p.x += p.vx; p.y += p.vy;
@@ -647,6 +655,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
           ctx.stroke();
         }
       }
+      } // end shouldDraw
       if (isParticleRunning) {
         requestAnimationFrame(drawP);
       }
@@ -784,7 +793,8 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 
   // ── GLITCH EFFECT ──
   var heroGlitch = document.getElementById('ub-hero-glitch');
-  if (heroGlitch) {
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (heroGlitch && !prefersReducedMotion) { // 前庭功能障碍用户禁用随机抖动
     setInterval(function() {
       heroGlitch.style.textShadow = (Math.random()*4-2)+'px '+(Math.random()*2-1)+'px 0 rgba(67,217,173,0.35), '+(Math.random()*-4+2)+'px '+(Math.random()*2-1)+'px 0 rgba(254,165,95,0.25)';
       setTimeout(function() { heroGlitch.style.textShadow = 'none'; }, 90);
@@ -864,6 +874,11 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     var isDragging = false;
     var dragStartX = 0;
     var dragStartOrbit = 0;
+
+    // 移动端性能降级：粗指针/窄屏下 DPR 上限 1 + ~30fps 帧率节流（桌面全效不变）
+    var isMobilePerf = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 960;
+    var frameInterval = isMobilePerf ? 2 : 1; // 每 N 个 rAF 帧渲染一次
+    var frameCount = 0;
 
     var VERT_SHADER = [
       'varying vec2 vUv;',
@@ -1062,12 +1077,12 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 
       renderer = new THREE.WebGLRenderer({
         canvas: canvas,
-        antialias: true,
+        antialias: !isMobilePerf, // 移动端关闭 MSAA，显著降低 GPU 压力
         alpha: true,
         powerPreference: 'high-performance'
       });
       renderer.setClearColor(0x000000, 0);
-      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var dpr = isMobilePerf ? 1 : Math.min(window.devicePixelRatio || 1, 2);
       renderer.setPixelRatio(dpr);
       renderer.setSize(hero.offsetWidth || window.innerWidth, hero.offsetHeight || window.innerHeight);
 
@@ -1079,6 +1094,10 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       rafId = requestAnimationFrame(animate);
 
       if (!isHeroVisible || !isTabActive) return;
+
+      // 移动端帧率节流：每 N 帧才执行一次状态推进与渲染
+      frameCount++;
+      if (isMobilePerf && (frameCount % frameInterval) !== 0) return;
 
       var dt = Math.min((now - lastTime) / 1000, 0.05);
       lastTime = now;
@@ -1273,10 +1292,16 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       shardInstance = null;
     }
     loadThree(function() {
-      if (typeof THREE === 'undefined') return;
+      if (typeof THREE === 'undefined') return; // three 加载失败时保持静态渐变背景
       var currentHero = document.getElementById('ub-hero');
       if (!currentHero) return;
-      shardInstance = createShard(currentHero);
+      try {
+        var instance = createShard(currentHero);
+        if (instance) shardInstance = instance;
+      } catch (e) {
+        // WebGL 初始化失败（老设备/禁用 WebGL）：静默降级，保留 hero 静态渐变背景
+        console.warn('[Obsidian] WebGL init failed, fallback to static gradient', e);
+      }
     });
   }
 
