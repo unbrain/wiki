@@ -24,7 +24,7 @@ tags:
 <a href="#ub-knowledge" data-router-ignore="true" data-no-popover="true">知识卷轴</a>
 <a href="/朝花夕拾/" data-no-popover="true">朝花夕拾</a>
 <a href="#ub-stats" data-router-ignore="true" data-no-popover="true">量化数据</a>
-<a href="#ub-terminal" data-router-ignore="true" data-no-popover="true">交互终端</a>
+<a href="#ub-contact" data-router-ignore="true" data-no-popover="true">联络合作</a>
 <a href="#ub-arcade" data-router-ignore="true" data-no-popover="true">赛博游戏</a>
 </div>
 <button class="ub-nav-toggle" id="ub-nav-toggle" aria-label="切换导航菜单">
@@ -48,7 +48,7 @@ tags:
 <a class="ub-drawer-link" href="#ub-knowledge" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">04</span> 知识卷轴 · KNOWLEDGE</a>
 <a class="ub-drawer-link" href="/朝花夕拾/" data-no-popover="true"><span class="ub-drawer-num">05</span> 朝花夕拾 · ARCHIVES</a>
 <a class="ub-drawer-link" href="#ub-stats" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">06</span> 量化数据 · TELEMETRY</a>
-<a class="ub-drawer-link" href="#ub-terminal" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">07</span> 交互终端 · TERMINAL</a>
+<a class="ub-drawer-link" href="#ub-contact" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">07</span> 联络合作 · CONTACT</a>
 <a class="ub-drawer-link" href="#ub-arcade" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">08</span> 赛博游戏 · ARCADE</a>
 </div>
 </div>
@@ -82,7 +82,7 @@ tags:
 <a class="ub-btn ub-btn--primary" href="/关于我" data-no-popover="true">个人简历 · RESUME ↗</a>
 <a class="ub-btn ub-btn--primary" href="#ub-builds" data-router-ignore="true" data-no-popover="true">浏览核心工程 ↗</a>
 <a class="ub-btn ub-btn--outline" href="#ub-knowledge" data-router-ignore="true" data-no-popover="true">查阅知识库 ↓</a>
-<a class="ub-btn ub-btn--ghost" href="#ub-terminal" data-router-ignore="true" data-no-popover="true">打开终端 >_</a>
+<a class="ub-btn ub-btn--ghost" href="#ub-arcade" data-router-ignore="true" data-no-popover="true">赛博游戏舱 ↘</a>
 </div>
 </div>
 
@@ -436,51 +436,21 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 </div>
 </section>
 
-<!-- 06 PARTY UP & INTERACTIVE CLI TERMINAL -->
-<section class="ub-terminal-section" id="ub-terminal">
+<!-- 06 PARTY UP & SOCIAL LINKS -->
+<section class="ub-terminal-section ub-social-section" id="ub-contact">
 <div class="ub-container">
-<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">06</span> 联络与终端 · PARTY UP & CLI</div>
+<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">06</span> 联络方式 · PARTY UP</div>
 <h2 class="ub-section-title ub-scroll-reveal">携手合作<br/>共筑卓越工程。</h2>
-<div class="ub-terminal-wrap ub-scroll-reveal">
-<div class="ub-term-header">
-<div class="ub-term-dots">
-<span class="ub-term-dot ub-term-dot--red"></span>
-<span class="ub-term-dot ub-term-dot--yellow"></span>
-<span class="ub-term-dot ub-term-dot--green"></span>
-</div>
-<div class="ub-term-title">unbrain@node-worker: ~ (zsh)</div>
-<div class="ub-term-status">会话就绪: SESSION READY</div>
-</div>
-<div class="ub-term-body" id="ub-term-output">
-<div class="ub-term-line ub-term-line--muted">欢迎访问 UNBRAIN 交互式终端 [v5.0.0-game-ui]</div>
-<div class="ub-term-line ub-term-line--muted">输入 <span class="ub-code-cmd">help</span> 或点击下方快捷指令按钮快速探索：</div>
-<div class="ub-term-quick">
-<button class="ub-term-btn" data-cmd="help">help 帮助</button>
-<button class="ub-term-btn" data-cmd="snake">snake 游戏</button>
-<button class="ub-term-btn" data-cmd="matrix">matrix 矩阵</button>
-<button class="ub-term-btn" data-cmd="whoami">whoami 探测</button>
-<button class="ub-term-btn" data-cmd="resume">resume 简历</button>
-<button class="ub-term-btn" data-cmd="archive">archive 归档</button>
-<button class="ub-term-btn" data-cmd="skills">skills 技能</button>
-<button class="ub-term-btn" data-cmd="projects">projects 作品</button>
-<button class="ub-term-btn" data-cmd="contact">contact 联络</button>
-<button class="ub-term-btn" data-cmd="stats">stats 数据</button>
-<button class="ub-term-btn" data-cmd="clear">clear 清屏</button>
-</div>
-</div>
-<div class="ub-term-input-row">
-<span class="ub-term-prompt">unbrain&gt;</span>
-<input type="text" id="ub-term-input" class="ub-term-input" placeholder="输入指令 (例如 about, skills, projects, contact, stats)..." autocomplete="off" />
-</div>
-</div>
 <div class="ub-social-links ub-scroll-reveal">
 <a class="ub-social-link" href="https://github.com/unbrain" target="_blank" aria-label="访问 GitHub 主页">
 <span class="ub-social-platform">开源主页 · GITHUB</span>
-<span class="ub-social-handle">@unbrain ↗</span>
+<span class="ub-social-handle">@unbrain</span>
+<span class="ub-social-arrow">↗</span>
 </a>
 <a class="ub-social-link" href="mailto:marsorsun@gmail.com" aria-label="发送邮件给作者">
 <span class="ub-social-platform">电子邮箱 · EMAIL</span>
-<span class="ub-social-handle">marsorsun@gmail.com ↗</span>
+<span class="ub-social-handle">marsorsun@gmail.com</span>
+<span class="ub-social-arrow">↗</span>
 </a>
 </div>
 </div>
@@ -504,7 +474,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <div class="ub-snake-overlay">
 <div class="overlay-title">[ 点击或回车激活控制 ]</div>
 <div class="overlay-sub">// 方向键 / WASD 捕获粒子</div>
-<div class="overlay-sub" style="margin-top: 4px; color: #fea55f;">// 按 Esc 键随时退出控制</div>
+<div class="overlay-sub overlay-sub--warn">// 按 Esc 键随时退出控制</div>
 </div>
 </div>
 <div class="ub-snake-console">
@@ -820,322 +790,6 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
       setTimeout(function() { heroGlitch.style.textShadow = 'none'; }, 90);
     }, 3800);
   }
-
-  // ── INTERACTIVE TERMINAL ──
-  var termOutput = document.getElementById('ub-term-output');
-  var termInput  = document.getElementById('ub-term-input');
-  
-  var cmdAliases = {
-    'help': 'help',
-    '帮助': 'help',
-    'about': 'about',
-    '关于': 'about',
-    '档案': 'about',
-    '简介': 'about',
-    'skills': 'skills',
-    '技能': 'skills',
-    '技术栈': 'skills',
-    'projects': 'projects',
-    '工程': 'projects',
-    '项目': 'projects',
-    '作品': 'projects',
-    'contact': 'contact',
-    '联系': 'contact',
-    '联络': 'contact',
-    '邮箱': 'contact',
-    'resume': 'resume',
-    'cv': 'resume',
-    '简历': 'resume',
-    'archive': 'archive',
-    '归档': 'archive',
-    '朝花夕拾': 'archive',
-    'snake': 'snake',
-    '游戏': 'snake',
-    'game': 'snake',
-    'stats': 'stats',
-    '数据': 'stats',
-    '指标': 'stats',
-    'clear': 'clear',
-    'matrix': 'matrix',
-    '黑客帝国': 'matrix',
-    'whoami': 'whoami',
-    '我是谁': 'whoami',
-    'audio': 'audio',
-    'sound': 'audio',
-    '音效': 'audio',
-    'cat': 'cat',
-    '清屏': 'clear',
-    'cls': 'clear'
-  };
-
-  var cmdRegistry = {
-    help: function() {
-      return [
-        '系统可用指令：',
-        '  about     - 开发者角色档案与背景简介',
-        '  skills    - 核心技术栈与专业技能',
-        '  projects  - 代表性生产工程成果',
-        '  snake     - 调起赛博贪吃蛇游戏舱并激活控制',
-        '  matrix    - 启动黑客帝国字符雨流光矩阵',
-        '  whoami    - 探测访客客户端运行环境指标',
-        '  cat <f>   - 读取虚拟系统文件 (如 resume, secret)',
-        '  audio     - 切换贪吃蛇 8-bit 复古街机音效开关',
-        '  resume    - 查看求职简历与在线 PDF 链接',
-        '  archive   - 浏览朝花夕拾 78 篇历史成长归档',
-        '  contact   - 联络邮箱与开源主页',
-        '  stats     - 工程量化数据与遥测指标',
-        '  clear     - 清空终端输出缓冲区'
-      ];
-    },
-    about: function() {
-      return [
-        '姓名: unbrain (刘朝阳)',
-        '职位: 资深前端开发工程师 / 前端架构',
-        '经验: 7+ 年 (前新浪微博核心 Web 团队主力开发)',
-        '专注: Vue 3 · TypeScript · WebGL · 前端架构 · 算法体系'
-      ];
-    },
-    skills: function() {
-      return [
-        '核心技能矩阵：',
-        '  前端工程 : Vue 3, Vite, TypeScript, Tailwind CSS, WebGL/Canvas',
-        '  服务端   : Node.js, Egg.js, Redis, WebSocket',
-        '  算法沉淀 : 130+ LeetCode DSA 题解推导, Vue 3 核心底层机制'
-      ];
-    },
-    projects: function() {
-      return [
-        '代表性工程成果：',
-        '  [1] PC 微博主站 - 核心富媒体发布器与直传流管线',
-        '  [2] PC 微博创作者中心 - 运营中台、抽奖体系与数据看板',
-        '  [3] 微博 PC/移动消息箱 - 高并发实时通讯 WebChat 架构',
-        '  [4] 瀑布流物料体系 - Vite 8 双端自适应通用物料库'
-      ];
-    },
-    contact: function() {
-      return [
-        '联络渠道：',
-        '  邮箱   : marsorsun@gmail.com',
-        '  GitHub : https://github.com/unbrain',
-        '  微信   : 18349108862'
-      ];
-    },
-    resume: function() {
-      return [
-        '求职档案与个人简历：',
-        '  完整专页 : /关于我',
-        '  在线 PDF : https://rxresu.me/unbrain/cv',
-        '  核心经历 : 7+ 年新浪微博核心 Web 团队主力，主导微博 PC 主站、创作者中心、IM 消息箱'
-      ];
-    },
-    archive: function() {
-      return [
-        '朝花夕拾 · 历史成长档案：',
-        '  收录篇数 : 78 篇早期原创技术笔记与求职面试真题',
-        '  归档专区 : /朝花夕拾/',
-        '  涵盖分类 : JS 核心、网络通信、CSS 响应式、校招求职、工程工具、实战复盘'
-      ];
-    },
-    snake: function() {
-      setTimeout(function() {
-        var arcade = document.getElementById('ub-arcade');
-        if (arcade) {
-          arcade.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          if (termInput) termInput.blur();
-          if (typeof window.activateIndexSnake === 'function') {
-            window.activateIndexSnake();
-          }
-        }
-      }, 120);
-      return [
-        '>>> [ARCADE] 正在校准赛博游戏舱空间坐标...',
-        '>>> 目标信标: Section #ub-arcade (已平滑导航直达)',
-        '>>> 提示: 点击机舱或按 Enter 激活按键接管，按 Esc 解除控制！'
-      ];
-    },
-    matrix: function() {
-      setTimeout(function() {
-        var termOut = document.getElementById('ub-term-output');
-        if (!termOut) return;
-        var mCanvas = document.createElement('canvas');
-        mCanvas.width = termOut.clientWidth - 32;
-        mCanvas.height = 180;
-        mCanvas.style.cssText = 'display:block;margin:10px auto;border:1px solid #1e2d3d;border-radius:6px;background:#000;box-shadow:0 0 15px rgba(67,217,173,0.3);';
-        termOut.appendChild(mCanvas);
-        termOut.scrollTop = termOut.scrollHeight;
-
-        var mCtx = mCanvas.getContext('2d');
-        var chars = '01UNBRAINVUE3WEBGLTYPESCRIPTALGORITHMKATEX'.split('');
-        var fontSize = 12;
-        var cols = Math.floor(mCanvas.width / fontSize);
-        var drops = [];
-        for (var i = 0; i < cols; i++) drops[i] = 1;
-
-        var mTimer = setInterval(function() {
-          mCtx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-          mCtx.fillRect(0, 0, mCanvas.width, mCanvas.height);
-          mCtx.fillStyle = '#43D9AD';
-          mCtx.font = fontSize + 'px "IBM Plex Mono", monospace';
-          for (var i = 0; i < drops.length; i++) {
-            var textChar = chars[Math.floor(Math.random() * chars.length)];
-            mCtx.fillText(textChar, i * fontSize, drops[i] * fontSize);
-            if (drops[i] * fontSize > mCanvas.height && Math.random() > 0.975) {
-              drops[i] = 0;
-            }
-            drops[i]++;
-          }
-        }, 33);
-
-        setTimeout(function() {
-          clearInterval(mTimer);
-          var doneLine = document.createElement('div');
-          doneLine.className = 'ub-term-line ub-term-line--muted';
-          doneLine.textContent = '>>> [MATRIX] 神经流矩阵推演完毕，神经元连接已释放。';
-          termOut.appendChild(doneLine);
-          termOut.scrollTop = termOut.scrollHeight;
-        }, 5500);
-      }, 50);
-
-      return [
-        '>>> [MATRIX] 正在注入黑客帝国字符雨流光矩阵...',
-        '>>> 协议: Cyberpunk 01 Stream Engine (运行 5.5 秒)'
-      ];
-    },
-    whoami: function() {
-      var ua = navigator.userAgent;
-      var os = 'Unknown OS';
-      if (ua.indexOf('Mac') !== -1) os = 'macOS (Darwin)';
-      else if (ua.indexOf('Win') !== -1) os = 'Windows NT';
-      else if (ua.indexOf('Linux') !== -1) os = 'Linux Kernel';
-      else if (ua.indexOf('Android') !== -1) os = 'Android OS';
-      else if (ua.indexOf('iPhone') !== -1) os = 'iOS Mobile';
-
-      var browser = 'Modern Web Browser';
-      if (ua.indexOf('Chrome') !== -1) browser = 'Chromium Blink Engine';
-      else if (ua.indexOf('Safari') !== -1) browser = 'WebKit Safari';
-      else if (ua.indexOf('Firefox') !== -1) browser = 'Gecko Firefox';
-
-      var cores = navigator.hardwareConcurrency ? navigator.hardwareConcurrency + ' Threads' : 'Standard Core';
-      var res = screen.width + 'x' + screen.height;
-      var lang = navigator.language || 'zh-CN';
-
-      return [
-        '>>> [CLIENT TELEMETRY] 访客运行环境遥测报告：',
-        '  操作系统   : ' + os,
-        '  渲染引擎   : ' + browser,
-        '  并发算力   : ' + cores,
-        '  屏幕分辨率 : ' + res,
-        '  系统语言   : ' + lang,
-        '  网络协议   : ' + window.location.protocol.replace(':', '').toUpperCase() + ' / HTTP-2.0',
-        '  访客身份   : GUEST_EXPLORER (欢迎来到数字花园与知识卷轴)'
-      ];
-    },
-    audio: function() {
-      if (window.CyberSnakeAudio) {
-        var nowEnabled = window.CyberSnakeAudio.toggle();
-        var soundBtn = document.querySelector('.snake-sound-btn');
-        if (soundBtn) {
-          soundBtn.textContent = nowEnabled ? 'SOUND: ON [AUDIO]' : 'SOUND: OFF [MUTED]';
-          soundBtn.style.color = nowEnabled ? '#43d9ad' : '#607b96';
-        }
-        return [
-          '>>> [AUDIO] 8-Bit 复古街机音频合成器状态：' + (nowEnabled ? 'ENABLED [已开启 音效]' : 'MUTED [已静音]')
-        ];
-      }
-      return ['>>> [AUDIO] 音频合成器未挂载'];
-    },
-    cat: function(arg) {
-      arg = (arg || '').trim().toLowerCase();
-      if (arg === 'resume' || arg === 'cv') {
-        return [
-          '# 个人简历简报 · UNBRAIN',
-          '姓名: 刘朝阳 | 经验: 7+ 年资深前端开发',
-          '主导: 新浪微博 PC 旗舰门户、创作者中心、高并发 IM 消息箱',
-          '在线完整版: /关于我'
-        ];
-      } else if (arg === 'secret') {
-        return [
-          '>>> [CLASSIFIED SECRET] 42',
-          '"The Answer to the Ultimate Question of Life, the Universe, and Everything."'
-        ];
-      } else if (arg === 'manifesto') {
-        return [
-          '>>> [ENGINEERING MANIFESTO]',
-          '追求每一行代码的可验证性与工业级健壮性。',
-          '没有证据就不说完成。'
-        ];
-      }
-      return [
-        'cat: 未指定有效文件或文件不存在。可输入:',
-        '  cat resume    - 查看简历简报',
-        '  cat secret    - 解锁终端彩蛋',
-        '  cat manifesto - 查看工程信条'
-      ];
-    },
-    stats: function() {
-      return [
-        '工程遥测数据：',
-        '  知识卷轴 : 80+ 篇系统化技术与架构笔记',
-        '  算法题解 : 130+ 道精选算法深度剖析与推导',
-        '  用户规模 : 1 亿+ 生产环境峰值并发流量护航'
-      ];
-    },
-    clear: function() {
-      termOutput.innerHTML = '';
-      return [];
-    }
-  };
-
-  function execCmd(raw) {
-    var cmd = raw.trim().toLowerCase();
-    if (!cmd) return;
-
-    var echo = document.createElement('div');
-    echo.className = 'ub-term-line ub-term-line--cmd';
-    echo.innerHTML = '<span class="ub-term-prompt">unbrain&gt;</span> ' + escapeHtml(cmd);
-    termOutput.appendChild(echo);
-
-    var parts = cmd.split(/\s+/);
-    var mainCmd = parts[0];
-    var cmdArg = parts.slice(1).join(' ');
-    var resolvedCmd = cmdAliases[mainCmd] || mainCmd;
-
-    if (cmdRegistry[resolvedCmd]) {
-      var lines = cmdRegistry[resolvedCmd](cmdArg);
-      lines.forEach(function(l) {
-        var out = document.createElement('div');
-        out.className = 'ub-term-line';
-        out.textContent = l;
-        termOutput.appendChild(out);
-      });
-    } else {
-      var err = document.createElement('div');
-      err.className = 'ub-term-line ub-term-line--err';
-      err.textContent = 'zsh: 未找到指令: ' + cmd + ' (可输入 "help" 查看所有支持的指令)';
-      termOutput.appendChild(err);
-    }
-    termOutput.scrollTop = termOutput.scrollHeight;
-  }
-
-  function escapeHtml(s) {
-    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  if (termInput) {
-    termInput.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        execCmd(this.value);
-        this.value = '';
-      }
-    });
-  }
-
-  document.querySelectorAll('.ub-term-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var cmd = this.dataset.cmd;
-      if (cmd) execCmd(cmd);
-    });
-  });
 
   // ── INLINED 3D SACRED OBSIDIAN SHARD ENGINE (THREE.JS + RAYMARCHING SDF) ──
 /**
