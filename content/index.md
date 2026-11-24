@@ -14,15 +14,12 @@ tags:
 <span class="ub-logo-bracket" aria-hidden="true">[</span>UNBRAIN<span class="ub-logo-bracket" aria-hidden="true">]</span>
 </div>
 <div class="ub-nav-links">
-<a href="/关于我" data-no-popover="true">关于我/简历</a>
 <a href="#ub-about" data-router-ignore="true" data-no-popover="true">个人档案</a>
 <a href="#ub-quests" data-router-ignore="true" data-no-popover="true">履历历程</a>
 <a href="#ub-builds" data-router-ignore="true" data-no-popover="true">核心作品</a>
 <a href="#ub-knowledge" data-router-ignore="true" data-no-popover="true">知识卷轴</a>
 <a href="/朝花夕拾/" data-no-popover="true">朝花夕拾</a>
-<a href="#ub-stats" data-router-ignore="true" data-no-popover="true">量化数据</a>
-<a href="#ub-contact" data-router-ignore="true" data-no-popover="true">联络合作</a>
-<a href="#ub-arcade" data-router-ignore="true" data-no-popover="true">赛博游戏</a>
+<a href="/关于我" data-no-popover="true">关于我/简历</a>
 </div>
 <button class="ub-nav-toggle" id="ub-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="ub-nav-drawer">
 <span></span>
@@ -39,14 +36,13 @@ tags:
 </div>
 <div class="ub-drawer-links">
 <a class="ub-drawer-link" href="/关于我" data-no-popover="true"><span class="ub-drawer-num">00</span> 简历专页 · RESUME</a>
-<a class="ub-drawer-link" href="#ub-about" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">01</span> 个人档案 · PROFILE</a>
+<a class="ub-drawer-link" href="#ub-about" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">01</span> 个人档案与数据 · PROFILE</a>
 <a class="ub-drawer-link" href="#ub-quests" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">02</span> 履历历程 · QUEST LOG</a>
 <a class="ub-drawer-link" href="#ub-builds" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">03</span> 核心作品 · BUILDS</a>
 <a class="ub-drawer-link" href="#ub-knowledge" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">04</span> 知识卷轴 · KNOWLEDGE</a>
 <a class="ub-drawer-link" href="/朝花夕拾/" data-no-popover="true"><span class="ub-drawer-num">05</span> 朝花夕拾 · ARCHIVES</a>
-<a class="ub-drawer-link" href="#ub-stats" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">06</span> 量化数据 · TELEMETRY</a>
-<a class="ub-drawer-link" href="#ub-contact" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">07</span> 联络合作 · CONTACT</a>
-<a class="ub-drawer-link" href="#ub-arcade" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">08</span> 赛博游戏 · ARCADE</a>
+<a class="ub-drawer-link" href="#ub-contact" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">06</span> 联络合作 · CONTACT</a>
+<a class="ub-drawer-link" href="#ub-arcade" data-router-ignore="true" data-no-popover="true"><span class="ub-drawer-num">07</span> 赛博游戏 · ARCADE</a>
 </div>
 </div>
 
@@ -92,13 +88,50 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 </div>
 </div>
 
-<!-- 01 CHARACTER PROFILE -->
+<!-- 01 PROFILE & TELEMETRY (BENTO GRID) -->
 <section class="ub-about" id="ub-about">
 <div class="ub-container">
-<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">01</span> 个人档案 · CHARACTER PROFILE</div>
-<div class="ub-about-grid">
-<div class="ub-about-left ub-scroll-reveal">
-<h2 class="ub-section-title">构建高扩展<br/>前端架构与<br/>交互系统。</h2>
+<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">01</span> 个人档案与量化印记 · PROFILE & TELEMETRY</div>
+<h2 class="ub-section-title ub-scroll-reveal">构建高扩展<br/>前端架构与交互系统。</h2>
+<div class="ub-bento-grid">
+<div class="ub-bento-card ub-bento-bio ub-scroll-reveal">
+<div>
+<div class="ub-bento-card-head">
+<span class="ub-bento-card-title">ENGINEER PROFILE // 工程履历</span>
+<span class="ub-bento-card-meta">BEIJING · 7+ YRS</span>
+</div>
+<p class="ub-about-text">
+拥有 7 年以上一线生产工程经验的资深前端开发工程师。精通现代 Vue 3 生态、Vite 工具链体系、高性能渲染管线以及高可维护的组件体系架构。
+</p>
+<p class="ub-about-text">
+曾长期担任新浪微博核心业务的前端主力开发——主导并推进了<strong>微博 PC 主站</strong>、<strong>PC 创作者中心</strong>以及<strong>高并发私信消息箱</strong>的前端架构设计与演进，稳定承载数亿级用户的高并发访问。
+</p>
+<p class="ub-about-text">
+持续深耕算法推演、计算机图形学与生成式 WebGL 交互实验。本站作为开放的数字花园与算法知识库，系统性沉淀技术探索与解题智慧。
+</p>
+</div>
+<div>
+<div class="ub-about-badges">
+<span class="ub-badge">#Vue3</span>
+<span class="ub-badge">#TypeScript</span>
+<span class="ub-badge">#WebGL</span>
+<span class="ub-badge">#算法沉淀</span>
+<span class="ub-badge">#工程化</span>
+<span class="ub-badge">#Node.js</span>
+</div>
+<div class="ub-about-actions">
+<a href="/关于我" class="ub-btn ub-btn--primary" data-no-popover="true">查看完整求职简历专页 ↗</a>
+<a href="https://rxresu.me/unbrain/cv" target="_blank" class="ub-btn ub-btn--outline" data-no-popover="true">在线 PDF 简历 ↗</a>
+</div>
+</div>
+</div>
+
+<div class="ub-bento-card ub-bento-skills ub-scroll-reveal">
+<div>
+<div class="ub-bento-card-head">
+<span class="ub-bento-card-title">CORE CAPABILITIES // 能力矩阵</span>
+<span class="ub-bento-card-meta">STACK</span>
+</div>
 <div class="ub-char-stats">
 <div class="ub-char-stat-row">
 <div class="ub-stat-head">
@@ -106,13 +139,6 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <span class="ub-stat-val">95%</span>
 </div>
 <div class="ub-stat-bar"><div class="ub-stat-bar-fill" data-width="95"></div></div>
-</div>
-<div class="ub-char-stat-row">
-<div class="ub-stat-head">
-<span class="ub-char-stat-name">ALGORITHMS — 数据结构与算法推演</span>
-<span class="ub-stat-val">85%</span>
-</div>
-<div class="ub-stat-bar"><div class="ub-stat-bar-fill" data-width="85"></div></div>
 </div>
 <div class="ub-char-stat-row">
 <div class="ub-stat-head">
@@ -128,29 +154,45 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 </div>
 <div class="ub-stat-bar"><div class="ub-stat-bar-fill" data-width="86"></div></div>
 </div>
+<div class="ub-char-stat-row">
+<div class="ub-stat-head">
+<span class="ub-char-stat-name">ALGORITHMS — 数据结构与算法推演</span>
+<span class="ub-stat-val">85%</span>
+</div>
+<div class="ub-stat-bar"><div class="ub-stat-bar-fill" data-width="85"></div></div>
 </div>
 </div>
-<div class="ub-about-right">
-<p class="ub-about-text ub-scroll-reveal">
-拥有 7 年以上一线生产工程经验的资深前端开发工程师。精通现代 Vue 3 生态、Vite 工具链体系、高性能渲染管线以及高可维护的组件体系架构。
-</p>
-<p class="ub-about-text ub-scroll-reveal">
-曾长期担任新浪微博核心业务的前端主力开发——主导并推进了<strong>微博 PC 主站</strong>、<strong>PC 创作者中心</strong>以及<strong>高并发私信消息箱</strong>的前端架构设计与演进，稳定承载数亿级用户的高并发访问。
-</p>
-<p class="ub-about-text ub-scroll-reveal">
-持续深耕算法推演、计算机图形学与生成式 WebGL 交互实验。本站作为开放的数字花园与算法知识库，系统性沉淀技术探索与解题智慧。
-</p>
-<div class="ub-about-badges ub-scroll-reveal">
-<span class="ub-badge">#Vue3</span>
-<span class="ub-badge">#TypeScript</span>
-<span class="ub-badge">#WebGL</span>
-<span class="ub-badge">#算法沉淀</span>
-<span class="ub-badge">#工程化</span>
-<span class="ub-badge">#Node.js</span>
 </div>
-<div class="ub-about-actions ub-scroll-reveal">
-<a href="/关于我" class="ub-btn ub-btn--primary" data-no-popover="true">查看完整求职简历专页 ↗</a>
-<a href="https://rxresu.me/unbrain/cv" target="_blank" class="ub-btn ub-btn--ghost" data-no-popover="true">在线 PDF 简历 ↗</a>
+<div class="ub-bento-foot">
+<span class="ub-bento-foot-label">FOCUS</span>
+<span class="ub-bento-foot-val">高并发 Web 架构 · 虚拟滚动 · WebGL Shader · 算法体系</span>
+</div>
+</div>
+
+<div class="ub-bento-metrics">
+<div class="ub-metric-card ub-scroll-reveal">
+<div class="ub-metric-num" data-target="160">160</div>
+<div class="ub-metric-plus">+</div>
+<div class="ub-metric-label">知识卷轴篇数</div>
+<div class="ub-metric-sub">已公开发布 160+ 篇系统化技术与历史笔记</div>
+</div>
+<div class="ub-metric-card ub-scroll-reveal">
+<div class="ub-metric-num" data-target="130">130</div>
+<div class="ub-metric-plus">+</div>
+<div class="ub-metric-label">算法题解收录</div>
+<div class="ub-metric-sub">系统解析 130+ 道精选 LeetCode 经典题解</div>
+</div>
+<div class="ub-metric-card ub-scroll-reveal">
+<div class="ub-metric-num" data-target="7">7</div>
+<div class="ub-metric-plus">+</div>
+<div class="ub-metric-label">一线工程经验</div>
+<div class="ub-metric-sub">深耕超高并发亿级访问 Web 架构演进</div>
+</div>
+<div class="ub-metric-card ub-scroll-reveal">
+<div class="ub-metric-num" data-target="100">100</div>
+<div class="ub-metric-plus">M+</div>
+<div class="ub-metric-label">触达服务用户</div>
+<div class="ub-metric-sub">稳定护航生产环境峰值并发流量</div>
 </div>
 </div>
 </div>
@@ -395,44 +437,10 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 </div>
 </section>
 
-<!-- 05 TELEMETRY & STATS -->
-<section class="ub-stats" id="ub-stats">
-<div class="ub-container">
-<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">05</span> 量化数据 · TELEMETRY & METRICS</div>
-<h2 class="ub-section-title ub-scroll-reveal">用数字沉淀<br/>工程印记。</h2>
-<div class="ub-metrics-grid">
-<div class="ub-metric-card ub-scroll-reveal">
-<div class="ub-metric-num" data-target="160">160</div>
-<div class="ub-metric-plus">+</div>
-<div class="ub-metric-label">知识卷轴篇数</div>
-<div class="ub-metric-sub">已公开发布 160+ 篇系统化技术与历史笔记</div>
-</div>
-<div class="ub-metric-card ub-scroll-reveal">
-<div class="ub-metric-num" data-target="130">130</div>
-<div class="ub-metric-plus">+</div>
-<div class="ub-metric-label">算法题解收录</div>
-<div class="ub-metric-sub">系统解析 130+ 道精选 LeetCode 经典题解</div>
-</div>
-<div class="ub-metric-card ub-scroll-reveal">
-<div class="ub-metric-num" data-target="7">7</div>
-<div class="ub-metric-plus">+</div>
-<div class="ub-metric-label">一线工程经验</div>
-<div class="ub-metric-sub">深耕超高并发亿级访问 Web 架构演进</div>
-</div>
-<div class="ub-metric-card ub-scroll-reveal">
-<div class="ub-metric-num" data-target="100">100</div>
-<div class="ub-metric-plus">M+</div>
-<div class="ub-metric-label">触达服务用户</div>
-<div class="ub-metric-sub">稳定护航生产环境峰值并发流量</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- 06 PARTY UP & SOCIAL LINKS -->
+<!-- 05 PARTY UP & SOCIAL LINKS -->
 <section class="ub-terminal-section ub-social-section" id="ub-contact">
 <div class="ub-container">
-<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">06</span> 联络方式 · PARTY UP</div>
+<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">05</span> 联络方式 · PARTY UP</div>
 <h2 class="ub-section-title ub-scroll-reveal">携手合作<br/>共筑卓越工程。</h2>
 <div class="ub-social-links ub-scroll-reveal">
 <a class="ub-social-link" href="https://github.com/unbrain" target="_blank" aria-label="访问 GitHub 主页">
@@ -449,10 +457,10 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 </div>
 </section>
 
-<!-- 07 CYBER ARCADE (RETRO SNAKE) -->
+<!-- 06 CYBER ARCADE (RETRO SNAKE) -->
 <section class="ub-arcade-section ub-scroll-reveal" id="ub-arcade">
 <div class="ub-container ub-arcade-container">
-<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">07</span> 赛博游戏舱 · CYBER ARCADE</div>
+<div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">06</span> 赛博游戏舱 · CYBER ARCADE</div>
 <h2 class="ub-section-title ub-scroll-reveal">复古终端<br/>极客贪吃蛇。</h2>
 <div class="ub-snake-chassis" id="index-snake-container">
 <div class="ub-snake-warp1" aria-hidden="true"></div>

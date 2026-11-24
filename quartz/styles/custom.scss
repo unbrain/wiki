@@ -77,10 +77,23 @@ body[data-slug="index"] {
   --ub-font-mono: 'Fira Code', 'IBM Plex Mono', ui-monospace, monospace;
   --ub-font-hud:  'Space Grotesk', 'IBM Plex Mono', 'Noto Sans SC', sans-serif;
 
-  // ── Layout Tokens（桌面基准值；移动端断点仅改 token 值，桌面视觉零回归）──
-  --ub-space-section-y: 140px; // 大留白 section 垂直节奏
-  --ub-space-section-x: 48px;  // section 水平 padding
-  --ub-radius-card: 14px;      // 大卡片（project）
+  // ── Utopia Fluid Type & Space Scale (375px → 1200px) ──
+  --ub-text-xs: clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem);
+  --ub-text-sm: clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);
+  --ub-text-base: clamp(0.9375rem, 0.90rem + 0.18vw, 1.0625rem);
+  --ub-text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --ub-text-2xl: clamp(1.875rem, 1.25rem + 2.8vw, 4.25rem);
+  --ub-text-hero: clamp(2.5rem, 1.2rem + 6.2vw, 7.5rem);
+
+  --ub-space-xs: clamp(0.5rem, 0.45rem + 0.2vw, 0.625rem);
+  --ub-space-sm: clamp(0.75rem, 0.68rem + 0.3vw, 1rem);
+  --ub-space-md: clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem);
+  --ub-space-lg: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  --ub-space-section-y: clamp(4rem, 2.5rem + 6vw, 7.5rem);
+  --ub-space-section-x: clamp(1rem, 0.4rem + 2.5vw, 3rem);
+
+  // ── Layout Tokens ──
+  --ub-radius-card: 14px;      // 大卡片（project / bento）
   --ub-radius-card-sm: 12px;   // 通用卡片（writing/metric/social）
   --ub-radius-btn: 6px;        // 按钮
   --ub-warp-blur: 87px;        // snake warp 光斑 blur 半径（600px 断点降载）
@@ -475,7 +488,7 @@ body[data-slug="index"] {
   }
 
   .ub-hero-name {
-    font-size: clamp(52px, 9vw, 130px);
+    font-size: var(--ub-text-hero);
     font-weight: 700;
     line-height: 1.0;
     letter-spacing: -0.04em;
@@ -620,7 +633,6 @@ body[data-slug="index"] {
   .ub-quests,
   .ub-builds,
   .ub-knowledge,
-  .ub-stats,
   .ub-terminal-section,
   .ub-arcade-section {
     padding: var(--ub-space-section-y) var(--ub-space-section-x);
@@ -631,7 +643,6 @@ body[data-slug="index"] {
   .ub-quests,
   .ub-builds,
   .ub-knowledge,
-  .ub-stats,
   .ub-terminal-section,
   .ub-arcade-section {
     border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -639,11 +650,11 @@ body[data-slug="index"] {
 
   .ub-section-label {
     font-family: var(--ub-font-mono);
-    font-size: 11px;
+    font-size: var(--ub-text-xs);
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--ub-cyan);
-    margin-bottom: 28px;
+    margin-bottom: var(--ub-space-md);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -651,7 +662,7 @@ body[data-slug="index"] {
 
   .ub-label-num {
     font-family: var(--ub-font-mono);
-    font-size: 11px;
+    font-size: var(--ub-text-xs);
     font-weight: 600;
     color: var(--ub-cyan);
     letter-spacing: 0.08em;
@@ -659,29 +670,114 @@ body[data-slug="index"] {
   }
 
   .ub-section-title {
-    font-size: clamp(36px, 5.5vw, 76px);
+    font-size: var(--ub-text-2xl);
     font-weight: 700;
-    line-height: 1.05;
+    line-height: 1.06;
     letter-spacing: -0.03em;
     color: var(--ub-yellow);
-    margin-bottom: 56px !important;
+    margin-bottom: var(--ub-space-lg) !important;
     border: none !important;
     padding: 0 !important;
     text-wrap: balance;
   }
 
-  // ── 01 CHARACTER PROFILE ─────────────────────
-  .ub-about-grid {
+  // ── 01 PROFILE & TELEMETRY (BENTO GRID) ────
+  .ub-bento-grid {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 72px;
-    align-items: start;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--ub-space-sm);
+  }
+
+  .ub-bento-card {
+    background: var(--ub-black-card);
+    border: 1px solid var(--ub-border);
+    border-radius: var(--ub-radius-card);
+    padding: var(--ub-space-md);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &:hover {
+      border-color: var(--ub-border-hover);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 12px 28px rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  .ub-bento-bio {
+    grid-column: span 7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ub-bento-skills {
+    grid-column: span 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .ub-bento-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .ub-bento-card-title {
+    font-family: var(--ub-font-mono);
+    font-size: var(--ub-text-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ub-cyan);
+  }
+
+  .ub-bento-card-meta {
+    font-family: var(--ub-font-mono);
+    font-size: var(--ub-text-xs);
+    color: var(--ub-gray);
+    white-space: nowrap;
+  }
+
+  .ub-bento-foot {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .ub-bento-foot-label {
+    font-family: var(--ub-font-mono);
+    font-size: var(--ub-text-xs);
+    letter-spacing: 0.14em;
+    color: var(--ub-amber);
+    flex-shrink: 0;
+  }
+
+  .ub-bento-foot-val {
+    font-size: var(--ub-text-xs);
+    color: var(--ub-gray);
+    line-height: 1.5;
+    text-align: right;
+  }
+
+  .ub-bento-metrics {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--ub-space-sm);
   }
 
   .ub-char-stats {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 20px;
   }
 
   .ub-char-stat-row {
@@ -699,15 +795,15 @@ body[data-slug="index"] {
   .ub-char-stat-name {
     font-family: var(--ub-font-hud);
     font-size: 10px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ub-yellow-dim);
-    opacity: 0.7;
+    opacity: 0.78;
   }
 
   .ub-stat-val {
     font-family: var(--ub-font-mono);
-    font-size: 11px;
+    font-size: var(--ub-text-xs);
     font-weight: 600;
     color: var(--ub-cyan);
     font-variant-numeric: tabular-nums;
@@ -729,10 +825,10 @@ body[data-slug="index"] {
   }
 
   .ub-about-text {
-    font-size: clamp(15px, 1.5vw, 17px);
-    line-height: 1.8;
+    font-size: var(--ub-text-base);
+    line-height: 1.75;
     color: var(--ub-yellow-dim);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 
     strong {
       color: var(--ub-yellow);
@@ -743,19 +839,19 @@ body[data-slug="index"] {
   .ub-about-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 28px;
+    gap: 8px;
+    margin-top: 20px;
   }
 
   .ub-about-actions {
-    margin-top: 1.5rem;
+    margin-top: 20px;
     display: flex;
-    gap: 0.8rem;
+    gap: 12px;
     flex-wrap: wrap;
 
     .ub-btn {
-      padding: 0.5rem 1.1rem;
-      font-size: 0.85rem;
+      padding: 10px 18px;
+      font-size: 11px;
     }
   }
 
@@ -844,7 +940,7 @@ body[data-slug="index"] {
 
   .ub-timeline-title {
     font-family: var(--ub-font-main);
-    font-size: 19px;
+    font-size: var(--ub-text-lg);
     font-weight: 600;
     color: var(--ub-yellow);
     margin: 0 0 8px 0 !important;
@@ -852,7 +948,7 @@ body[data-slug="index"] {
   }
 
   .ub-timeline-desc {
-    font-size: 15px;
+    font-size: var(--ub-text-sm);
     line-height: 1.7;
     color: var(--ub-gray);
     max-width: 800px;
@@ -935,7 +1031,7 @@ body[data-slug="index"] {
 
   .ub-project-name {
     font-family: var(--ub-font-main);
-    font-size: 20px;
+    font-size: var(--ub-text-lg);
     font-weight: 700;
     color: var(--ub-yellow);
     margin: 0 !important;
@@ -965,7 +1061,7 @@ body[data-slug="index"] {
   }
 
   .ub-project-desc {
-    font-size: 14px;
+    font-size: var(--ub-text-sm);
     line-height: 1.7;
     color: var(--ub-gray);
     margin-bottom: 20px;
@@ -1060,7 +1156,7 @@ body[data-slug="index"] {
   }
 
   .ub-writing-title {
-    font-size: clamp(16px, 1.8vw, 20px);
+    font-size: var(--ub-text-lg);
     font-weight: 600;
     letter-spacing: -0.01em;
     color: var(--ub-yellow);
@@ -1069,7 +1165,7 @@ body[data-slug="index"] {
   }
 
   .ub-writing-sub {
-    font-size: 13px;
+    font-size: var(--ub-text-sm);
     color: var(--ub-gray);
     line-height: 1.5;
   }
@@ -1094,18 +1190,12 @@ body[data-slug="index"] {
     flex-shrink: 0;
   }
 
-  // ── 05 TELEMETRY & STATS ─────────────────────
-  .ub-metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
+  // ── TELEMETRY METRIC CARDS (INSIDE BENTO) ────
   .ub-metric-card {
     background: var(--ub-black-card);
     border: 1px solid var(--ub-border);
     border-radius: var(--ub-radius-card-sm);
-    padding: 36px 24px;
+    padding: 28px 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1122,7 +1212,7 @@ body[data-slug="index"] {
   .ub-metric-num {
     display: inline-block;
     font-family: var(--ub-font-hud);
-    font-size: clamp(40px, 4.5vw, 64px);
+    font-size: clamp(36px, 4vw, 56px);
     font-weight: 700;
     line-height: 1;
     color: var(--ub-yellow);
@@ -1132,7 +1222,7 @@ body[data-slug="index"] {
   .ub-metric-plus {
     display: inline-block;
     font-family: var(--ub-font-hud);
-    font-size: clamp(24px, 2.8vw, 36px);
+    font-size: clamp(22px, 2.4vw, 32px);
     font-weight: 700;
     color: var(--ub-cyan);
     margin-left: 2px;
@@ -1140,15 +1230,15 @@ body[data-slug="index"] {
 
   .ub-metric-label {
     font-family: var(--ub-font-hud);
-    font-size: 11px;
-    letter-spacing: 0.2em;
+    font-size: var(--ub-text-xs);
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--ub-amber);
-    margin: 14px 0 6px 0;
+    margin: 12px 0 6px 0;
   }
 
   .ub-metric-sub {
-    font-size: 12px;
+    font-size: var(--ub-text-xs);
     color: var(--ub-gray);
     line-height: 1.5;
   }
@@ -1848,17 +1938,19 @@ body[data-slug="index"] {
     .ub-nav-links { display: none; }
     .ub-nav-toggle { display: flex; }
     .ub-hero { padding: 0 24px; }
-    // section padding 统一走 token，600px/380px 断点只改 token 值，不再逐条覆写
-    .ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section, .ub-arcade-section {
-      padding: 90px var(--ub-space-section-x);
+    .ub-bento-bio,
+    .ub-bento-skills {
+      grid-column: span 12;
     }
-    .ub-about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .ub-bento-metrics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
     .ub-projects-grid { grid-template-columns: 1fr; }
     .ub-writing-item {
       padding: 20px 24px;
       gap: 20px;
     }
-    .ub-metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .ub-hud-corner { display: none; }
     .ub-hero-ticker {
       font-size: 10px;
@@ -1959,21 +2051,29 @@ body[data-slug="index"] {
       }
     }
 
-    // 3. Common Section Layout（token 化：600px 下只改 token 值，含 arcade-section 补齐）
-    --ub-space-section-y: 64px;
-    --ub-space-section-x: 16px;
+    // 3. Common Section Layout（Utopia 流体 token 已接管字号与间距，此处仅降载 warp blur）
     --ub-warp-blur: 40px; // warp 光斑 blur 降载（87px → 40px），移动端 GPU 开销显著降低
     .ub-section-label {
-      font-size: 10px;
-      margin-bottom: 12px;
-    }
-    .ub-section-title {
-      font-size: clamp(28px, 8vw, 40px);
-      line-height: 1.18;
-      margin-bottom: 32px !important;
+      margin-bottom: 14px;
     }
 
-    // 4. 01 About & Profile
+    // 4. 01 Profile & Telemetry Bento
+    .ub-bento-card {
+      padding: 20px 16px;
+      border-radius: 10px;
+    }
+    .ub-bento-card-head {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+    }
+    .ub-bento-foot {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .ub-bento-foot-val {
+      text-align: left;
+    }
     .ub-stat-head {
       align-items: baseline;
       gap: 8px;
@@ -1988,7 +2088,6 @@ body[data-slug="index"] {
       flex-shrink: 0;
     }
     .ub-about-text {
-      font-size: 13.5px;
       line-height: 1.7;
     }
     .ub-about-badges {
@@ -2003,7 +2102,7 @@ body[data-slug="index"] {
       flex-direction: column;
       width: 100%;
       gap: 10px;
-      margin-top: 1.5rem;
+      margin-top: 1.25rem;
       .ub-btn {
         width: 100%;
         text-align: center;
@@ -2115,9 +2214,9 @@ body[data-slug="index"] {
       bottom: 16px;
     }
 
-    // 8. 05 Stats & Metrics
-    .ub-metrics-grid {
-      grid-template-columns: repeat(2, 1fr);
+    // 8. Telemetry Metrics (2x2 inside Bento)
+    .ub-bento-metrics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
     }
     .ub-metric-card {
@@ -2250,7 +2349,7 @@ body[data-slug="index"] {
     .ub-writing-item {
       padding: 14px 10px;
     }
-    .ub-metrics-grid {
+    .ub-bento-metrics {
       gap: 8px;
     }
     .ub-metric-card {

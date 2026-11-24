@@ -37,8 +37,22 @@
 - **排版细节**：
   - 多行标题与副标题使用 `text-wrap: balance`。
   - 统计数字、百分比、序号、游戏分数使用 `font-variant-numeric: tabular-nums`。
+- **Utopia 流体字号与间距阶梯（375px → 1200px）**：
+  - 字号：`--ub-text-xs` (`11px→12px`)、`--ub-text-sm` (`13px→14px`)、`--ub-text-base` (`15px→17px`)、`--ub-text-lg` (`18px→21px`)、`--ub-text-2xl` (`30px→68px`)、`--ub-text-hero` (`40px→120px`)。
+  - 间距：`--ub-space-xs` (`8px→10px`)、`--ub-space-sm` (`12px→16px`)、`--ub-space-md` (`20px→28px`)、`--ub-space-lg` (`32px→56px`)、`--ub-space-section-y` (`64px→120px`)、`--ub-space-section-x` (`16px→48px`)。
 
-## 4. Elevation, Borders & Shapes
+## 4. Layout & Navigation Architecture
+
+- **顶部胶囊导航**：桌面端精简为 6 个核心入口（个人档案、履历历程、核心作品、知识卷轴、朝花夕拾、关于我/简历）；移动端抽屉保留完整 8 项直达入口。
+- **首页 6 段式结构**：
+  - `01` 个人档案与量化印记（12 列 Bento 网格：7 列工程履历卡 + 5 列能力矩阵卡 + 12 列 4 格遥测指标卡；平板/手机自动折叠为单列 + 2×2 指标网格）
+  - `02` 履历历程
+  - `03` 核心作品
+  - `04` 知识卷轴
+  - `05` 联络方式
+  - `06` 赛博游戏舱
+
+## 5. Elevation, Borders & Shapes
 
 - **表面层级**：通过画布 `#0A0A0A` → 卡片 `#111318` → 悬停 `#151820` 的微弱明度阶梯 + `1px` hairline 边框 + 顶部 `inset 0 1px 0 rgba(255, 255, 255, 0.04)` 内高光建立层次，不依赖重阴影或霓虹发光。
 - **圆角规范**：
@@ -47,7 +61,7 @@
   - 作品展示大卡片：`14px`（`--ub-radius-card`）
   - 悬浮胶囊导航：`9999px`
 
-## 5. Motion & Interaction Guardrails
+## 6. Motion & Interaction Guardrails
 
 - **禁止 `transition: all`**：所有过渡必须显式列出属性（如 `transform`、`border-color`、`background-color`、`box-shadow`、`opacity`）。
 - **克制动效**：Scroll Reveal 位移 `16px`、时长 `0.45s`、阶梯延迟步进 `0.04s`（上限 `0.16s`），缓动 `cubic-bezier(0.22, 1, 0.36, 1)`。
