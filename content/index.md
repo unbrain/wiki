@@ -6,15 +6,12 @@ tags:
   - index
 ---
 
-<div class="noise"></div>
-<div class="cursor" id="ub-cursor"></div>
-<div class="cursor-follower" id="ub-cursorFollower"></div>
-<div class="progress-bar" id="ub-progressBar"></div>
+<div class="noise" aria-hidden="true"></div>
 
 <!-- HUD NAVIGATION BAR -->
-<nav class="ub-nav" id="ub-nav">
+<nav class="ub-nav" id="ub-nav" aria-label="主导航">
 <div class="ub-nav-logo">
-<span class="ub-logo-bracket">[</span>UNBRAIN<span class="ub-logo-bracket">]</span>
+<span class="ub-logo-bracket" aria-hidden="true">[</span>UNBRAIN<span class="ub-logo-bracket" aria-hidden="true">]</span>
 </div>
 <div class="ub-nav-links">
 <a href="/关于我" data-no-popover="true">关于我/简历</a>
@@ -27,7 +24,7 @@ tags:
 <a href="#ub-contact" data-router-ignore="true" data-no-popover="true">联络合作</a>
 <a href="#ub-arcade" data-router-ignore="true" data-no-popover="true">赛博游戏</a>
 </div>
-<button class="ub-nav-toggle" id="ub-nav-toggle" aria-label="切换导航菜单">
+<button class="ub-nav-toggle" id="ub-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="ub-nav-drawer">
 <span></span>
 <span></span>
 <span></span>
@@ -59,20 +56,16 @@ tags:
 
 <!-- HERO SECTION -->
 <section class="ub-hero" id="ub-hero">
-<canvas id="ub-particleCanvas"></canvas>
-<div class="ub-hero-slash ub-hero-slash-1"></div>
-<div class="ub-hero-slash ub-hero-slash-2"></div>
-
 <div class="ub-hero-content">
 <div class="ub-hero-ticker notranslate" translate="no">
 <span class="ub-ticker-item">坐标: 39.90° N, 116.40° E (北京)</span>
-<span class="ub-ticker-sep">/</span>
+<span class="ub-ticker-sep" aria-hidden="true">/</span>
 <span class="ub-ticker-item">技术栈: VUE 3 · TS · NODE</span>
-<span class="ub-ticker-sep">/</span>
+<span class="ub-ticker-sep" aria-hidden="true">/</span>
 <span class="ub-ticker-item">工程经验: 7+ 年</span>
 </div>
 <div class="ub-hero-tag notranslate" translate="no">
-<span class="ub-tag-bracket">[</span> 资深前端开发工程师 · WebGL / Vue.js · 算法探索者 <span class="ub-tag-bracket">]</span>
+<span class="ub-tag-bracket" aria-hidden="true">[</span> 资深前端开发工程师 · WebGL / Vue.js · 算法探索者 <span class="ub-tag-bracket" aria-hidden="true">]</span>
 </div>
 <h1 class="ub-hero-name">
 <span class="ub-line-wrap"><span class="ub-reveal-line" id="ub-hero-glitch">unbrain.</span></span>
@@ -80,22 +73,22 @@ tags:
 <p class="ub-hero-sub reveal-fade">构筑高并发前端系统 · 研磨算法知识卷轴 · 探索生成式交互代码</p>
 <div class="ub-hero-actions reveal-fade">
 <a class="ub-btn ub-btn--primary" href="/关于我" data-no-popover="true">个人简历 · RESUME ↗</a>
-<a class="ub-btn ub-btn--primary" href="#ub-builds" data-router-ignore="true" data-no-popover="true">浏览核心工程 ↗</a>
+<a class="ub-btn ub-btn--outline" href="#ub-builds" data-router-ignore="true" data-no-popover="true">浏览核心工程 ↗</a>
 <a class="ub-btn ub-btn--outline" href="#ub-knowledge" data-router-ignore="true" data-no-popover="true">查阅知识库 ↓</a>
 <a class="ub-btn ub-btn--ghost" href="#ub-arcade" data-router-ignore="true" data-no-popover="true">赛博游戏舱 ↘</a>
 </div>
 </div>
 
-<div class="ub-hud-corner ub-hud-tl"></div>
-<div class="ub-hud-corner ub-hud-tr"></div>
-<div class="ub-hud-corner ub-hud-bl"></div>
-<div class="ub-hud-corner ub-hud-br"></div>
+<div class="ub-hud-corner ub-hud-tl" aria-hidden="true"></div>
+<div class="ub-hud-corner ub-hud-tr" aria-hidden="true"></div>
+<div class="ub-hud-corner ub-hud-bl" aria-hidden="true"></div>
+<div class="ub-hud-corner ub-hud-br" aria-hidden="true"></div>
 </section>
 
-<!-- MARQUEE STRIP -->
+<!-- TECH STACK INDEX STRIP -->
 <div class="ub-marquee-strip notranslate" translate="no">
 <div class="ub-marquee-inner">
-VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEETCODE HOT100 · 高并发架构 · NODE.JS · VITE · 虚拟滚动 · 性能调优 · 组件库设计 · VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEETCODE HOT100 · 高并发架构 · NODE.JS · VITE · 虚拟滚动 · 性能调优 · 组件库设计 ·&nbsp;
+VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEETCODE HOT100 · 高并发架构 · NODE.JS · VITE · 虚拟滚动 · 性能调优 · 组件库设计
 </div>
 </div>
 
@@ -234,7 +227,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <div class="ub-projects-grid">
 <div class="ub-project-card ub-scroll-reveal" data-tilt>
 <div class="ub-project-img-wrap">
-<img src="/static/projects/weibo.png" alt="PC 微博主站" class="ub-project-img" />
+<img src="/static/projects/weibo.png" alt="PC 微博主站" class="ub-project-img" width="2566" height="1412" loading="lazy" decoding="async" />
 <div class="ub-project-badge">核心门户 · Core Portal</div>
 </div>
 <div class="ub-project-body">
@@ -255,7 +248,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 </div>
 <div class="ub-project-card ub-scroll-reveal" data-tilt>
 <div class="ub-project-img-wrap">
-<img src="/static/projects/me.jpg" alt="PC 微博创作者中心" class="ub-project-img" />
+<img src="/static/projects/me.jpg" alt="PC 微博创作者中心" class="ub-project-img" width="2960" height="1664" loading="lazy" decoding="async" />
 <div class="ub-project-badge">创作者中台 · Creator Hub</div>
 </div>
 <div class="ub-project-body">
@@ -276,7 +269,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 </div>
 <div class="ub-project-card ub-scroll-reveal" data-tilt>
 <div class="ub-project-img-wrap">
-<img src="/static/projects/webchat.jpg" alt="微博 PC 消息箱" class="ub-project-img" />
+<img src="/static/projects/webchat.jpg" alt="微博 PC 消息箱" class="ub-project-img" width="2378" height="1594" loading="lazy" decoding="async" />
 <div class="ub-project-badge">实时即时通讯 · IM</div>
 </div>
 <div class="ub-project-body">
@@ -297,7 +290,7 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 </div>
 <div class="ub-project-card ub-scroll-reveal" data-tilt>
 <div class="ub-project-img-wrap">
-<img src="/static/projects/creator.jpg" alt="移动端组件与瀑布流体系" class="ub-project-img" />
+<img src="/static/projects/creator.jpg" alt="移动端组件与瀑布流体系" class="ub-project-img" width="942" height="726" loading="lazy" decoding="async" />
 <div class="ub-project-badge">物料体系 · Material Solution</div>
 </div>
 <div class="ub-project-body">
@@ -462,12 +455,12 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
 <div class="ub-section-label ub-scroll-reveal"><span class="ub-label-num">07</span> 赛博游戏舱 · CYBER ARCADE</div>
 <h2 class="ub-section-title ub-scroll-reveal">复古终端<br/>极客贪吃蛇。</h2>
 <div class="ub-snake-chassis" id="index-snake-container">
-<div class="ub-snake-warp1"></div>
-<div class="ub-snake-warp2"></div>
-<div class="ub-snake-bolt bolt-tl"></div>
-<div class="ub-snake-bolt bolt-tr"></div>
-<div class="ub-snake-bolt bolt-bl"></div>
-<div class="ub-snake-bolt bolt-br"></div>
+<div class="ub-snake-warp1" aria-hidden="true"></div>
+<div class="ub-snake-warp2" aria-hidden="true"></div>
+<div class="ub-snake-bolt bolt-tl" aria-hidden="true"></div>
+<div class="ub-snake-bolt bolt-tr" aria-hidden="true"></div>
+<div class="ub-snake-bolt bolt-bl" aria-hidden="true"></div>
+<div class="ub-snake-bolt bolt-br" aria-hidden="true"></div>
 <div class="ub-snake-grid">
 <div class="ub-snake-screen-wrap">
 <canvas width="240" height="320" class="snake-canvas"></canvas>
@@ -528,140 +521,6 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
   purgeAnchorsAndPopovers();
   document.addEventListener('nav', purgeAnchorsAndPopovers);
   document.addEventListener('render', purgeAnchorsAndPopovers);
-
-  // ── CUSTOM CURSOR ──
-  var isTouchUser = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-  var cursor = document.getElementById('ub-cursor');
-  var follower = document.getElementById('ub-cursorFollower');
-  var mx = 0, my = 0, fx = 0, fy = 0;
-  var cursorVisible = false;
-
-  if (!isTouchUser) {
-    document.addEventListener('mousemove', function(e) {
-      if (!cursorVisible) {
-        cursorVisible = true;
-        if (cursor) cursor.style.opacity = '1';
-        if (follower) follower.style.opacity = '1';
-      }
-      mx = e.clientX; my = e.clientY;
-      if (cursor) { cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; }
-    });
-    function followLoop() {
-      fx += (mx - fx) * 0.14;
-      fy += (my - fy) * 0.14;
-      if (follower) { follower.style.left = fx + 'px'; follower.style.top = fy + 'px'; }
-      requestAnimationFrame(followLoop);
-    }
-    followLoop();
-
-    document.querySelectorAll('a, button, .ub-project-card, .ub-writing-item').forEach(function(el) {
-      el.addEventListener('mouseenter', function() {
-        if (cursor && follower) {
-          cursor.style.width = '14px'; cursor.style.height = '14px';
-          follower.style.width = '52px'; follower.style.height = '52px';
-          follower.style.borderColor = '#43D9AD';
-        }
-      });
-      el.addEventListener('mouseleave', function() {
-        if (cursor && follower) {
-          cursor.style.width = '8px'; cursor.style.height = '8px';
-          follower.style.width = '36px'; follower.style.height = '36px';
-          follower.style.borderColor = '#FEFAE0';
-        }
-      });
-    });
-  }
-
-  // ── PARTICLES NETWORK ──
-  // 移动端性能降级：粗指针/窄屏下减粒子数并节流至 ~30fps（桌面端全量不变）
-  var isMobilePerf = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 960;
-  var canvas = document.getElementById('ub-particleCanvas');
-  if (canvas) {
-    var ctx = canvas.getContext('2d');
-    var W, H, particles = [], pMouse = { x: -999, y: -999 };
-    var particleFrameInterval = isMobilePerf ? 2 : 1; // 每 N 帧绘制一次
-    var particleFrameCount = 0;
-    function resizeP() {
-      W = canvas.width = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
-    }
-    resizeP();
-    window.addEventListener('resize', resizeP);
-    canvas.addEventListener('mousemove', function(e) {
-      var r = canvas.getBoundingClientRect();
-      pMouse.x = e.clientX - r.left;
-      pMouse.y = e.clientY - r.top;
-    });
-    var COUNT = Math.min(isMobilePerf ? 36 : 80, Math.floor(window.innerWidth / (isMobilePerf ? 12 : 16)));
-    for (var i = 0; i < COUNT; i++) {
-      particles.push({
-        x: Math.random() * W, y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.45, vy: (Math.random() - 0.5) * 0.45,
-        r: Math.random() * 1.6 + 0.6
-      });
-    }
-    var isParticleRunning = true;
-    var heroEl = document.getElementById('ub-hero');
-    if ('IntersectionObserver' in window && heroEl) {
-      var pObs = new IntersectionObserver(function(entries) {
-        var visible = entries[0].isIntersecting;
-        if (visible && !isParticleRunning) {
-          isParticleRunning = true;
-          requestAnimationFrame(drawP);
-        } else if (!visible) {
-          isParticleRunning = false;
-        }
-      }, { threshold: 0.05 });
-      pObs.observe(heroEl);
-    }
-
-    function drawP() {
-      if (!isParticleRunning) return;
-      // 移动端帧率节流：每 N 帧才真正绘制一帧
-      particleFrameCount++;
-      var shouldDraw = (particleFrameCount % particleFrameInterval) === 0;
-      if (shouldDraw) {
-      ctx.clearRect(0, 0, W, H);
-      particles.forEach(function(p) {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(254, 250, 224, 0.4)';
-        ctx.fill();
-      });
-      for (var i = 0; i < particles.length; i++) {
-        for (var j = i + 1; j < particles.length; j++) {
-          var dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(254, 250, 224, ' + (0.07 * (1 - dist / 120)) + ')';
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-        var mdx = particles[i].x - pMouse.x, mdy = particles[i].y - pMouse.y;
-        var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-        if (mdist < 160) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(pMouse.x, pMouse.y);
-          ctx.strokeStyle = 'rgba(67, 217, 173, ' + (0.15 * (1 - mdist / 160)) + ')';
-          ctx.lineWidth = 0.7;
-          ctx.stroke();
-        }
-      }
-      } // end shouldDraw
-      if (isParticleRunning) {
-        requestAnimationFrame(drawP);
-      }
-    }
-    drawP();
-  }
 
   // ── NAV SCROLL & SCROLLSPY ──
   var nav = document.getElementById('ub-nav');
@@ -771,34 +630,12 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
         var r = card.getBoundingClientRect();
         var x = (e.clientX - r.left) / r.width - 0.5;
         var y = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = 'perspective(900px) rotateY(' + (x * 8) + 'deg) rotateX(' + (-y * 8) + 'deg) translateY(-4px)';
+        card.style.transform = 'perspective(900px) rotateY(' + (x * 5) + 'deg) rotateX(' + (-y * 5) + 'deg) translateY(-2px)';
       });
       card.addEventListener('mouseleave', function() {
         card.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg) translateY(0)';
       });
     });
-  }
-
-  // ── SECTION WIPE LINES ──
-  document.querySelectorAll('.ub-about, .ub-quests, .ub-builds, .ub-knowledge, .ub-stats, .ub-terminal-section, .ub-arcade-section').forEach(function(sec) {
-    var line = document.createElement('div');
-    line.style.cssText = 'position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg, #43D9AD, #FEFAE0, transparent);transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(0.16,1,0.3,1);z-index:1;';
-    sec.style.position = 'relative';
-    sec.prepend(line);
-    var wipeObs = new IntersectionObserver(function(entries) {
-      if (entries[0].isIntersecting) { line.style.transform = 'scaleX(1)'; wipeObs.disconnect(); }
-    }, { threshold: 0 });
-    wipeObs.observe(sec);
-  });
-
-  // ── GLITCH EFFECT ──
-  var heroGlitch = document.getElementById('ub-hero-glitch');
-  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (heroGlitch && !prefersReducedMotion) { // 前庭功能障碍用户禁用随机抖动
-    setInterval(function() {
-      heroGlitch.style.textShadow = (Math.random()*4-2)+'px '+(Math.random()*2-1)+'px 0 rgba(67,217,173,0.35), '+(Math.random()*-4+2)+'px '+(Math.random()*2-1)+'px 0 rgba(254,165,95,0.25)';
-      setTimeout(function() { heroGlitch.style.textShadow = 'none'; }, 90);
-    }, 3800);
   }
 
   // ── INLINED 3D SACRED OBSIDIAN SHARD ENGINE (THREE.JS + RAYMARCHING SDF) ──
@@ -1908,6 +1745,9 @@ VUE 3 · 响应式原理 · TYPESCRIPT · WEBGL · 算法与数据结构 · LEET
     if (navDrawer) {
       navDrawer.classList.toggle('active', open);
       document.body.style.overflow = open ? 'hidden' : '';
+    }
+    if (navToggle) {
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
   }
   if (navToggle)   navToggle.addEventListener('click', function() { toggleDrawer(true); });

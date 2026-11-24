@@ -42,6 +42,7 @@ html:has(body[data-slug="index"]) {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 @font-face {
@@ -50,6 +51,7 @@ html:has(body[data-slug="index"]) {
        url("/wiki/static/FiraCode-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 body[data-slug="index"] {
@@ -62,17 +64,18 @@ body[data-slug="index"] {
   --ub-yellow: #FEFAE0;
   --ub-yellow-dim: #DCD8BE;
   --ub-black: #0A0A0A;
-  --ub-black-soft: #121318;
-  --ub-black-card: #141721;
-  --ub-border: rgba(254, 250, 224, 0.10);
-  --ub-border-hover: rgba(67, 217, 173, 0.40);
+  --ub-black-soft: #111215;
+  --ub-black-card: #111318;
+  --ub-border: rgba(255, 255, 255, 0.08);
+  --ub-border-strong: rgba(255, 255, 255, 0.16);
+  --ub-border-hover: rgba(67, 217, 173, 0.32);
   --ub-cyan: #43D9AD;
   --ub-indigo: #4D5BCE;
   --ub-amber: #FEA55F;
-  --ub-gray: #607B96;
+  --ub-gray: #8A9BB0;
   --ub-font-main: 'Space Grotesk', 'Noto Sans SC', sans-serif;
-  --ub-font-mono: 'Fira Code', 'Space Mono', 'IBM Plex Mono', monospace;
-  --ub-font-hud:  'Orbitron', 'Noto Sans SC', 'Space Mono', monospace;
+  --ub-font-mono: 'Fira Code', 'IBM Plex Mono', ui-monospace, monospace;
+  --ub-font-hud:  'Space Grotesk', 'IBM Plex Mono', 'Noto Sans SC', sans-serif;
 
   // ── Layout Tokens（桌面基准值；移动端断点仅改 token 值，桌面视觉零回归）──
   --ub-space-section-y: 140px; // 大留白 section 垂直节奏
@@ -86,7 +89,6 @@ body[data-slug="index"] {
   background: var(--ub-black) !important;
   color: var(--ub-yellow) !important;
   font-family: var(--ub-font-main) !important;
-  cursor: none;
   overflow-x: hidden !important;
   width: 100% !important;
   max-width: 100% !important;
@@ -175,54 +177,16 @@ body[data-slug="index"] {
     box-sizing: border-box !important;
   }
 
-  // ── Noise & Progress Bar ──────────────────────
+  // ── Noise Layer ───────────────────────────────
   .noise {
     position: fixed;
     inset: 0;
     z-index: 9999;
     pointer-events: none;
-    opacity: 0.038;
+    opacity: 0.032;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 200px 200px;
-  }
-
-  .progress-bar {
-    position: fixed;
-    top: 0; left: 0;
-    height: 3px;
-    width: 0%;
-    background: linear-gradient(90deg, var(--ub-indigo), var(--ub-cyan), var(--ub-amber));
-    z-index: 10001;
-    transition: width 0.05s linear;
-    box-shadow: 0 0 12px rgba(67, 217, 173, 0.5);
-  }
-
-  // ── Custom Cursor ─────────────────────────────
-  #ub-cursor {
-    width: 8px; height: 8px;
-    background: var(--ub-yellow);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: width 0.15s, height 0.15s, opacity 0.3s ease;
-    mix-blend-mode: difference;
-  }
-
-  #ub-cursorFollower {
-    width: 36px; height: 36px;
-    border: 1px solid var(--ub-yellow);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s, opacity 0.3s ease;
-    mix-blend-mode: difference;
   }
 
   // ── Navigation Bar (Apple 液体水凝玻璃态) ───────────────
@@ -272,8 +236,8 @@ body[data-slug="index"] {
       // 物理级双层悬浮景深投影（近景柔和 + 远景深邃）
       0 10px 24px -6px rgba(0, 0, 0, 0.50),
       0 28px 64px -12px rgba(0, 0, 0, 0.80),
-      // 边缘极其微弱的赛博微极光泛色
-      0 0 28px -2px rgba(67, 217, 173, 0.18);
+      // 边缘极其微弱的微光泛色
+      0 0 20px -4px rgba(67, 217, 173, 0.10);
 
     transition: top 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                 padding 0.35s cubic-bezier(0.16, 1, 0.3, 1),
@@ -336,14 +300,14 @@ body[data-slug="index"] {
           rgba(10, 12, 18, 0.65) 100%
         ),
         rgba(10, 12, 18, 0.72);
-      border-color: rgba(67, 217, 173, 0.38);
+      border-color: rgba(255, 255, 255, 0.22);
       box-shadow:
         inset 0 1px 0 0 rgba(255, 255, 255, 0.75),
         inset 0 2px 12px 0 rgba(255, 255, 255, 0.22),
-        inset 0 -1px 0 0 rgba(67, 217, 173, 0.25),
+        inset 0 -1px 0 0 rgba(67, 217, 173, 0.18),
         0 14px 32px -6px rgba(0, 0, 0, 0.60),
         0 32px 72px -12px rgba(0, 0, 0, 0.85),
-        0 0 32px rgba(67, 217, 173, 0.24);
+        0 0 24px rgba(67, 217, 173, 0.12);
     }
   }
 
@@ -395,14 +359,14 @@ body[data-slug="index"] {
       font-family: var(--ub-font-hud);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ub-yellow);
-      opacity: 0.5;
-      transition: opacity 0.25s ease, color 0.25s ease;
+      opacity: 0.68;
+      transition: opacity 0.2s ease, color 0.2s ease;
       text-decoration: none !important;
       position: relative;
-      cursor: none;
+      cursor: pointer;
 
       &::after {
         content: '';
@@ -410,15 +374,21 @@ body[data-slug="index"] {
         bottom: -4px; left: 0;
         width: 0; height: 1.5px;
         background: var(--ub-cyan);
-        transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
       &:hover,
       &.active {
         opacity: 1;
         color: var(--ub-yellow);
-        text-shadow: 0 0 8px rgba(254, 250, 224, 0.4), 0 0 16px rgba(67, 217, 173, 0.3);
         &::after { width: 100%; }
+      }
+
+      &:focus-visible {
+        opacity: 1;
+        outline: 2px solid var(--ub-cyan);
+        outline-offset: 4px;
+        border-radius: 4px;
       }
     }
   }
@@ -436,39 +406,22 @@ body[data-slug="index"] {
     padding: 0 48px;
     box-sizing: border-box;
     background:
-      radial-gradient(ellipse at 50% 40%, rgba(77, 91, 206, 0.08) 0%, transparent 70%),
-      radial-gradient(ellipse at 80% 80%, rgba(67, 217, 173, 0.05) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 42%, rgba(77, 91, 206, 0.06) 0%, transparent 68%),
       var(--ub-black);
-
-    #ub-particleCanvas {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-    }
   }
 
   .ub-hud-corner {
     position: absolute;
-    width: 32px; height: 32px;
-    border-color: rgba(254, 250, 224, 0.15);
+    width: 24px; height: 24px;
+    border-color: rgba(255, 255, 255, 0.08);
     border-style: solid;
     z-index: 3;
     pointer-events: none;
   }
-  .ub-hud-tl { top: 24px; left: 24px; border-width: 2px 0 0 2px; }
-  .ub-hud-tr { top: 24px; right: 24px; border-width: 2px 2px 0 0; }
-  .ub-hud-bl { bottom: 24px; left: 24px; border-width: 0 0 2px 2px; }
-  .ub-hud-br { bottom: 24px; right: 24px; border-width: 0 2px 2px 0; }
-
-  .ub-hero-slash {
-    position: absolute;
-    width: 200%; height: 1.5px;
-    background: linear-gradient(90deg, transparent, rgba(254, 250, 224, 0.08), transparent);
-    z-index: 1;
-    pointer-events: none;
-  }
-  .ub-hero-slash-1 { top: 28%; left: -50%; transform: rotate(-14deg); }
-  .ub-hero-slash-2 { bottom: 24%; left: -50%; transform: rotate(11deg); }
+  .ub-hud-tl { top: 24px; left: 24px; border-width: 1px 0 0 1px; }
+  .ub-hud-tr { top: 24px; right: 24px; border-width: 1px 1px 0 0; }
+  .ub-hud-bl { bottom: 24px; left: 24px; border-width: 0 0 1px 1px; }
+  .ub-hud-br { bottom: 24px; right: 24px; border-width: 0 1px 1px 0; }
 
   .ub-hero-content {
     position: relative;
@@ -552,23 +505,24 @@ body[data-slug="index"] {
     line-height: 1.6;
     max-width: 680px;
     margin: 0 auto 32px auto;
-    animation: ub-fadeUp 1s ease 0.65s both;
+    text-wrap: balance;
+    animation: ub-fadeUp 0.8s ease 0.45s both;
   }
 
   .ub-hero-actions {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     flex-wrap: wrap;
-    animation: ub-fadeUp 1s ease 0.85s both;
+    animation: ub-fadeUp 0.8s ease 0.6s both;
   }
 
   .ub-btn {
     box-sizing: border-box !important;
     font-family: var(--ub-font-hud);
     font-size: 11px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     padding: 12px 24px;
     border-radius: 6px;
@@ -578,34 +532,44 @@ body[data-slug="index"] {
     justify-content: center;
     text-align: center;
     gap: 8px;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: none;
+    touch-action: manipulation;
+    transition: background-color 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid var(--ub-cyan);
+      outline-offset: 3px;
+    }
 
     &--primary {
       background: var(--ub-yellow);
       color: var(--ub-black) !important;
       font-weight: 700;
       border: 1px solid var(--ub-yellow);
-      box-shadow: 0 4px 20px rgba(254, 250, 224, 0.2);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 
       &:hover {
         background: var(--ub-cyan);
         border-color: var(--ub-cyan);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 24px rgba(67, 217, 173, 0.35);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(67, 217, 173, 0.22);
       }
     }
 
     &--outline {
-      background: rgba(254, 250, 224, 0.04);
+      background: rgba(255, 255, 255, 0.03);
       color: var(--ub-yellow) !important;
-      border: 1px solid var(--ub-border);
+      border: 1px solid var(--ub-border-strong);
 
       &:hover {
         border-color: var(--ub-cyan);
         color: var(--ub-cyan) !important;
-        background: rgba(67, 217, 173, 0.08);
-        transform: translateY(-2px);
+        background: rgba(67, 217, 173, 0.06);
+        transform: translateY(-1px);
       }
     }
 
@@ -623,29 +587,24 @@ body[data-slug="index"] {
   }
 
 
-  // ── MARQUEE STRIP ────────────────────────────
+  // ── TECH STACK STRIP (STATIC INDEX) ──────────
   .ub-marquee-strip {
-    overflow: hidden;
     background: var(--ub-black);
     border-top: 1px solid var(--ub-border);
     border-bottom: 1px solid var(--ub-border);
-    padding: 14px 0;
-    white-space: nowrap;
+    padding: 14px 24px;
+    text-align: center;
   }
 
   .ub-marquee-inner {
-    display: inline-block;
-    font-family: var(--ub-font-hud);
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: var(--ub-font-mono);
     font-size: 11px;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--ub-yellow);
-    opacity: 0.3;
-    animation: ub-marquee 32s linear infinite;
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    color: var(--ub-gray);
+    line-height: 1.8;
   }
 
   // ── CONTAINER & SECTION COMMON ───────────────
@@ -669,29 +628,34 @@ body[data-slug="index"] {
     width: 100%;
   }
 
+  .ub-quests,
+  .ub-builds,
+  .ub-knowledge,
+  .ub-stats,
+  .ub-terminal-section,
+  .ub-arcade-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
   .ub-section-label {
-    font-family: var(--ub-font-hud);
-    font-size: 10px;
-    letter-spacing: 0.35em;
+    font-family: var(--ub-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--ub-cyan);
-    margin-bottom: 36px;
+    margin-bottom: 28px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
   }
 
   .ub-label-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px; height: 26px;
-    border: 1px solid rgba(67, 217, 173, 0.4);
-    font-size: 10px;
-    font-weight: 700;
+    font-family: var(--ub-font-mono);
+    font-size: 11px;
+    font-weight: 600;
     color: var(--ub-cyan);
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    background: rgba(67, 217, 173, 0.08);
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
   }
 
   .ub-section-title {
@@ -703,6 +667,7 @@ body[data-slug="index"] {
     margin-bottom: 56px !important;
     border: none !important;
     padding: 0 !important;
+    text-wrap: balance;
   }
 
   // ── 01 CHARACTER PROFILE ─────────────────────
@@ -745,6 +710,7 @@ body[data-slug="index"] {
     font-size: 11px;
     font-weight: 600;
     color: var(--ub-cyan);
+    font-variant-numeric: tabular-nums;
   }
 
   .ub-stat-bar {
@@ -904,30 +870,23 @@ body[data-slug="index"] {
     border: 1px solid var(--ub-border);
     border-radius: var(--ub-radius-card);
     overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
     position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--ub-radius-card);
-      border: 1px solid transparent;
-      transition: border-color 0.3s ease;
-      pointer-events: none;
-    }
 
     &:hover {
       border-color: var(--ub-border-hover);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(67, 217, 173, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 36px rgba(0, 0, 0, 0.55);
 
       .ub-project-img {
-        transform: scale(1.04);
+        transform: scale(1.03);
         filter: grayscale(0%);
       }
       .ub-project-ext {
         color: var(--ub-cyan);
-        transform: translate(3px, -3px);
+        transform: translate(2px, -2px);
       }
     }
   }
@@ -988,8 +947,8 @@ body[data-slug="index"] {
     font-size: 18px;
     color: var(--ub-gray);
     text-decoration: none !important;
-    transition: color 0.25s, transform 0.25s;
-    cursor: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
     // 触控热区 ≥44px：视觉字号不变，用 padding 扩展可点击范围
     display: inline-flex;
     align-items: center;
@@ -997,6 +956,12 @@ body[data-slug="index"] {
     min-width: 44px;
     min-height: 44px;
     margin: -12px; // 抵消热区扩张对布局的影响，视觉位置不变
+    border-radius: 8px;
+
+    &:focus-visible {
+      outline: 2px solid var(--ub-cyan);
+      outline-offset: 2px;
+    }
   }
 
   .ub-project-desc {
@@ -1037,55 +1002,52 @@ body[data-slug="index"] {
     background: var(--ub-black-card);
     border: 1px solid var(--ub-border);
     border-radius: var(--ub-radius-card-sm);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
     position: relative;
     overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
     text-decoration: none !important;
     color: var(--ub-yellow);
-    cursor: none;
+    cursor: pointer;
     box-sizing: border-box;
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg, var(--ub-cyan), var(--ub-indigo));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
     &:hover {
+      background: #151820;
       border-color: var(--ub-border-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5), 0 0 16px -2px rgba(67, 217, 173, 0.12);
-
-      &::before {
-        opacity: 1;
-      }
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 10px 24px -6px rgba(0, 0, 0, 0.5);
 
       .ub-writing-title {
         color: var(--ub-cyan);
       }
       .ub-writing-arrow {
         color: var(--ub-cyan);
-        transform: translate(3px, -3px);
+        transform: translate(2px, -2px);
       }
       .ub-writing-num {
         color: var(--ub-cyan);
         opacity: 0.9;
       }
     }
+
+    &:focus-visible {
+      outline: 2px solid var(--ub-cyan);
+      outline-offset: 3px;
+    }
   }
 
   .ub-writing-num {
-    font-family: var(--ub-font-hud);
+    font-family: var(--ub-font-mono);
     font-size: 13px;
-    opacity: 0.4;
+    opacity: 0.55;
     min-width: 32px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     color: var(--ub-yellow);
-    transition: color 0.25s, opacity 0.25s;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.2s ease, opacity 0.2s ease;
     flex-shrink: 0;
   }
 
@@ -1147,22 +1109,13 @@ body[data-slug="index"] {
     text-align: center;
     position: relative;
     overflow: hidden;
-    transition: border-color 0.3s ease, transform 0.3s ease;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--ub-indigo), var(--ub-cyan));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 
     &:hover {
-      border-color: rgba(67, 217, 173, 0.3);
-      transform: translateY(-4px);
-      &::before { opacity: 1; }
+      border-color: var(--ub-border-hover);
+      transform: translateY(-2px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 12px 28px rgba(0, 0, 0, 0.45);
     }
   }
 
@@ -1170,9 +1123,10 @@ body[data-slug="index"] {
     display: inline-block;
     font-family: var(--ub-font-hud);
     font-size: clamp(40px, 4.5vw, 64px);
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1;
     color: var(--ub-yellow);
+    font-variant-numeric: tabular-nums;
   }
 
   .ub-metric-plus {
@@ -1213,26 +1167,32 @@ body[data-slug="index"] {
     justify-content: space-between;
     gap: 16px;
     padding: 28px 28px;
-    background: rgba(13, 15, 20, 0.6);
+    background: var(--ub-black-card);
     border: 1px solid var(--ub-border);
     border-radius: var(--ub-radius-card-sm);
-    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     text-decoration: none !important;
     color: var(--ub-yellow);
-    cursor: none;
+    cursor: pointer;
 
     &:hover {
-      border-color: rgba(67, 217, 173, 0.45);
-      background: rgba(67, 217, 173, 0.06);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 24px rgba(67, 217, 173, 0.08);
+      border-color: var(--ub-border-hover);
+      background: #151820;
+      transform: translateY(-2px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 12px 28px rgba(0, 0, 0, 0.45);
       .ub-social-handle {
         color: var(--ub-cyan);
       }
       .ub-social-arrow {
-        transform: translate(3px, -3px);
+        transform: translate(2px, -2px);
         color: var(--ub-cyan);
       }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ub-cyan);
+      outline-offset: 3px;
     }
   }
 
@@ -1279,14 +1239,8 @@ body[data-slug="index"] {
   }
 
   @keyframes ub-fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
+    from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
-  }
-
-
-  @keyframes ub-marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
   }
 
   @keyframes ub-pulse {
@@ -1297,20 +1251,20 @@ body[data-slug="index"] {
   // ── SCROLL REVEAL ────────────────────────────
   .ub-scroll-reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(16px);
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 
     &.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    &:nth-child(2) { transition-delay: 0.08s; }
-    &:nth-child(3) { transition-delay: 0.16s; }
-    &:nth-child(4) { transition-delay: 0.24s; }
-    &:nth-child(5) { transition-delay: 0.32s; }
-    &:nth-child(6) { transition-delay: 0.40s; }
+    &:nth-child(2) { transition-delay: 0.04s; }
+    &:nth-child(3) { transition-delay: 0.08s; }
+    &:nth-child(4) { transition-delay: 0.12s; }
+    &:nth-child(5) { transition-delay: 0.16s; }
+    &:nth-child(6) { transition-delay: 0.16s; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1318,10 +1272,6 @@ body[data-slug="index"] {
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;
-    }
-    // 无障碍：停止跑马灯无限滚动（静止展示首屏内容）
-    .ub-marquee-inner {
-      animation: none !important;
     }
     // 无障碍：状态灯、入场动画降级为静态
     .ub-status-dot,
@@ -1335,10 +1285,6 @@ body[data-slug="index"] {
     .ub-metric-card {
       transform: none !important;
       transition: none !important;
-    }
-    // glitch 伪元素随机抖动已在 JS 侧读取本媒体查询禁用（见 index.md），此处先保底清空伪元素动画
-    #ub-hero-glitch {
-      text-shadow: none !important;
     }
   }
 
@@ -1547,7 +1493,7 @@ body[data-slug="index"] {
     font-size: 12px;
 
     .stat-label { color: var(--ub-gray); }
-    .stat-val { color: var(--ub-cyan); font-weight: bold; font-size: 14px; }
+    .stat-val { color: var(--ub-cyan); font-weight: bold; font-size: 14px; font-variant-numeric: tabular-nums; }
   }
 
   .ub-snake-controls {
@@ -1577,7 +1523,7 @@ body[data-slug="index"] {
       -webkit-user-select: none;
       -webkit-touch-callout: none;
       touch-action: manipulation;
-      transition: all 0.15s ease;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 
       &:hover {
         background: #1c2b3a;
@@ -1588,6 +1534,11 @@ body[data-slug="index"] {
       &:active {
         transform: scale(0.94);
         background: #25394e;
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--ub-cyan);
+        outline-offset: 2px;
       }
     }
   }
@@ -1605,7 +1556,7 @@ body[data-slug="index"] {
     font-size: 11px;
     cursor: pointer;
     text-align: center;
-    transition: background 0.2s;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
     user-select: none;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
@@ -1614,6 +1565,11 @@ body[data-slug="index"] {
     &:hover {
       background: #25394e;
       border-color: var(--ub-amber);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ub-cyan);
+      outline-offset: 2px;
     }
   }
 
@@ -1630,7 +1586,7 @@ body[data-slug="index"] {
     font-size: 11px;
     cursor: pointer;
     text-align: center;
-    transition: all 0.2s;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     user-select: none;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
@@ -1639,6 +1595,11 @@ body[data-slug="index"] {
     &:hover {
       background: #1c2b3a;
       border-color: var(--ub-cyan);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ub-cyan);
+      outline-offset: 2px;
     }
   }
 
@@ -1654,6 +1615,7 @@ body[data-slug="index"] {
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
+    touch-action: manipulation;
     align-items: center;
     justify-content: center;
     -webkit-tap-highlight-color: transparent;
@@ -1664,12 +1626,17 @@ body[data-slug="index"] {
       height: 2px;
       background: var(--ub-yellow);
       border-radius: 2px;
-      transition: all 0.25s ease;
+      transition: background-color 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
     }
 
     &:hover {
       border-color: var(--ub-cyan);
       span { background: var(--ub-cyan); }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ub-cyan);
+      outline-offset: 2px;
     }
   }
 
@@ -1734,11 +1701,17 @@ body[data-slug="index"] {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
 
     &:hover {
       border-color: var(--ub-cyan);
       color: var(--ub-cyan);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ub-cyan);
+      outline-offset: 2px;
     }
   }
 
@@ -1806,11 +1779,16 @@ body[data-slug="index"] {
     letter-spacing: 0.15em;
     color: var(--ub-cyan);
     cursor: pointer;
+    touch-action: manipulation;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
     opacity: 0;
     transform: translateY(20px);
     pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
     -webkit-tap-highlight-color: transparent;
 
     &.visible {
@@ -1824,19 +1802,17 @@ body[data-slug="index"] {
       color: var(--ub-black);
       border-color: var(--ub-cyan);
     }
+
+    &:focus-visible {
+      outline: 2px solid var(--ub-cyan);
+      outline-offset: 3px;
+    }
   }
 
   // ── RESPONSIVE MEDIA QUERIES ─────────────────────────────
 
-  // Touch device resets（合并原 960px 断点内重复的 cursor/cursorFollower 重置：
-  // 触屏设备本身就命中本块；窄屏鼠标设备也命中下方 960px 断点，两者不再重复声明）
+  // Touch device resets
   @media (hover: none) and (pointer: coarse) {
-    cursor: auto !important;
-    * { cursor: auto !important; }
-    #ub-cursor,
-    #ub-cursorFollower {
-      display: none !important;
-    }
     [data-tilt] {
       transform: none !important;
     }
@@ -1844,14 +1820,6 @@ body[data-slug="index"] {
 
   // Tablet & Medium Screens (≤ 960px)
   @media (max-width: 960px) {
-    // 窄屏鼠标设备（如小尺寸笔记本窗口）隐藏自定义光标并恢复系统光标，
-    // 与上方触屏块职责互补、不再重复
-    cursor: auto !important;
-    * { cursor: auto !important; }
-    #ub-cursor,
-    #ub-cursorFollower {
-      display: none !important;
-    }
     .ub-nav {
       top: 0;
       left: 0;
